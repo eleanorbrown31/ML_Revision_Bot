@@ -1,0 +1,372 @@
+area: "Neural Networks"
+source: "Second Brain/apprenticeship/term-1/Topic 8 - Transfer Learning, Quantum Neural Networks and Energy Metrics for Deep Learning.md"
+questions:
+  - topic: "Transfer learning and data representation"
+    subtopic: "Transfer learning concepts (domain, task)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In transfer learning terms, what does a 'domain' consist of, and what does a 'task' consist of?"
+    payload:
+      options:
+        - "A domain is the feature space X and its marginal probability distribution P(X); a task consists of a label space Y and an objective predictive function that maps features to predictions"
+        - "A domain and a task are the same thing"
+        - "A domain is only relevant to image data"
+        - "A task never involves a label space"
+    answer_key:
+      correct: 0
+    explanation: >
+      This distinction lets the course classify learning scenarios: if source and target share
+      the same distribution on X and the same task, it is regular learning; otherwise it becomes
+      transductive or unsupervised transfer learning.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "Transfer learning concepts (domain, task)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does transfer learning work particularly well for the early layers of a CNN trained on natural images?"
+    payload:
+      options:
+        - "Because early layers learn fundamental low-level features such as edges, line segments and curves, which are shared statistical features useful across many different tasks"
+        - "Because early layers are randomly initialised and never trained"
+        - "Because early layers are specific to a single dataset and cannot transfer"
+        - "Because CNNs have no early layers"
+    answer_key:
+      correct: 0
+    explanation: >
+      Pretraining on these shared low-level features makes a model adaptable to multiple tasks,
+      which matters most when data scarcity prevents training a new model from scratch.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "Transfer learning applications and negative transfer"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is 'negative transfer', and when does it happen?"
+    payload:
+      options:
+        - "When transfer learning harms performance because the source and target tasks are too dissimilar"
+        - "When a model refuses to train at all"
+        - "When a model is trained without any pretrained weights"
+        - "When transfer learning always improves performance regardless of task similarity"
+    answer_key:
+      correct: 0
+    explanation: >
+      This sits alongside other challenges the course lists: large, complex pretrained models
+      needing substantial compute to fine-tune, and the need for careful domain adaptation for
+      the transfer to be effective.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "Transfer learning applications and negative transfer"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which examples does the course give of transfer learning in practice? Select all that apply."
+    payload:
+      options:
+        - "BERT pretrained on Wikipedia, then fine-tuned for sentiment analysis on movie reviews"
+        - "VGG, ResNet and Inception pretrained on ImageNet, then fine-tuned for medical image analysis"
+        - "A speech model pretrained on large spoken-language datasets adapted to a new language with minimal data"
+        - "Training a brand-new model from scratch for every new task, with no reuse of prior weights"
+    answer_key:
+      correct: [0, 1, 2]
+    explanation: >
+      The fourth option describes the opposite of transfer learning, and is exactly what transfer
+      learning is designed to avoid when data or compute is limited.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "Types of data representation"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each data type to how the course says it is typically represented for machine learning."
+    payload:
+      left:
+        - "Categorical data"
+        - "Text data"
+        - "Image data"
+      right:
+        - "One-hot encoding, label encoding or embeddings"
+        - "Bag-of-words, TF-IDF or word embeddings such as Word2Vec, GloVe or BERT"
+        - "Pixel values, or CNN feature maps for more sophisticated methods"
+    answer_key:
+      pairs:
+        "Categorical data": "One-hot encoding, label encoding or embeddings"
+        "Text data": "Bag-of-words, TF-IDF or word embeddings such as Word2Vec, GloVe or BERT"
+        "Image data": "Pixel values, or CNN feature maps for more sophisticated methods"
+    explanation: >
+      Continuous and discrete numerical data, such as age or income, is usable directly by most
+      ML algorithms without this extra representation step.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "Representation heuristics (vectorisation, smoothing, sparsity, tuning)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each data representation heuristic to its purpose."
+    payload:
+      left:
+        - "Vectorisation"
+        - "Normalisation"
+        - "Smoothing"
+        - "Sparse representation"
+      right:
+        - "Converts data into a numerical format, such as TF-IDF for text or pixel values for images"
+        - "Scales data to a standard range or to zero mean and unit variance so features contribute equally"
+        - "Reduces noise and variability, such as with a moving average, to make patterns more discernible"
+        - "Represents data so most elements are zero, beneficial for high-dimensional data and computational efficiency"
+    answer_key:
+      pairs:
+        "Vectorisation": "Converts data into a numerical format, such as TF-IDF for text or pixel values for images"
+        "Normalisation": "Scales data to a standard range or to zero mean and unit variance so features contribute equally"
+        "Smoothing": "Reduces noise and variability, such as with a moving average, to make patterns more discernible"
+        "Sparse representation": "Represents data so most elements are zero, beneficial for high-dimensional data and computational efficiency"
+    explanation: >
+      One-hot encoding and sparse matrices are named examples of sparse representation, while
+      grid search, random search and Bayesian optimisation are named as hyperparameter-tuning
+      heuristics rather than representation heuristics.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "Limitations of deep learning"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which limitations of deep learning does the course list? Select all that apply."
+    payload:
+      options:
+        - "Large data requirements, often needing millions of labelled examples"
+        - "High computational and energy costs for training, and sometimes for inference too"
+        - "Black box nature, limiting trust and accountability in fields like healthcare and finance"
+        - "Vulnerability to small, carefully crafted adversarial perturbations"
+        - "Complete immunity to overfitting"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      High-capacity deep learning models are in fact prone to overfitting, the opposite of
+      immunity, which is one of the limitations the course names alongside hyperparameter
+      sensitivity and the risk of perpetuating bias present in training data.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "Limitations of deep learning"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does the course say the black-box nature of deep learning is a particular problem in healthcare and finance specifically?"
+    payload:
+      options:
+        - "Because these fields are not allowed to use software at all"
+        - "Because lack of interpretability undermines trust, accountability, error diagnosis and regulatory compliance in high-stakes, sensitive decision domains"
+        - "Because healthcare and finance never use labelled data"
+        - "Because black-box models cannot process numerical data"
+    answer_key:
+      correct: 1
+    explanation: >
+      Obtaining large labelled datasets for rare diseases, and the difficulty of explaining a
+      model's reasoning in clinical settings, are given as concrete real-world examples of this
+      tension.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "GloVe and co-occurrence"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What statistical source does GloVe train on to produce its word embeddings?"
+    payload:
+      options:
+        - "Aggregated global word-word co-occurrence statistics from a corpus, captured in a co-occurrence matrix"
+        - "Manually labelled synonym pairs"
+        - "Random noise vectors with no relation to text"
+        - "Only single-word frequency counts, ignoring context entirely"
+    answer_key:
+      correct: 0
+    explanation: >
+      GloVe finds word vectors whose dot product approximates the logarithm of the words'
+      co-occurrence probability, capturing relationships such as the analogy 'king is to queen as
+      man is to woman'.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "GloVe and co-occurrence"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the main challenge with GloVe embeddings that later contextual models like BERT address?"
+    payload:
+      options:
+        - "GloVe produces static embeddings that do not account for context-dependent word meaning"
+        - "GloVe cannot be trained on large corpora"
+        - "GloVe requires labelled training data"
+        - "GloVe can only represent numbers, not words"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is the same limitation Term 4's BERT topic addresses directly, since BERT produces
+      contextualised embeddings that give the same word different vectors depending on its
+      sentence context.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "AGI and distributed representation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is distributed representation, as opposed to localist representation?"
+    payload:
+      options:
+        - "Information is encoded across a network of units where each unit participates in representing multiple concepts, and each concept is represented by a pattern of activation across many units; localist representation has each unit representing a single concept independently"
+        - "Distributed representation means data is stored on multiple servers"
+        - "Localist representation only applies to images"
+        - "The two terms are interchangeable"
+    answer_key:
+      correct: 0
+    explanation: >
+      This distributed structure gives compact, efficient encoding, better generalisation to
+      unseen data, and robustness against noise and partial damage, since information is spread
+      across many units rather than concentrated in one.
+
+  - topic: "Transfer learning and data representation"
+    subtopic: "AGI and distributed representation"
+    difficulty: "F1"
+    format: "order"
+    stem: "Put the three stages of AI development in order from current to most advanced."
+    payload:
+      items:
+        - "ASI: Artificial Super Intelligence, transcending human capabilities in all tasks"
+        - "ANI: Artificial Narrow Intelligence, the present stage, excelling at specific tasks"
+        - "AGI: Artificial General Intelligence, able to perform any task like a human"
+    answer_key:
+      sequence: [1, 2, 0]
+    explanation: >
+      The course places today's systems firmly at the ANI stage: weak AI with narrow capability,
+      as distinct from the potential future stages of AGI and ASI.
+
+  - topic: "Quantum and energy-efficient AI"
+    area: "Computing Architecture & HPC"
+    subtopic: "Qubits, superposition and entanglement"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does a qubit differ from a classical bit?"
+    payload:
+      options:
+        - "A classical bit represents either 0 or 1; a qubit can exist in a superposition of both states simultaneously, letting quantum computers process information in parallel"
+        - "A qubit can only ever represent 0"
+        - "Qubits and bits are identical in behaviour"
+        - "A qubit is a unit of classical storage capacity"
+    answer_key:
+      correct: 0
+    explanation: >
+      Entanglement is the related property where the state of one qubit is directly related to
+      another regardless of distance, letting qubits work together in ways classical bits
+      cannot.
+
+  - topic: "Quantum and energy-efficient AI"
+    area: "Computing Architecture & HPC"
+    subtopic: "Quantum gates and algorithms (Shor, Grover)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Grover's algorithm is used for unstructured search problems. What does it offer over the best classical search algorithm, and how does that compare with Shor's algorithm's use case?"
+    payload:
+      options:
+        - "A quadratic speedup for search, whereas Shor's algorithm gives an exponential speedup specifically for factoring large integers, relevant to cryptography"
+        - "An exponential speedup for search, identical to Shor's use case"
+        - "No speedup at all; it is a purely theoretical algorithm"
+        - "A speedup only for sorting, not searching"
+    answer_key:
+      correct: 0
+    explanation: >
+      Quantum computers can also help develop new, quantum-resistant cryptographic techniques,
+      so the same capability that threatens current encryption also points towards its
+      successor.
+
+  - topic: "Quantum and energy-efficient AI"
+    area: "Computing Architecture & HPC"
+    subtopic: "Quantum challenges (decoherence, scaling)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is 'decoherence' in quantum computing, and why is it a challenge?"
+    payload:
+      options:
+        - "Quantum states are fragile and easily disrupted by their environment, requiring advanced error correction, and building enough stable qubits to scale up remains a significant technical barrier"
+        - "Decoherence is a benefit that speeds up quantum computation"
+        - "Decoherence only affects classical bits, not qubits"
+        - "Decoherence has been fully solved and is no longer a research problem"
+    answer_key:
+      correct: 0
+    explanation: >
+      High error rates and the need to keep qubits ultracold are given as part of the same set of
+      challenges, alongside the difficulty of developing robust, reliable quantum hardware more
+      broadly.
+
+  - topic: "Quantum and energy-efficient AI"
+    area: "Computing Architecture & HPC"
+    subtopic: "Quantum neural networks"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is a hybrid model in the context of Quantum Neural Network (QNN) development?"
+    payload:
+      options:
+        - "A model that combines classical neural network layers with quantum circuits, with classical layers processing some data and quantum layers handling others"
+        - "A model trained on two different datasets simultaneously"
+        - "A model that alternates between supervised and unsupervised learning"
+        - "A synonym for a Generative Adversarial Network"
+    answer_key:
+      correct: 0
+    explanation: >
+      Training QNNs involves adjusting quantum circuit parameters to minimise a cost function,
+      similar in spirit to classical neural network training, with quantum gradient descent and
+      quantum backpropagation as emerging techniques.
+
+  - topic: "Quantum and energy-efficient AI"
+    area: "Computing Architecture & HPC"
+    subtopic: "Energy metrics (kWh, PUE, TE, IE, CO2e)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each energy metric to what it measures."
+    payload:
+      left:
+        - "Power Usage Effectiveness (PUE)"
+        - "Training Efficiency (TE)"
+        - "Inference Efficiency (IE)"
+        - "Carbon footprint (CO2e)"
+      right:
+        - "The ratio of total data-centre energy consumed to energy used by IT equipment alone, with a value near 1.0 meaning high efficiency"
+        - "The ratio of a model's accuracy improvement to the energy consumed during training"
+        - "The number of inferences made per unit of energy consumed"
+        - "The estimated total CO2-equivalent emissions from training and deploying a model"
+    answer_key:
+      pairs:
+        "Power Usage Effectiveness (PUE)": "The ratio of total data-centre energy consumed to energy used by IT equipment alone, with a value near 1.0 meaning high efficiency"
+        "Training Efficiency (TE)": "The ratio of a model's accuracy improvement to the energy consumed during training"
+        "Inference Efficiency (IE)": "The number of inferences made per unit of energy consumed"
+        "Carbon footprint (CO2e)": "The estimated total CO2-equivalent emissions from training and deploying a model"
+    explanation: >
+      Energy consumption in kWh is the fifth named metric, measuring total kilowatt-hours
+      consumed during training and inference directly.
+
+  - topic: "Quantum and energy-efficient AI"
+    area: "Computing Architecture & HPC"
+    subtopic: "Reducing energy consumption"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which techniques does the course list for reducing deep learning energy consumption? Select all that apply."
+    payload:
+      options:
+        - "Pruning: removing redundant parameters"
+        - "Quantisation: using lower-precision arithmetic"
+        - "Hardware acceleration with GPUs, TPUs or FPGAs, or deploying on edge devices"
+        - "Re-using and fine-tuning pretrained models instead of training from scratch"
+        - "Always training the largest possible model regardless of task"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      Data centre optimisation, such as advanced cooling and a shift to renewable energy, is a
+      further named technique; deliberately training the largest possible model is the opposite
+      of an energy-reduction strategy.
+
+  - topic: "Quantum and energy-efficient AI"
+    area: "Computing Architecture & HPC"
+    subtopic: "Future priorities for AI"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which priorities does the course list for the future direction of AI? Select all that apply."
+    payload:
+      options:
+        - "Explainable AI (XAI): making models more interpretable and transparent"
+        - "Sustainable AI: minimising energy consumption and environmental impact"
+        - "Human-centred AI: augmenting rather than replacing human capabilities"
+        - "Reducing AI to a single fixed architecture for all future use cases"
+        - "Ethical frameworks and governance, including international standards"
+    answer_key:
+      correct: [0, 1, 2, 4]
+    explanation: >
+      The course also names multi-agent collaboration and continued research into new
+      architectures, which is the opposite of settling on one fixed architecture for every
+      future task.

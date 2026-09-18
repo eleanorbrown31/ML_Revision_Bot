@@ -1,0 +1,274 @@
+area: "Data-Driven Transformation & Leadership"
+source: "Second Brain/apprenticeship/term-5/Topic 1 - Digital Transformation.md"
+questions:
+  - topic: "Digital transformation foundations"
+    subtopic: "Industrial revolutions"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each industrial revolution to its defining technology."
+    payload:
+      left:
+        - "First Industrial Revolution"
+        - "Second Industrial Revolution"
+        - "Third Industrial Revolution"
+        - "Fourth Industrial Revolution"
+      right:
+        - "Mechanisation, steam and water power"
+        - "Electricity, assembly lines and mass production"
+        - "Electronics, computers and the internet"
+        - "Cyber-physical systems, AI and the Internet of Things"
+    answer_key:
+      pairs:
+        "First Industrial Revolution": "Mechanisation, steam and water power"
+        "Second Industrial Revolution": "Electricity, assembly lines and mass production"
+        "Third Industrial Revolution": "Electronics, computers and the internet"
+        "Fourth Industrial Revolution": "Cyber-physical systems, AI and the Internet of Things"
+    explanation: >
+      The course frames today as the AI mass-data age, commonly called Industry 4.0, and notes
+      that many organisations still cannot exploit their data or AI. Knowing the sequence lets you
+      place data-driven transformation as the current shift rather than a future one.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Drivers of data-driven transformation"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of the following are drivers of data-driven digital transformation named in the course? Select all that apply."
+    payload:
+      options:
+        - "Competitive advantage from insights hidden in the organisation's data"
+        - "Customer service and personalisation"
+        - "Operational efficiency through AI"
+        - "Compliance and regulation reporting"
+        - "Replacing all business specialists with data scientists"
+        - "Non-delivery from earlier technology-driven digitalisation"
+    answer_key:
+      correct: [0, 1, 2, 3, 5]
+    explanation: >
+      Five drivers are listed: competitive advantage, customer service and personalisation,
+      operational efficiency, compliance and regulation, and disappointment with earlier
+      digitalisation efforts. The course is explicit that business goals and business
+      representatives should lead, with data specialists secondary, so replacing specialists is
+      the opposite of the message.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Drivers of data-driven transformation"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A transformation project board is being formed. According to Carruthers and Jackson, who should lead it?"
+    payload:
+      options:
+        - "The data science team, because they understand what is technically achievable"
+        - "Business unit representatives, because they understand their own goals and barriers, supported by data specialists"
+        - "External consultants, to avoid internal politics"
+        - "The IT department, because it owns the technology estate"
+    answer_key:
+      correct: 1
+    explanation: >
+      The transformation should be business-led. People active in each unit best understand
+      their goals and barriers, but need support because they may not know what is achievable
+      from a data or technology perspective. Data specialists listen to the questions the
+      business is asking and design solutions around them.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "People, process, technology and data"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the course extend the traditional People, Process, Technology triangle for data-driven transformation?"
+    payload:
+      options:
+        - "Technology is replaced by data at one vertex"
+        - "Data is added as a fourth vertex, making a square"
+        - "Data is placed in the middle of the triangle as a central fourth component, with an arrow showing data moving the organisation from start state to end state"
+        - "The triangle is discarded in favour of a maturity ladder"
+    answer_key:
+      correct: 2
+    explanation: >
+      People, process and technology stay at the vertices. Data sits at the centre as the
+      component that harnesses the other three, and a broad arrow across the triangle shows
+      data taking the organisation from its start state to its end state.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Drivers of data-driven transformation"
+    difficulty: "F3"
+    format: "order"
+    stem: "Put the three high-level steps for executing a data-driven transformation in the order the course gives them."
+    payload:
+      items:
+        - "Assess the current (start) state"
+        - "Plan the steps from current state to end state, with stakeholders, timescales and budget"
+        - "Start with a vision of the end state"
+    answer_key:
+      sequence: [2, 0, 1]
+    explanation: >
+      Vision first, then assessment of where you are, then planning the path between them. The
+      order matters: without a vision of the end state you cannot judge which gaps in the
+      current state need closing, and the course lists lack of a clear end-state vision as the
+      first barrier to transformation.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Governance, visionaries and data literacy"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is cataloguing data one of the first tasks when setting up a data governance function?"
+    payload:
+      options:
+        - "Because regulators require a published catalogue before any analysis"
+        - "Because you cannot govern data until you know what data you have"
+        - "Because catalogues replace the need for a data strategy"
+        - "Because cataloguing automatically fixes data quality problems"
+    answer_key:
+      correct: 1
+    explanation: >
+      Governance exists to ensure compliance and to get data into its best state. Both depend on
+      knowing what exists, where it is and who owns it. The catalogue is the starting inventory,
+      not a substitute for strategy and not a quality fix in itself.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Governance, visionaries and data literacy"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of these are listed as common organisational data problems that a governance function is mandated to fix? Select all that apply."
+    payload:
+      options:
+        - "Multiple sources and different versions of the same data"
+        - "No clear roles, responsibilities or ownership"
+        - "Lack of trust in the data"
+        - "Too few data scientists on the payroll"
+        - "Unpredictable availability and integration complexity"
+    answer_key:
+      correct: [0, 1, 2, 4]
+    explanation: >
+      The list covers multiple sources, different versions, poor access tools, lack of trust, no
+      clear ownership, volume problems, integration complexity, unpredictable availability and
+      lack of governance. Headcount is a skills question handled elsewhere in the maturity
+      assessment, not a governance problem.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Governance, visionaries and data literacy"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What distinguishes innovative transformation from disruptive innovation in the course's terms?"
+    payload:
+      options:
+        - "Innovative transformation keeps the same business model but does it more efficiently; disruptive innovation changes the business model and possibly the revenue streams"
+        - "Innovative transformation is technology-led; disruptive innovation is people-led"
+        - "Innovative transformation is cheaper; disruptive innovation is always more profitable"
+        - "There is no difference; the terms are interchangeable"
+    answer_key:
+      correct: 0
+    explanation: >
+      Disruptive innovation is harder to sell because of the greater unknown and risk. That is why
+      it is sometimes set up as a spin-off with a fixed timescale and budget, so failure does not
+      damage the wider organisation.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Governance, visionaries and data literacy"
+    difficulty: "F1"
+    format: "fill"
+    stem: "Complete the sentence about the two people-roles that help sell a transformation."
+    payload:
+      template: "___ imagine the end state and may need to sell that vision to stakeholder groups, while ___ spread the word and convince others of the benefits."
+    answer_key:
+      blanks:
+        - ["visionaries", "visionary"]
+        - ["champions", "champion"]
+    explanation: >
+      Visionaries create and sell the picture of the end state. Champions, who may be visionaries
+      or other key staff, carry the message across the organisation. Both are listed as key
+      ingredients alongside data governance and data literacy.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Governance, visionaries and data literacy"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does raising data literacy across the whole organisation strengthen a transformation, rather than just training the data team?"
+    payload:
+      options:
+        - "It lets business colleagues see new ways to use data in their own units, which increases buy-in and democratises data"
+        - "It reduces the number of data scientists the organisation needs to hire"
+        - "It removes the need for a data governance policy"
+        - "It guarantees regulatory compliance"
+    answer_key:
+      correct: 0
+    explanation: >
+      Data literacy spans from the data scientist applying algorithms to the business agent who
+      can understand and act on insights. Widening it empowers colleagues to spot data
+      opportunities themselves, which feeds back into buy-in and momentum for the
+      transformation.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Barriers to transformation"
+    difficulty: "F1"
+    format: "multi"
+    stem: "Which of the following are barriers to transformation listed in the course? Select all that apply."
+    payload:
+      options:
+        - "Not having a clear vision of the end state"
+        - "Lack of adequate funding"
+        - "The wrong people or the wrong skills"
+        - "No culture of transformation or no data culture"
+        - "Having too much data"
+        - "No time or resource to spare"
+    answer_key:
+      correct: [0, 1, 2, 3, 5]
+    explanation: >
+      The barriers are vision, funding, people, skills, transformation culture, data culture,
+      time and resource, and unexpected internal or external factors. Data volume is not listed
+      as a barrier; the course advises considering the real barriers at the start and planning
+      mitigations.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Drivers of data-driven transformation"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A CEO wants the data-driven transformation delivered as one large project with a fixed completion date. Which response best reflects the course's view?"
+    payload:
+      options:
+        - "Agree, because a fixed end date creates urgency"
+        - "Explain that transformation is usually a series of small changes heading in one strategic direction, reviewed periodically, and likely to be continuous given the pace of data and AI progress"
+        - "Refuse, because transformation cannot be planned at all"
+        - "Propose outsourcing the whole programme to a vendor with a fixed-price contract"
+    answer_key:
+      correct: 1
+    explanation: >
+      The recommended approach is a solid overall plan with a sustainable architecture and a
+      governance policy, then a prioritised list of use cases delivered on an ongoing schedule
+      that is reviewed for new factors. Budget determines pace, and each unit may have its own
+      change plan linked to the overall strategy.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "Digitisation, digitalisation and digital"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Which pairing best captures the distinction the course draws between digitisation and digitalisation?"
+    payload:
+      options:
+        - "Digitisation converts analogue information into digital form; digitalisation uses digital technologies to change how processes and business operate"
+        - "Digitisation is about people; digitalisation is about technology"
+        - "Digitisation happens in the cloud; digitalisation happens on-premises"
+        - "They mean the same thing in the course"
+    answer_key:
+      correct: 0
+    explanation: >
+      Digitisation is the narrow act of turning information into digital form. Digitalisation
+      uses that digital information to change ways of working. Digital transformation goes
+      further still and changes the business model, which is why Schmarzo's second law says it is
+      about digital transformation, not digitalisation.
+
+  - topic: "Digital transformation foundations"
+    subtopic: "People, process, technology and data"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "In the extended triangle diagram, what does the broad arrow crossing the triangle represent?"
+    payload:
+      options:
+        - "The flow of budget from finance to IT"
+        - "Data harnessing people, process and technology to move the organisation from a start state on one side to an end state on the other"
+        - "The order in which the three vertices must be addressed"
+        - "The reporting line from the data team to the board"
+    answer_key:
+      correct: 1
+    explanation: >
+      The start state sits outside the triangle on the left and the end state outside on the
+      right. The arrow shows that a successful data-driven transformation uses data, at the
+      centre, to carry the organisation between them.

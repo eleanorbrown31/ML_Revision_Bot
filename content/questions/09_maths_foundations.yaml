@@ -1,0 +1,185 @@
+area: "Maths Foundations"
+questions:
+  - topic: "Linear Algebra Foundations"
+    subtopic: "rank and linear independence"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does it mean for a set of vectors to be 'linearly independent'?"
+    payload:
+      options:
+        - "All vectors in the set have the same length"
+        - "The vectors span a 1-dimensional space"
+        - "No vector in the set can be written as a linear combination of the others"
+        - "The vectors are all orthogonal to each other"
+    answer_key:
+      correct: 2
+    explanation: >
+      Linear independence means none of the vectors is redundant -- no vector can be expressed
+      as a weighted sum of the others. The rank of a matrix is the number of linearly independent
+      rows (or columns) it has, which tells you the true dimensionality of the space it spans.
+
+  - topic: "Linear Algebra Foundations"
+    subtopic: "dot product / cosine similarity"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What relationship does cosine similarity have to the dot product of two vectors?"
+    payload:
+      options:
+        - "Cosine similarity is just another name for the dot product, with no real difference"
+        - "Cosine similarity is the dot product divided by the product of the vectors' magnitudes, which normalises out the effect of vector length"
+        - "Cosine similarity can only be computed for vectors of length exactly 1"
+        - "Cosine similarity is the dot product multiplied by the angle between the vectors"
+    answer_key:
+      correct: 1
+    explanation: >
+      The raw dot product is sensitive to magnitude -- two vectors pointing the same direction
+      but with different lengths would give different dot products. Dividing by the product of
+      their magnitudes (||a|| × ||b||) normalises this out, leaving a value purely about
+      direction/orientation -- exactly what cosine similarity captures, which is why it's popular
+      for comparing things like text embeddings where raw magnitude often isn't meaningful.
+
+  - topic: "Calculus for ML"
+    subtopic: "gradient (vector of partials)"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does the gradient of a multivariable function represent?"
+    payload:
+      options:
+        - "The single largest value the function can take"
+        - "A matrix of second derivatives"
+        - "The average rate of change over the whole domain"
+        - "A vector of partial derivatives pointing in the direction of steepest increase of the function"
+    answer_key:
+      correct: 3
+    explanation: >
+      The gradient collects the partial derivative with respect to each input variable into a
+      vector; that vector points in the direction in which the function increases most steeply,
+      which is why gradient descent moves in the opposite (negative gradient) direction to
+      minimise a loss.
+    distractor_notes:
+      "A matrix of second derivatives": "That describes the Hessian, not the gradient."
+
+  - topic: "Calculus for ML"
+    subtopic: "chain rule"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "When you have a composed function y = f(g(x)), what does the chain rule let you do?"
+    payload:
+      options:
+        - "Skip computing the derivative of the inner function g entirely"
+        - "Break the derivative of the whole composition into the product of each function's own derivative, evaluated at the right point"
+        - "Compute the derivative without needing to know the outer function's derivative"
+        - "Only works when f and g are both linear functions"
+    answer_key:
+      correct: 1
+    explanation: >
+      The chain rule lets you differentiate a composed function by multiplying together the
+      derivatives of each piece: the outer function's derivative (evaluated at the inner
+      function's output) times the inner function's own derivative. This is exactly the mechanism
+      backpropagation applies repeatedly, layer by layer, to work out how a change in an early
+      weight affects the final loss several layers downstream.
+
+  - topic: "Probability & Statistics"
+    subtopic: "Bayes' theorem"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Bayes' theorem lets you compute P(A|B) in terms of which other quantities?"
+    payload:
+      options:
+        - "Only P(A and B)"
+        - "P(B|A), P(A), and P(B)"
+        - "P(A) and P(B) only, assuming independence"
+        - "The variance of A and B"
+    answer_key:
+      correct: 1
+    explanation: >
+      Bayes' theorem: P(A|B) = P(B|A) × P(A) / P(B). It lets you "invert" a conditional
+      probability -- update a prior belief P(A) into a posterior P(A|B) once you observe evidence
+      B, using the likelihood P(B|A).
+
+  - topic: "Probability & Statistics"
+    subtopic: "central limit theorem"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the central limit theorem say about the distribution of a sample mean?"
+    payload:
+      options:
+        - "As sample size grows, the distribution of the sample mean approaches a normal distribution, regardless of the shape of the underlying population distribution"
+        - "It only applies when the underlying population is already normally distributed"
+        - "It guarantees zero variance in the sample mean for large samples"
+        - "The sample mean always exactly equals the population mean"
+    answer_key:
+      correct: 0
+    explanation: >
+      The CLT says that, for a sufficiently large sample size, the sampling distribution of the
+      mean approaches a normal distribution even if the original population isn't normal -- which
+      is why so many statistical methods (confidence intervals, hypothesis tests) can rely on
+      normal approximations.
+
+  - topic: "Probability & Statistics"
+    subtopic: "distributions (normal, binomial, Poisson)"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each distribution to what it models."
+    payload:
+      left:
+        - "Normal distribution"
+        - "Binomial distribution"
+        - "Poisson distribution"
+      right:
+        - "Models the number of successes in a fixed number of independent yes/no trials"
+        - "Models the number of events occurring in a fixed interval of time or space, given a known average rate"
+        - "A symmetric, bell-shaped distribution described entirely by its mean and variance"
+    answer_key:
+      pairs:
+        "Normal distribution": "A symmetric, bell-shaped distribution described entirely by its mean and variance"
+        "Binomial distribution": "Models the number of successes in a fixed number of independent yes/no trials"
+        "Poisson distribution": "Models the number of events occurring in a fixed interval of time or space, given a known average rate"
+    explanation: >
+      These are three of the most common distributions you'll meet: the normal distribution shows
+      up everywhere thanks to the central limit theorem and is fully described by just two
+      numbers; the binomial distribution is about counting successes across a fixed number of
+      trials (like coin flips); the Poisson distribution is about counting how many times
+      something happens in a window of time, like customer arrivals per hour.
+
+  - topic: "Information Theory"
+    subtopic: "KL divergence"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Where would you actually encounter KL divergence in a typical ML workflow, even without ever deriving or computing it by hand?"
+    payload:
+      options:
+        - "Only inside obscure custom loss functions that most practitioners never actually use"
+        - "As part of the cross-entropy loss used to train classifiers, and in drift-detection tooling that compares a deployed model's prediction distribution to its training-time distribution"
+        - "Exclusively in reinforcement learning research, with no relevance to supervised learning"
+        - "As a direct replacement for accuracy when reporting a classifier's performance"
+    answer_key:
+      correct: 1
+    explanation: >
+      You've likely already used KL divergence without deriving it: cross-entropy loss, the
+      standard loss for training classifiers, is built directly from it -- minimising
+      cross-entropy between true labels and predicted probabilities is equivalent to minimising
+      the KL divergence between them. It also shows up in production monitoring, comparing a
+      deployed model's prediction distribution today against its training-time distribution to
+      detect data drift (see "Monitoring & drift" under MLOps & Deployment). The formal
+      definition -- the extra information needed to encode samples from P using a code optimised
+      for Q instead -- matters less day to day than recognising the shape it takes almost
+      everywhere you'll meet it: a way to measure how far one distribution has moved from another.
+
+  - topic: "Information Theory"
+    subtopic: "mutual information"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does mutual information between two variables measure?"
+    payload:
+      options:
+        - "How much knowing one variable reduces uncertainty about the other"
+        - "Whether one variable causes the other"
+        - "The sum of their individual entropies"
+        - "Whether the two variables are linearly correlated"
+    answer_key:
+      correct: 0
+    explanation: >
+      Mutual information quantifies how much uncertainty about one variable is reduced by knowing
+      the other -- it captures any kind of statistical dependency, not just linear correlation,
+      which is why it's a popular feature-selection criterion for picking informative features.

@@ -1,0 +1,256 @@
+area: "Applied Practice & Business Context"
+questions:
+  - topic: "Problem framing"
+    subtopic: "when not to use ML"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Which of these is a good reason NOT to use machine learning for a business problem?"
+    payload:
+      options:
+        - "The data is stored in a cloud database"
+        - "The problem can be solved reliably and transparently with a simple rule-based system, and there isn't enough data to justify the added complexity of ML"
+        - "The company has a data science team available"
+        - "The problem involves any kind of prediction at all"
+    answer_key:
+      correct: 1
+    explanation: >
+      ML adds real cost: data collection, model maintenance, monitoring for drift, and reduced
+      transparency compared to explicit rules. If a simple deterministic rule already solves the
+      problem reliably, or there isn't enough representative data to learn a robust pattern,
+      introducing ML is often the wrong call -- "when not to use ML" is as important a skill as
+      knowing how to use it.
+
+  - topic: "Problem framing"
+    subtopic: "establishing a baseline"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is it important to establish a simple baseline before building a sophisticated ML model?"
+    payload:
+      options:
+        - "Baselines are required by law before deploying any model"
+        - "It removes the need for a test set"
+        - "A baseline model always outperforms the final model"
+        - "It gives you a reference point to know whether the added complexity of a sophisticated model is actually earning its keep"
+    answer_key:
+      correct: 3
+    explanation: >
+      A simple baseline (e.g. predicting the majority class, or a basic linear model) tells you
+      what "good enough with almost no effort" looks like. If your sophisticated model only
+      marginally beats that baseline, the added complexity, cost, and maintenance burden may not
+      be worth it -- the baseline is what makes "better" a measurable claim rather than an
+      assumption.
+
+  - topic: "Problem framing"
+    subtopic: "establishing a baseline"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A team wants to predict next month's server costs, and a simple linear extrapolation of the last six months' spend already tracks actuals within 5%. What's the strongest argument for NOT reaching straight for a more complex ML model here?"
+    payload:
+      options:
+        - "More complex models are illegal to use for financial forecasting"
+        - "The simple approach already meets the need, and a more complex model would add maintenance and monitoring cost without a clear, demonstrated benefit"
+        - "Regression-based ML models cannot be applied to time-based data"
+        - "ML models are always slower to run than manual calculations"
+    answer_key:
+      correct: 1
+    explanation: >
+      This is the baseline-first principle in practice: if a simple, transparent method already
+      satisfies the actual business need, introducing a more complex model is added cost (data
+      pipeline, monitoring, retraining, reduced interpretability) without a demonstrated payoff.
+      The right move is to establish that a more sophisticated approach would meaningfully
+      outperform the baseline before investing in it -- not to default to ML just because it's
+      available.
+
+  - topic: "Technique selection"
+    subtopic: "accuracy vs latency vs explainability trade-offs"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "A fraud-detection system that must justify each blocked transaction to a human reviewer, in real time, is likely to favour which kind of model?"
+    payload:
+      options:
+        - "A simpler, faster, more interpretable model, even if a more complex model would be marginally more accurate"
+        - "A model that only works in batch, once a day"
+        - "Whichever model uses the most training data"
+        - "The single most accurate model available regardless of speed or interpretability"
+    answer_key:
+      correct: 0
+    explanation: >
+      Here, interpretability (justifying decisions to a human reviewer) and low latency
+      (real-time blocking) are hard requirements, not nice-to-haves. A slightly more accurate but
+      slower, opaque model (like a large ensemble or deep network) may be the technically "best"
+      model on a leaderboard but the wrong choice once those real-world constraints are weighed in.
+
+  - topic: "Technique selection"
+    subtopic: "asymmetric cost of errors"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the asymmetric cost of false positives versus false negatives matter when choosing a technique or threshold for a medical screening model?"
+    payload:
+      options:
+        - "Missing a real disease case (false negative) is typically far more costly than a false alarm (false positive), so the model/threshold should be chosen to reflect that imbalance, not just overall accuracy"
+        - "Accuracy alone is always sufficient to compare models regardless of context"
+        - "Asymmetric costs only matter for regression problems, not classification"
+        - "False positives and false negatives always have the same cost in every application"
+    answer_key:
+      correct: 0
+    explanation: >
+      In medical screening, a missed diagnosis (false negative) can be far more harmful than an
+      unnecessary follow-up test (false positive). Optimising purely for accuracy ignores this
+      asymmetry; a good decision threshold (or evaluation metric) needs to weigh the real-world
+      cost of each error type, not just count them equally.
+
+  - topic: "Technique selection"
+    subtopic: "Matching method to data shape, size and interpretability needs"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "You need a highly interpretable model to explain individual predictions to a non-technical stakeholder, and you have a small, mostly categorical dataset. Which is the most reasonable starting point?"
+    payload:
+      options:
+        - "A large gradient-boosted ensemble with hundreds of trees"
+        - "A stacked ensemble combining five different model types"
+        - "A single decision tree, since its splits can be read directly as a sequence of if/then rules"
+        - "A deep neural network with several hidden layers"
+    answer_key:
+      correct: 2
+    explanation: >
+      A single, reasonably shallow decision tree is one of the few genuinely self-explanatory
+      models -- its logic can be read directly as a sequence of if/then rules, which is exactly
+      what's needed when you must justify individual predictions to someone non-technical. Neural
+      networks, large boosted ensembles, and stacked ensembles trade that direct interpretability
+      for potentially higher accuracy, which isn't the right trade here.
+
+  - topic: "Technique selection"
+    subtopic: "accuracy vs latency vs explainability trade-offs"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "You have a tabular dataset with 5,000 rows and 20 features, and need a model in production within a week. Why would a gradient-boosted tree ensemble (e.g. XGBoost/LightGBM) typically be preferred over a deep neural network here?"
+    payload:
+      options:
+        - "Neural networks cannot process numeric features at all"
+        - "Tree ensembles usually need far less data and tuning to perform well on small-to-medium tabular datasets, and train much faster than a neural network would for the same task"
+        - "Gradient boosting requires GPU hardware that a neural network does not"
+        - "Tree ensembles always outperform neural networks on every kind of data"
+    answer_key:
+      correct: 1
+    explanation: >
+      Deep neural networks tend to need large amounts of data and careful tuning to outperform
+      simpler methods, and shine especially on unstructured data (images, text, audio) where they
+      can learn their own feature representations. For small-to-medium structured/tabular data,
+      gradient-boosted tree ensembles routinely match or beat neural networks with far less data,
+      tuning effort, and training time -- a very common real-world default for tabular problems.
+
+  - topic: "Maths in organisational context"
+    subtopic: "choosing a decision threshold"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "In a binary classifier that outputs a probability, what does changing the decision threshold (e.g. from 0.5 to 0.3) actually control?"
+    payload:
+      options:
+        - "The model's underlying weights"
+        - "The training algorithm used"
+        - "The trade-off between precision and recall by changing how confident the model needs to be before predicting the positive class"
+        - "The number of features used by the model"
+    answer_key:
+      correct: 2
+    explanation: >
+      Lowering the threshold (e.g. to 0.3) means the model predicts "positive" more readily,
+      typically increasing recall (catching more true positives) at the cost of precision (more
+      false positives). The threshold is a business decision layered on top of a trained model's
+      probability output, not something that requires retraining.
+
+  - topic: "Maths in organisational context"
+    subtopic: "explainability (SHAP, LIME)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What do explainability techniques like SHAP and LIME try to provide?"
+    payload:
+      options:
+        - "An estimate of how much each input feature contributed to a specific model prediction"
+        - "A replacement for model evaluation metrics"
+        - "A guarantee that the model is completely free of bias"
+        - "A way to make any model train faster"
+    answer_key:
+      correct: 0
+    explanation: >
+      SHAP and LIME are post-hoc explanation techniques that estimate each feature's contribution
+      to a single prediction, even for otherwise "black box" models -- helping a human understand
+      why the model produced a particular output, which matters for trust, debugging, and
+      regulatory requirements, even though it doesn't change how the model itself works.
+
+  - topic: "Requirements & supervision"
+    subtopic: "functional vs non-functional requirements"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the difference between a functional and a non-functional requirement for an ML system?"
+    payload:
+      options:
+        - "They are two names for the same thing"
+        - "Functional requirements are always more important than non-functional ones"
+        - "Non-functional requirements only apply to hardware, never software"
+        - "A functional requirement describes what the system must do (e.g. classify an image); a non-functional requirement describes a quality constraint on how it does it (e.g. latency, availability)"
+    answer_key:
+      correct: 3
+    explanation: >
+      Functional requirements specify behaviour: "the system must classify uploaded images into
+      one of ten categories." Non-functional requirements specify quality attributes of that
+      behaviour: response time under 200ms, 99.9% uptime, GDPR compliance. Both matter -- a
+      system that's functionally correct but too slow or unavailable still fails its users.
+
+  - topic: "Requirements & supervision"
+    subtopic: "vendor and platform evaluation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "When evaluating a third-party ML platform vendor, why is it important to consider exit costs (how hard it would be to leave), not just the upfront price?"
+    payload:
+      options:
+        - "Vendors are legally required to offer free migration"
+        - "Being locked into a vendor's proprietary formats or workflow can make switching later expensive or impractical, even if the initial price looks attractive"
+        - "Exit costs are always zero for cloud platforms"
+        - "Price is the only factor that matters in a vendor decision"
+    answer_key:
+      correct: 1
+    explanation: >
+      A platform that's cheap to start with can still be a poor long-term choice if it locks your
+      data, models, or workflows into proprietary formats that are costly to migrate away from
+      later. Evaluating vendor lock-in and exit costs up front avoids being stuck with a worse
+      deal once you're dependent on the platform.
+
+  - topic: "Responsible AI"
+    subtopic: "Sources of bias"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "If a hiring model is trained on ten years of a company's past hiring decisions, and those past decisions were themselves biased against a group, what is the most likely outcome?"
+    payload:
+      options:
+        - "The model will refuse to make predictions on biased data"
+        - "The model will automatically correct the bias because it uses statistics"
+        - "The bias will have no effect since the model only looks at the current candidate's data"
+        - "The model will likely learn and perpetuate that same historical bias, since it's learning the pattern in the training data, not some independent notion of merit"
+    answer_key:
+      correct: 3
+    explanation: >
+      A model trained on historically biased outcomes learns to reproduce that same pattern,
+      because from its perspective the training labels ARE the definition of a "good" hire.
+      Without deliberate intervention (auditing the training data, adjusting the objective,
+      monitoring outcomes by group), the model has no way to know the historical pattern was
+      itself unfair.
+
+  - topic: "Responsible AI"
+    subtopic: "fairness metrics and their incompatibility"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why can't a model generally satisfy all common fairness metrics (e.g. demographic parity and equalised odds) at the same time?"
+    payload:
+      options:
+        - "Several fairness definitions are mathematically incompatible with each other except in special cases, so satisfying one can mean violating another"
+        - "Fairness metrics are just different names for the same underlying calculation"
+        - "Fairness metrics only apply to regression models, not classification"
+        - "Only one fairness metric has ever been formally defined"
+    answer_key:
+      correct: 0
+    explanation: >
+      Different fairness definitions encode different values -- e.g. demographic parity asks for
+      equal positive prediction rates across groups, while equalised odds asks for equal
+      true/false positive rates across groups. Except in special cases (like when base rates are
+      equal across groups), these are provably impossible to satisfy simultaneously, so choosing
+      a fairness metric is itself a values-laden decision, not just a technical one.

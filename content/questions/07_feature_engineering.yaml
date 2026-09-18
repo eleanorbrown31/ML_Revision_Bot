@@ -1,0 +1,220 @@
+area: "Feature Engineering"
+questions:
+  - topic: "Feature Engineering & Selection"
+    subtopic: "normalisation vs standardisation"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the key difference between normalisation (min-max scaling) and standardisation (z-score scaling)?"
+    payload:
+      options:
+        - "Normalisation rescales values into a fixed range like [0,1], while standardisation centres data to zero mean and unit variance"
+        - "Standardisation always produces values between 0 and 1"
+        - "Normalisation only works on categorical data"
+        - "They are two names for exactly the same transformation"
+    answer_key:
+      correct: 0
+    explanation: >
+      Min-max normalisation maps values into a fixed range (typically [0,1]) based on the min and
+      max of the data, which is sensitive to outliers. Standardisation subtracts the mean and
+      divides by the standard deviation, centring the data at 0 with unit variance, and is less
+      distorted by outliers.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "multicollinearity / VIF"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does a high Variance Inflation Factor (VIF) for a feature indicate?"
+    payload:
+      options:
+        - "That feature has been one-hot encoded incorrectly"
+        - "That feature is highly correlated with other features, inflating the variance of its estimated coefficient"
+        - "That feature has a lot of missing values"
+        - "That feature is the most important predictor in the model"
+    answer_key:
+      correct: 1
+    explanation: >
+      VIF quantifies how much a feature's coefficient variance is inflated due to correlation
+      with other features (multicollinearity). A high VIF (commonly >5 or >10) suggests that
+      feature's estimated effect is unstable and hard to interpret in isolation, since it's
+      largely redundant with other predictors.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "One-hot encoding"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Why is one-hot encoding used for a categorical feature rather than assigning each category a single integer (label encoding)?"
+    payload:
+      options:
+        - "It reduces the number of features the model needs to learn"
+        - "It automatically removes multicollinearity between features"
+        - "It avoids implying a false ordinal relationship between categories that don't actually have one"
+        - "It only works with tree-based models"
+    answer_key:
+      correct: 2
+    explanation: >
+      Label encoding turns categories into numbers like 0, 1, 2, which many models (especially
+      linear ones) would read as an order or distance that isn't really there -- "category 2" is
+      not twice "category 1". One-hot encoding instead creates a separate binary column per
+      category, so no false ordering is implied.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "One-hot encoding"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In a linear regression model, why is it common practice to drop one category when one-hot encoding a feature (leaving k-1 dummy columns for k categories)?"
+    payload:
+      options:
+        - "To save memory, since datasets are usually very large"
+        - "Keeping all k columns creates perfect multicollinearity, since the dropped category's value is always implied by the others"
+        - "Because tree-based models require it"
+        - "It improves the accuracy of the encoding automatically"
+    answer_key:
+      correct: 1
+    explanation: >
+      If all k dummy columns are kept, knowing the other k-1 always tells you the value of the
+      last one (they sum to a constant), which is exact multicollinearity and breaks the matrix
+      inversion linear regression relies on. Dropping one category (the "dummy variable trap"
+      fix) removes that redundancy without losing information.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "feature scaling"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Which of these algorithms is most sensitive to features being on very different scales, and so usually needs feature scaling applied first?"
+    payload:
+      options:
+        - "Decision trees"
+        - "Random forests"
+        - "Naive Bayes"
+        - "K-Nearest Neighbours, since it relies on distances between points"
+    answer_key:
+      correct: 3
+    explanation: >
+      KNN classifies a point based on the distance to its neighbours. If one feature ranges over
+      thousands and another over 0-1, the large-range feature dominates the distance calculation
+      regardless of how informative it actually is. Tree-based models split on one feature at a
+      time and don't compare distances across features, so they're largely scale-invariant.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "feature scaling"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Gradient descent-based models (like neural networks and logistic regression trained with SGD) typically train faster and more reliably when features are scaled. Why?"
+    payload:
+      options:
+        - "Scaling removes outliers from the dataset"
+        - "Unscaled features with very different ranges distort the loss surface, making some directions much steeper than others and slowing convergence"
+        - "Scaling changes the number of parameters the model needs to learn"
+        - "Scaling guarantees the model won't overfit"
+    answer_key:
+      correct: 1
+    explanation: >
+      When features are on wildly different scales, the loss surface becomes elongated -- steep
+      in the direction of large-scale features, shallow in others -- which makes gradient descent
+      zigzag and converge slowly. Scaling all features to a similar range makes the surface more
+      symmetric, so a single learning rate works well in every direction.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "mutual information"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does mutual information between a feature and the target measure that a simple correlation coefficient does not?"
+    payload:
+      options:
+        - "It only works for continuous features"
+        - "It measures how many missing values the feature has"
+        - "It is always numerically higher than the correlation coefficient"
+        - "It captures any statistical dependency between the two, including non-linear relationships, not just linear ones"
+    answer_key:
+      correct: 3
+    explanation: >
+      Correlation (like Pearson's) only detects linear relationships -- a feature and target could
+      be perfectly related in a curved, non-linear way and still show near-zero correlation.
+      Mutual information, based on information theory, picks up any kind of statistical
+      dependency, linear or not, making it a more general (if less interpretable) relevance score.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "mutual information"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "A feature has near-zero mutual information with the target on its own. What can you conclude?"
+    payload:
+      options:
+        - "The feature must contain corrupted or invalid data"
+        - "The feature has little to no statistical dependency with the target by itself, though it could still be useful in combination with other features"
+        - "The feature is definitely useless and should be removed from every model"
+        - "The model will definitely underfit if this feature is included"
+    answer_key:
+      correct: 1
+    explanation: >
+      Mutual information (like most univariate filter methods) only looks at one feature at a
+      time. A feature can be uninformative in isolation but become useful through an interaction
+      -- e.g. two features that only matter together, like latitude and longitude. Univariate
+      scores can miss that, which is one reason they're often used as a fast first pass rather
+      than the final word on which features to keep.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "recursive feature elimination"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does Recursive Feature Elimination (RFE) select a subset of features?"
+    payload:
+      options:
+        - "It picks features at random until a target count is reached"
+        - "It clusters features by correlation and keeps one representative per cluster"
+        - "It only keeps features with no missing values"
+        - "It repeatedly trains a model, ranks features by importance or coefficient magnitude, and removes the weakest one(s) each round until the target number remain"
+    answer_key:
+      correct: 3
+    explanation: >
+      RFE wraps around a model rather than scoring features independently: fit, rank by
+      importance, drop the least important feature(s), refit, and repeat. This lets it account
+      for how features interact with each other under the model being used, unlike filter methods
+      that score each feature alone.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "recursive feature elimination"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What's a key practical downside of Recursive Feature Elimination compared to a simpler filter method like ranking by mutual information?"
+    payload:
+      options:
+        - "It cannot be used with linear models"
+        - "It always produces worse results than filter methods"
+        - "It's computationally expensive, since it requires retraining the model many times as features are removed one by one"
+        - "It only works with unsupervised learning"
+    answer_key:
+      correct: 2
+    explanation: >
+      Filter methods (like mutual information) score every feature in one pass and are cheap.
+      RFE needs a full model retrain at every elimination step, which gets slow fast on datasets
+      with many features or an expensive-to-train model -- a real cost/benefit tradeoff against
+      the interaction-awareness it buys you.
+
+  - topic: "Feature Engineering & Selection"
+    subtopic: "feature scaling"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each feature engineering technique to what it actually does."
+    payload:
+      left:
+        - "One-hot encoding"
+        - "Standardisation"
+        - "Mutual information"
+        - "Recursive feature elimination"
+      right:
+        - "Iteratively removes the least important feature(s) using a trained model, until a target subset size is reached"
+        - "Converts a categorical feature into binary indicator columns, avoiding a false sense of order"
+        - "Rescales a feature to zero mean and unit variance"
+        - "Measures the statistical dependency, linear or not, between a feature and the target"
+    answer_key:
+      pairs:
+        "One-hot encoding": "Converts a categorical feature into binary indicator columns, avoiding a false sense of order"
+        "Standardisation": "Rescales a feature to zero mean and unit variance"
+        "Mutual information": "Measures the statistical dependency, linear or not, between a feature and the target"
+        "Recursive feature elimination": "Iteratively removes the least important feature(s) using a trained model, until a target subset size is reached"
+    explanation: >
+      These four techniques sit at different stages of a feature engineering pipeline: encoding
+      makes categorical data usable at all, scaling puts numeric features on comparable footing,
+      and mutual information / RFE are two different strategies (filter vs wrapper) for deciding
+      which features are worth keeping in the first place.

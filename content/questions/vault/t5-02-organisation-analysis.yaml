@@ -1,0 +1,266 @@
+area: "Data-Driven Transformation & Leadership"
+source: "Second Brain/apprenticeship/term-5/Topic 2 - Organisation Analysis.md"
+questions:
+  - topic: "Data maturity assessment"
+    subtopic: "The 12 assessment areas"
+    difficulty: "F1"
+    format: "multi"
+    stem: "Which of the following are among the 12 areas of activity in the Carruthers and Jackson data maturity assessment? Select all that apply."
+    payload:
+      options:
+        - "Data strategy"
+        - "Leadership and sponsorship"
+        - "Information risk"
+        - "Marketing spend"
+        - "Metrics"
+        - "Behaviour"
+        - "Customer satisfaction score"
+    answer_key:
+      correct: [0, 1, 2, 4, 5]
+    explanation: >
+      The 12 areas are data strategy, corporate governance, leadership and sponsorship,
+      framework/process/tools, policies, information risk, architecture, organisation roles and
+      responsibility, skills, metrics, behaviour and technology. Marketing spend and customer
+      satisfaction are business outcomes, not maturity areas.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Maturity levels 0-5"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each maturity level name to its description."
+    payload:
+      left:
+        - "Unaware (0)"
+        - "Reactive (2)"
+        - "Managed (4)"
+        - "Optimised (5)"
+      right:
+        - "Governance in place with enterprise-level stewards and champions"
+        - "Overuse of spreadsheets; data is everywhere and anyone can modify it"
+        - "All information assets inventoried; trusted, agile data landscape and true partnerships with customers and suppliers"
+        - "Emerging processes not monitored for quality; responds to issues and breaches"
+    answer_key:
+      pairs:
+        "Unaware (0)": "Overuse of spreadsheets; data is everywhere and anyone can modify it"
+        "Reactive (2)": "Emerging processes not monitored for quality; responds to issues and breaches"
+        "Managed (4)": "Governance in place with enterprise-level stewards and champions"
+        "Optimised (5)": "All information assets inventoried; trusted, agile data landscape and true partnerships with customers and suppliers"
+    explanation: >
+      The scale runs Unaware, Aware, Reactive, Proactive, Managed, Optimised. Aware (1) has few
+      processes beyond what regulation requires and low trust; Proactive (3) has processes set by
+      stewards with little authority and immature master data management.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Maturity levels 0-5"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put the six data maturity levels in order from least to most mature."
+    payload:
+      items:
+        - "Proactive"
+        - "Unaware"
+        - "Optimised"
+        - "Aware"
+        - "Managed"
+        - "Reactive"
+    answer_key:
+      sequence: [1, 3, 5, 0, 4, 2]
+    explanation: >
+      Unaware (0), Aware (1), Reactive (2), Proactive (3), Managed (4), Optimised (5). The
+      progression moves from ad hoc spreadsheet use, through responding to incidents, to
+      stewards proposing processes, to enterprise governance, to a fully inventoried and trusted
+      data landscape.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Assessment questions by area"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the 'Framework, process and tools' area, what does the course mean by 'architecture'?"
+    payload:
+      options:
+        - "Server hardware and network topology"
+        - "People, communication and decision-making structures, and how the data architecture fits the enterprise architecture"
+        - "The physical data model in the warehouse"
+        - "The choice between cloud and on-premises hosting"
+    answer_key:
+      correct: 1
+    explanation: >
+      This area asks whether the organisation has the right people, processes and structures to
+      make decisions about data, and whether a target operating model exists that links to the
+      company operating model. Hardware is assessed separately under Technology, and data flow
+      under Architecture.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Assessment questions by area"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each example assessment question to the maturity area it belongs to."
+    payload:
+      left:
+        - "Is there a senior sponsor who sits on the executive board and will back you?"
+        - "Do data conversations appear in non-data meetings unprompted?"
+        - "Are data domain owners identified and is lineage tracked?"
+        - "Does a RACI model exist, and are there gaps?"
+      right:
+        - "Architecture"
+        - "Organisation roles and responsibility"
+        - "Leadership and sponsorship"
+        - "Behaviour"
+    answer_key:
+      pairs:
+        "Is there a senior sponsor who sits on the executive board and will back you?": "Leadership and sponsorship"
+        "Do data conversations appear in non-data meetings unprompted?": "Behaviour"
+        "Are data domain owners identified and is lineage tracked?": "Architecture"
+        "Does a RACI model exist, and are there gaps?": "Organisation roles and responsibility"
+    explanation: >
+      Leadership asks about sponsorship, funding and political stability. Behaviour asks whether
+      words and actions match and whether data is treated as an asset. Architecture covers how
+      data flows and who is accountable. Organisation covers roles, including RACI
+      (Responsible, Accountable, Consulted, Informed).
+
+  - topic: "Data maturity assessment"
+    subtopic: "Assessment questions by area"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "The Metrics area warns against measuring too many things at once. What reasoning does the course give?"
+    payload:
+      options:
+        - "Measurement drives behaviour, and people can only hold around five things in mind at once, so too many measures dilute the behaviours you want"
+        - "Dashboards become slow with more than five measures"
+        - "Regulators only accept five KPIs per department"
+        - "Extra measures cost money to store"
+    answer_key:
+      correct: 0
+    explanation: >
+      Metrics should be chosen for the behaviours they drive, with clear links between data
+      measurements and business outcomes. The point is cognitive, not technical: focus keeps the
+      measures meaningful and actionable.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Assessment questions by area"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "The 'Policies' area assesses control documents. What does the course say makes a good policy?"
+    payload:
+      options:
+        - "As long and detailed as possible, to cover every case"
+        - "Clear, consistent, easy to understand, kept up to date and regularly reviewed, with an appropriate number of documents that people actually follow"
+        - "Written only by the legal team"
+        - "Stored in a single PDF that never changes"
+    answer_key:
+      correct: 1
+    explanation: >
+      Policies means all control documents: standards, procedures, guidelines and instructions.
+      The assessment asks how many exist, whether that number is appropriate, and whether staff
+      follow them. Short, simple and current beats comprehensive but ignored.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Running the assessment"
+    difficulty: "INT"
+    format: "multi"
+    stem: "You are planning the first data maturity assessment in an organisation. Which practices does the course recommend? Select all that apply."
+    payload:
+      options:
+        - "Run the first assessment face-to-face so misunderstandings can be handled and the session builds buy-in"
+        - "Send an anonymous online survey to all staff to avoid bias"
+        - "Use one-to-one meetings for major stakeholders, and workshops for groups from the same function"
+        - "Include a spread of departments, with stronger representation from HR, IT, finance and heavy data users"
+        - "Score every area yourself without discussing scores with respondents"
+    answer_key:
+      correct: [0, 2, 3]
+    explanation: >
+      Questions are often misunderstood, so talking respondents through them matters. The
+      interviewee can help derive the final score, and same-function workshops let people spark
+      ideas off each other and agree a score together. An anonymous survey removes exactly the
+      discussion the method relies on.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Running the assessment"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Different business units give very different answers in the assessment. What options does the course offer?"
+    payload:
+      options:
+        - "Discard the assessment and use a vendor benchmark instead"
+        - "Produce an overall average score, or run the assessment unit by unit for a more nuanced and even competitive view"
+        - "Take the lowest score in every area to be safe"
+        - "Take the highest score in every area to encourage staff"
+    answer_key:
+      correct: 1
+    explanation: >
+      Either approach is legitimate. Unit-level results show where maturity is uneven and can
+      create healthy competition, while an average gives a single organisational picture for
+      the strategy document.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Spider web reporting"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "How does the course recommend reporting data maturity assessment results?"
+    payload:
+      options:
+        - "A ranked league table of departments"
+        - "A spider web (radar) diagram with the 12 areas around the web, repeated annually to track progress"
+        - "A single overall percentage"
+        - "A Gantt chart of remediation tasks"
+    answer_key:
+      correct: 1
+    explanation: >
+      Plotting the 12 areas around a radar chart shows relative strengths and weaknesses at a
+      glance. Repeating it each year shows progress towards the end state, and the summary
+      diagram is what goes into the data strategy document.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Assessment questions by area"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course suggest you might replace 'corporate governance' with 'data governance' in your own assessment?"
+    payload:
+      options:
+        - "Corporate governance is broader than data governance, so the narrower term may fit a data maturity exercise better, although corporate governance is part of the original method"
+        - "Corporate governance is illegal to assess"
+        - "Data governance is easier to score highly on"
+        - "The two terms are identical"
+    answer_key:
+      correct: 0
+    explanation: >
+      Corporate governance is the system of rules, practices and processes by which a company is
+      directed and controlled. Data governance is a subset. Carruthers and Jackson keep the
+      broader term but acknowledge every organisation is different and may combine or adapt
+      areas.
+
+  - topic: "Data maturity assessment"
+    subtopic: "Assessment questions by area"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the Technology area, why does the course say you may not need to buy more technology?"
+    payload:
+      options:
+        - "Because cloud services are free"
+        - "Because understanding the current estate, legacy costs and existing investment plans may reveal usable technology already in place"
+        - "Because technology is not important to transformation"
+        - "Because IT departments always resist new purchases"
+    answer_key:
+      correct: 1
+    explanation: >
+      The Technology area asks whether the estate helps or hinders changing data requirements,
+      how easy it is to modify, and whether the data team feeds into technical strategy. The
+      answer may be to use what exists better rather than buy new.
+
+  - topic: "Data maturity assessment"
+    subtopic: "The 12 assessment areas"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "An organisation scores 4 on Technology but 1 on Skills and 1 on Behaviour. What does this pattern most likely indicate?"
+    payload:
+      options:
+        - "The organisation is data mature overall"
+        - "Investment has gone into tools while people are not equipped or motivated to use data, so transformation effort should focus on skills and culture"
+        - "The technology should be downgraded to match the other scores"
+        - "The assessment was done incorrectly"
+    answer_key:
+      correct: 1
+    explanation: >
+      The radar diagram exists to show exactly this kind of imbalance. High technology maturity
+      with low skills and behaviour means the estate is under-used. The change management
+      grouping in Topic 4 would place these gaps under People rather than Tools.

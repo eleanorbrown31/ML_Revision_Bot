@@ -1,0 +1,219 @@
+area: "Computing Architecture & HPC"
+questions:
+  - topic: "Processor architectures for ML"
+    subtopic: "why matrix operations suit GPUs"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Why are GPUs generally much faster than CPUs for training neural networks?"
+    payload:
+      options:
+        - "GPUs can store more data in RAM than CPUs"
+        - "GPUs have thousands of simpler cores that can perform many matrix/vector operations in parallel, which matches how neural network computation is structured"
+        - "GPUs are cheaper to manufacture"
+        - "GPUs have a higher single-core clock speed than CPUs"
+    answer_key:
+      correct: 1
+    explanation: >
+      Neural network training is dominated by matrix multiplications and other operations that
+      can be broken into many independent, identical sub-computations. GPUs are built with
+      thousands of relatively simple cores designed exactly for this kind of massively parallel,
+      SIMD-style work, whereas CPUs have far fewer, more general-purpose cores optimised for
+      sequential tasks.
+
+  - topic: "Processor architectures for ML"
+    subtopic: "mixed-precision and quantisation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the main benefit of using mixed-precision training (e.g. float16 alongside float32)?"
+    payload:
+      options:
+        - "It always improves model accuracy"
+        - "It eliminates the need for gradient calculations"
+        - "It removes the need for a GPU entirely"
+        - "It reduces memory usage and can speed up computation, with minimal loss in model accuracy if done carefully"
+    answer_key:
+      correct: 3
+    explanation: >
+      Lower-precision numbers (like float16) take less memory and can be processed faster on
+      hardware with dedicated support, letting you train with larger batches or models. Care is
+      needed (e.g. loss scaling) to avoid numerical underflow, but done well it gives a
+      substantial speed/memory win for a small accuracy cost.
+
+  - topic: "Parallel & distributed computing"
+    subtopic: "Data vs model vs pipeline parallelism"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is 'data parallelism' in distributed training?"
+    payload:
+      options:
+        - "Running different models on different subsets of the data"
+        - "Splitting a single model's layers across multiple devices"
+        - "Splitting one batch's forward pass across time steps"
+        - "Splitting the training data across multiple devices, each with a full copy of the model, and synchronising gradients"
+    answer_key:
+      correct: 3
+    explanation: >
+      In data parallelism, every device holds a complete copy of the model but processes a
+      different shard of the training data; gradients computed on each device are then
+      synchronised (e.g. via all-reduce) before the shared weights are updated. This contrasts
+      with model parallelism, where the model itself is split across devices because it's too
+      large to fit on one.
+
+  - topic: "Parallel & distributed computing"
+    subtopic: "Amdahl's law"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does Amdahl's law describe?"
+    payload:
+      options:
+        - "The cost savings from using spot instances"
+        - "The relationship between bandwidth and latency"
+        - "The theoretical limit on speedup from parallelising a task, based on the fraction of the task that cannot be parallelised"
+        - "The exact speedup you'll get from adding more GPUs"
+    answer_key:
+      correct: 2
+    explanation: >
+      Amdahl's law says that if a fraction of a task must run sequentially (cannot be
+      parallelised), that portion puts a hard ceiling on the overall speedup, no matter how many
+      processors you throw at the parallelisable part -- a useful reminder that scaling out has
+      diminishing returns if there's a serial bottleneck.
+
+  - topic: "Cloud service models"
+    subtopic: "IaaS / PaaS / SaaS"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Which cloud service model gives you the most control over the underlying infrastructure (OS, networking), but also the most responsibility to manage it?"
+    payload:
+      options:
+        - "IaaS (Infrastructure as a Service)"
+        - "They all provide identical control"
+        - "SaaS (Software as a Service)"
+        - "PaaS (Platform as a Service)"
+    answer_key:
+      correct: 0
+    explanation: >
+      IaaS (e.g. raw virtual machines) gives you the most control -- you manage the OS, runtime,
+      and application -- but also the most operational responsibility. PaaS abstracts away
+      infrastructure management (you just deploy code), and SaaS gives you a finished application
+      with almost no infrastructure control at all.
+
+  - topic: "Cloud service models"
+    subtopic: "IaaS / PaaS / SaaS"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each cloud service model to what you're responsible for managing."
+    payload:
+      left:
+        - "IaaS"
+        - "PaaS"
+        - "SaaS"
+      right:
+        - "You get a finished application to use, with essentially no infrastructure to manage"
+        - "You get raw virtual machines and networking, managing everything above that yourself"
+        - "You deploy your code and the provider manages the underlying infrastructure and runtime"
+    answer_key:
+      pairs:
+        "IaaS": "You get raw virtual machines and networking, managing everything above that yourself"
+        "PaaS": "You deploy your code and the provider manages the underlying infrastructure and runtime"
+        "SaaS": "You get a finished application to use, with essentially no infrastructure to manage"
+    explanation: >
+      These three sit on a spectrum of how much the provider manages for you. IaaS gives you the
+      most control (and responsibility) -- raw compute and networking. PaaS abstracts the
+      infrastructure away so you just deploy code. SaaS goes all the way -- you're just using a
+      finished product, with no infrastructure decisions at all.
+
+  - topic: "Cloud service models"
+    subtopic: "shared responsibility model"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Under the cloud 'shared responsibility model', who is typically responsible for securing customer data and access management, even when using a fully managed service?"
+    payload:
+      options:
+        - "Neither party -- it's automatically secured by default"
+        - "The cloud provider is responsible for everything"
+        - "A third-party auditor is always responsible"
+        - "The customer, while the cloud provider secures the underlying infrastructure"
+    answer_key:
+      correct: 3
+    explanation: >
+      Cloud providers secure the infrastructure "of" the cloud (physical data centres, host
+      hardware, networking), but customers remain responsible for security "in" the cloud --
+      their own data, identity and access management, and application-level configuration -- even
+      when using managed services.
+
+  - topic: "Cloud compute & cost"
+    subtopic: "spot vs on-demand vs reserved"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the main tradeoff of using spot instances instead of on-demand instances?"
+    payload:
+      options:
+        - "Spot instances are much cheaper but can be reclaimed by the provider with little notice, so they're risky for uninterruptible workloads"
+        - "Spot instances are always more expensive but guaranteed never to be interrupted"
+        - "Spot instances can only be used for storage, not compute"
+        - "There is no difference in price or reliability"
+    answer_key:
+      correct: 0
+    explanation: >
+      Spot instances use spare cloud capacity at a steep discount (often 60-90% off), but the
+      provider can reclaim that capacity with short notice if it's needed elsewhere. They're a
+      good fit for fault-tolerant, interruptible workloads (like checkpointed batch training),
+      but risky for anything that needs to run to completion uninterrupted.
+
+  - topic: "Cloud compute & cost"
+    subtopic: "egress charges"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What are 'egress charges' in cloud billing?"
+    payload:
+      options:
+        - "Fees charged for data leaving the cloud provider's network (e.g. downloading data out to the internet or another provider)"
+        - "A penalty for using too much compute time"
+        - "Fees charged for uploading data into the cloud"
+        - "A fixed monthly subscription fee"
+    answer_key:
+      correct: 0
+    explanation: >
+      Most cloud providers charge for data egress -- data leaving their network -- while data
+      ingress (uploading in) is often free. This asymmetry is a deliberate incentive to keep your
+      data and compute within one provider's ecosystem, and can become a significant,
+      easy-to-overlook cost at scale.
+
+  - topic: "High-performance networking"
+    subtopic: "Bandwidth vs latency"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the difference between bandwidth and latency in a network?"
+    payload:
+      options:
+        - "They are two names for the same thing"
+        - "Bandwidth measures delay; latency measures throughput"
+        - "Latency only matters for wired connections, not wireless"
+        - "Bandwidth is how much data can be transferred per unit time; latency is how long a single piece of data takes to arrive"
+    answer_key:
+      correct: 3
+    explanation: >
+      Bandwidth is a throughput measure -- how much data per second a link can carry. Latency is
+      a delay measure -- how long it takes a single message to travel from sender to receiver. A
+      link can have high bandwidth but still have high latency (e.g. a satellite link), so the two
+      need to be considered separately.
+
+  - topic: "High-performance networking"
+    subtopic: "why moving data dominates cost at scale"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In large-scale distributed training, why does data movement often become the dominant cost rather than the raw computation itself?"
+    payload:
+      options:
+        - "Data movement is always free, so it's never a bottleneck"
+        - "Communication costs are fixed regardless of cluster size"
+        - "Modern GPUs cannot compute and communicate at the same time under any circumstances"
+        - "Synchronising gradients or shuffling data between many machines can create communication overhead that grows with the number of devices, often outpacing compute gains"
+    answer_key:
+      correct: 3
+    explanation: >
+      As you add more devices, the compute per device can shrink, but the amount of data that
+      needs to be synchronised (gradients, shuffled data) between devices can grow -- so
+      communication overhead can eat into or even exceed the benefit of parallelising further,
+      which is why techniques like gradient compression and efficient all-reduce algorithms
+      matter at scale.

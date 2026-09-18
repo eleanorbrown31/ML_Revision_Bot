@@ -1,0 +1,302 @@
+area: "Maths Foundations"
+source: "Second Brain/apprenticeship/term-1/Topic 4 - Statistical Testing.md"
+questions:
+  - topic: "Statistical testing"
+    subtopic: "Parametric vs non-parametric tests"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the core assumption behind parametric tests like the t-test and ANOVA, and what do you use instead when it fails?"
+    payload:
+      options:
+        - "Parametric tests assume the data follows a known distribution, typically normal; when that assumption fails, non-parametric alternatives such as Mann-Whitney U or Kruskal-Wallis are used instead"
+        - "Parametric tests never make any distributional assumptions"
+        - "Non-parametric tests require larger samples than parametric tests"
+        - "Parametric and non-parametric tests are interchangeable in every situation"
+    answer_key:
+      correct: 0
+    explanation: >
+      Non-parametric tests often work on ranks rather than raw values, which makes them robust
+      to outliers and departures from normality, at some cost in statistical power when the
+      parametric assumptions do actually hold.
+
+  - topic: "Statistical testing"
+    subtopic: "Z-test vs t-test"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "When should you use a Z-test rather than a T-test for comparing means?"
+    payload:
+      options:
+        - "When the population variance is known and the sample size is large, typically above 30"
+        - "Whenever the sample size is small"
+        - "Z-tests and T-tests are always equivalent"
+        - "Only when comparing more than two groups"
+    answer_key:
+      correct: 0
+    explanation: >
+      The T-test compensates for small samples and unknown population variance by estimating
+      variance from the data itself, which is why it is the more commonly used test in practice.
+
+  - topic: "Statistical testing"
+    subtopic: "Independent vs paired samples"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "A researcher measures the same ten employees' productivity before and after a training programme. Which test design applies?"
+    payload:
+      options:
+        - "Independent two-sample t-test, because there are two groups"
+        - "Paired sample t-test, because the same subjects are measured under two conditions"
+        - "One-sample t-test, because there is a known population value"
+        - "Chi-squared test, because productivity is categorical"
+    answer_key:
+      correct: 1
+    explanation: >
+      Paired samples test the mean difference in matched or identical entities under different
+      conditions, and generally have more statistical power than independent samples because
+      they control for between-subject variability.
+
+  - topic: "Statistical testing"
+    subtopic: "Independent vs paired samples"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say paired samples usually give more statistical power than independent samples for the same sample size?"
+    payload:
+      options:
+        - "Because the paired design controls for individual variability between subjects, giving a more precise measure of the treatment effect"
+        - "Because paired samples always have a larger n"
+        - "Because paired samples never need a hypothesis test"
+        - "There is no power difference between the two designs"
+    answer_key:
+      correct: 0
+    explanation: >
+      Independent samples compare two separate, unrelated groups and cannot benefit from this
+      within-subject control, which is why the rule of thumb is: repeated measures or matched
+      pairs use a paired test, unrelated groups use an independent test.
+
+  - topic: "Statistical testing"
+    subtopic: "Equal vs unequal variance (Welch)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is the purpose of the F-test for equal variance before running an independent-samples t-test?"
+    payload:
+      options:
+        - "To decide whether to use a standard pooled-variance t-test (equal variances) or Welch's t-test (unequal variances)"
+        - "To decide whether the data is normally distributed"
+        - "To replace the t-test entirely"
+        - "To compute the sample mean"
+    answer_key:
+      correct: 0
+    explanation: >
+      The F statistic is the higher sample variance divided by the lower one, compared against a
+      critical value from the F-distribution table. In the course's worked examples, one pair of
+      groups had equal variances and used the pooled-variance formula; the other had unequal
+      variances and needed Welch's degrees of freedom instead.
+
+  - topic: "Statistical testing"
+    subtopic: "Equal vs unequal variance (Welch)"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "In the course's control-versus-drug worked example, the F-test found the variances equal and the resulting t-statistic was small compared with the critical value. What was the conclusion?"
+    payload:
+      options:
+        - "Reject H0: the drug has a significant effect"
+        - "Fail to reject H0: no statistical difference was found between the control and drug groups"
+        - "The test was inconclusive and must be repeated"
+        - "The F-test result overrides the need for a t-test conclusion"
+    answer_key:
+      correct: 1
+    explanation: >
+      With |t| below the critical value at the chosen significance level and degrees of freedom,
+      there was not enough evidence to reject the null hypothesis of no difference between
+      groups.
+
+  - topic: "Statistical testing"
+    subtopic: "ANOVA principles (F-ratio)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course recommend one-way ANOVA over running multiple separate t-tests when comparing three or more groups?"
+    payload:
+      options:
+        - "Multiple pairwise t-tests increase the risk of a Type I error (incorrectly rejecting at least one true null hypothesis); ANOVA controls this risk when comparing more than two groups at once"
+        - "ANOVA is always faster to compute by hand"
+        - "T-tests cannot be used with more than two groups at all"
+        - "ANOVA removes the need for any assumptions about the data"
+    answer_key:
+      correct: 0
+    explanation: >
+      ANOVA tests whether at least one group mean differs from the others, but on its own it
+      cannot say which groups differ; a follow-up test is needed to identify that.
+
+  - topic: "Statistical testing"
+    subtopic: "ANOVA principles (F-ratio)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the F-ratio in ANOVA actually compare?"
+    payload:
+      options:
+        - "Between-group variability (how much group means differ from the overall mean) to within-group variability (the variance within each group)"
+        - "The mean of the first group to the mean of the last group only"
+        - "Sample size to population size"
+        - "The number of groups to the number of observations"
+    answer_key:
+      correct: 0
+    explanation: >
+      If between-group variability is significantly larger than within-group variability, the
+      F-ratio is large and at least one group mean is likely different from the others.
+
+  - topic: "Statistical testing"
+    subtopic: "Two-way ANOVA and interactions"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What can two-way ANOVA reveal that running two separate one-way ANOVAs cannot?"
+    payload:
+      options:
+        - "Interaction effects: whether one independent variable's effect on the outcome depends on the level of the other independent variable"
+        - "Whether the sample was collected randomly"
+        - "The exact p-value without needing a distribution table"
+        - "Nothing; two one-way ANOVAs always give identical information"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's example is diet type and exercise regimen on weight loss: two-way ANOVA can
+      show whether diet's effectiveness depends on the exercise regimen used, not just each
+      factor's separate main effect.
+
+  - topic: "Statistical testing"
+    subtopic: "Two-way ANOVA and interactions"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which are the standard assumptions for ANOVA (one-way and two-way) listed in the course? Select all that apply."
+    payload:
+      options:
+        - "Independence of observations"
+        - "Normality within each group"
+        - "Homogeneity of variances across groups"
+        - "Equal sample sizes are mandatory in every case"
+    answer_key:
+      correct: [0, 1, 2]
+    explanation: >
+      Equal group sizes are common in worked examples but are not listed as a strict requirement;
+      the three core assumptions are independence, normality and equal variances.
+
+  - topic: "Statistical testing"
+    subtopic: "Chi-squared tests"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does a Chi-squared goodness-of-fit test examine, as distinct from a Chi-squared test of independence?"
+    payload:
+      options:
+        - "How well an observed frequency distribution matches a theoretical or expected distribution, rather than whether two categorical variables are associated"
+        - "Whether two continuous variables correlate"
+        - "Whether group means differ, like ANOVA"
+        - "Whether a sample was collected randomly"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's coin-flip worked example (67 heads, 33 tails from 100 flips) is a
+      goodness-of-fit test against the expected 50/50 split, and it rejected the null hypothesis
+      that the coin was fair.
+
+  - topic: "Statistical testing"
+    subtopic: "Chi-squared tests"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What data type does the Chi-squared test require, and what sample-size condition does the course flag?"
+    payload:
+      options:
+        - "Categorical (nominal or ordinal) data, with each category ideally having an expected frequency of 5 or more"
+        - "Continuous data only, with no minimum sample size"
+        - "Ordinal data only, with a minimum of 1000 observations"
+        - "Any data type, with no assumptions at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      T-tests and ANOVA suit interval and ratio (numerical) data, while Chi-squared tests suit
+      nominal categorical data, which is one of the main factors in choosing the correct test.
+
+  - topic: "Statistical testing"
+    subtopic: "Choosing a test"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "You want to know whether dietary preference (vegetarian, non-vegetarian, vegan) is associated with gender. Which test fits, and why?"
+    payload:
+      options:
+        - "A paired t-test, because both variables come from the same people"
+        - "A Chi-squared test of independence, because both variables are categorical and you are testing for an association between them"
+        - "One-way ANOVA, because there are three diet categories"
+        - "Pearson's correlation, because both variables are continuous"
+    answer_key:
+      correct: 1
+    explanation: >
+      Both dietary preference and gender are categorical variables, which rules out t-tests,
+      ANOVA and correlation (all suited to numerical or ordinal data) and points to the
+      Chi-squared test of independence.
+
+  - topic: "Statistical testing"
+    subtopic: "Choosing a test"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Which combination of study design and data type points to a paired t-test rather than an independent t-test or Wilcoxon test?"
+    payload:
+      options:
+        - "Repeated measures or matched pairs, with data that meets the normality assumption"
+        - "Two entirely unrelated groups measured once each"
+        - "Categorical data compared across three or more groups"
+        - "A single sample compared to a known population value with unequal variance"
+    answer_key:
+      correct: 0
+    explanation: >
+      If the normality assumption for a paired design is not met, the Wilcoxon Signed-Rank Test
+      is the non-parametric alternative, mirroring how Mann-Whitney U substitutes for an
+      independent t-test.
+
+  - topic: "Statistical testing"
+    subtopic: "Critical values and rejection regions"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the difference between a one-tailed right-tailed test's rejection region and a two-tailed test's rejection region?"
+    payload:
+      options:
+        - "A one-tailed right-tailed test's rejection region sits only on the right of the distribution; a two-tailed test splits its rejection region across both tails"
+        - "They are identical in every case"
+        - "A two-tailed test has no rejection region at all"
+        - "A one-tailed test always uses a larger alpha than a two-tailed test"
+    answer_key:
+      correct: 0
+    explanation: >
+      A one-tailed left-tailed test instead places its rejection region on the left, used when H1
+      states the parameter is less than the hypothesised value.
+
+  - topic: "Statistical testing"
+    subtopic: "Type I error and confidence"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a Type I error, and how does the significance level alpha relate to it?"
+    payload:
+      options:
+        - "Incorrectly rejecting H0 when it is actually true; alpha is the probability of making this error"
+        - "Incorrectly failing to reject H0 when it is false"
+        - "A rounding error in the test statistic calculation"
+        - "An error that only occurs with non-parametric tests"
+    answer_key:
+      correct: 0
+    explanation: >
+      Common significance levels of 0.01, 0.05 and 0.10 correspond to confidence levels of 0.99,
+      0.95 and 0.90, since confidence level equals 1 minus alpha.
+
+  - topic: "Statistical testing"
+    subtopic: "Choosing a test"
+    difficulty: "INT"
+    format: "order"
+    stem: "Put the general steps for calculating a test statistic in the order the course gives them."
+    payload:
+      items:
+        - "Collect and prepare data, handling outliers and missing data"
+        - "Choose the appropriate test based on data type, hypothesis and assumptions"
+        - "Define the hypotheses (H0 and H1)"
+        - "Calculate the statistic using the formula for the chosen test"
+    answer_key:
+      sequence: [2, 1, 0, 3]
+    explanation: >
+      Every worked example in the topic, whether a Z-test, T-test, ANOVA or Chi-squared test,
+      follows this same sequence: hypotheses first, then test selection, then data preparation,
+      then the calculation itself.

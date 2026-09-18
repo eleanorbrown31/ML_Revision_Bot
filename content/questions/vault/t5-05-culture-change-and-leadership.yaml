@@ -1,0 +1,330 @@
+area: "Data-Driven Transformation & Leadership"
+source: "Second Brain/apprenticeship/term-5/Topic 5 - Culture Change and Leadership.md"
+questions:
+  - topic: "Culture change and leadership"
+    subtopic: "Eight laws of digital transformation"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which statements are among Schmarzo's eight laws of digital transformation? Select all that apply."
+    payload:
+      options:
+        - "It's about business models, not just business processes"
+        - "It's about digital transformation, not digitalisation"
+        - "It's about buying the newest technology first"
+        - "It's about transitioning from predicting to prescribing to autonomous"
+        - "It's about identifying, codifying and operationalising sources of value"
+        - "It's about replacing the workforce with AI"
+    answer_key:
+      correct: [0, 1, 3, 4]
+    explanation: >
+      The eight laws also include speaking the language of your customers, creating new digital
+      assets, AI-driven autonomous operations and policies, and the three horizons. Schmarzo's
+      definition is explicitly 'human-empowered', so workforce replacement contradicts it, and
+      technology purchase is never the starting point.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Three horizons"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each of Schmarzo's three horizons to its focus."
+    payload:
+      left:
+        - "Horizon 1"
+        - "Horizon 2"
+        - "Horizon 3"
+      right:
+        - "Reinvent the organisation through continuous exploring, learning and adapting the business model with minimal human intervention"
+        - "Optimise current operational processes, reduce risk, find new revenue and improve customer experience"
+        - "Use new digital technologies to dramatically improve the effectiveness of the current business model"
+    answer_key:
+      pairs:
+        "Horizon 1": "Optimise current operational processes, reduce risk, find new revenue and improve customer experience"
+        "Horizon 2": "Use new digital technologies to dramatically improve the effectiveness of the current business model"
+        "Horizon 3": "Reinvent the organisation through continuous exploring, learning and adapting the business model with minimal human intervention"
+    explanation: >
+      Horizon 1 optimises, Horizon 2 digitalises, Horizon 3 transforms. Topic 6 links Horizon 3
+      to Carruthers and Jackson's dynamic data-driven business transformation, where a final end
+      state is never reached.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Empowerment"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does Schmarzo argue that empowering teams has more impact on transformation success than words from senior management?"
+    payload:
+      options:
+        - "Because senior managers are usually wrong"
+        - "Because teams understand their immediate operations best and are best placed to solve their own problems, so empowered teams can lead digital initiatives towards sustained advantage"
+        - "Because empowerment is cheaper than leadership"
+        - "Because it removes the need for a mission statement"
+    answer_key:
+      correct: 1
+    explanation: >
+      The definition of digital transformation is 'AI-driven and human-empowered'. Culture
+      should encourage teams to constantly seek ways to improve the business, particularly by
+      exploiting data, and teams closest to the work see those opportunities first.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Empowerment"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of the following are Schmarzo's means to empower people? Select all that apply."
+    payload:
+      options:
+        - "Internalise the organisation's mission"
+        - "Speak the language of the customer"
+        - "Enforce a fixed team structure so everyone knows their place"
+        - "Embrace an AND mentality: better products and services without compromise"
+        - "Embrace critical thinking and healthy scepticism"
+    answer_key:
+      correct: [0, 1, 3, 4]
+    explanation: >
+      The fifth means is organisational improvisation: flexibility around team structure and
+      operating plans that can morph in real time to changing conditions while keeping
+      operational integrity. A fixed structure is the opposite.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Design thinking and SCAMPER"
+    difficulty: "F1"
+    format: "fill"
+    stem: "Complete the SCAMPER acronym."
+    payload:
+      template: "SCAMPER stands for Substitute, ___, Adapt, Modify, Put to another use, ___ and Reverse."
+    answer_key:
+      blanks:
+        - ["combine"]
+        - ["eliminate"]
+    explanation: >
+      SCAMPER is a brainstorming approach for ideation: seven prompts for thinking about an
+      existing process or product in a new way. It sits in the ideate phase of design thinking.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Design thinking and SCAMPER"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does 'speaking the language of the customer' mean beyond avoiding jargon?"
+    payload:
+      options:
+        - "Translating documents into the customer's native language"
+        - "Empathising and putting yourself in the customer's shoes to understand their needs and frustrations, which design thinking supports through personas and journey maps"
+        - "Copying the customer's brand guidelines"
+        - "Only communicating through the sales team"
+    answer_key:
+      correct: 1
+    explanation: >
+      This links Schmarzo's empowerment principle to design thinking's empathise step. A
+      common language also means everyone in the organisation describes goals, assets and
+      actions the same way.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Evolution of leadership theory"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put these leadership theories in the chronological order the course gives."
+    payload:
+      items:
+        - "Contingent and situational theories"
+        - "Great Man theory"
+        - "Emotional intelligence"
+        - "Trait theory"
+        - "Behavioural theory"
+    answer_key:
+      sequence: [1, 3, 4, 0, 2]
+    explanation: >
+      Great Man (19th century), trait theory (early to mid 20th century), behavioural theory
+      (1940s to 1950s), contingent and situational theories (1960s to 1980s), emotional
+      intelligence (from the 1990s). The shift is from 'leaders are born' to 'leadership is
+      learned and depends on situation and self-awareness'.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Evolution of leadership theory"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why did trait theory lose favour by the 1950s?"
+    payload:
+      options:
+        - "Because it was too expensive to test"
+        - "Because no consistent, distinctive set of leadership traits was ever established, even though small differences in communication and confidence were found"
+        - "Because it was replaced by emotional intelligence"
+        - "Because it argued leaders are made, not born"
+    answer_key:
+      correct: 1
+    explanation: >
+      Trait theory evolved from Great Man theory and assumed common leadership traits. The
+      failure to find a reliable trait set shifted attention to behaviour, which spurred interest
+      in leadership styles.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Evolution of leadership theory"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the core idea of emotional intelligence in leadership, as the course describes it?"
+    payload:
+      options:
+        - "Suppressing emotions at work"
+        - "Understanding your own and others' emotional states and using that knowledge to adapt behaviour for better outcomes"
+        - "Selecting leaders by personality test"
+        - "Prioritising task completion over relationships"
+    answer_key:
+      correct: 1
+    explanation: >
+      Salovey and Mayer published the first framework in 1990 and Goleman popularised it in
+      1996. The course notes later research used varying definitions, causing some controversy,
+      but Goleman's claim that EI is the largest single predictor of workplace success remains
+      influential.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Leader vs manager"
+    difficulty: "F2"
+    format: "match"
+    stem: "Using Bennis's contrasts, match each characteristic to leader or manager."
+    payload:
+      left:
+        - "Innovates"
+        - "Relies on control"
+        - "Asks what and why"
+        - "Accepts the status quo"
+      right:
+        - "Leader"
+        - "Manager"
+    answer_key:
+      pairs:
+        "Innovates": "Leader"
+        "Relies on control": "Manager"
+        "Asks what and why": "Leader"
+        "Accepts the status quo": "Manager"
+    explanation: >
+      Bennis contrasts innovate/administer, develop/maintain, inspire trust/rely on control,
+      long range/short range, what and why/how and when, challenge/accept the status quo. The
+      two are not mutually exclusive: a manager can be a great leader.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Leadership styles (Lewin, Burns/Bass, servant, Goleman)"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each of Lewin's 1939 leadership styles to its description."
+    payload:
+      left:
+        - "Autocratic"
+        - "Democratic"
+        - "Laissez-faire"
+      right:
+        - "Provides little direction and trusts the team to self-manage"
+        - "Holds ultimate authority and decides without input"
+        - "Fosters collaboration and shared decision-making"
+    answer_key:
+      pairs:
+        "Autocratic": "Holds ultimate authority and decides without input"
+        "Democratic": "Fosters collaboration and shared decision-making"
+        "Laissez-faire": "Provides little direction and trusts the team to self-manage"
+    explanation: >
+      Lewin found democratic leadership typically most effective, but either of the others can
+      work better in particular situations, which foreshadows the situational theories.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Leadership styles (Lewin, Burns/Bass, servant, Goleman)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What distinguishes transformational from transactional leadership?"
+    payload:
+      options:
+        - "Transactional uses rewards and punishments and emphasises structure and supervision; transformational inspires followers towards a compelling vision, leads by example and invests in development"
+        - "Transactional is for large organisations; transformational is for start-ups"
+        - "Transactional leaders are elected; transformational leaders are appointed"
+        - "There is no practical difference"
+    answer_key:
+      correct: 0
+    explanation: >
+      Bass proposed four elements of transformational leadership: idealised influence,
+      intellectual stimulation, individualised consideration and inspirational motivation, and
+      argued it produces higher performance.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Leadership styles (Lewin, Burns/Bass, servant, Goleman)"
+    difficulty: "F3"
+    format: "match"
+    stem: "On the people-emphasis versus task-emphasis grid, match each style to its position."
+    payload:
+      left:
+        - "Autocratic"
+        - "Democratic"
+        - "Transformational"
+        - "Laissez-faire"
+      right:
+        - "High people, high task"
+        - "Low people, low task"
+        - "Low people, high task"
+        - "High people, low task"
+    answer_key:
+      pairs:
+        "Autocratic": "Low people, high task"
+        "Democratic": "High people, high task"
+        "Transformational": "High people, low task"
+        "Laissez-faire": "Low people, low task"
+    explanation: >
+      Transformational and democratic are highly people-focused. Democratic and autocratic are
+      highly task-focused. Transformational and laissez-faire give team members more freedom to
+      find their own way to solve a problem.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Leadership styles (Lewin, Burns/Bass, servant, Goleman)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Which role in IT does the course give as an example of servant leadership?"
+    payload:
+      options:
+        - "The Chief Information Officer"
+        - "The Scrum Master, aligned with Scrum's values of courage, openness, respect, focus and commitment"
+        - "The database administrator"
+        - "The project sponsor"
+    answer_key:
+      correct: 1
+    explanation: >
+      Greenleaf's 1970 essay framed the leader's primary role as serving others' needs and
+      development, a counterpoint to command and control. The Scrum Master serves the team
+      rather than directing it.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Leadership styles (Lewin, Burns/Bass, servant, Goleman)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each of Goleman's six leadership styles to the situation the course says it suits."
+    payload:
+      left:
+        - "Commanding"
+        - "Pacesetting"
+        - "Visionary"
+        - "Coaching"
+      right:
+        - "When change is required and a long-term direction must inspire people"
+        - "Emergencies, or inexperienced teams with hard deadlines"
+        - "Quick results from a highly competent team"
+        - "Developing individuals to own their growth"
+    answer_key:
+      pairs:
+        "Commanding": "Emergencies, or inexperienced teams with hard deadlines"
+        "Pacesetting": "Quick results from a highly competent team"
+        "Visionary": "When change is required and a long-term direction must inspire people"
+        "Coaching": "Developing individuals to own their growth"
+    explanation: >
+      The other two are affiliative (relationships and harmony) and democratic (participation
+      and consensus). Goleman's research on 3,871 executives underpins the styles, and the
+      course stresses that no single agreed set of styles exists across the literature.
+
+  - topic: "Culture change and leadership"
+    subtopic: "Leadership styles (Lewin, Burns/Bass, servant, Goleman)"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A data team is highly skilled and needs to deliver a proof of concept in two weeks. A visionary style is not landing. Which Goleman style would the course suggest fits better, and why?"
+    payload:
+      options:
+        - "Affiliative, because harmony matters most under deadline"
+        - "Pacesetting, because it suits quick results from a highly competent team by setting high standards and leading by example"
+        - "Coaching, because two weeks is long enough to develop each person"
+        - "Commanding, because all deadlines require unilateral decisions"
+    answer_key:
+      correct: 1
+    explanation: >
+      Pacesetting prioritises results and efficiency and works when the team can match the
+      leader's standard. Commanding suits inexperienced teams or emergencies, which this is not.
+      The course's advice is to use aspects of any style as the situation demands.

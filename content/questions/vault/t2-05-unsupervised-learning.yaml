@@ -1,0 +1,268 @@
+area: "Unsupervised Learning"
+source: "Second Brain/apprenticeship/term-2/Topic 5 - Unsupervised Machine Learning Algorithms.md"
+questions:
+  - topic: "K-Means Clustering"
+    subtopic: "Centroid initialisation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is plain K-means described as non-deterministic, and what does the course recommend doing about it in practice?"
+    payload:
+      options:
+        - "Because the initial centroids are randomly selected, results can vary between runs; the course recommends running it a few times and picking the most sensible output"
+        - "Because K-means uses a different algorithm every time it is called"
+        - "Because K-means requires labelled data, which changes randomly"
+        - "K-means is fully deterministic and always gives the same result"
+    answer_key:
+      correct: 0
+    explanation: >
+      K-means++ addresses this weakness directly by choosing initial centroids more carefully,
+      rather than purely at random.
+
+  - topic: "K-Means Clustering"
+    subtopic: "K-means++"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does K-means++ improve on plain K-means's random centroid initialisation?"
+    payload:
+      options:
+        - "After the first centroid is chosen randomly, subsequent centroids are chosen to be likely far from previously chosen centroids, spreading initial centroids apart and improving speed and accuracy"
+        - "It removes the need to specify K entirely"
+        - "It always selects centroids from the centre of the dataset"
+        - "It replaces Euclidean distance with a fixed formula that never changes"
+    answer_key:
+      correct: 0
+    explanation: >
+      Spreading centroids apart at the start reduces the chance of poor, overlapping initial
+      clusters that plain random initialisation can produce.
+
+  - topic: "K-Means Clustering"
+    subtopic: "elbow method"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the elbow method help choose K, and what should you do when the graph has no clear elbow?"
+    payload:
+      options:
+        - "It plots within-cluster sum of squares (WCSS) against a range of k values; the optimal k is where increasing k further only brings small improvements. When there is no clear elbow, use the silhouette score instead"
+        - "It always picks the largest k tested, regardless of the shape of the curve"
+        - "It requires labelled data to work at all"
+        - "It only works when k is fixed in advance"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's own penguin dataset activity found an ambiguous elbow (unclear whether it sat
+      at 3 or 5), which is exactly the situation where a silhouette analysis is recommended as a
+      follow-up.
+
+  - topic: "K-Means Clustering"
+    subtopic: "inertia / WCSS"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the silhouette score, what do the values 1, 0 and -1 each indicate?"
+    payload:
+      options:
+        - "1 means points are perfectly assigned with easily distinguishable clusters; 0 means clusters overlap; -1 means points are wrongly assigned"
+        - "1 means the worst possible clustering; -1 means the best"
+        - "The silhouette score only ranges from 0 to 1, never negative"
+        - "0 always means a perfect clustering result"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course notes that domain experts may need a specific number of clusters for business
+      reasons, so the k with the mathematically 'best' silhouette score is not always the one
+      chosen in practice.
+
+  - topic: "K-Means Clustering"
+    subtopic: "limitations (non-convex clusters)"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "In the course's penguin clustering activity, why does the fictional research team conclude they cannot be certain three is the 'correct' number of species, even after choosing k=3?"
+    payload:
+      options:
+        - "With only an unsupervised model, there is no ground truth to check against; clustering can find meaningful but not necessarily objective groupings, and more data could increase confidence"
+        - "Because K-means never produces a usable result"
+        - "Because the elbow and silhouette methods always agree exactly"
+        - "Because unsupervised learning always requires exactly three clusters"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is a general limitation of unsupervised learning, not specific to K-means: without
+      labels, interpreting results relies on domain experience and expectations rather than
+      objective verification.
+
+  - topic: "K-Means Clustering"
+    subtopic: "Centroid initialisation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does K-means mostly get used with numeric data rather than categorical data?"
+    payload:
+      options:
+        - "Converting categories to numbers often gives numbers with little real-world meaning for distance calculations, unless the encoding captures genuine semantics, such as word embeddings or postcodes as coordinates"
+        - "K-means cannot process any data with more than two features"
+        - "Categorical data always has more dimensions than numeric data"
+        - "K-means requires the data to already be clustered before it starts"
+    answer_key:
+      correct: 0
+    explanation: >
+      The Jaccard index is offered as an alternative similarity measure for categorical data
+      with multiple features, based on the overlap between feature-value sets rather than
+      geometric distance.
+
+  - topic: "DBSCAN"
+    subtopic: "advantages over K-means"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "The course describes four categories of clustering algorithm. Which category does DBSCAN belong to, and what shape limitation of K-means does it address?"
+    payload:
+      options:
+        - "Density-based clustering, which can form clusters of any shape and excludes outliers, unlike centroid-based K-means, which assumes roughly circular distributions"
+        - "Hierarchical clustering, which always produces exactly two clusters"
+        - "Distribution-based clustering, which requires labelled data"
+        - "Centroid-based clustering, identical in every way to K-means"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course notes density-based clustering does not handle differing densities or
+      high-dimensional data well, so the choice between K-means and DBSCAN depends on the shape
+      and density structure of the data.
+
+  - topic: "Hierarchical Clustering"
+    subtopic: "dendrograms"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does hierarchical clustering produce, and what kind of data does the course say it particularly suits?"
+    payload:
+      options:
+        - "A tree of clusters called a dendrogram, suited to taxonomies or anything with a natural hierarchical structure, such as relationships between genes in biology"
+        - "A single flat list of clusters with no relationship between them"
+        - "A fixed number of clusters decided in advance, like K-means"
+        - "A scatter plot with no cluster boundaries at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      In a dendrogram, an item belongs to a specific cluster at a lower level and a more generic
+      cluster at a higher level, letting the analyst choose how fine-grained a grouping to use.
+
+  - topic: "PCA & Dimensionality Reduction"
+    subtopic: "explained variance ratio"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the 'curse of dimensionality' that PCA is used to address?"
+    payload:
+      options:
+        - "As the number of features grows, it becomes harder to get reliable results and a representative sample, and computationally more expensive to run ML algorithms, since feature combinations grow exponentially"
+        - "A superstition among data scientists about the number 13"
+        - "The fact that datasets can never have more than 10 features"
+        - "A limitation specific only to neural networks"
+    answer_key:
+      correct: 0
+    explanation: >
+      PCA is the most widely used dimensionality-reduction technique for addressing this, used
+      during data preparation and exploration to make high-dimensional datasets more manageable.
+
+  - topic: "PCA & Dimensionality Reduction"
+    subtopic: "explained variance ratio"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does a principal component's 'explained variance ratio' tell you, and how is it typically used to decide how many components to keep?"
+    payload:
+      options:
+        - "It shows what fraction of the dataset's total variance that component captures; components are usually kept until a target cumulative variance (such as 90% or 95%) is reached"
+        - "It shows how many rows are in the dataset"
+        - "It is always exactly equal for every component"
+        - "It has no bearing on which components are worth keeping"
+    answer_key:
+      correct: 0
+    explanation: >
+      In the course's wine dataset example, the first two components captured 36% and 19% of
+      variance respectively but still gave 100% classification accuracy, matching the full
+      13-feature dataset's accuracy.
+
+  - topic: "PCA & Dimensionality Reduction"
+    subtopic: "Eigenvalues and eigenvectors"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "How are eigenvalues and eigenvectors used in PCA, without getting into the matrix algebra itself?"
+    payload:
+      options:
+        - "Each feature's eigenvector becomes a candidate principal component, and its eigenvalue represents how much variance that component explains; ranking eigenvectors by eigenvalue orders the principal components by significance"
+        - "Eigenvalues are only relevant to time series analysis, not PCA"
+        - "Eigenvectors are the raw, unstandardised data values"
+        - "PCA does not use eigenvalues or eigenvectors at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      In practice, software handles the actual eigenvalue calculation; understanding what role
+      they play (ranking and defining the components) matters more than deriving them by hand.
+
+  - topic: "PCA & Dimensionality Reduction"
+    subtopic: "covariance matrix"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why must data be standardised before running PCA, and what does the covariance matrix capture once that is done?"
+    payload:
+      options:
+        - "Without standardisation, features with larger numeric ranges would incorrectly dominate the analysis; the covariance matrix then shows how each standardised feature varies together with every other feature"
+        - "Standardisation is only needed for categorical data, never numeric data"
+        - "The covariance matrix shows the raw, unprocessed values of the dataset"
+        - "PCA works identically whether or not the data is standardised"
+    answer_key:
+      correct: 0
+    explanation: >
+      This mirrors why feature scaling matters for many other algorithms too, such as KNN and
+      gradient-descent-based methods: unscaled features with large ranges can swamp the
+      contribution of features on smaller scales.
+
+  - topic: "PCA & Dimensionality Reduction"
+    subtopic: "explained variance ratio"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course describes PCA as 'lossy', comparing it to reducing a sauce. What does this mean in practice?"
+    payload:
+      options:
+        - "Reconstructing the original data from a reduced set of principal components does not recover it exactly; some information is genuinely lost in the reduction, even though the retained components capture most of the useful variance"
+        - "PCA corrupts the data randomly with no relationship to which components are kept"
+        - "PCA can always perfectly reconstruct the original data from any number of components"
+        - "The lossy nature of PCA means it should never be used"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course measures this directly with a reconstruction-error calculation after inverting
+      a 2-component PCA transform back to the original 13 features, showing a non-zero mean
+      squared error between original and reconstructed data.
+
+  - topic: "Technique selection"
+    area: "Applied Practice & Business Context"
+    subtopic: "Matching method to data shape, size and interpretability needs"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In market basket analysis using association rule mining, what do the 'support' and 'confidence' measures each tell you about a rule 'if X then Y'?"
+    payload:
+      options:
+        - "Support is the proportion of all transactions containing both X and Y; confidence is the proportion of transactions containing X that also contain Y"
+        - "Support and confidence measure exactly the same thing"
+        - "Support only applies to categorical data, confidence only to numeric data"
+        - "Confidence is always higher than support for any rule"
+    answer_key:
+      correct: 0
+    explanation: >
+      The Apriori algorithm uses a minimum support threshold to find frequent item sets first,
+      then tests candidate rules derived from those item sets against a minimum confidence
+      threshold.
+
+  - topic: "Technique selection"
+    area: "Applied Practice & Business Context"
+    subtopic: "Matching method to data shape, size and interpretability needs"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why does the course say 'lift' adds information beyond support and confidence alone when evaluating an association rule?"
+    payload:
+      options:
+        - "A high lift indicates a genuinely strong association between antecedent and consequent, beyond what would be expected if the two items were independent, which support and confidence alone do not directly capture"
+        - "Lift is identical to support in every case"
+        - "Lift can only be calculated for rules with exactly two items"
+        - "Lift measures how quickly the algorithm runs, not the strength of the rule"
+    answer_key:
+      correct: 0
+    explanation: >
+      Conviction and leverage are two further named measures, each offering a different lens on
+      whether an observed association is meaningful or could plausibly have arisen by chance.

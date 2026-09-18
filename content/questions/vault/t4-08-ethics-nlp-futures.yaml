@@ -1,0 +1,190 @@
+area: "AI Innovation & NLP Applications"
+source: "Second Brain/apprenticeship/term-4/Topic 8 - Ethics and NLP Futures.md"
+questions:
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Ethical risk areas"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of these are named as key ethical risk areas for AI in the course? Select all that apply."
+    payload:
+      options:
+        - "Misuse, such as autonomous weapons making their own tactical decisions"
+        - "Fake news and deepfakes"
+        - "The black box problem"
+        - "Automated bias, where humans tend to blindly trust automated systems"
+        - "Slow model inference speed"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      The full list also covers privacy and transparency, bias in training data, security and
+      hacking, energy use, and the poorly understood impact on human behaviour. Inference speed
+      is a performance concern, not an ethics one.
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Ethical risk areas"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course notes recruitment AI can either reduce discrimination or perpetuate it. What determines which outcome occurs?"
+    payload:
+      options:
+        - "The programming language used to build the system"
+        - "Whether the training data is biased: AI is only as good as its training data"
+        - "The size of the company deploying it"
+        - "Whether the system runs in the cloud or on-premises"
+    answer_key:
+      correct: 1
+    explanation: >
+      This is the course's central example connecting bias in training data to real business
+      and ethical outcomes, echoing the data bias versus model bias distinction from Term 5's
+      error and uncertainty topic.
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Ethics frameworks (Data Ethics Framework, Asilomar, BCS)"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which three principles does the UK Government Data Ethics Framework score from 0 to 5? Select all that apply."
+    payload:
+      options:
+        - "Transparency"
+        - "Accountability"
+        - "Fairness"
+        - "Profitability"
+    answer_key:
+      correct: [0, 1, 2]
+    explanation: >
+      Transparency runs from not public (0) to widely available (5); accountability from not
+      established (0) to public scrutiny built into the project cycle (5); fairness from risk of
+      harm or discrimination (0) to promoting just and equitable outcomes (5).
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Ethics frameworks (Data Ethics Framework, Asilomar, BCS)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each ethics reference to what it is."
+    payload:
+      left:
+        - "Asilomar AI Principles"
+        - "BCS Code of Conduct"
+        - "Human Rights Act (1998)"
+      right:
+        - "23 principles from a 2017 multi-disciplinary conference"
+        - "Guaranteed rights and freedoms, a universally understood basis for ethics generally"
+        - "Ethical responsibilities for IT professionals regarding process, products and services"
+    answer_key:
+      pairs:
+        "Asilomar AI Principles": "23 principles from a 2017 multi-disciplinary conference"
+        "BCS Code of Conduct": "Ethical responsibilities for IT professionals regarding process, products and services"
+        "Human Rights Act (1998)": "Guaranteed rights and freedoms, a universally understood basis for ethics generally"
+    explanation: >
+      These sit alongside the UK Government Data Ethics Framework as the course's set of
+      relevant codes and frameworks for AI ethics.
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Copilots"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the course describe the role shift for AI specialists as Industry 4.0 matures around copilots?"
+    payload:
+      options:
+        - "AI specialists disappear entirely, replaced by copilots"
+        - "The role shifts from development towards design, architecture, integration and cloud-AI-pipeline administration, becoming more engineer-consultant than engineer-developer"
+        - "AI specialists focus exclusively on hardware maintenance"
+        - "No change is expected in the specialist's role"
+    answer_key:
+      correct: 1
+    explanation: >
+      Prompt engineering and effective use of copilots remain essential skills even as
+      lower-level coding is increasingly assisted, which is why the course frames the role as
+      shifting rather than disappearing.
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Copilots"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put GitHub Copilot's four-step process in order."
+    payload:
+      items:
+        - "The developer writes code and accepts or edits the suggestions in the editor"
+        - "An OpenAI code-generation model is trained on public code and text from the internet"
+        - "The GitHub service manages back-and-forth flow between the editor and the code generator"
+        - "The trained model is plugged into the GitHub Copilot service"
+    answer_key:
+      sequence: [1, 3, 2, 0]
+    explanation: >
+      Copilot is described as an AI pair programmer offering autocomplete-style suggestions,
+      triggered either by starting to write code or by a natural-language comment describing the
+      desired code.
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Limitations of transformers"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of these are listed among the current limitations of transformer models? Select all that apply."
+    payload:
+      options:
+        - "Knowledge cutoff dates can cause outdated information"
+        - "No true provenance to output, limiting explainability"
+        - "Computational cost and training energy use"
+        - "Perfect long-term memory across all conversations"
+        - "Sensitivity to input phrasing"
+    answer_key:
+      correct: [0, 1, 2, 4]
+    explanation: >
+      The summary list also includes context length limits, lack of true reasoning, data
+      dependence, and static knowledge. Transformers are noted to have poor, not perfect,
+      long-term memory.
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Ownership of AI-generated content"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which recommendations does the course give when using AI-generated content professionally? Select all that apply."
+    payload:
+      options:
+        - "Author your own content for publications"
+        - "Cite ChatGPT if you use it in your work"
+        - "Seek legal advice before publishing AI-generated content"
+        - "Assume ownership of AI-generated content is settled everywhere"
+        - "Verify the laws and regulations of locations that will access your application"
+    answer_key:
+      correct: [0, 1, 2, 4]
+    explanation: >
+      The course cites Reuters and Forbes coverage noting that ownership of AI-generated art,
+      code and language is still being worked out legally, which is precisely why it should not
+      be assumed settled.
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Research opportunities"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "According to the course's forward-looking view, where is future progress in transformers expected to come from?"
+    payload:
+      options:
+        - "Scaling model size alone, indefinitely"
+        - "Efficient architectures and hybrid approaches, such as sub-quadratic attention, hybrid systems with retrieval or symbolic reasoning, and improved interpretability, more than from scaling alone"
+        - "Removing attention mechanisms entirely"
+        - "Reducing training data to zero"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course lists quadratic attention complexity, huge compute needs, and limited
+      robustness and reasoning as remaining limitations, and points to sub-quadratic
+      architectures, hybrid systems and better interpretability as the research directions.
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Ethical risk areas"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does the course include energy use as an AI ethics issue rather than purely a cost issue?"
+    payload:
+      options:
+        - "Because organisations should ethically weigh energy use against AI capability priorities, not treat energy purely as a budget line"
+        - "Because energy use has no connection to ethics"
+        - "Because energy costs are always negligible for AI"
+        - "Because only hardware vendors are responsible for energy use"
+    answer_key:
+      correct: 0
+    explanation: >
+      This connects to Term 1's energy metrics for deep learning (kWh, PUE, carbon footprint)
+      and shows the same concern treated as both a cost and an ethical dimension depending on
+      context.

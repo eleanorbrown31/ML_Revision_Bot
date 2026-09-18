@@ -1,0 +1,140 @@
+Data Science Methodologies — Revision Sheet
+1. CRISP-DM (Cross-Industry Standard Process for Data Mining)
+
+Origin: 1996–1999, industry consortium (not vendor-specific).
+
+Phases (iterative, not strictly linear — arrows flow both forwards and backwards between phases):
+
+Business Understanding — define objectives, success criteria, translate business problem into a data mining problem
+Data Understanding — initial collection, exploration, quality assessment
+Data Preparation — cleaning, transformation, feature construction (typically the most time-consuming phase)
+Modelling — select and apply techniques, tune parameters
+Evaluation — assess whether the model meets business objectives (not just technical accuracy)
+Deployment — plan and implement; ranges from a report to a fully productionised system
+
+Strengths: Vendor-neutral, widely adopted (still the most-used framework by survey data), strong business-alignment framing, explicit deployment phase.
+
+Weaknesses: Doesn't specify how to deploy or sustain a model in production. Silent on team roles, infrastructure, version control, CI/CD. Predates modern MLOps concerns — deployment is a single box, not a process.
+
+2. KDD (Knowledge Discovery in Databases)
+
+Origin: Early-to-mid 1990s (Fayyad, Piatetsky-Shapiro, Smyth) — older and more academic than CRISP-DM.
+
+Phases:
+
+Selection — select target dataset from larger data pool
+Preprocessing — noise removal, handling missing data
+Transformation — dimensionality reduction, feature engineering
+Data Mining — apply algorithms to extract patterns
+Interpretation / Evaluation — interpret patterns, consolidate discovered knowledge
+
+Key distinction from CRISP-DM: KDD frames "data mining" as one step within the larger knowledge discovery process, rather than as the umbrella term for the whole endeavour. It has no explicit business-understanding phase and no deployment phase — it stops at interpretation.
+
+Relevance today: Largely superseded by CRISP-DM and TDSP in practice, but still referenced academically as the conceptual ancestor of both.
+
+3. SEMMA (Sample, Explore, Modify, Model, Assess)
+
+Origin: SAS Institute — developed for use within the SAS software ecosystem.
+
+Phases:
+
+Sample — extract a representative subset of data (for computational tractability)
+Explore — search for anticipated/unanticipated trends and anomalies
+Modify — transform variables, create derived features
+Model — apply modelling techniques
+Assess — evaluate model reliability and usefulness
+
+Key distinction: Deliberately excludes business understanding and deployment — SEMMA treats these as outside the analytical process, in contrast to CRISP-DM's business-first framing. It is a technical/statistical workflow, not a project management framework.
+
+Weakness for EPA purposes: No governance, stakeholder, or deployment lens at all — least suitable of the frameworks here if a scenario asks about organisational or lifecycle considerations.
+
+4. TDSP (Team Data Science Process)
+
+Origin: Microsoft, first released September 2016, published as an open GitHub project.
+
+Phases: Business Understanding → Data Acquisition & Understanding → Modelling → Deployment → Customer Acceptance.
+
+Key distinctions from CRISP-DM:
+
+Explicit team roles and responsibilities (not just process steps)
+Native integration of DevOps / agile practices — described as "Scrum + CRISP-DM"
+Customer Acceptance as a distinct final phase (formal validation that the deployed solution meets agreed success criteria) — CRISP-DM has no equivalent
+Provides actual tooling and templates (project structure, shared code repositories) rather than being process-only
+
+Adoption reality (important nuance for EPA): Genuine external adoption exists but is concentrated in Microsoft-aligned ecosystems — Microsoft cites partners such as BlueGranite and New Signature as active adopters delivering TDSP-based solutions to their own customers. However, academic critique (Data Science Methodologies: Current Challenges and Future Approaches, arXiv 2106.07287) argues TDSP is "very dependent on Microsoft services and policies, and this complicates a broader use," holding that a proper methodology should be independent of any particular toolset. For EPA purposes: describe TDSP as "gaining adoption particularly within Microsoft-aligned ecosystems" rather than claiming industry-standard status the way CRISP-DM has.
+
+Explicitly designed to be composable: Microsoft's own documentation states that if an organisation already uses CRISP-DM, KDD, or a custom process, TDSP's task-based structure can still be used within that lifecycle — it's positioned as complementary rather than a strict replacement.
+
+5. Agile/Scrum-adapted Data Science
+
+Not a formal, published methodology — an informal but common adaptation applying sprint cycles and iterative delivery to data science work.
+
+What it addresses: CRISP-DM and KDD say almost nothing about project management cadence — sprint planning, stakeholder check-ins, backlog management. Agile adaptation fills this gap.
+
+Relevance: TDSP is essentially what you get if you formalise this adaptation and combine it with CRISP-DM's phase structure — useful line for EPA answers contrasting the two.
+
+6. OSEMN (Obtain, Scrub, Explore, Model, iNterpret)
+
+Origin: Practitioner/blog-community mnemonic, not a formal organisational standard.
+
+Phases: Obtain → Scrub → Explore → Model → iNterpret.
+
+Character: Lightweight, code-centric, individual-practitioner framing rather than team/organisational framing. No formal business-understanding rigor, no deployment phase, no evaluation-against-business-objectives step (unlike CRISP-DM's Evaluation phase, which explicitly checks against business criteria, not just technical metrics).
+
+Use case: Useful shorthand for describing an individual analyst's workflow; weak as an answer to an EPA governance or organisational-scenario question.
+
+Comparison Table
+Framework	Business understanding?	Deployment phase?	Team/roles specified?	Engineering/DevOps native?	Governance/values framing?
+CRISP-DM	Yes (explicit, first phase)	Yes (but underspecified)	No	No	Weak
+KDD	No	No	No	No	Weak
+SEMMA	No (deliberately excluded)	No	No	No	None
+TDSP	Yes	Yes (+ Customer Acceptance)	Yes	Yes (native)	Weak
+Agile/Scrum	Informal	Informal	Yes (roles via Scrum)	Partial	None
+OSEMN	No	No	No	No	None
+Where MLOps and CI/CD Fit
+
+Key EPA point: MLOps is orthogonal to these frameworks, not a competing methodology. It operates on an independent axis:
+
+Lifecycle methodologies (CRISP-DM, KDD, SEMMA, TDSP) answer: "What steps do we go through to get from business problem to model?"
+MLOps answers: "How do we industrialise and sustain that model once it exists?"
+
+Any lifecycle framework can be paired with MLOps practices at the modelling/deployment phase — CRISP-DM doesn't preclude MLOps, it simply doesn't specify it. TDSP is the closest of the frameworks above to already having MLOps built in, since it was designed with DevOps integration from the outset.
+
+MLOps core practices:
+
+Version control for data, code, and models (the key extension beyond standard DevOps)
+CI/CD pipelines adapted for ML — see below
+Model registries and reproducibility (tracking which data/config produced which model)
+Production monitoring — data drift, concept drift, performance decay
+Automated retraining triggers ("Continuous Training," a fourth "C" sometimes added to CI/CD)
+
+CI/CD in an ML context:
+
+CI (Continuous Integration): in standard software, automated build/test on every merge. In ML, this extends to validating data schemas/quality and re-training/testing the model, not just code correctness.
+CD (Continuous Delivery vs Deployment): Delivery = changes are packaged and ready to release with a human approval gate; Deployment = changes go live automatically, no human gate. In ML, CD means deploying a model artifact alongside code, versioned against the exact data + hyperparameters that produced it.
+CT (Continuous Training): automated retraining loop triggered by monitoring-detected drift, feeding back through the same CI/CD pipeline.
+
+Deployment strategies (the "how" of the CD step):
+
+Strategy	How it works	Risk profile	Use case
+Basic (all-at-once / big-bang)	New model version replaces the old one for 100% of traffic in one go	Highest risk — no fallback traffic to compare against, full blast radius if something is wrong	Low-stakes internal tools, or where rollback is trivial and fast
+Shadow deployment	New model runs alongside the live model on real production traffic, but its predictions are logged only — never shown to users or used for decisions	No user-facing risk at all (output is discarded), but doesn't test real-world impact, only prediction behaviour vs the incumbent	Validating a new model's predictions against the current model before trusting it with any live decisions — common first step before canary
+Canary deployment	New model is exposed to a small, controlled slice of real traffic (e.g. 5%) whose actual outcomes are affected; the slice is expanded gradually if monitoring stays healthy	Contained risk — a bad model only affects a small subset of users, and is caught by monitoring before full rollout	The standard staged rollout once shadow testing has de-risked the model; named after the "canary in a coal mine" — an early warning system
+
+Ordering in practice: shadow → canary → full rollout is the typical risk-reducing sequence — shadow validates the model is behaving sensibly with zero user exposure, canary validates it performs well with some user exposure and real feedback, and only then does it graduate to basic/full deployment for all traffic.
+
+Where this fits the frameworks above: none of CRISP-DM, KDD, SEMMA, TDSP, Agile, or OSEMN specify any of this — it's entirely inside the MLOps/CI-CD layer that sits orthogonal to all of them. This is a strong point to make in an EPA answer that asks you to critique a scenario's deployment approach: naming shadow/canary strategies demonstrates engineering maturity beyond what any of the named lifecycle methodologies mandate on their own.
+
+Fairness/governance connection: canary deployment is also a practical fairness safeguard — running fairness metrics (e.g. calibration, error rate balance from the Kleinberg/Chouldechova framework) on the canary slice before full rollout can catch a fairness regression while its blast radius is still small, rather than discovering it after 100% of users are affected.
+
+Governance connection worth citing in an EPA answer on fairness or monitoring: production monitoring is where fairness metric drift would surface — a model calibrated fairly at deployment can drift as base rates shift over time, which connects directly to the Kleinberg/Chouldechova point that fairness properties are not static guarantees but conditions requiring ongoing verification (see Fairness in ML revision notes).
+
+EPA Framing Cheat Sheet
+
+If a scenario asks you to justify a methodology choice or critique an existing process:
+
+"The scenario has no deployment/production discipline" → gap is CRISP-DM/KDD/SEMMA lacking engineering rigor → recommend TDSP or CRISP-DM + MLOps
+"The scenario is a lean, single-analyst exploratory task" → OSEMN or SEMMA may be proportionate; CRISP-DM's full six phases may be disproportionate overhead
+"The scenario involves multiple teams / production stakes / ongoing model maintenance" → TDSP, or CRISP-DM explicitly paired with MLOps practices
+"The scenario needs to guard against vendor lock-in" → flag TDSP's Microsoft-dependency critique; CRISP-DM's vendor-neutrality is a genuine strength here
+Always safe move: name the framework, name its gap, name what fills the gap (usually MLOps or an Agile overlay) — this shows the KSB of critical evaluation rather than rote recall

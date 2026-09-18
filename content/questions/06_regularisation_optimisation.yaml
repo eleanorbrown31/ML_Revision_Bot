@@ -1,0 +1,106 @@
+area: "Regularisation & Optimisation"
+questions:
+  - topic: "Regularisation (L1, L2, Dropout)"
+    subtopic: "L1 (Lasso) sparsity"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What effect does L1 (Lasso) regularisation tend to have on a model's weights?"
+    payload:
+      options:
+        - "It shrinks all weights toward zero but rarely to exactly zero"
+        - "It drives many weights exactly to zero, effectively performing feature selection"
+        - "It has no effect on weight magnitude, only on bias"
+        - "It only affects the output layer"
+    answer_key:
+      correct: 1
+    explanation: >
+      L1 regularisation's penalty (the sum of absolute weight values) has a geometry that tends
+      to push many weights to exactly zero, effectively selecting a sparse subset of features --
+      unlike L2, whose penalty shrinks weights smoothly toward, but rarely exactly to, zero.
+    distractor_notes:
+      "It shrinks all weights toward zero but rarely to exactly zero": "That describes L2 (Ridge) regularisation's effect, not L1's."
+
+  - topic: "Regularisation (L1, L2, Dropout)"
+    subtopic: "dropout mechanism"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does dropout act as a regulariser during training?"
+    payload:
+      options:
+        - "It removes a fixed set of neurons permanently after training starts"
+        - "It randomly deactivates a fraction of neurons on each forward pass, preventing the network from relying too heavily on any single neuron"
+        - "It adds noise only to the input data, never to hidden layers"
+        - "It reduces the learning rate over time"
+    answer_key:
+      correct: 1
+    explanation: >
+      By randomly zeroing out a proportion of neurons on each training pass, dropout forces the
+      network to learn redundant, more robust representations rather than co-adapting neurons to
+      compensate for each other's specific quirks -- similar in spirit to training an ensemble of
+      thinned networks.
+
+  - topic: "Optimisation & Gradient Descent"
+    subtopic: "Batch / mini-batch / stochastic GD"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the main difference between stochastic gradient descent (SGD) and full-batch gradient descent?"
+    payload:
+      options:
+        - "SGD never converges to a good solution"
+        - "SGD updates the weights using one (or a small mini-batch of) training example(s) at a time, rather than the whole dataset per update"
+        - "SGD requires no learning rate"
+        - "Full-batch GD is only used for classification"
+    answer_key:
+      correct: 1
+    explanation: >
+      Full-batch gradient descent computes the gradient over the entire training set before each
+      update, which is accurate but slow and memory-heavy. SGD (or mini-batch SGD) updates far
+      more frequently using small subsets, trading some gradient accuracy for many more, faster
+      updates -- and the added noise can even help escape shallow local minima.
+
+  - topic: "Optimisation & Gradient Descent"
+    subtopic: "momentum"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What problem does adding 'momentum' to gradient descent help with?"
+    payload:
+      options:
+        - "It smooths out the update direction and speeds convergence through narrow valleys or noisy gradients by accumulating a moving average of past gradients"
+        - "It converts a non-convex problem into a convex one"
+        - "It removes the need to choose a learning rate"
+        - "It guarantees convergence to the global minimum"
+    answer_key:
+      correct: 0
+    explanation: >
+      Momentum keeps a running, decaying average of past gradients and uses that (rather than
+      just the current gradient) to update the weights, which dampens oscillation across steep,
+      narrow valleys and helps the optimiser build up speed in a consistent downhill direction.
+
+  - topic: "Regularisation (L1, L2, Dropout)"
+    subtopic: "early stopping"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each regularisation technique to how it fights overfitting."
+    payload:
+      left:
+        - "L1 (Lasso)"
+        - "L2 (Ridge)"
+        - "Dropout"
+        - "Early stopping"
+      right:
+        - "Randomly deactivates a fraction of neurons during training to prevent co-adaptation"
+        - "Stops training once validation performance stops improving, before the model starts overfitting"
+        - "Shrinks weights smoothly toward zero without necessarily reaching it"
+        - "Drives many weights to exactly zero, performing implicit feature selection"
+    answer_key:
+      pairs:
+        "L1 (Lasso)": "Drives many weights to exactly zero, performing implicit feature selection"
+        "L2 (Ridge)": "Shrinks weights smoothly toward zero without necessarily reaching it"
+        "Dropout": "Randomly deactivates a fraction of neurons during training to prevent co-adaptation"
+        "Early stopping": "Stops training once validation performance stops improving, before the model starts overfitting"
+    explanation: >
+      All four are regularisation techniques that fight overfitting, but through different
+      mechanisms: L1 and L2 penalise weight magnitude (L1 aggressively, all the way to zero; L2
+      gently), dropout adds noise to the network's structure itself during training, and early
+      stopping simply cuts training short before the model has had a chance to memorise the
+      training set too closely.

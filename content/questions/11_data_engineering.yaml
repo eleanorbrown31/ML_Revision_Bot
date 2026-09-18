@@ -1,0 +1,299 @@
+area: "Data Engineering"
+questions:
+  - topic: "Storage architectures"
+    subtopic: "warehouse vs lake vs lakehouse"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the key difference between a data warehouse and a data lake?"
+    payload:
+      options:
+        - "A warehouse can only store numeric data; a lake can only store text"
+        - "A data lake is always more expensive to run than a warehouse"
+        - "A warehouse stores structured, schema-on-write data optimised for query performance; a lake stores raw data of any format, with schema applied on read"
+        - "They are two names for exactly the same architecture"
+    answer_key:
+      correct: 2
+    explanation: >
+      A data warehouse stores cleaned, structured data with a schema defined before loading
+      (schema-on-write), optimised for fast analytical queries. A data lake stores raw data --
+      structured, semi-structured, or unstructured -- cheaply, with the schema applied only when
+      the data is read. A lakehouse tries to combine the flexibility of a lake with some of the
+      query performance and structure of a warehouse.
+
+  - topic: "Storage architectures"
+    subtopic: "OLTP vs OLAP"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each term to its definition."
+    payload:
+      left:
+        - "OLTP"
+        - "OLAP"
+        - "Data warehouse"
+        - "Data lake"
+      right:
+        - "Stores raw data of any format cheaply, with schema applied only when read"
+        - "Optimised for many small, fast read/write transactions, e.g. an e-commerce order system"
+        - "Optimised for complex analytical queries over large volumes of historical data"
+        - "Stores structured, cleaned data with a schema defined up front, built for fast analytics"
+    answer_key:
+      pairs:
+        "OLTP": "Optimised for many small, fast read/write transactions, e.g. an e-commerce order system"
+        "OLAP": "Optimised for complex analytical queries over large volumes of historical data"
+        "Data warehouse": "Stores structured, cleaned data with a schema defined up front, built for fast analytics"
+        "Data lake": "Stores raw data of any format cheaply, with schema applied only when read"
+    explanation: >
+      OLTP and OLAP describe two different workload patterns -- OLTP is about many small
+      transactional operations (like processing an order), OLAP is about big analytical queries
+      across lots of historical data. Data warehouse and data lake are storage architectures: a
+      warehouse imposes structure before you load data in, a lake lets you dump raw data first
+      and figure out structure later.
+
+  - topic: "Storage architectures"
+    subtopic: "row vs columnar storage"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is columnar storage generally faster than row storage for analytical queries that aggregate over a few columns across many rows?"
+    payload:
+      options:
+        - "It only reads the specific columns needed from disk, rather than every column of every row"
+        - "It cannot be indexed at all"
+        - "It compresses data less than row storage"
+        - "It stores every column in a separate database"
+    answer_key:
+      correct: 0
+    explanation: >
+      In columnar storage, all values for a given column are stored contiguously, so a query that
+      only needs a few columns (common in analytics/aggregation) can skip reading the rest
+      entirely -- reducing I/O dramatically compared to row storage, which must read whole rows
+      even if most columns aren't needed.
+
+  - topic: "SQL & query performance"
+    subtopic: "indexing (B-tree, hash)"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the main benefit of adding an index to a frequently filtered column in a database table?"
+    payload:
+      options:
+        - "It automatically deduplicates the data in that column"
+        - "It lets the database find matching rows without scanning the entire table"
+        - "It prevents any updates to that column"
+        - "It compresses the table on disk"
+    answer_key:
+      correct: 1
+    explanation: >
+      An index (commonly a B-tree) maintains a sorted structure over a column's values, letting
+      the database jump straight to matching rows instead of scanning every row in the table (a
+      full table scan) -- a huge speedup for selective filters, at the cost of some extra storage
+      and slower writes.
+
+  - topic: "SQL & query performance"
+    subtopic: "window functions"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What can a SQL window function do that a GROUP BY aggregate cannot?"
+    payload:
+      options:
+        - "Join two tables together"
+        - "Convert a column from text to numeric"
+        - "Filter rows before aggregation"
+        - "Compute an aggregate (like a running total or rank) for each row while still returning all the individual rows, not just one row per group"
+    answer_key:
+      correct: 3
+    explanation: >
+      GROUP BY collapses rows into one row per group. A window function (e.g. SUM(...) OVER
+      (PARTITION BY ...)) computes an aggregate "over a window" of related rows but keeps every
+      original row in the output -- useful for running totals, rankings, or comparing a row to
+      its group's average.
+
+  - topic: "Pipelines & orchestration"
+    subtopic: "ETL vs ELT"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the key difference between ETL and ELT?"
+    payload:
+      options:
+        - "They are the same process, just named differently by different vendors"
+        - "In ETL, data is transformed before loading into the target system; in ELT, raw data is loaded first and transformed afterward, typically inside the target system"
+        - "ELT does not require a target database at all"
+        - "ETL only works with structured data; ELT only works with unstructured data"
+    answer_key:
+      correct: 1
+    explanation: >
+      ETL (Extract, Transform, Load) transforms data in a separate processing step before loading
+      it into the destination. ELT (Extract, Load, Transform) loads raw data into the destination
+      first (often a cloud warehouse with lots of compute) and transforms it there -- a pattern
+      that's become more common as warehouses got powerful enough to do the transform step
+      themselves.
+
+  - topic: "Pipelines & orchestration"
+    subtopic: "idempotency"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is idempotency an important property for a data pipeline step?"
+    payload:
+      options:
+        - "Re-running the same step with the same input produces the same result, so retries after a failure don't corrupt or duplicate data"
+        - "It guarantees the pipeline never fails"
+        - "It removes the need for any logging or monitoring"
+        - "It means the pipeline runs faster every time it's re-run"
+    answer_key:
+      correct: 0
+    explanation: >
+      Pipelines fail and get retried -- a network blip, a worker crash. If a step is idempotent,
+      running it again with the same input yields the same output (e.g. an upsert rather than a
+      blind insert), so a retry after a partial failure doesn't create duplicate rows or
+      double-counted aggregates.
+
+  - topic: "APIs & data access"
+    subtopic: "rate limiting"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the purpose of rate limiting on an API?"
+    payload:
+      options:
+        - "To guarantee every request succeeds"
+        - "To encrypt the data being transferred"
+        - "To cap how many requests a client can make in a given time window, protecting the service from overload or abuse"
+        - "To make responses larger"
+    answer_key:
+      correct: 2
+    explanation: >
+      Rate limiting restricts how many requests a client can send in a given period (e.g. 100
+      requests/minute), protecting the API from being overwhelmed by a single client -- whether
+      that's accidental (a buggy retry loop) or deliberate abuse -- and keeping service available
+      for everyone.
+
+  - topic: "APIs & data access"
+    subtopic: "retries and exponential backoff"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why use exponential backoff when retrying a failed API request, rather than retrying immediately and repeatedly?"
+    payload:
+      options:
+        - "It progressively increases the wait time between retries, reducing the load on a struggling service and avoiding a 'retry storm'"
+        - "It guarantees the retry will succeed"
+        - "It reduces the total number of retries to exactly one"
+        - "It is required by all APIs regardless of design"
+    answer_key:
+      correct: 0
+    explanation: >
+      If a service is struggling (e.g. rate-limited or overloaded) and every failed client
+      retries immediately, the flood of retries can make things worse. Exponential backoff waits
+      progressively longer between attempts (often with some random jitter), giving the service
+      room to recover instead of being hit with a synchronised retry storm.
+
+  - topic: "Algorithmic efficiency at scale"
+    subtopic: "Big-O in time and space"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "An algorithm that must check every pair of items in a list of n items has what time complexity?"
+    payload:
+      options:
+        - "O(n)"
+        - "O(1)"
+        - "O(log n)"
+        - "O(n²)"
+    answer_key:
+      correct: 3
+    explanation: >
+      Checking every pair means roughly n × (n-1) / 2 comparisons, which is quadratic in n --
+      O(n²). This is why naive pairwise comparison approaches become impractical fast as data
+      grows, and why algorithms that avoid all-pairs comparisons (hashing, sorting, indexing)
+      matter at scale.
+
+  - topic: "Algorithmic efficiency at scale"
+    subtopic: "approximate algorithms (Bloom filters, HyperLogLog)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does a Bloom filter let you check, and what's the tradeoff?"
+    payload:
+      options:
+        - "The exact count of distinct items in a set"
+        - "Whether two sets are identical"
+        - "The median value of a large dataset"
+        - "Whether an item is possibly in a set (with no false negatives but some false positives), using much less memory than storing the set exactly"
+    answer_key:
+      correct: 3
+    explanation: >
+      A Bloom filter is a compact probabilistic structure for set membership testing: it can say
+      "definitely not in the set" with certainty, or "possibly in the set" with some chance of a
+      false positive -- trading a small, tunable error rate for a large reduction in memory
+      compared to storing the full set.
+
+  - topic: "Data governance & quality"
+    subtopic: "PII identification and handling"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does 'PII' stand for in a data governance context?"
+    payload:
+      options:
+        - "Personally Identifiable Information"
+        - "Primary Integrity Indicator"
+        - "Publicly Indexed Information"
+        - "Processed Internal Input"
+    answer_key:
+      correct: 0
+    explanation: >
+      PII (Personally Identifiable Information) is any data that could identify a specific
+      individual, such as a name, email address, or national insurance number. Identifying and
+      specially handling PII (e.g. masking, restricted access, retention limits) is central to
+      data governance and regulations like GDPR.
+
+  - topic: "Data governance & quality"
+    subtopic: "data contracts"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the purpose of a 'data contract' between a data producer and a downstream consumer?"
+    payload:
+      options:
+        - "It is a legal document unrelated to data schemas"
+        - "It replaces the need for any data quality testing"
+        - "It formally specifies the expected schema and semantics of a dataset, so producers can't silently break consumers with unannounced changes"
+        - "It guarantees the data will never contain errors"
+    answer_key:
+      correct: 2
+    explanation: >
+      A data contract is an explicit agreement (often machine-checkable) about a dataset's
+      schema, format, and semantics between whoever produces it and whoever consumes it
+      downstream. It lets the producer evolve their system without accidentally breaking a
+      consumer's pipeline, since any breaking change has to go through the contract.
+
+  - topic: "Knowledge Graphs"
+    subtopic: "Triples and RDF"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the basic unit of data in a knowledge graph represented in RDF?"
+    payload:
+      options:
+        - "A single scalar value with a type"
+        - "A row in a relational table"
+        - "A JSON document with nested keys"
+        - "A triple: subject, predicate, object (e.g. 'Paris' -- 'capitalOf' -- 'France')"
+    answer_key:
+      correct: 3
+    explanation: >
+      RDF (Resource Description Framework) represents knowledge as triples of
+      subject-predicate-object, e.g. (Paris, capitalOf, France). A knowledge graph is essentially
+      a large collection of these triples, forming a graph where entities are nodes and
+      predicates are labelled edges between them.
+
+  - topic: "Knowledge Graphs"
+    subtopic: "Use in retrieval-augmented generation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How can a knowledge graph be used to improve a retrieval-augmented generation (RAG) system?"
+    payload:
+      options:
+        - "It guarantees the language model will never hallucinate"
+        - "It can supply structured, explicit relationships between entities that a purely text-similarity-based retriever might miss, improving factual grounding"
+        - "It replaces the need for any language model entirely"
+        - "It can only be used for image data, not text"
+    answer_key:
+      correct: 1
+    explanation: >
+      Standard RAG retrieves chunks of text based on similarity search, which can miss precise,
+      multi-hop relationships between entities. A knowledge graph stores those relationships
+      explicitly, so a graph-aware retrieval step can pull in structured facts (e.g. "who reports
+      to whom") that pure text similarity would struggle to surface -- though it doesn't
+      eliminate hallucination risk on its own.

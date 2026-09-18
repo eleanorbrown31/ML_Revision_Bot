@@ -1,0 +1,181 @@
+area: "AI Innovation & NLP Applications"
+source: "Second Brain/apprenticeship/term-4/Topic 3 - Digital Products and BERT.md"
+questions:
+  - topic: "Digital business models"
+    subtopic: "Digital products and omnichannel"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What distinguishes an omnichannel experience from a multi-channel one?"
+    payload:
+      options:
+        - "Omnichannel has more channels than multi-channel"
+        - "Omnichannel channels are cohesively integrated together; multi-channel channels exist but are not cohesive"
+        - "Multi-channel is always online only"
+        - "There is no meaningful difference"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course gives Timberland and Disney as omnichannel examples, and notes that treating
+      omnichannel as a core competence drives strong customer retention, unlike simply having
+      several disconnected channels.
+
+  - topic: "BERT, RoBERTa and fine-tuning"
+    subtopic: "Bidirectionality"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is BERT's key architectural innovation compared with earlier language models?"
+    payload:
+      options:
+        - "It reads text in both directions at once (bidirectionality), rather than left-to-right or right-to-left only"
+        - "It uses no neural network layers"
+        - "It only processes single words, never sentences"
+        - "It removed the need for pretraining"
+    answer_key:
+      correct: 0
+    explanation: >
+      Earlier models read sequentially in one direction. Bidirectionality, enabled by the
+      transformer architecture, lets BERT use context from both sides of a word at once.
+
+  - topic: "BERT, RoBERTa and fine-tuning"
+    subtopic: "Masked language modelling and next sentence prediction"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which two tasks is BERT pre-trained on? Select both."
+    payload:
+      options:
+        - "Masked language modelling"
+        - "Next sentence prediction"
+        - "Machine translation"
+        - "Image classification"
+    answer_key:
+      correct: [0, 1]
+    explanation: >
+      BERT uses only the encoder part of the original transformer, so it has no decoder stack
+      and no masked multi-head attention sublayer. Its own 'masked' task is a different use of
+      masking, applied during pretraining rather than in a decoder.
+
+  - topic: "BERT, RoBERTa and fine-tuning"
+    subtopic: "BERT model sizes"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does BERT large differ from BERT base, according to the course's comparison table?"
+    payload:
+      options:
+        - "BERT large has fewer encoder layers but more parameters"
+        - "BERT large has more encoder layers, a larger d_model, more attention heads and roughly three times the parameters"
+        - "BERT large and BERT base are identical except for the name"
+        - "BERT large uses a decoder stack that BERT base lacks"
+    answer_key:
+      correct: 1
+    explanation: >
+      BERT base has 12 layers, d_model 768, 12 heads and 110 million parameters; BERT large has
+      24 layers, d_model 1024, 16 heads and 340 million parameters. Both use the same head
+      dimension of 64.
+
+  - topic: "BERT, RoBERTa and fine-tuning"
+    subtopic: "Pretrain then fine-tune"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the significance of BERT's pretrain-then-fine-tune model for how organisations use foundation models today?"
+    payload:
+      options:
+        - "It means every organisation must train its own model from scratch"
+        - "It is why foundation models can be downloaded and adapted to a specific domain or task instead of being trained from scratch every time"
+        - "It eliminates the need for any labelled data"
+        - "It only applies to image models"
+    answer_key:
+      correct: 1
+    explanation: >
+      Pretraining gives generic language understanding; fine-tuning tailors the model to a
+      specific domain or task. This two-step pattern underlies the wider shift the course
+      describes from building models to selecting and adapting them.
+
+  - topic: "BERT, RoBERTa and fine-tuning"
+    subtopic: "Contextual embeddings"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why can BERT distinguish the two meanings of 'fair' in 'Mum was careful to be fair' versus 'fun at the fair on Saturday', while Word2Vec cannot?"
+    payload:
+      options:
+        - "BERT has a larger vocabulary file"
+        - "Word2Vec produces one fixed embedding per word regardless of context; BERT generates different, context-appropriate embeddings for the same word depending on the surrounding sentence"
+        - "BERT ignores punctuation, Word2Vec does not"
+        - "Word2Vec was trained on more data than BERT"
+    answer_key:
+      correct: 1
+    explanation: >
+      This is BERT's central advantage: contextualised embeddings. BERT can also generate a
+      single embedding for an entire sentence, usually of dimension 768.
+
+  - topic: "BERT, RoBERTa and fine-tuning"
+    subtopic: "Downstream tasks"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of these are named as BERT fine-tuning tasks in the course? Select all that apply."
+    payload:
+      options:
+        - "Named Entity Recognition (NER)"
+        - "Stanford Question Answering Dataset (SQuAD)"
+        - "Multi-Genre Natural Language Inference (MNLI)"
+        - "Weather forecasting"
+    answer_key:
+      correct: [0, 1, 2]
+    explanation: >
+      Fine-tuning tokenises contextual question-answer pairs as inputs and adjusts BERT's
+      weights to become more context-specific for the chosen task, with output depending on
+      which task was used.
+
+  - topic: "BERT, RoBERTa and fine-tuning"
+    subtopic: "RoBERTa changes"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which changes does RoBERTa make compared with BERT? Select all that apply."
+    payload:
+      options:
+        - "Uses byte pair encoding (BPE) as its tokeniser instead of BERT's tokeniser"
+        - "Uses dynamic masking, regenerated every time a sequence is fed to the model"
+        - "Removes the next sentence prediction training objective"
+        - "Adds a decoder stack that BERT lacks"
+        - "Trains on longer sequences and for more iterations"
+    answer_key:
+      correct: [0, 1, 2, 4]
+    explanation: >
+      RoBERTa also uses larger mini-batches and learning rates, and separates segments using the
+      tokenizer's separator token rather than explicit token_type_ids. It does not add a decoder;
+      like BERT it remains encoder-only.
+
+  - topic: "BERT, RoBERTa and fine-tuning"
+    subtopic: "RoBERTa changes"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why might removing the next sentence prediction objective have helped RoBERTa outperform BERT on many tasks?"
+    payload:
+      options:
+        - "The course states RoBERTa outperforms BERT but frames this as the result of the whole bundle of changes together (more data, more training, dynamic masking, tokeniser, dropped NSP), not any single change in isolation"
+        - "NSP made BERT unable to process any sentences"
+        - "Removing NSP doubled BERT's parameter count"
+        - "NSP was never part of BERT's pretraining"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course lists RoBERTa's changes as a set and reports the empirical result that RoBERTa
+      outperforms BERT and other state-of-the-art models on a variety of tasks, without isolating
+      which single change contributes most.
+
+  - topic: "Digital business models"
+    subtopic: "Digital products and omnichannel"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the course define 'digital-only products'?"
+    payload:
+      options:
+        - "Products sold exclusively through a website, regardless of what they are"
+        - "Products that blur the line between the real and digital worlds, such as digital-only clothing, digital art and synthetic media"
+        - "Any product with a barcode"
+        - "Subscription products only"
+    answer_key:
+      correct: 1
+    explanation: >
+      Digital-only products sit alongside super apps (complete ecosystems like Gojek or WeChat)
+      and digital assistants as examples of the drive towards digital-first strategies covered in
+      this topic.

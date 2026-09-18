@@ -1,0 +1,161 @@
+area: "Neural Networks"
+source: "Second Brain/apprenticeship/term-3/Topic 3 - Neural Networks.md"
+questions:
+  - topic: "Perceptrons & Activation Functions"
+    subtopic: "Single perceptron model"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "In a simple, fully connected neural network with one hidden layer, how are the input, hidden and output layers connected?"
+    payload:
+      options:
+        - "All input nodes connect to all hidden layer nodes, and all hidden layer nodes connect to all output nodes"
+        - "Each input node connects to exactly one hidden node"
+        - "Input nodes connect directly to output nodes, bypassing the hidden layer entirely"
+        - "Hidden layer nodes never connect to the output layer"
+    answer_key:
+      correct: 0
+    explanation: >
+      This dense, all-to-all connection pattern is what 'fully connected' means, and it is the
+      baseline architecture that more specialised topologies, such as CNNs and RNNs, depart from.
+
+  - topic: "Perceptrons & Activation Functions"
+    subtopic: "why nonlinearity matters"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say the activation function is what lets a neural network learn non-linear as well as linear patterns?"
+    payload:
+      options:
+        - "Without a non-linear activation function applied after the weighted sum, stacking layers would not let the network model anything beyond a linear relationship between inputs and outputs"
+        - "Activation functions only affect training speed, not what the network can learn"
+        - "Activation functions are optional and rarely used in practice"
+        - "Non-linearity comes from the weights alone, not the activation function"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is why choosing an activation function, sigmoid, tanh or ReLU among others, is one of
+      the fundamental hyperparameter decisions when designing a network.
+
+  - topic: "Backpropagation"
+    subtopic: "forward vs backward pass"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put these steps of the backpropagation algorithm in order."
+    payload:
+      items:
+        - "Use the result to update the weights of the incoming connections"
+        - "Calculate the error for the neurons in the output layer"
+        - "Share the error with each neuron in the preceding layer"
+        - "For each neuron in the preceding layer, sum the errors propagated to it to find the overall error it is responsible for"
+    answer_key:
+      sequence: [1, 2, 3, 0]
+    explanation: >
+      This repeats layer by layer moving backward through the network until the weights between
+      the input neurons and the first hidden layer have been updated, which is why the process is
+      called back-propagation.
+
+  - topic: "Backpropagation"
+    subtopic: "Chain rule"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Only the output layer's neurons can directly know whether their output is right or wrong. How does the rest of the network learn from this?"
+    payload:
+      options:
+        - "The error calculated at the output is propagated backward through the network, layer by layer, so earlier layers' weights can be updated based on their share of responsibility for that error"
+        - "Every neuron independently checks its own output against the training label"
+        - "Only the output layer's weights are ever updated during training"
+        - "Hidden layers are updated randomly, with no connection to the output error"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is the core insight behind backpropagation: credit or blame for the final error is
+      distributed backward through the network according to each connection's contribution.
+
+  - topic: "Backpropagation"
+    subtopic: "weight updates"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In gradient descent, why does a negative slope direction mean weights need increasing, and a positive slope direction mean weights need decreasing?"
+    payload:
+      options:
+        - "Differentiation reveals the direction and steepness of the loss curve; moving weights in the direction that brings the loss down toward its minimum means moving opposite to the sign of the slope"
+        - "The direction of the slope has no bearing on which way weights should move"
+        - "Weights always increase during training, regardless of slope direction"
+        - "Gradient descent ignores the slope entirely and updates weights randomly"
+    answer_key:
+      correct: 0
+    explanation: >
+      Squaring the error before this process, so that Loss equals Error squared, stops positive
+      and negative errors from cancelling out and gives gradient descent a smooth surface to
+      descend.
+
+  - topic: "Backpropagation"
+    subtopic: "weight updates"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say weights should be updated in small increments, with larger steps early in training and smaller steps as the minimum is approached?"
+    payload:
+      options:
+        - "To avoid overshooting the minimum of the loss curve, which large, unmoderated steps risk doing once the model is close to a good solution"
+        - "Small steps always guarantee faster training regardless of proximity to the minimum"
+        - "Step size has no effect on whether the minimum is reached"
+        - "Large steps are always used throughout training, with no reduction over time"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is exactly the role of the learning rate hyperparameter: it sets the step size, and
+      some optimisers adjust it dynamically during training rather than keeping it fixed.
+
+  - topic: "Deep Neural Networks"
+    subtopic: "hidden layers"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does 'model parameters' mean as distinct from 'hyperparameters' in a neural network?"
+    payload:
+      options:
+        - "Model parameters, such as the connection weights, are internal to the network and adjusted automatically during training; hyperparameters, such as the activation function or batch size, are set externally by the operator before training"
+        - "Model parameters and hyperparameters are the same thing"
+        - "Hyperparameters are learned automatically during training, just like weights"
+        - "Model parameters are set manually and never change during training"
+    answer_key:
+      correct: 0
+    explanation: >
+      Tuning hyperparameters such as number of hidden layers, dropout, learning rate, momentum,
+      number of epochs and batch size can significantly affect performance, but usually requires
+      extensive experimentation rather than a formula.
+
+  - topic: "Deep Neural Networks"
+    subtopic: "hidden layers"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the course say you typically approach building a neural network solution as a data scientist, rather than designing an architecture from first principles?"
+    payload:
+      options:
+        - "You rarely build a network entirely from scratch; instead you experiment with existing architectures available via software libraries, set hyperparameters to shape the fit, and train the chosen network on your dataset"
+        - "Every neural network project requires inventing a completely new architecture"
+        - "Software libraries cannot provide ready-to-use neural network architectures"
+        - "Hyperparameters are never adjusted once a library architecture is chosen"
+    answer_key:
+      correct: 0
+    explanation: >
+      This mirrors the broader pattern across the course: practical data science work usually
+      means selecting and configuring existing, well-tested tools rather than building
+      everything from first principles.
+
+  - topic: "Classification & Regression Metrics"
+    area: "Model Evaluation"
+    subtopic: "when to use which metric"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the choice of evaluation metric depend on whether a neural network is being used for classification, regression, or clustering?"
+    payload:
+      options:
+        - "Each task type produces a different kind of output, continuous values for regression versus discrete classes for classification, so the metric must match what is actually being predicted, such as MSE for regression versus precision and recall for classification"
+        - "The same metric works equally well for every task type"
+        - "Evaluation metrics only apply to classification tasks"
+        - "Clustering tasks never need any evaluation metric at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      Choosing an evaluation metric that matches the task and business context is itself a
+      judgement call, not a fixed rule, which is why the course asks learners to justify their
+      own choice for their own application area.

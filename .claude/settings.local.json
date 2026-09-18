@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -m py_compile streamlit_app.py lib/*.py lib/db/*.py app/pages/*.py app/components/*.py scripts/*.py)",
+      "Bash(python -m pip install --quiet --disable-pip-version-check rapidfuzz psycopg-pool)",
+      "Bash(python -m pip install --quiet --disable-pip-version-check pytest rapidfuzz)",
+      "Bash(python -m pytest tests/ -q)",
+      "Bash(python -m pip install -r requirements-dev.txt)",
+      "Bash(python scripts/apply_migrations.py)",
+      "Bash(python scripts/seed_curriculum.py)",
+      "Bash(mkdir -p \"/c/Users/elean/AppData/Local/Temp/claude/c--Users-elean-OneDrive-Documents-Claude-Code-RevisionBot/de2d6caf-ecc6-4f0d-b7da-0390d6c25538/scratchpad\")",
+      "Bash(nohup streamlit run streamlit_app.py --server.headless true)",
+      "Bash(disown)",
+      "Bash(echo \"started, pid $!\")",
+      "Bash(sleep 6 && cat \"/c/Users/elean/AppData/Local/Temp/claude/c--Users-elean-OneDrive-Documents-Claude-Code-RevisionBot/de2d6caf-ecc6-4f0d-b7da-0390d6c25538/scratchpad/streamlit.log\")",
+      "Read(//c/Users/elean/AppData/Local/Temp/claude/c--Users-elean-OneDrive-Documents-Claude-Code-RevisionBot/de2d6caf-ecc6-4f0d-b7da-0390d6c25538/scratchpad/**)"
+    ]
+  }
+}

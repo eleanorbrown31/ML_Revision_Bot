@@ -1,0 +1,207 @@
+area: "Applied Practice & Business Context"
+source: "Second Brain/apprenticeship/term-2/Topic 8 - Visualisation and Deployment.md"
+questions:
+  - topic: "Data visualisation and dashboards"
+    subtopic: "Project vision and intention"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course insist the business objective, not the data itself, should be the starting point of a data story?"
+    payload:
+      options:
+        - "The data story and visualisation need to answer a question tied to the business objective; starting from the data risks manipulating it to fit a pre-made story rather than genuinely finding what matters"
+        - "The business objective is irrelevant once the data has been collected"
+        - "Data should always be visualised before any question is asked"
+        - "Starting from the objective is only relevant for financial data"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's five-step storytelling structure, introduction and context, visualisation,
+      key insights, connecting the dots, and actionable insights, only works if the objective
+      anchors every later step.
+
+  - topic: "Data visualisation and dashboards"
+    subtopic: "Kirk's principles (trustworthy, accessible, elegant)"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of these are named as Tufte's six principles of graphical integrity? Select all that apply."
+    payload:
+      options:
+        - "Proportional numerical quantities: physical representation should be directly proportional to the numbers shown"
+        - "Data variation, not design variation: design choices should not distort the data"
+        - "Avoid nominal or unadjusted money in time-series displays"
+        - "Always use as many colours as possible to maximise visual interest"
+        - "Number of variables should equal the number of dimensions depicted"
+    answer_key:
+      correct: [0, 1, 2, 4]
+    explanation: >
+      Tufte's other two principles are labelling to reduce ambiguity and avoiding unintended
+      context. Maximising colour use for its own sake is not one of them, and can actively work
+      against clarity.
+
+  - topic: "Data visualisation and dashboards"
+    subtopic: "Kirk's principles (trustworthy, accessible, elegant)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Tufte's principle 'data variation, not design variation' warns against what specific practice?"
+    payload:
+      options:
+        - "Letting design choices (such as inconsistent scales or styling across charts) distort how the underlying data is perceived, rather than letting genuine differences in the data itself carry the visual difference"
+        - "Using more than one colour in a single chart"
+        - "Including axis labels on a chart"
+        - "Comparing two different datasets in any context"
+    answer_key:
+      correct: 0
+    explanation: >
+      If several charts appear together on one page, keeping them clearly separated and
+      consistently scaled is part of respecting this principle, so a reader's eye is not misled
+      by formatting rather than by the data.
+
+  - topic: "Data visualisation and dashboards"
+    subtopic: "Explanatory, exhibitory and exploratory"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What question does Tufte recommend asking of any visualisation, to identify its central pattern and judge whether it is engaging?"
+    payload:
+      options:
+        - "'What's the big idea?'"
+        - "'How many colours does it use?'"
+        - "'How long did it take to make?'"
+        - "'Is it interactive?'"
+    answer_key:
+      correct: 0
+    explanation: >
+      This question sits behind Tufte's six principles of informative design, which include
+      showing causality, establishing credibility, using multivariate data, showing comparisons,
+      integrating annotations and focusing on the message.
+
+  - topic: "Storage architectures"
+    area: "Data Engineering"
+    subtopic: "row vs columnar storage"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What kind of data does a GeoPandas GeoDataFrame add to a standard pandas DataFrame, and what Python package handles the underlying geometric objects?"
+    payload:
+      options:
+        - "A geometry column holding spatial data such as points, lines and polygons, handled by the Shapely package built on the GEOS geometry library"
+        - "A column of encrypted values"
+        - "A column of randomly generated test data"
+        - "GeoPandas does not add anything beyond pandas"
+    answer_key:
+      correct: 0
+    explanation: >
+      Reprojecting (changing coordinate reference systems), spatial joins, buffering and
+      calculating area or length are the four common GeoPandas operations the course names.
+
+  - topic: "Model serving"
+    area: "MLOps & Deployment"
+    subtopic: "Batch vs real-time vs streaming inference"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the difference between a synchronous and an asynchronous deployment interface for an ML model, as the course describes them?"
+    payload:
+      options:
+        - "A synchronous interface returns an answer immediately following a request, such as a single prediction; an asynchronous batch interface processes an uploaded file or batch of records, where results may not return immediately"
+        - "Synchronous interfaces are always slower than asynchronous ones"
+        - "The two terms describe the same kind of interface"
+        - "Asynchronous interfaces can only ever handle a single record at a time"
+    answer_key:
+      correct: 0
+    explanation: >
+      Choosing between them depends on the use case: a customer-facing single prediction fits a
+      synchronous interface well, while processing many records at once fits an asynchronous
+      batch job better.
+
+  - topic: "Model serving"
+    area: "MLOps & Deployment"
+    subtopic: "REST endpoints"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say defining input and output interfaces matters, even once a model has a published network endpoint?"
+    payload:
+      options:
+        - "Calling an endpoint is not enough on its own, since the endpoint needs data to work with; other programs can only communicate with it correctly once the expected request and response data structures are defined and published"
+        - "Endpoints do not require any input once published"
+        - "Interfaces only matter for internal tools, never public-facing ones"
+        - "Defining interfaces is optional and rarely done in practice"
+    answer_key:
+      correct: 0
+    explanation: >
+      HTTP, with methods such as POST, GET, PUT, PATCH and DELETE, is the protocol most commonly
+      used for this client-server communication, whether the calling program is internal or
+      external.
+
+  - topic: "Model serving"
+    area: "MLOps & Deployment"
+    subtopic: "REST endpoints"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course warn against using Flask's built-in development server for a production ML deployment?"
+    payload:
+      options:
+        - "Flask's own development server explicitly warns it should not be used in production and recommends a production WSGI server instead, which offers a standardised way to handle requests reliably at scale"
+        - "Flask cannot be used to deploy machine learning models at all"
+        - "The development server is faster than any production alternative"
+        - "WSGI is only relevant to non-Python web frameworks"
+    answer_key:
+      correct: 0
+    explanation: >
+      WSGI (Web Server Gateway Interface) standardises how a web server communicates with web
+      applications, which matters more as deployment scale and reliability requirements grow
+      beyond a small demo.
+
+  - topic: "Model serving"
+    area: "MLOps & Deployment"
+    subtopic: "latency budgets"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Which deployment option does the course suggest for an application expecting a high, variable number of user requests that needs to scale automatically?"
+    payload:
+      options:
+        - "Cloud deployment, since cloud providers offer scaling services such as AWS Lambda or Google Cloud Functions that can auto-scale with demand"
+        - "A standalone app on a single local machine"
+        - "An internal server sized for a fixed, small number of users"
+        - "Deployment decisions never need to account for expected traffic"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course frames deployment choice around several questions: expected frequency of use,
+      who the users are, data sensitivity, expected traffic and acceptable latency, not a single
+      universally correct answer.
+
+  - topic: "Responsible AI"
+    area: "Applied Practice & Business Context"
+    subtopic: "Sources of bias"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "In the course's journal-publisher scenario, an ML system automates keyword selection previously done by a team of readers. What core ethical tension does the course highlight?"
+    payload:
+      options:
+        - "Automating the role saves time and cost but removes the reader's role entirely, illustrating the wider human and societal impact of deploying ML, including job displacement concerns"
+        - "There is no ethical dimension to this kind of automation"
+        - "The concern is purely technical, about keyword accuracy"
+        - "The scenario shows ML deployment always increases headcount"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course recommends good data governance, including a data governance committee and a
+      maintained list of all ML applications across an organisation, as the routine mechanism
+      for surfacing these considerations rather than treating them as an afterthought.
+
+  - topic: "Monitoring & drift"
+    area: "MLOps & Deployment"
+    subtopic: "performance decay"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course insist that deployment is not the end of an ML project's lifecycle?"
+    payload:
+      options:
+        - "Behaviours and the data patterns that capture them change over time, so a model that worked when first deployed can degrade; continual review, retraining and retesting are essential to keep performance acceptable"
+        - "Once deployed, a model never needs to be checked again"
+        - "Monitoring is only relevant for statistical models, not ML models"
+        - "Retraining is only necessary if the original training data is lost"
+    answer_key:
+      correct: 0
+    explanation: >
+      This connects directly to the course's data governance recommendation: a maintained list
+      of deployed ML applications makes it practically possible to monitor all of them, not just
+      the ones a team happens to remember.

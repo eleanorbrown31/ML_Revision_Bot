@@ -1,0 +1,332 @@
+area: "Supervised Learning"
+source: "Second Brain/apprenticeship/term-2/Topic 3 - Supervised Learning - Classifiers.md"
+questions:
+  - topic: "K-Nearest Neighbours"
+    subtopic: "choosing K"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is KNN described as 'lazy learning', and how does it decide the class of a new case?"
+    payload:
+      options:
+        - "KNN does not learn from training data in the usual sense; it memorises the data and, at prediction time, finds the K nearest neighbours by distance and assigns the most frequently occurring label among them"
+        - "KNN trains a mathematical model in advance and discards the training data afterwards"
+        - "Lazy learning means KNN only works overnight in batch jobs"
+        - "KNN assigns the class of the single nearest neighbour only, ignoring K entirely"
+    answer_key:
+      correct: 0
+    explanation: >
+      Because all the work happens at prediction time rather than training time, KNN can be slow
+      and memory-intensive to query on large datasets, even though it is simple to implement.
+
+  - topic: "K-Nearest Neighbours"
+    subtopic: "choosing K"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What happens in KNN when K is even and there is an exact tie between two classes among the neighbours?"
+    payload:
+      options:
+        - "The case cannot be confidently classified; the system might randomly assign a class or return 'not sure'"
+        - "KNN always defaults to the majority class in the whole dataset"
+        - "An even K value is not permitted by the algorithm"
+        - "The tie is broken by picking the class with the higher-numbered label"
+    answer_key:
+      correct: 0
+    explanation: >
+      Trying different K values against a validation dataset is the course's suggested way to
+      find a value that performs well and minimises the practical impact of ties.
+
+  - topic: "Naïve Bayes"
+    subtopic: "Bayes' theorem"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the course's document-classification worked example, why is the denominator P(d) dropped from Bayes' theorem when comparing classes?"
+    payload:
+      options:
+        - "Because P(d) is a constant that is the same for every class being compared, so it does not affect which class has the higher posterior probability"
+        - "Because P(d) is always exactly zero"
+        - "Because dropping terms is required by scikit-learn"
+        - "Because P(d) only matters for regression, not classification"
+    answer_key:
+      correct: 0
+    explanation: >
+      This simplification is what makes naive Bayes fast: comparing unnormalised scores across
+      classes gives the same ranking as comparing full posterior probabilities.
+
+  - topic: "Naïve Bayes"
+    subtopic: "Bayes' theorem"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "In the course's d7 worked example, changing the class split from 50:50 to 80:20 flipped the classification from 'not positive' to 'positive', even though the keyword likelihoods stayed the same. What does this show about the prior probability term?"
+    payload:
+      options:
+        - "The prior probability P(c) can be strong enough to outweigh a modest difference in likelihood, changing the final classification even when the evidence itself is unchanged"
+        - "The prior probability never affects the final classification"
+        - "Priors only matter when likelihoods are exactly equal"
+        - "This shows Bayes' theorem gives inconsistent results and should not be trusted"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is exactly why choosing an accurate class prior matters in practice: an imbalanced
+      training set (reflected in a skewed prior) can shift borderline classifications.
+
+  - topic: "Naïve Bayes"
+    subtopic: "conditional independence assumption"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course frames naive Bayes as a 'generative' learning algorithm, distinct from a 'discriminative' one. What is the distinction?"
+    payload:
+      options:
+        - "A generative algorithm learns a distribution for each class and derives class-membership probability from it; a discriminative algorithm instead learns directly which features most influence each class"
+        - "Generative algorithms cannot be used for classification at all"
+        - "Discriminative algorithms never use probability"
+        - "The two terms describe the same approach"
+    answer_key:
+      correct: 0
+    explanation: >
+      Naive Bayes works well in high dimensions where classes tend to be more separated, but may
+      perform less well with lower-dimensional data, unlike some discriminative classifiers.
+
+  - topic: "Naïve Bayes"
+    subtopic: "Laplace smoothing"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does an unseen word at prediction time cause a problem for naive Bayes, and what is one way to handle it?"
+    payload:
+      options:
+        - "An unseen word has a likelihood of zero for every class, which can zero out the whole probability calculation; smoothing gives new words a small non-zero probability with a lower confidence score instead"
+        - "Unseen words are automatically ignored with no effect on the calculation"
+        - "Unseen words always cause naive Bayes to crash with an error"
+        - "Naive Bayes cannot be used on text data at all because of this problem"
+    answer_key:
+      correct: 0
+    explanation: >
+      This connects to why naive Bayes is described as a good classifier but not always a good
+      estimator: its raw probability outputs should be treated with some caution even when the
+      final classification is reasonable.
+
+  - topic: "Decision Trees"
+    subtopic: "CART"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each decision-tree algorithm to what it added over its predecessor."
+    payload:
+      left:
+        - "ID3"
+        - "C4.5"
+        - "C5"
+        - "CART"
+      right:
+        - "The original algorithm, splitting on pure sets using entropy"
+        - "Handles continuous numbers and missing values, applies pruning, improves attribute selection"
+        - "Introduced boosting: building models in sequence to improve accuracy"
+        - "Uses the Gini index, supports numerical targets, builds binary trees rather than rule sets"
+    answer_key:
+      pairs:
+        "ID3": "The original algorithm, splitting on pure sets using entropy"
+        "C4.5": "Handles continuous numbers and missing values, applies pruning, improves attribute selection"
+        "C5": "Introduced boosting: building models in sequence to improve accuracy"
+        "CART": "Uses the Gini index, supports numerical targets, builds binary trees rather than rule sets"
+    explanation: >
+      This lineage, from Quinlan's ID3 through C4.5 and C5, sits alongside CART as a separate
+      popular family, and shows how boosting entered decision-tree methods before it became a
+      general ensemble technique.
+
+  - topic: "Decision Trees"
+    subtopic: "Gini impurity"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the course's cats-versus-dogs example, why does splitting on 'Likes_Walks' give a much lower Gini score than splitting on 'Long_or_Short_Hair'?"
+    payload:
+      options:
+        - "'Likes_Walks' strongly correlates with being a dog, so splitting on it produces two mostly single-class groups (low mixedness); 'Long_or_Short_Hair' is evenly mixed within both animal classes, so splitting on it leaves both resulting groups still mixed"
+        - "Gini score depends only on the number of features, not on how informative they are"
+        - "'Long_or_Short_Hair' always produces a Gini of exactly 0"
+        - "Gini score cannot distinguish between useful and useless splitting features"
+    answer_key:
+      correct: 0
+    explanation: >
+      A feature that is constant for every record, like 'Has_Four_Legs' in the example, gives
+      close to the maximum possible Gini for a binary split, since it fails to separate the
+      classes at all.
+
+  - topic: "Decision Trees"
+    subtopic: "information gain / entropy"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the course's worked decision-tree example (city consultancy location) illustrate about the epistemic uncertainty concept, when two rows share identical features but opposite decisions?"
+    payload:
+      options:
+        - "The tree cannot make a confident recommendation for that combination, illustrating uncertainty from missing information: the dataset lacks features that would explain the different outcomes, which more relevant data could reduce"
+        - "The tree always picks the more recent row's decision"
+        - "This situation means the algorithm has a bug and must be restarted"
+        - "This is an example of aleatoric uncertainty, which cannot be reduced by more data"
+    answer_key:
+      correct: 0
+    explanation: >
+      Epistemic uncertainty can be reduced by gathering more or better features; aleatoric
+      uncertainty, arising from genuine randomness in the data-generating process, cannot be
+      reduced no matter how much more data is collected.
+
+  - topic: "Decision Trees"
+    subtopic: "pruning (pre/post)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the main trade-off between pre-pruning and post-pruning a decision tree?"
+    payload:
+      options:
+        - "Pre-pruning saves space and processing by stopping growth early, but risks not growing a branch that would have turned out useful; post-pruning lets the tree fully develop first and then cuts back ineffective branches, giving more control but taking longer overall"
+        - "Pre-pruning and post-pruning always give identical trees"
+        - "Post-pruning is always faster than pre-pruning"
+        - "Pruning is only relevant to random forests, not single decision trees"
+    answer_key:
+      correct: 0
+    explanation: >
+      Both aim to reduce overfitting and improve generalisation by removing branches that
+      contribute little to accuracy, just at different points in the tree-building process.
+
+  - topic: "Decision Trees"
+    subtopic: "overfitting in trees"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does the course say a single decision tree becomes more sensitive to noise as it grows deeper?"
+    payload:
+      options:
+        - "As branches get longer, the subsets of data at each node get smaller, so rules become more error-prone and are more likely to be fitting noise rather than genuine pattern"
+        - "Deeper trees are always immune to noise"
+        - "Tree depth has no relationship to overfitting"
+        - "Noise sensitivity only affects the root node, never deeper nodes"
+    answer_key:
+      correct: 0
+    explanation: >
+      Setting a predefined minimum-instance threshold per branch is one way to limit this growth
+      and reduce the risk, alongside pruning after the fact.
+
+  - topic: "Random Forests"
+    subtopic: "Bagging"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does bootstrapping relate to bagging, as the course explains it?"
+    payload:
+      options:
+        - "Bootstrapping estimates a quantity by taking repeated random samples and averaging results; bagging (bootstrap aggregation) applies this procedure to a high-variance algorithm, typically decision trees, which is exactly what random forest does with its underlying trees"
+        - "Bagging and bootstrapping are unrelated techniques"
+        - "Bootstrapping only applies to neural networks"
+        - "Bagging removes the need for any random sampling"
+    answer_key:
+      correct: 0
+    explanation: >
+      The averaged bootstrap estimate converges closer to the true population value than any
+      single sample would, which is the statistical principle underlying why aggregating many
+      trees outperforms any single one.
+
+  - topic: "Random Forests"
+    subtopic: "variance reduction"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which advantages does the course list for random forest over a single decision tree? Select all that apply."
+    payload:
+      options:
+        - "More resistant to overfitting, since not all trees in the forest overfit in the same way"
+        - "More accurate, because it aggregates many trees rather than relying on one"
+        - "Resistant to noise and outliers, since it is unlikely all trees share the same noise or outliers"
+        - "Always faster to train than a single decision tree"
+        - "Always more explainable than a single decision tree"
+    answer_key:
+      correct: [0, 1, 2]
+    explanation: >
+      Random forest is actually more computationally complex and less explainable than a single
+      decision tree, since many trees each contribute to the final majority-vote or averaged
+      decision.
+
+  - topic: "Random Forests"
+    subtopic: "feature importance"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How can a random forest be used for feature selection, beyond just making predictions?"
+    payload:
+      options:
+        - "It can estimate feature relevance from the entropy or Gini reduction measured while growing each tree, which aids feature selection and dimensionality reduction"
+        - "Random forests cannot say anything about which features matter"
+        - "Feature relevance can only be estimated by removing features one at a time and retraining from scratch"
+        - "Feature importance is only available for regression forests, never classification forests"
+    answer_key:
+      correct: 0
+    explanation: >
+      This byproduct of training is one of the reasons random forest is popular beyond raw
+      predictive accuracy: it gives some insight into which inputs are actually doing useful
+      work.
+
+  - topic: "Boosting (AdaBoost, Gradient Boosting, XGBoost)"
+    area: "Ensemble Methods"
+    subtopic: "Sequential learning"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does boosting (as introduced by C5) differ fundamentally from bagging (as used by random forest) in how its base models are built?"
+    payload:
+      options:
+        - "Boosting builds models in sequence, with each new model focusing on cases the previous model misclassified; bagging trains many models independently and in parallel on different bootstrap samples"
+        - "Boosting and bagging are the same technique with different names"
+        - "Bagging always builds models in sequence"
+        - "Boosting cannot be used with decision trees"
+    answer_key:
+      correct: 0
+    explanation: >
+      A boosted model classifies a case by applying every model in the sequence and combining
+      results through weighted voting, which is why boosting usually improves accuracy but takes
+      longer to train.
+
+  - topic: "Boosting (AdaBoost, Gradient Boosting, XGBoost)"
+    area: "Ensemble Methods"
+    subtopic: "gradient boosting intuition"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is gradient boosting called 'gradient' boosting, and what role does the learning rate play?"
+    payload:
+      options:
+        - "Predictions in each iteration follow the gradient of the loss function, gradually reducing it towards zero; the learning rate limits how much each new tree moves predictions toward the true value, since adding the full error back each time would overfit"
+        - "It is named after a mathematician called Gradient"
+        - "The learning rate controls how many trees are built in total, nothing else"
+        - "Gradient boosting does not use a loss function at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      Each new tree in the sequence targets the residual errors of the previous tree, and the
+      learning rate keeps each correction modest so the ensemble converges smoothly rather than
+      overshooting.
+
+  - topic: "Boosting (AdaBoost, Gradient Boosting, XGBoost)"
+    area: "Ensemble Methods"
+    subtopic: "XGBoost vs LightGBM tradeoffs"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is XGBoost, and what does the course say distinguishes LightGBM from it?"
+    payload:
+      options:
+        - "XGBoost is a scalable, currently dominant gradient-boosted decision tree library designed for accuracy; LightGBM is a gradient boosting framework designed specifically for speed and lower memory usage"
+        - "XGBoost and LightGBM are the exact same library under different names"
+        - "LightGBM cannot be used with decision trees"
+        - "XGBoost is slower than every other machine learning library by design"
+    answer_key:
+      correct: 0
+    explanation: >
+      Both are named as notable gradient-boosting products, giving practitioners a choice
+      between XGBoost's dominance on tabular-data accuracy and LightGBM's efficiency focus.
+
+  - topic: "Boosting (AdaBoost, Gradient Boosting, XGBoost)"
+    area: "Ensemble Methods"
+    subtopic: "gradient boosting intuition"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "What does sklearn's Histogram Gradient Boosting Model (HGBM) do differently to reduce computational cost compared with standard gradient boosting?"
+    payload:
+      options:
+        - "It groups feature values into bins and bases calculations on aggregates of the binned values rather than every individual feature value"
+        - "It skips building any trees at all"
+        - "It removes the learning rate hyperparameter entirely"
+        - "It only works on datasets with fewer than 100 rows"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course describes HGBM as possibly one of the most useful supervised learning models in
+      scikit-learn, iteratively fitting each tree to the negative gradient of the loss function
+      with respect to the predicted value.

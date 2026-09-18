@@ -1,0 +1,204 @@
+area: "Applied Practice & Business Context"
+source: "Second Brain/apprenticeship/term-2/Topic 1 - Machine Learning and Regression.md"
+questions:
+  - topic: "Data science foundations"
+    subtopic: "Data science myths"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "The course gives two different categorisations of the four main types of machine learning. What is the key difference between them, and what does the course say about which is 'correct'?"
+    payload:
+      options:
+        - "The standard categorisation lists supervised, unsupervised, reinforcement and semi-supervised; the BCS technical test syllabus swaps reinforcement learning for deep learning instead. Either is acceptable in a professional discussion as long as you can justify it"
+        - "Only the BCS categorisation is ever correct"
+        - "The two categorisations are identical"
+        - "There is only one true categorisation and disagreement is not permitted"
+    answer_key:
+      correct: 0
+    explanation: >
+      Being able to justify and explain a categorisation matters more than picking the 'right'
+      one, which reflects how genuinely contested some ML taxonomy questions are.
+
+  - topic: "Data science foundations"
+    subtopic: "Data science myths"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "How does the course say a machine learning hypothesis differs from a statistical hypothesis and a scientific hypothesis?"
+    payload:
+      options:
+        - "A machine learning hypothesis is a candidate model approximating a target function for mapping inputs to outputs; it is closer to a scientific hypothesis (covers available evidence, is 'sort-of' falsifiable against a baseline) than to a statistical null/alternative hypothesis"
+        - "They are all exactly the same concept"
+        - "A machine learning hypothesis has nothing to do with data"
+        - "A statistical hypothesis and a machine learning hypothesis both require a control group"
+    answer_key:
+      correct: 0
+    explanation: >
+      Learning is framed as a search through the hypothesis space: each algorithm configuration
+      produces one candidate hypothesis, and training data is used to learn one while test data
+      evaluates it.
+
+  - topic: "Feature Engineering & Selection"
+    area: "Feature Engineering"
+    subtopic: "One-hot encoding"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course recommend simply mapping a binary categorical variable (like heads/tails) to 0 or 1, rather than one-hot encoding it?"
+    payload:
+      options:
+        - "One-hot encoding a binary variable would still work but adds an unnecessary extra column, since a single 0/1 mapping already captures the same information"
+        - "Binary variables cannot be one-hot encoded at all"
+        - "0/1 mapping is illegal in scikit-learn"
+        - "One-hot encoding always improves model accuracy"
+    answer_key:
+      correct: 0
+    explanation: >
+      One-hot encoding turns each category value into its own column, which is necessary when
+      there are more than two categories with no natural order, but is overkill for a genuinely
+      binary field.
+
+  - topic: "Cross-Validation"
+    area: "Model Evaluation"
+    subtopic: "train/validation/test split rationale"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course recommend a train-validate-test triple (three subsets) as the gold standard, rather than a simple train-test split?"
+    payload:
+      options:
+        - "Using the same held-back data for both hyperparameter tuning and final evaluation would bias the result, since that data would already have influenced the model; a separate validation set (or cross-validation) is needed for tuning, keeping the test set genuinely unseen"
+        - "Three subsets are required by scikit-learn's API"
+        - "A validation set is only needed for unsupervised learning"
+        - "Splitting into three subsets always improves accuracy"
+    answer_key:
+      correct: 0
+    explanation: >
+      Cross-validation offers a practical alternative that folds the validation step into
+      training without needing a permanently separate validation dataset.
+
+  - topic: "Cross-Validation"
+    area: "Model Evaluation"
+    subtopic: "K-fold CV"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In 5-fold cross-validation, what happens across the 5 iterations of training?"
+    payload:
+      options:
+        - "The training data is split into 5 folds; each iteration holds out a different fold for validation while training on the rest, and the reserved separate test set is used only for a final evaluation after all iterations"
+        - "The same fold is used for validation every time"
+        - "5-fold CV requires 5 completely separate datasets collected independently"
+        - "Cross-validation replaces the need for a test set entirely"
+    answer_key:
+      correct: 0
+    explanation: >
+      This combines the train and validate phases, removing the need for a permanently separate
+      validation dataset while still giving every data point a turn at being validated on.
+
+  - topic: "Classification & Regression Metrics"
+    area: "Model Evaluation"
+    subtopic: "when to use which metric"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "For a regression problem, which group of metrics does the course say applies, as opposed to a classification problem?"
+    payload:
+      options:
+        - "MSE, MAE, RMSE and R-squared for regression; accuracy, precision, recall and F1 for classification"
+        - "Precision and recall apply equally to both regression and classification"
+        - "R-squared is used only for classification problems"
+        - "Confusion matrices apply to regression, not classification"
+    answer_key:
+      correct: 0
+    explanation: >
+      Regression predicts a continuous value and needs error-distance metrics; classification
+      predicts a discrete class and needs metrics built from true/false positive and negative
+      counts.
+
+  - topic: "Classification & Regression Metrics"
+    area: "Model Evaluation"
+    subtopic: "ROC curve and AUC"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "On an ROC curve, what does the point (0.0, 1.0) represent, and what does the diagonal line from (0,0) to (1,1) represent?"
+    payload:
+      options:
+        - "(0.0, 1.0) represents a perfect classifier (no false positives, all true positives); the diagonal represents a random classifier"
+        - "(0.0, 1.0) represents a random classifier; the diagonal represents a perfect classifier"
+        - "Both represent the same thing"
+        - "Neither point has any meaning on an ROC curve"
+    answer_key:
+      correct: 0
+    explanation: >
+      The ROC curve plots false positive rate against true positive rate across different
+      decision thresholds; curves closer to the top-left corner are better, curves closer to the
+      diagonal are worse.
+
+  - topic: "Classification & Regression Metrics"
+    area: "Model Evaluation"
+    subtopic: "class imbalance strategies"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why can a high accuracy score be misleading on an imbalanced dataset, and what does the course suggest instead?"
+    payload:
+      options:
+        - "When one class greatly outnumbers the other, a model can score high accuracy while performing poorly on the minority class of interest; balanced accuracy, per-class metrics, or SMOTE oversampling are suggested instead"
+        - "Accuracy is never misleading, regardless of class balance"
+        - "The fix is to always delete the minority class"
+        - "F1 score cannot be used on imbalanced data"
+    answer_key:
+      correct: 0
+    explanation: >
+      Balanced accuracy uses sensitivity and specificity for a fairer overall measure; SMOTE
+      (Synthetic Minority Oversampling Technique) instead rebalances the dataset itself before
+      training.
+
+  - topic: "Bias-Variance Tradeoff"
+    area: "Model Evaluation"
+    subtopic: "underfitting vs overfitting"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the course's polynomial regression activity, what pattern in training versus test RMSE signals overfitting?"
+    payload:
+      options:
+        - "Training RMSE stays low while test RMSE is much higher, because the model has fit the training data's noise rather than the underlying pattern"
+        - "Both training and test RMSE are high and roughly equal"
+        - "Training RMSE is high while test RMSE is low"
+        - "RMSE has no relationship to overfitting"
+    answer_key:
+      correct: 0
+    explanation: >
+      In the worked example, polynomial orders 8 to 10 overfit while orders 0 and 1 underfit;
+      order 2 gave the best balance, with low test RMSE and no sign of either problem.
+
+  - topic: "Bias-Variance Tradeoff"
+    area: "Model Evaluation"
+    subtopic: "Bias definition"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the course mean by 'bias' in the bias-variance trade-off, and what kind of model shows high bias?"
+    payload:
+      options:
+        - "Bias refers to over-simplistic model assumptions from too few features or too little training data; an underfitting model shows high bias"
+        - "Bias only refers to biased training data collection, not model behaviour"
+        - "High bias models always overfit"
+        - "Bias and variance always move in the same direction"
+    answer_key:
+      correct: 0
+    explanation: >
+      Variance is the model's sensitivity to changes in the training data. As a model gets more
+      complex, bias tends to fall but variance tends to rise, which is the trade-off itself.
+
+  - topic: "Bias-Variance Tradeoff"
+    area: "Model Evaluation"
+    subtopic: "model complexity curve"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does adding more features and training data typically reduce bias but increase variance?"
+    payload:
+      options:
+        - "A more complex model can capture more of the true underlying pattern (lower bias), but becomes more sensitive to the specific quirks of whichever training data it saw (higher variance)"
+        - "More features always reduce both bias and variance simultaneously"
+        - "Training data volume has no effect on either bias or variance"
+        - "Variance only depends on the choice of programming library"
+    answer_key:
+      correct: 0
+    explanation: >
+      This trade-off is why model selection is not simply 'always use the most complex model
+      available': the sweet spot balances fitting the true pattern against overreacting to
+      training noise.

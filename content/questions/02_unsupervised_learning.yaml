@@ -1,0 +1,174 @@
+area: "Unsupervised Learning"
+questions:
+  - topic: "K-Means Clustering"
+    subtopic: "elbow method"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does the 'elbow method' help you choose when using K-means?"
+    payload:
+      options:
+        - "The number of clusters, K"
+        - "The distance metric to use"
+        - "The initial centroid positions"
+        - "The maximum number of iterations"
+    answer_key:
+      correct: 0
+    explanation: >
+      The elbow method plots within-cluster sum of squares (WCSS/inertia) against different
+      values of K; the point where the improvement sharply levels off (the "elbow") is used as
+      a reasonable choice for K.
+
+  - topic: "K-Means Clustering"
+    subtopic: "K-means++"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What problem does K-means++ initialisation solve compared to random centroid initialisation?"
+    payload:
+      options:
+        - "It removes the need to specify K in advance"
+        - "It reduces the chance of poor clustering caused by centroids starting close together"
+        - "It converts K-means into a hierarchical method"
+        - "It guarantees the globally optimal clustering"
+    answer_key:
+      correct: 1
+    explanation: >
+      K-means++ spreads out the initial centroids probabilistically (favouring points far from
+      existing centroids), reducing the chance of poor, unlucky initialisations that random
+      placement can produce -- though it doesn't guarantee a global optimum.
+
+  - topic: "Hierarchical Clustering"
+    subtopic: "Agglomerative vs divisive"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "How does agglomerative hierarchical clustering build its cluster tree?"
+    payload:
+      options:
+        - "Bottom-up: starting with each point as its own cluster and repeatedly merging the closest pair"
+        - "By randomly assigning points to K clusters and iterating"
+        - "By expanding clusters outward from dense regions"
+        - "Top-down: starting with one cluster and repeatedly splitting it"
+    answer_key:
+      correct: 0
+    explanation: >
+      Agglomerative clustering is bottom-up: every point starts as its own cluster, and the two
+      closest clusters are merged repeatedly until one cluster remains (or a stopping criterion
+      is met). Divisive clustering works top-down instead.
+    distractor_notes:
+      "Top-down: starting with one cluster and repeatedly splitting it": "That describes divisive clustering, the opposite approach."
+      "By expanding clusters outward from dense regions": "That describes density-based clustering like DBSCAN, not hierarchical clustering."
+
+  - topic: "Hierarchical Clustering"
+    subtopic: "linkage methods (single, complete, average, Ward's)"
+    difficulty: "F2"
+    format: "fill"
+    stem: "Complete the sentence about hierarchical clustering linkage methods."
+    payload:
+      template: "The ___ linkage method merges the two clusters whose merger causes the smallest increase in total within-cluster variance."
+    answer_key:
+      blanks:
+        - ["ward", "ward's", "wards"]
+    explanation: >
+      Ward's linkage minimises the increase in total within-cluster variance at each merge step,
+      which tends to produce compact, similarly-sized clusters compared to single or complete linkage.
+
+  - topic: "DBSCAN"
+    subtopic: "Core, border, noise points"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "In DBSCAN, what is a 'noise' point?"
+    payload:
+      options:
+        - "A point that is neither a core point nor within reach of a core point, so it isn't assigned to any cluster"
+        - "Any point with fewer than 2 features"
+        - "A point at the exact centre of a cluster"
+        - "A point that has been mislabelled in the training data"
+    answer_key:
+      correct: 0
+    explanation: >
+      DBSCAN classifies points as core (enough neighbours within epsilon), border (within reach
+      of a core point but not core themselves), or noise (neither) -- noise points are simply
+      left unclustered as outliers.
+
+  - topic: "DBSCAN"
+    subtopic: "advantages over K-means"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a key advantage DBSCAN has over K-means?"
+    payload:
+      options:
+        - "It requires no parameters to be set at all"
+        - "It never leaves any points unclustered"
+        - "It can find clusters of arbitrary shape and doesn't require specifying the number of clusters in advance"
+        - "It always runs faster than K-means"
+    answer_key:
+      correct: 2
+    explanation: >
+      DBSCAN groups points by density rather than distance to a centroid, so it can discover
+      non-convex, arbitrarily shaped clusters and automatically decide how many clusters exist --
+      something K-means, which assumes roughly spherical clusters and a fixed K, cannot do.
+
+  - topic: "PCA & Dimensionality Reduction"
+    subtopic: "explained variance ratio"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does the 'explained variance ratio' of a principal component tell you?"
+    payload:
+      options:
+        - "The classification accuracy achieved using only that component"
+        - "The proportion of the total variance in the data captured by that component"
+        - "The number of original features it replaces"
+        - "The correlation between that component and the target variable"
+    answer_key:
+      correct: 1
+    explanation: >
+      Each principal component's explained variance ratio is the fraction of the dataset's total
+      variance it accounts for; summing the ratios for the first few components tells you how
+      much information you'd keep by reducing to that many dimensions.
+
+  - topic: "PCA & Dimensionality Reduction"
+    subtopic: "Eigenvalues and eigenvectors"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "In PCA, what do the eigenvectors of the covariance matrix represent?"
+    payload:
+      options:
+        - "The directions (principal components) along which the data varies the most"
+        - "The classification decision boundary"
+        - "The original feature axes, unchanged"
+        - "The cluster centroids"
+    answer_key:
+      correct: 0
+    explanation: >
+      PCA finds the eigenvectors of the data's covariance matrix; these are the orthogonal
+      directions of maximum variance (the principal components), and their corresponding
+      eigenvalues indicate how much variance lies along each direction.
+
+  - topic: "K-Means Clustering"
+    subtopic: "limitations (non-convex clusters)"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each technique to its defining characteristic."
+    payload:
+      left:
+        - "K-Means"
+        - "DBSCAN"
+        - "Hierarchical Clustering"
+        - "PCA"
+      right:
+        - "Reduces dimensionality by projecting data onto directions of maximum variance"
+        - "Builds a tree of nested clusters by repeatedly merging or splitting"
+        - "Groups points by density, can find arbitrarily shaped clusters and doesn't need K specified upfront"
+        - "Partitions data into K clusters by minimising distance to centroids, assumes roughly spherical clusters"
+    answer_key:
+      pairs:
+        "K-Means": "Partitions data into K clusters by minimising distance to centroids, assumes roughly spherical clusters"
+        "DBSCAN": "Groups points by density, can find arbitrarily shaped clusters and doesn't need K specified upfront"
+        "Hierarchical Clustering": "Builds a tree of nested clusters by repeatedly merging or splitting"
+        "PCA": "Reduces dimensionality by projecting data onto directions of maximum variance"
+    explanation: >
+      K-Means and DBSCAN are both clustering methods but make very different assumptions --
+      K-Means wants roughly round, evenly-sized clusters and a known K; DBSCAN finds clusters of
+      any shape based on density and figures out how many there are itself. Hierarchical
+      clustering doesn't commit to a fixed number of clusters at all -- it builds a full tree you
+      can cut at any level. PCA isn't clustering at all -- it's a dimensionality-reduction
+      technique that finds the directions of maximum variance in the data.

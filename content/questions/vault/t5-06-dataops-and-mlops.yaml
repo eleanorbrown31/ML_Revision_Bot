@@ -1,0 +1,293 @@
+area: "Data-Driven Transformation & Leadership"
+source: "Second Brain/apprenticeship/term-5/Topic 6 - DataOps and MLOps.md"
+questions:
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "Dynamic transformation and Kaizen"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why do Carruthers and Jackson call their model 'dynamic' data-driven business transformation?"
+    payload:
+      options:
+        - "Because it uses real-time dashboards"
+        - "Because a final end state is never reached: new data, people, behaviours, environments and technologies keep creating new horizons"
+        - "Because it changes the org chart every quarter"
+        - "Because it is delivered by a dynamic external team"
+    answer_key:
+      correct: 1
+    explanation: >
+      The vision of an end state matters at the outset, but the end state is not absolute.
+      Models need periodic checking and updating, and the organisation must keep looking for new
+      ways to use data. This aligns with Schmarzo's Horizon 3.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "Dynamic transformation and Kaizen"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of the following are among the ten Kaizen principles listed in the course? Select all that apply."
+    payload:
+      options:
+        - "Let go of assumptions and perfectionism"
+        - "Ask why five times to reach the root cause"
+        - "Wait for senior approval before fixing any problem"
+        - "Create an environment where everyone feels empowered to contribute"
+        - "Use creativity to find low-cost, small improvements"
+        - "Accept the status quo once targets are met"
+    answer_key:
+      correct: [0, 1, 3, 4]
+    explanation: >
+      Kaizen means 'change for the better' and relies on respect for people and a
+      non-hierarchical culture. Its principles include being proactive, not accepting the status
+      quo, iterative change, looking for solutions as mistakes appear, gathering many opinions,
+      and never stopping improving.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "People barriers (inertia, doubt, cynicism)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Of the three human barriers to transformation, which does the course say is best countered by demonstration rather than by leadership alone?"
+    payload:
+      options:
+        - "Inertia"
+        - "Doubt"
+        - "Cynicism"
+        - "All three are countered only by leadership"
+    answer_key:
+      correct: 2
+    explanation: >
+      Good leadership can counter inertia and doubt. Cynicism needs robust discussion,
+      explanation of how the transformation will work, and demonstrations, which is why so many
+      change methods emphasise quick wins.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "DevOps principles"
+    difficulty: "F1"
+    format: "multi"
+    stem: "Which are the key DevOps principles listed in the course? Select all that apply."
+    payload:
+      options:
+        - "Collaboration: breaking down silos between development and operations"
+        - "Automation of repetitive tasks"
+        - "Continuous integration and continuous delivery"
+        - "Monitoring performance and infrastructure"
+        - "Annual big-bang releases"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      DevOps is a cultural philosophy, a set of practices and a toolset for streamlining the
+      software lifecycle. It was built for software rather than data or AI, but its principles
+      are borrowed for DataOps and MLOps.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "DevOps principles"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why do Carruthers and Jackson argue for less emphasis on projects once a transformation reaches its dynamic phase?"
+    payload:
+      options:
+        - "Because projects are always over budget"
+        - "Because improvements become frequent and often too small to justify a project, so a rapid, agile continuous-improvement delivery method fits better"
+        - "Because project managers resist data"
+        - "Because regulators prefer continuous change"
+    answer_key:
+      correct: 1
+    explanation: >
+      Projects are not ruled out; it depends on the nature of the change. The organisation needs
+      a delivery method that supports rapid, agile delivery whether through projects or smaller
+      changes, which is where DevOps-style practices fit.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "DataOps definition and manifesto"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What did Ereth's 2018 research conclude about DataOps after interviewing industry experts?"
+    payload:
+      options:
+        - "That it is a specific software product"
+        - "That it is broad in character: not a particular method or tool but a collection of principles and a way of doing things at cultural, organisational and technological levels"
+        - "That it is identical to DevOps"
+        - "That it only applies to data warehousing"
+    answer_key:
+      correct: 1
+    explanation: >
+      Only one expert selected every listed goal and principle as part of their own
+      understanding. Goals included continuous improvement, orchestration, empowerment of citizen
+      users, agility and collaboration; principles included reuse of artefacts, automation,
+      analytics as code, testing and monitoring.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "DataOps definition and manifesto"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "How does the DataOps manifesto differ from the Agile manifesto it was modelled on?"
+    payload:
+      options:
+        - "It drops customer collaboration"
+        - "It swaps 'working software' for 'working analytics' and adds a fifth value: cross-functional ownership of operations over siloed responsibilities, alongside experimentation over extensive upfront design"
+        - "It has only two values"
+        - "It replaces individuals and interactions with processes and tools"
+    answer_key:
+      correct: 1
+    explanation: >
+      The Agile manifesto has four values; the DataOps manifesto (2017) has five. The additions
+      reflect the data context: experimentation, iteration and feedback over upfront design, and
+      shared ownership across the data architects, engineers, scientists, DBAs, governance
+      specialists and analysts a DataOps team needs.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "MLOps principles and manifesto"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each MLOps manifesto principle to its test."
+    payload:
+      left:
+        - "Reproducible"
+        - "Accountable"
+        - "Collaborative"
+        - "Continuous"
+      right:
+        - "Able to trace back from a production model to its provenance"
+        - "Able to deploy automatically and monitor statistically"
+        - "Able to retrain a nine-month-old model to within a few percent"
+        - "Able to do asynchronous collaboration"
+    answer_key:
+      pairs:
+        "Reproducible": "Able to retrain a nine-month-old model to within a few percent"
+        "Accountable": "Able to trace back from a production model to its provenance"
+        "Collaborative": "Able to do asynchronous collaboration"
+        "Continuous": "Able to deploy automatically and monitor statistically"
+    explanation: >
+      The MLOps manifesto is more a maturity checklist than a movement, with fewer signatories
+      than the DataOps manifesto. Each principle is phrased as a concrete capability you can
+      test for.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "MLOps principles and manifesto"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does 'continuous training' mean in Wallace's MLOps principles?"
+    payload:
+      options:
+        - "Staff attend training every week"
+        - "Models are automatically retrained in production and ready to deploy without manual intervention"
+        - "The same model is trained once and never changed"
+        - "Training data is streamed continuously to analysts"
+    answer_key:
+      correct: 1
+    explanation: >
+      Alongside continuous delivery, testing and monitoring, continuous training keeps models
+      current as data changes. Continuous monitoring ensures models perform in the wild and can
+      revert to previous versions on failure.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "MLOps principles and manifesto"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put these stages of the MLOps cycle in the order the course gives them, starting from data preparation."
+    payload:
+      items:
+        - "Deploy"
+        - "Develop"
+        - "Monitor"
+        - "Data prep"
+        - "Train"
+        - "Inference"
+        - "Review"
+    answer_key:
+      sequence: [3, 1, 4, 6, 0, 5, 2]
+    explanation: >
+      Data prep, develop, train, review, deploy, inference, monitor, then exploratory data
+      analysis feeds back into data prep. In larger systems ML (data and model), Dev (plan,
+      create, verify, package) and Ops (release, configure, monitor) interlock.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "Data lake, lakehouse and data fabric"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the trade-off the course identifies when moving structured data from a warehouse into a lakehouse?"
+    payload:
+      options:
+        - "Integration becomes more convenient, but data that was carefully curated in the warehouse now needs stronger governance inside the lakehouse"
+        - "Storage becomes cheaper but queries become impossible"
+        - "Governance becomes automatic"
+        - "Unstructured data can no longer be stored"
+    answer_key:
+      correct: 0
+    explanation: >
+      Lakes hold any data type with relaxed governance; warehouses require tabular structure
+      with strong management. A lakehouse holds both, so schema enforcement, transaction
+      support, BI support, decoupled storage and compute, openness and APIs become desirable
+      features.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "Data lake, lakehouse and data fabric"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What caution does the course give about data fabric products?"
+    payload:
+      options:
+        - "They cannot handle metadata"
+        - "They often lock you into one supplier because most only work with their own products, so an interoperable open architecture is desirable but harder to set up"
+        - "They are only available on-premises"
+        - "They replace the need for data engineers"
+    answer_key:
+      correct: 1
+    explanation: >
+      Gartner defines data fabric as an integrated layer of connected data over distributed
+      sources, enabled by metadata management, semantic knowledge graphs and embedded machine
+      learning. Building your own is the alternative to vendor lock-in. Microsoft Fabric is the
+      named example, built on a lakehouse using Delta Lake.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "Data lake, lakehouse and data fabric"
+    difficulty: "F1"
+    format: "multi"
+    stem: "Which technologies does the course list as needed to achieve DataOps and MLOps? Select all that apply."
+    payload:
+      options:
+        - "Version control such as Git"
+        - "CI/CD pipelines"
+        - "Containerisation such as Docker and orchestration such as Kubernetes"
+        - "Monitoring and alerting services"
+        - "A mainframe batch scheduler"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      The underlying technology must emphasise automation, pipelines and suitable APIs. Version
+      control, CI/CD, containers, orchestration, monitoring and alerting are the named building
+      blocks.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "Cloud vs on-premises for DataOps"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A regulated organisation wants full control over its ML tooling and is worried about running out of capacity. How does the course frame the cloud versus on-premises choice?"
+    payload:
+      options:
+        - "On-premises gives full control and can be faster on dedicated hardware, but scaling means buying hardware and you can run out of space or power; cloud gives scalability, collaboration and managed services with easier maintenance"
+        - "Cloud is always cheaper and always faster"
+        - "On-premises is no longer a valid option"
+        - "The choice makes no difference to DataOps"
+    answer_key:
+      correct: 0
+    explanation: >
+      Neither is universally right. A technology plan mapped to the business plan and overseen
+      by enterprise and data architects should weigh legacy maintenance against adopting new
+      technology as part of one overall plan.
+
+  - topic: "DataOps and MLOps cultures"
+    subtopic: "MLOps principles and manifesto"
+    difficulty: "F1"
+    format: "multi"
+    stem: "Which roles does the course list as needed in an MLOps team? Select all that apply."
+    payload:
+      options:
+        - "Data scientist and data engineer"
+        - "MLOps engineer and ML architect"
+        - "Software engineer and DevOps engineer"
+        - "Chief Experience Officer"
+    answer_key:
+      correct: [0, 1, 2]
+    explanation: >
+      A DataOps team adds database administrators, data governance specialists and data
+      analysts instead. The Chief Experience Officer belongs to the experience economy in Term
+      4, not to an MLOps team.

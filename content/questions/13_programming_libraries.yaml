@@ -1,0 +1,185 @@
+area: "Programming & Libraries"
+questions:
+  - topic: "Python for data science"
+    subtopic: "why Python loops are slow"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Why is a plain Python for-loop over a large NumPy array typically much slower than a vectorised NumPy operation on the same array?"
+    payload:
+      options:
+        - "Each iteration of a Python loop carries interpreter overhead, while vectorised operations run in compiled C code across the whole array at once"
+        - "Python loops always use more memory than vectorised code"
+        - "NumPy arrays cannot be looped over at all"
+        - "Vectorised operations only work on integers"
+    answer_key:
+      correct: 0
+    explanation: >
+      A Python for-loop processes one element at a time, with the interpreter re-doing
+      type-checking and dispatch overhead on every single iteration. NumPy's vectorised
+      operations push that loop down into pre-compiled C code that operates on the whole array in
+      one call, avoiding per-element Python overhead entirely.
+
+  - topic: "Python for data science"
+    subtopic: "broadcasting"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does 'broadcasting' allow you to do in NumPy?"
+    payload:
+      options:
+        - "Convert an array to a Python list"
+        - "Automatically parallelise any function across all CPU cores"
+        - "Send an array to multiple machines in a cluster"
+        - "Perform element-wise operations between arrays of different (but compatible) shapes, without explicitly copying data to match their shapes"
+    answer_key:
+      correct: 3
+    explanation: >
+      Broadcasting lets NumPy apply an operation (like addition) between arrays of different
+      shapes -- e.g. a (3,4) array and a (4,) array -- by implicitly stretching the smaller
+      array's dimensions to match, without actually copying the data. This makes common patterns
+      like adding a per-column offset concise and efficient.
+
+  - topic: "ML libraries"
+    subtopic: "scikit-learn API (fit / transform / predict)"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the difference between .fit() and .predict() on a scikit-learn estimator?"
+    payload:
+      options:
+        - "fit() can only be called once per Python session"
+        - "fit() learns parameters from the training data; predict() uses those learned parameters to generate outputs on new data"
+        - "fit() generates predictions; predict() only computes accuracy"
+        - "They are interchangeable and do the same thing"
+    answer_key:
+      correct: 1
+    explanation: >
+      fit() is where learning happens -- the estimator computes and stores whatever parameters it
+      needs from the training data (e.g. coefficients, splits, centroids). predict() then applies
+      those already-learned parameters to produce outputs on new (or the same) data, without
+      changing them further.
+
+  - topic: "ML libraries"
+    subtopic: "eager vs graph execution"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the key difference between eager execution and graph (define-then-run) execution in a deep learning framework?"
+    payload:
+      options:
+        - "They produce different, incompatible model architectures"
+        - "Graph execution cannot use automatic differentiation"
+        - "Eager execution runs operations immediately as they're called, making debugging easier; graph execution builds a computation graph first, which can then be optimised before running"
+        - "Eager execution only works on CPUs"
+    answer_key:
+      correct: 2
+    explanation: >
+      Eager execution (PyTorch's historical default) runs each operation immediately, like normal
+      Python code, which makes debugging with standard tools straightforward. Graph execution
+      (TensorFlow 1.x's original model) builds a static computation graph first and runs it
+      afterward, which enables certain whole-graph optimisations at the cost of a less immediate
+      debugging experience -- though modern frameworks increasingly blend both approaches.
+
+  - topic: "ML libraries"
+    subtopic: "scikit-learn API (fit / transform / predict)"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each Python library to its primary purpose."
+    payload:
+      left:
+        - "NumPy"
+        - "pandas"
+        - "scikit-learn"
+        - "PyTorch"
+      right:
+        - "A deep learning framework built around tensors and automatic differentiation"
+        - "Provides fast array operations and the numerical foundation many other libraries build on"
+        - "A general-purpose machine learning library with a consistent fit/predict API for classical algorithms"
+        - "Provides labelled, tabular data structures (DataFrames) for cleaning and analysing structured data"
+    answer_key:
+      pairs:
+        "NumPy": "Provides fast array operations and the numerical foundation many other libraries build on"
+        "pandas": "Provides labelled, tabular data structures (DataFrames) for cleaning and analysing structured data"
+        "scikit-learn": "A general-purpose machine learning library with a consistent fit/predict API for classical algorithms"
+        "PyTorch": "A deep learning framework built around tensors and automatic differentiation"
+    explanation: >
+      These four libraries sit at different layers of the typical Python data science stack:
+      NumPy provides the low-level array/numerical foundation; pandas builds tabular data
+      structures on top of that for wrangling and analysis; scikit-learn provides classical ML
+      algorithms behind a consistent API; PyTorch is a separate deep learning framework built
+      around GPU-accelerated tensors and automatic differentiation, used for training neural
+      networks.
+
+  - topic: "Languages in context"
+    subtopic: "R and where it still wins"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "In what area does R still commonly hold an edge over Python in data science work?"
+    payload:
+      options:
+        - "Statistical modelling and visualisation, where packages like ggplot2 and specialised statistical libraries have deep, mature ecosystems"
+        - "Low-level systems programming"
+        - "Deep learning research"
+        - "General-purpose production software engineering"
+    answer_key:
+      correct: 0
+    explanation: >
+      R was built by and for statisticians, and its ecosystem (ggplot2 for visualisation,
+      extensive CRAN packages for specialised statistical tests and models) is still often
+      preferred by statisticians and in academic/biostatistics settings, even though Python has
+      largely won out for general-purpose ML engineering and production systems.
+
+  - topic: "Languages in context"
+    subtopic: "C++ underneath the libraries"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why do performance-critical Python data science libraries like NumPy and pandas often have C or C++ underneath them?"
+    payload:
+      options:
+        - "Because C++ is required for a library to be open source"
+        - "Because Python cannot import any compiled code"
+        - "Because Python does not support numerical types"
+        - "To get the raw execution speed of a compiled, lower-level language for the heavy numerical work, while still exposing a convenient Python interface"
+    answer_key:
+      correct: 3
+    explanation: >
+      Python itself is an interpreted language with meaningful per-operation overhead. Libraries
+      like NumPy implement their core numerical routines in C (or C++/Fortran) for speed, then
+      expose a friendly Python API on top -- giving you Python's ease of use for the parts that
+      don't need to be fast, and compiled-language speed for the parts that do.
+
+  - topic: "Scientific computing & simulation"
+    subtopic: "Monte Carlo methods"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the core idea behind a Monte Carlo method?"
+    payload:
+      options:
+        - "Always solving a problem with an exact closed-form formula"
+        - "A technique exclusively used for image processing"
+        - "A method that only works for deterministic systems with no randomness"
+        - "Using repeated random sampling to approximate a quantity that may be difficult to compute exactly"
+    answer_key:
+      correct: 3
+    explanation: >
+      Monte Carlo methods estimate a quantity (an integral, an expected value, a probability) by
+      generating many random samples according to some process and averaging the results, using
+      the law of large numbers to converge toward the true value as the number of samples grows
+      -- useful whenever an exact analytical answer is hard to derive.
+
+  - topic: "Scientific computing & simulation"
+    subtopic: "bootstrapping"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the statistical bootstrap estimate the uncertainty (e.g. confidence interval) of a statistic like the mean?"
+    payload:
+      options:
+        - "By always assuming the data is normally distributed"
+        - "By collecting a completely new, larger dataset every time"
+        - "By discarding outliers before any calculation"
+        - "By repeatedly resampling the observed data with replacement and recomputing the statistic on each resample, building up a distribution of the statistic"
+    answer_key:
+      correct: 3
+    explanation: >
+      The bootstrap resamples the original dataset with replacement many times, computing the
+      statistic of interest (e.g. the mean) on each resample. The spread of these many recomputed
+      statistics approximates the sampling distribution of the original statistic, letting you
+      estimate a confidence interval without needing a closed-form formula or a new data
+      collection.

@@ -1,0 +1,261 @@
+area: "Neural Networks"
+source: "Second Brain/apprenticeship/term-1/Topic 7 - Autoencoders and Generative Networks.md"
+questions:
+  - topic: "Autoencoders and generative models"
+    subtopic: "Encoder, decoder and latent space"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What two functions does an autoencoder learn?"
+    payload:
+      options:
+        - "An encoding function that transforms input data, and a decoding function that recreates the input from that encoded (latent) representation"
+        - "A classification function and a regression function"
+        - "Only a decoding function, since encoding is done manually"
+        - "A function for images and a separate, unrelated function for text"
+    answer_key:
+      correct: 0
+    explanation: >
+      The latent representation is traditionally smaller than the input, which is why
+      autoencoders are useful for dimensionality reduction, and core information from the
+      original data must be captured in it for reconstruction to work.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "Uses of autoencoders"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which uses does the course list for autoencoders? Select all that apply."
+    payload:
+      options:
+        - "Dimensionality reduction and feature learning"
+        - "Noise reduction and anomaly detection"
+        - "Facial recognition"
+        - "Creative and artistic generation"
+        - "Exact lossless compression that always beats JPEG"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      The course is explicit that autoencoders do not outperform standard compression algorithms
+      like JPEG for pure compression, and that they are lossy; their real value is the latent
+      representation itself, which captures meaning that standard compression does not.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "Uses of autoencoders"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Because an autoencoder learns from its own input data rather than external labels, how does the course describe this kind of learning?"
+    payload:
+      options:
+        - "Self-supervised (some sources call it unsupervised or semi-supervised)"
+        - "Fully supervised in the classical sense"
+        - "Reinforcement learning"
+        - "It cannot be categorised at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      Training minimises reconstruction error via mini-batch gradient descent, just as with
+      other feed-forward networks, but there are no external labels driving the loss.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "Limitations of autoencoders"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is an autoencoder described as 'data-specific'?"
+    payload:
+      options:
+        - "It only performs well on data similar to what it was trained on"
+        - "It can only process one file format"
+        - "It requires labelled data to work at all"
+        - "It cannot be retrained on new data"
+    answer_key:
+      correct: 0
+    explanation: >
+      This limitation, alongside being lossy and not a general-purpose compression tool, is why
+      the course frames the latent representation, not compression, as the autoencoder's real
+      value.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "Autoencoder types and topologies"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each autoencoder type to what it is best used for."
+    payload:
+      left:
+        - "Undercomplete"
+        - "Overcomplete"
+        - "Sparse"
+        - "Variational (VAE)"
+      right:
+        - "Dimensionality reduction, by forcing a compact representation of the most salient features"
+        - "Denoising, using extra encoding capacity from a higher-dimensional latent space"
+        - "Dimensionality reduction or feature extraction, using a sparsity constraint on the latent layer"
+        - "Generative AI, since the latent space holds probability distributions rather than fixed values"
+    answer_key:
+      pairs:
+        "Undercomplete": "Dimensionality reduction, by forcing a compact representation of the most salient features"
+        "Overcomplete": "Denoising, using extra encoding capacity from a higher-dimensional latent space"
+        "Sparse": "Dimensionality reduction or feature extraction, using a sparsity constraint on the latent layer"
+        "Variational (VAE)": "Generative AI, since the latent space holds probability distributions rather than fixed values"
+    explanation: >
+      Denoising autoencoders are a further type, trained by adding noise to the input and
+      learning to remove it, distinct from the overcomplete/undercomplete dimension question.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "Sparse and denoising regularisation"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "How does a sparse autoencoder's regularisation differ from a denoising autoencoder's approach?"
+    payload:
+      options:
+        - "Sparse autoencoders add a sparsity constraint to the loss function itself; denoising autoencoders instead modify the reconstruction error term by corrupting the input with noise and learning to remove it"
+        - "They are the same technique with different names"
+        - "Sparse autoencoders cannot use loss functions"
+        - "Denoising autoencoders never use gradient descent"
+    answer_key:
+      correct: 0
+    explanation: >
+      The sparsity constraint (often denoted omega) penalises the network if its firing
+      distribution deviates from a target sparsity parameter, sometimes measured via
+      Kullback-Leibler divergence; L1 regularisation is another way to encourage sparse models.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "Latent variable models and concept vectors"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "For generation, why does an autoencoder need to learn a probability distribution rather than just a mapping function?"
+    payload:
+      options:
+        - "Because decoding a fixed mapping just reverses it to recover the original data; generating something new requires sampling from a distribution, with randomness producing variation in the output"
+        - "Because probability distributions train faster than mappings"
+        - "Because mappings cannot be learned by neural networks"
+        - "Because generation never uses gradient descent"
+    answer_key:
+      correct: 0
+    explanation: >
+      This latent variable model is what makes the latent space usable for creating new objects,
+      not just recreating known ones, and it is where VAEs and GANs diverge from a plain
+      autoencoder.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "Latent variable models and concept vectors"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is a 'concept vector' in the context of the latent space?"
+    payload:
+      options:
+        - "An axis through the latent space that, when followed, produces gradual changes in a specific feature, enabling purposeful creativity such as adding a smile to a generated face"
+        - "A vector storing the model's training hyperparameters"
+        - "The gradient used during backpropagation"
+        - "A vector that only exists in supervised classifiers"
+    answer_key:
+      correct: 0
+    explanation: >
+      Because similar inputs tend to be encoded near each other, the latent space captures some
+      semantics, which is what makes vector arithmetic on sampling queries meaningful rather than
+      arbitrary.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "VAE and the continuous latent space"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does a VAE use a continuous latent space rather than a discrete one?"
+    payload:
+      options:
+        - "Sampling from a continuous space is smooth, so a small change to a sampling query is likely to return a similar object with a meaningful variation; sampling from a discrete space risks landing on an empty grid space and returning nothing"
+        - "Continuous spaces require less memory"
+        - "Discrete spaces cannot store any values at all"
+        - "Continuity is only relevant to image data"
+    answer_key:
+      correct: 0
+    explanation: >
+      The VAE was introduced by Kingma and Welling (2013), and its probabilistic middle layer
+      sits after the encoder, holding a Gaussian distribution defined by mean and standard
+      deviation instead of point values.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "VAE loss and the reparameterisation trick"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why can't a VAE's sampled latent values be differentiated directly during training, and what solves this?"
+    payload:
+      options:
+        - "Sampling is not a differentiable function; the reparameterisation trick redefines the mean and standard deviation as functions of learnable network parameters, letting gradients flow through the sampling step"
+        - "VAEs never use gradient descent"
+        - "The problem is solved by removing the decoder entirely"
+        - "Differentiation is only a problem for GANs, not VAEs"
+    answer_key:
+      correct: 0
+    explanation: >
+      Training maximises the lower bound of the log data likelihood, combining a generation loss
+      (how similar input and output are) and a latent loss measured by KL divergence between the
+      latent distribution and its target.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "Bayes in the VAE"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "In the VAE's use of Bayesian inference, why is the true posterior p(z|x) approximated rather than computed directly?"
+    payload:
+      options:
+        - "Because it is intractable in practice, so it is approximated by a learned function often written qϕ(z|x)"
+        - "Because Bayes' theorem does not apply to neural networks"
+        - "Because the prior probability p(z) is always zero"
+        - "Because the likelihood P(x|z) cannot be estimated"
+    answer_key:
+      correct: 0
+    explanation: >
+      This connects the VAE directly to Bayesian inference: posterior, likelihood, prior and
+      marginal likelihood all have roles in how the probabilistic latent space is derived.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "GAN generator and discriminator"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What are the two competing networks in a GAN, and what does each try to do?"
+    payload:
+      options:
+        - "A generator, which creates fake data by sampling from a latent space, and a discriminator, which tries to distinguish real data from the generator's fakes"
+        - "An encoder and a decoder that cooperate rather than compete"
+        - "A classifier and a regressor trained on the same loss"
+        - "Two identical copies of the same network with no distinct roles"
+    answer_key:
+      correct: 0
+    explanation: >
+      As training progresses, the generator gets better at creating convincing synthetic data
+      and the discriminator gets better at spotting it, which is why GANs are often described as
+      an adversarial game.
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "GAN minimax objective"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "In the GAN minimax objective, what are the generator and discriminator each trying to do to the value function V(D,G)?"
+    payload:
+      options:
+        - "The generator tries to minimise V(D,G) while the discriminator tries to maximise it, evaluated independently until an equilibrium is reached"
+        - "Both networks try to maximise the same value together"
+        - "Both networks try to minimise the same value together"
+        - "The value function has no role in training"
+    answer_key:
+      correct: 0
+    explanation: >
+      The objective's two cross-entropy terms cover real data (the discriminator wants close to
+      1) and generated data (the discriminator wants close to 1 for spotting fakes, the generator
+      wants close to 0 for fooling it).
+
+  - topic: "Autoencoders and generative models"
+    subtopic: "Optimising GANs"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why does the course describe a GAN as having a 'dynamic loss landscape', unlike a standard network trained by descending a fixed loss surface?"
+    payload:
+      options:
+        - "Because each optimisation step by either the generator or the discriminator changes the landscape slightly, since both networks are competing, until an equilibrium is reached between them"
+        - "Because GANs do not use loss functions"
+        - "Because the loss landscape is chosen randomly each epoch"
+        - "Because only the discriminator's loss ever changes"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is why reaching equilibrium can be difficult, and why the course names layer weight
+      initialisation, activation functions, batch normalisation and dropout as variables worth
+      close attention when training GANs.

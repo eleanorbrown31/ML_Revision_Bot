@@ -1,0 +1,294 @@
+area: "Neural Networks"
+questions:
+  - topic: "Perceptrons & Activation Functions"
+    subtopic: "why nonlinearity matters"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Why do neural networks need nonlinear activation functions between layers?"
+    payload:
+      options:
+        - "Nonlinear functions train faster than linear ones"
+        - "Linear functions cannot be differentiated"
+        - "Nonlinearity is only needed in the output layer"
+        - "Without them, stacking layers would collapse into a single linear transformation, no matter how many layers you add"
+    answer_key:
+      correct: 3
+    explanation: >
+      Composing linear functions just produces another linear function, so a deep network with
+      only linear activations would be mathematically equivalent to a single-layer linear model.
+      Nonlinear activations (ReLU, sigmoid, tanh) are what let networks approximate complex,
+      non-linear functions.
+
+  - topic: "Perceptrons & Activation Functions"
+    subtopic: "vanishing gradient problem"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is ReLU generally preferred over sigmoid in the hidden layers of deep networks?"
+    payload:
+      options:
+        - "Sigmoid saturates for large inputs, producing near-zero gradients that make deep networks hard to train, whereas ReLU doesn't saturate for positive inputs"
+        - "ReLU has no computational cost"
+        - "Sigmoid cannot be used with backpropagation"
+        - "ReLU always produces a probability between 0 and 1"
+    answer_key:
+      correct: 0
+    explanation: >
+      Sigmoid squashes its input into (0,1) and its gradient becomes very small at the extremes,
+      so gradients shrink layer by layer during backpropagation in deep networks (the vanishing
+      gradient problem). ReLU's gradient is a constant 1 for positive inputs, which keeps
+      gradients flowing better.
+
+  - topic: "Backpropagation"
+    subtopic: "Chain rule"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Backpropagation relies fundamentally on which piece of calculus?"
+    payload:
+      options:
+        - "The chain rule for computing derivatives of composed functions"
+        - "The mean value theorem"
+        - "L'Hopital's rule"
+        - "Integration by parts"
+    answer_key:
+      correct: 0
+    explanation: >
+      A neural network is a composition of functions (layers), so computing how the loss changes
+      with respect to an early-layer weight requires the chain rule, multiplying the local
+      derivatives along the path from that weight to the loss.
+
+  - topic: "Backpropagation"
+    subtopic: "forward vs backward pass"
+    difficulty: "F3"
+    format: "order"
+    stem: "Put the steps of a single neural network training step in the correct order."
+    payload:
+      items:
+        - "Compute the forward pass to get the output and loss"
+        - "Compute the gradient of the loss with respect to the output"
+        - "Propagate gradients backward through each layer using the chain rule"
+        - "Update each weight using its gradient and the learning rate"
+    answer_key:
+      sequence: [0, 1, 2, 3]
+    explanation: >
+      Run inputs forward to get predictions and a loss value, start backpropagation from the loss
+      gradient, chain that gradient backward through every layer to get each weight's gradient,
+      then apply an optimiser update (e.g. gradient descent) to every weight.
+
+  - topic: "Deep Neural Networks"
+    subtopic: "universal approximation theorem"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the universal approximation theorem say about a feedforward network with a single hidden layer?"
+    payload:
+      options:
+        - "It requires at least 10 hidden layers to work"
+        - "It can only approximate linear functions"
+        - "Given enough hidden units, it can approximate any continuous function on a bounded domain to arbitrary accuracy"
+        - "It only applies to convolutional networks"
+    answer_key:
+      correct: 2
+    explanation: >
+      The theorem shows that a single hidden layer with a nonlinear activation and enough units
+      can approximate any continuous function on a compact domain arbitrarily closely -- though
+      it says nothing about how easy that function is to learn or how many units "enough"
+      actually is in practice.
+
+  - topic: "Deep Neural Networks"
+    subtopic: "batch normalisation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does batch normalisation do during training?"
+    payload:
+      options:
+        - "Removes the need for an activation function"
+        - "Reduces the batch size automatically as training progresses"
+        - "Normalises each layer's inputs (using batch statistics) to have roughly zero mean and unit variance before scaling and shifting"
+        - "Normalises the final model output to sum to 1"
+    answer_key:
+      correct: 2
+    explanation: >
+      Batch normalisation standardises the activations flowing into a layer using the mean and
+      variance computed over the current mini-batch, then applies a learned scale and shift. This
+      stabilises and speeds up training by keeping activation distributions more consistent
+      across layers.
+
+  - topic: "Convolutional Neural Networks"
+    subtopic: "pooling (max, average)"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the main purpose of a max pooling layer in a CNN?"
+    payload:
+      options:
+        - "To normalise pixel values to between 0 and 1"
+        - "To downsample the feature map, reducing spatial size while keeping the strongest activations"
+        - "To apply a learned linear transformation to every pixel"
+        - "To increase the number of channels in the feature map"
+    answer_key:
+      correct: 1
+    explanation: >
+      Max pooling slides a window over the feature map and keeps only the maximum value in each
+      window, reducing spatial resolution (and computation) while retaining the strongest,
+      most salient activations -- and adding a small amount of translation invariance.
+
+  - topic: "Convolutional Neural Networks"
+    subtopic: "filters/kernels"
+    difficulty: "F2"
+    format: "fill"
+    stem: "Complete the sentence about how a convolutional layer processes its input."
+    payload:
+      template: "In a convolutional layer, each ___ slides across the input and produces one output feature map by computing a weighted sum over a local receptive field at every position."
+    answer_key:
+      blanks:
+        - ["filter", "kernel"]
+    explanation: >
+      A filter (kernel) is a small set of learnable weights convolved across the whole input;
+      each filter learns to detect a particular local pattern (like an edge or texture), and a
+      layer typically has many filters, each producing its own feature map.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "hidden state"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What role does the 'hidden state' play in a recurrent neural network?"
+    payload:
+      options:
+        - "It only exists during backpropagation, not the forward pass"
+        - "It carries information forward from previous time steps, acting as the network's memory of what it has seen so far"
+        - "It stores the final classification output only"
+        - "It is a fixed set of weights shared across all layers"
+    answer_key:
+      correct: 1
+    explanation: >
+      At each time step, an RNN combines the current input with its hidden state from the
+      previous step to produce a new hidden state, which is passed to the next step -- this is
+      how the network retains information about earlier parts of a sequence.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "LSTM gates (forget, input, output)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the purpose of the 'forget gate' in an LSTM?"
+    payload:
+      options:
+        - "To initialise the weights at the start of training"
+        - "To generate the final network output"
+        - "To decide how much of the previous cell state to discard at each time step"
+        - "To decide when training should stop"
+    answer_key:
+      correct: 2
+    explanation: >
+      The forget gate outputs a value between 0 and 1 for each element of the cell state,
+      controlling how much of the old cell state is kept versus discarded -- this selective
+      forgetting is what lets LSTMs retain long-range information better than plain RNNs.
+
+  - topic: "Transformers & Attention"
+    subtopic: "Self-attention"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does self-attention let a model do?"
+    payload:
+      options:
+        - "Weigh the relevance of every other token in the sequence when building the representation of a given token"
+        - "Replace the need for any positional information"
+        - "Only look at the immediately preceding token"
+        - "Convert text into a fixed-size bag-of-words vector"
+    answer_key:
+      correct: 0
+    explanation: >
+      Self-attention computes, for each token, a weighted combination of all other tokens'
+      representations, where the weights reflect how relevant each other token is -- letting the
+      model capture long-range dependencies directly, unlike an RNN which must pass information
+      step by step.
+
+  - topic: "Transformers & Attention"
+    subtopic: "why transformers replaced RNNs"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a major practical advantage transformers have over RNNs for training on long sequences?"
+    payload:
+      options:
+        - "Transformers cannot suffer from vanishing gradients at all"
+        - "Transformers only work on image data"
+        - "Transformers require no training data"
+        - "Transformers can process all positions in a sequence in parallel, whereas RNNs must process time steps sequentially"
+    answer_key:
+      correct: 3
+    explanation: >
+      Because self-attention looks at the whole sequence at once rather than stepping through it
+      one token at a time, transformers can be parallelised across a sequence during training,
+      making them far faster to train on modern hardware than RNNs, which are inherently sequential.
+
+  - topic: "Large Language Models"
+    subtopic: "Next-token pretraining objective"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What objective are most large language models pretrained on?"
+    payload:
+      options:
+        - "Predicting the next token in a sequence, given all the tokens before it"
+        - "Predicting a numeric reward signal directly from human feedback"
+        - "Classifying documents into a fixed set of topic labels"
+        - "Translating every sentence into a single target language"
+    answer_key:
+      correct: 0
+    explanation: >
+      The core pretraining objective for most LLMs is autoregressive next-token prediction:
+      given a sequence of tokens, predict the most likely next one, trained over huge amounts of
+      unlabelled text. Everything else -- instruction-following, chat behaviour, RLHF -- is
+      typically layered on afterwards via fine-tuning.
+    distractor_notes:
+      "Classifying documents into a fixed set of topic labels": "That's a supervised classification task, not the self-supervised objective used to pretrain LLMs."
+      "Predicting a numeric reward signal directly from human feedback": "That describes the reward model used in RLHF, a later fine-tuning stage, not pretraining."
+      "Translating every sentence into a single target language": "That's a specific downstream task (machine translation), not the general pretraining objective."
+
+  - topic: "Large Language Models"
+    subtopic: "Fine-tuning vs prompting vs in-context learning"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is 'in-context learning' in the context of large language models?"
+    payload:
+      options:
+        - "The model adapting its behaviour based on examples given directly in the prompt, without updating any of its weights"
+        - "Updating the model's weights using a small labelled dataset"
+        - "Compressing the model to run on smaller hardware"
+        - "Training the model from scratch on a new domain"
+    answer_key:
+      correct: 0
+    explanation: >
+      In-context learning happens purely at inference time: you show the model a few examples
+      (or instructions) inside the prompt itself, and it adjusts its output accordingly with no
+      gradient update or weight change at all -- unlike fine-tuning, which does update weights on
+      task-specific data.
+    distractor_notes:
+      "Updating the model's weights using a small labelled dataset": "That describes fine-tuning, a different technique that does change the model's parameters."
+      "Training the model from scratch on a new domain": "That's full pretraining on new data, a much larger undertaking than in-context learning."
+      "Compressing the model to run on smaller hardware": "That describes quantisation or distillation, unrelated to in-context learning."
+
+  - topic: "Perceptrons & Activation Functions"
+    subtopic: "sigmoid / tanh / ReLU / Leaky ReLU"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each activation function to how it behaves."
+    payload:
+      left:
+        - "Sigmoid"
+        - "ReLU"
+        - "Tanh"
+        - "Softmax"
+      right:
+        - "Outputs a probability distribution across multiple classes that sums to 1"
+        - "Outputs zero for negative inputs and passes positive inputs through unchanged"
+        - "Squashes input to the range (0, 1), commonly used for binary probability output"
+        - "Squashes input to the range (-1, 1), zero-centred unlike sigmoid"
+    answer_key:
+      pairs:
+        "Sigmoid": "Squashes input to the range (0, 1), commonly used for binary probability output"
+        "ReLU": "Outputs zero for negative inputs and passes positive inputs through unchanged"
+        "Tanh": "Squashes input to the range (-1, 1), zero-centred unlike sigmoid"
+        "Softmax": "Outputs a probability distribution across multiple classes that sums to 1"
+    explanation: >
+      Sigmoid and tanh both squash inputs into a bounded range, but tanh is zero-centred, which
+      often helps optimisation. ReLU doesn't squash at all -- it just zeroes out negative values,
+      which is cheap to compute and avoids saturating for positive inputs. Softmax is the odd one
+      out: it operates across a whole vector at once (usually the output layer) rather than
+      element-wise, turning raw scores into a proper probability distribution over classes.

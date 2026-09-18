@@ -1,0 +1,279 @@
+area: "AI Innovation & NLP Applications"
+source: "Second Brain/apprenticeship/term-4/Topic 1 - Introduction to Innovation in AI.md"
+questions:
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Diffusion of innovations (Rogers)"
+    difficulty: "F1"
+    format: "order"
+    stem: "Put Rogers' adopter categories in order from earliest to latest adoption."
+    payload:
+      items:
+        - "Late majority"
+        - "Innovators"
+        - "Early majority"
+        - "Laggards"
+        - "Early adopters"
+    answer_key:
+      sequence: [1, 4, 2, 0, 3]
+    explanation: >
+      Innovators are risk-takers, early adopters are thought leaders, the early majority
+      deliberate, the late majority are sceptical and laggards are traditionalists. Adoption is
+      not simultaneous; it passes through these stages.
+
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Diffusion of innovations (Rogers)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each perceived attribute that affects adoption speed to the question it answers."
+    payload:
+      left:
+        - "Relative advantage"
+        - "Compatibility"
+        - "Trialability"
+        - "Observability"
+      right:
+        - "Can I test it?"
+        - "Are the results visible?"
+        - "Is it better?"
+        - "Does it fit?"
+    answer_key:
+      pairs:
+        "Relative advantage": "Is it better?"
+        "Compatibility": "Does it fit?"
+        "Trialability": "Can I test it?"
+        "Observability": "Are the results visible?"
+    explanation: >
+      The fifth attribute is complexity: is it easy? Together they explain why some innovations
+      spread quickly. Generative AI scored well on trialability and observability, which helps
+      explain its remarkable adoption speed after GPT-3 in 2020.
+
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Creative destruction (Schumpeter)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does Schumpeter's creative destruction describe?"
+    payload:
+      options:
+        - "Entrepreneurs driving growth by introducing new products and technologies that disrupt and replace existing market structures"
+        - "The deliberate destruction of competitors' factories"
+        - "The loss of creativity in large organisations"
+        - "A tax on innovation"
+    answer_key:
+      correct: 0
+    explanation: >
+      Innovation theory explains how ideas are developed, adopted and spread, and how old,
+      inefficient methods are replaced. Innovations can be radical or incremental, disruptive or
+      architectural.
+
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Four stages of the innovation process"
+    difficulty: "F1"
+    format: "order"
+    stem: "Put the four stages of the innovation process in order."
+    payload:
+      items:
+        - "Diffusion"
+        - "Ideation or invention"
+        - "Implementation"
+        - "Commercialisation"
+    answer_key:
+      sequence: [1, 3, 2, 0]
+    explanation: >
+      Ideation, commercialisation, implementation, diffusion. These theories describe macro,
+      society-level innovation. Innovation inside your own organisation is micro-level, where
+      you have more control over direction, management and impact.
+
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Four stages of the innovation process"
+    difficulty: "INT"
+    format: "multi"
+    stem: "Which activities does the course list as part of managing innovation within an organisation? Select all that apply."
+    payload:
+      options:
+        - "Proof-of-concept development and raising awareness"
+        - "Cost-benefit analysis and budget raising"
+        - "Ethical impact assessment and governance guidelines"
+        - "Post-deployment monitoring and impact assessment"
+        - "Waiting for a competitor to prove the idea first"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      The list runs from idea generation, training and requirements gathering through project
+      planning, development, stakeholder involvement, user evaluation and deployment planning to
+      monitoring and impact assessment. Ethics and governance are explicitly included.
+
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Global shifts changing organisations"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of the following are among the five global shifts shaping organisations in the course? Select all that apply."
+    payload:
+      options:
+        - "The changing relationship with the planet"
+        - "Shifting economic and political power towards E7 economies"
+        - "Divergence and polarisation, from globalisation to fragmentation"
+        - "Shifting demographics"
+        - "Universal adoption of a single global currency"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      The fifth shift is sociocultural and workplace change: household types, workforce
+      expectations, work-from-anywhere after COVID, and the rising importance of wellbeing. A
+      single currency is not among them.
+
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Ten important tech trends"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each tech trend to the key challenge the course associates with it."
+    payload:
+      left:
+        - "Connected and smart everything (IoT)"
+        - "Datafication of the world"
+        - "Digital trust (blockchain)"
+        - "Ubiquitous computing"
+      right:
+        - "Moore's Law limits reached, so gains must come from algorithms"
+        - "Increased cyberattack risk from the volume of data transmitted"
+        - "Integration with legacy systems"
+        - "Collecting the right data while managing privacy and consent"
+    answer_key:
+      pairs:
+        "Connected and smart everything (IoT)": "Increased cyberattack risk from the volume of data transmitted"
+        "Datafication of the world": "Collecting the right data while managing privacy and consent"
+        "Digital trust (blockchain)": "Integration with legacy systems"
+        "Ubiquitous computing": "Moore's Law limits reached, so gains must come from algorithms"
+    explanation: >
+      The ten trends also include AI, extended reality, 3D printing, gene editing and synthetic
+      biology, nanotechnology and materials science, and new energy solutions. Each is framed
+      with an opportunity and a challenge.
+
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Ten important tech trends"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each form of extended reality to its description."
+    payload:
+      left:
+        - "Virtual reality (VR)"
+        - "Augmented reality (AR)"
+        - "Mixed reality (MR)"
+      right:
+        - "Blends digital objects or information with the real world"
+        - "Interaction between digital and physical spaces"
+        - "The most immersive form, replacing the real world"
+    answer_key:
+      pairs:
+        "Virtual reality (VR)": "The most immersive form, replacing the real world"
+        "Augmented reality (AR)": "Blends digital objects or information with the real world"
+        "Mixed reality (MR)": "Interaction between digital and physical spaces"
+    explanation: >
+      Gaming is the primary current industry, with personalisation, business processes and
+      productivity devices growing. Immersive training is suggested as a way to improve
+      information visualisation.
+
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Ten important tech trends"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say 3D printing can be more sustainable than traditional manufacturing?"
+    payload:
+      options:
+        - "Because it uses no electricity"
+        - "Because additive manufacturing builds objects up rather than cutting material away, reducing waste, and can lower cost and enable personalisation"
+        - "Because printers are made from recycled plastic"
+        - "Because it eliminates transport entirely"
+    answer_key:
+      correct: 1
+    explanation: >
+      Additive versus subtractive is the key contrast. The course's example is a 3D-printed
+      house cheaper than a newly built one in the same area.
+
+  - topic: "History and foundations of NLP"
+    subtopic: "NLP timeline (Turing to transformers)"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put these NLP milestones in chronological order."
+    payload:
+      items:
+        - "Statistical models replace rule-based approaches as computing power grows"
+        - "Turing describes a test for a thinking machine"
+        - "Transformers emerge with highly parallelisable encoder-decoder architecture"
+        - "Weizenbaum's ELIZA imitates a psychiatrist through keyword rearrangement"
+        - "Chomsky publishes Syntactic Structures and phrase-structure grammar"
+    answer_key:
+      sequence: [1, 4, 3, 0, 2]
+    explanation: >
+      Turing in 1950, Chomsky in 1957, ELIZA in 1964, the statistical reorientation in the
+      1980s, and transformers in the 2010s. The ALPAC report of 1964 cut funding and the field
+      was widely seen as a dead end by 1966 before statistics revived it.
+
+  - topic: "History and foundations of NLP"
+    subtopic: "NLP timeline (Turing to transformers)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why did the ALPAC committee's 1964 evaluation set NLP research back?"
+    payload:
+      options:
+        - "It found machine translation was still costlier than human translation and no computer was near basic conversation, so research funding was cut"
+        - "It banned the use of computers for language"
+        - "It found ELIZA understood text too well"
+        - "It required all research to use LISP"
+    answer_key:
+      correct: 0
+    explanation: >
+      ELIZA had no real understanding of text, and early linguistics-plus-statistics
+      approaches gave way to pure statistics. The 1980s reorientation replaced deep analysis
+      with simple approximations and more rigorous evaluation.
+
+  - topic: "History and foundations of NLP"
+    subtopic: "NLP timeline (Turing to transformers)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What did Bengio et al.'s neural probabilistic language model contribute in the early 2000s?"
+    payload:
+      options:
+        - "The first rule-based grammar"
+        - "A feed-forward architecture using vector representations of previous words looked up in a table, marking the start of neural networks and word embeddings in NLP"
+        - "The transformer attention mechanism"
+        - "The Turing test"
+    answer_key:
+      correct: 1
+    explanation: >
+      Word embeddings as trainable table lookups were the bridge from statistical NLP to deep
+      learning. RNNs had been introduced in 1997 and found niches from 2007 in voice and text.
+
+  - topic: "History and foundations of NLP"
+    subtopic: "NLP timeline (Turing to transformers)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What property of transformers, compared with RNNs, does the course credit for driving major NLP advances?"
+    payload:
+      options:
+        - "They are highly parallelisable and not sequence-dependent, relating each token to every other token rather than processing in order"
+        - "They require far less training data"
+        - "They have no parameters to train"
+        - "They only work on English"
+    answer_key:
+      correct: 0
+    explanation: >
+      RNNs analyse tokens in sequence, which limits parallelism and long-range memory.
+      Transformers build a hidden matrix of word relationships through attention, which
+      underpins most modern NLP products.
+
+  - topic: "AI ethics and transformer futures"
+    subtopic: "Ethical risk areas"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course notes that zero-carbon energy currently costs more than fossil-derived energy. What implication does it draw for innovation decisions?"
+    payload:
+      options:
+        - "Innovation should ignore energy source until costs fall"
+        - "Innovation should weigh zero-carbon versus non-green implications as part of the changing relationship with the planet"
+        - "Only energy companies need to consider this"
+        - "AI models should be trained only at night"
+    answer_key:
+      correct: 1
+    explanation: >
+      This is the first global shift. It reappears in Topic 8 as energy use being an ethical
+      consideration for AI training, and in Term 1's energy metrics for deep learning.

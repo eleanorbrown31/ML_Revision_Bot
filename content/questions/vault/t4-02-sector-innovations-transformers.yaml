@@ -1,0 +1,235 @@
+area: "AI Innovation & NLP Applications"
+source: "Second Brain/apprenticeship/term-4/Topic 2 - Sector Innovations and Transformers.md"
+questions:
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Sector innovations"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each sector to the innovation trend the course associates with it."
+    payload:
+      left:
+        - "Energy"
+        - "Agriculture"
+        - "Manufacturing"
+        - "Finance"
+      right:
+        - "Autonomous robots, drones and machine vision such as fish farming"
+        - "Dark factories, robots and cobots working directly with humans"
+        - "Switch from centralised plants to distributed microgrids"
+        - "Invisible or automated payment systems and rising digitisation of money"
+    answer_key:
+      pairs:
+        "Energy": "Switch from centralised plants to distributed microgrids"
+        "Agriculture": "Autonomous robots, drones and machine vision such as fish farming"
+        "Manufacturing": "Dark factories, robots and cobots working directly with humans"
+        "Finance": "Invisible or automated payment systems and rising digitisation of money"
+    explanation: >
+      The course also covers Health (predictive and preventative medicine, wearables), Education
+      (skill-based learning, immersive content) and Supply chain (electrification, autonomous
+      vehicles, real-time visibility) as further sectors.
+
+  - topic: "Transformer architecture in depth"
+    subtopic: "Encoder and decoder stacks"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the fundamental difference in how RNNs and transformers process a sequence?"
+    payload:
+      options:
+        - "RNNs analyse tokens in sequence one at a time; transformers relate each token to every other token in the sequence at once"
+        - "RNNs use more parameters than transformers"
+        - "Transformers cannot process text, only images"
+        - "RNNs and transformers process sequences identically"
+    answer_key:
+      correct: 0
+    explanation: >
+      This relational, all-at-once comparison is what makes transformers highly parallelisable
+      and generally more effective than RNNs, and is the reason transformers largely replaced
+      RNNs for NLP.
+
+  - topic: "Transformer architecture in depth"
+    subtopic: "Encoder and decoder stacks"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What makes a transformer a 'foundation model'?"
+    payload:
+      options:
+        - "It was the first transformer ever built"
+        - "It is trained on supercomputers using billions of records and parameters, letting it perform a wide range of tasks without further fine-tuning"
+        - "It only performs one narrow task very well"
+        - "It has no attention mechanism"
+    answer_key:
+      correct: 1
+    explanation: >
+      Language foundation models are called Large Language Models. GPT-4/5, Claude, Llama, BART,
+      DALL-E and Stable Diffusion are all named as current examples of foundation models.
+
+  - topic: "Innovation theory & tech trends"
+    subtopic: "Sector innovations"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does the course say prompt engineering is becoming a required skill for AI specialists, tied to Industry 4.0?"
+    payload:
+      options:
+        - "Because transformers respond to prompts, which sometimes need careful engineering, and AI industrialisation means developers will do more designing than programming"
+        - "Because prompts replace the need for any programming knowledge"
+        - "Because prompt engineering is only relevant to image generation"
+        - "Because regulators require certified prompt engineers"
+    answer_key:
+      correct: 0
+    explanation: >
+      Industry 4.0 has blurred lines between cloud platforms, frameworks and models, with
+      ready-to-use transformer APIs from major providers. This shifts more of the specialist's
+      work towards designing prompts and understanding cloud provision rather than writing
+      low-level code.
+
+  - topic: "History and foundations of NLP"
+    subtopic: "Tokenisation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does tokenisation do as an NLP preprocessing step?"
+    payload:
+      options:
+        - "It translates text into another language"
+        - "It breaks a sentence into words or subparts, an important step before most further NLP processing"
+        - "It compresses text to save storage"
+        - "It removes all punctuation permanently"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course distinguishes sentence tokenisation (splitting a passage into sentences) from
+      word tokenisation (splitting a sentence into words), both demonstrated with NLTK.
+
+  - topic: "History and foundations of NLP"
+    subtopic: "Word embeddings (Word2Vec, GloVe)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How are word embeddings typically produced, and why are they considered one of the few successful applications of unsupervised learning?"
+    payload:
+      options:
+        - "By manually assigning numbers to words based on alphabetical order"
+        - "By a neural network trained on a large corpus to predict a missing middle word from its surrounding context, with the resulting hidden-layer weights becoming the word vectors"
+        - "By counting letters in each word"
+        - "By translating each word into every other language and averaging"
+    answer_key:
+      correct: 1
+    explanation: >
+      The network looks at word sequences with the middle word missing and must predict it. No
+      human labels are provided for what each word 'means', which is why this counts as
+      unsupervised, yet the resulting vectors capture usable semantic structure.
+
+  - topic: "History and foundations of NLP"
+    subtopic: "Word embeddings (Word2Vec, GloVe)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is the key difference between what Word2Vec and GloVe each capture?"
+    payload:
+      options:
+        - "Word2Vec encodes meaning as vector offsets implicitly through prediction; GloVe makes this explicit by training on the ratio of word co-occurrence probabilities across a corpus"
+        - "GloVe cannot represent word meaning at all"
+        - "Word2Vec only works on numbers, GloVe only works on words"
+        - "They are the same algorithm with different names"
+    answer_key:
+      correct: 0
+    explanation: >
+      GloVe's creators showed that the ratio of co-occurrence probabilities of two words, not
+      the probabilities themselves, carries the useful information, and encoded this as vector
+      differences trained on corpus-wide co-occurrence statistics rather than the raw text.
+
+  - topic: "History and foundations of NLP"
+    subtopic: "Options for using embeddings"
+    difficulty: "INT"
+    format: "match"
+    stem: "Match each option for using embeddings in an NLP project to when it suits best."
+    payload:
+      left:
+        - "Learn it standalone"
+        - "Learn it jointly"
+        - "Reuse it static"
+        - "Reuse it updated"
+      right:
+        - "Train separately, save and reuse across multiple models or tasks"
+        - "Learn as part of one large task-specific model, good for a single task"
+        - "Keep a pre-trained embedding fixed, good if it already fits the problem well"
+        - "Seed with a pre-trained embedding then update it during training, for maximum task-specific performance"
+    answer_key:
+      pairs:
+        "Learn it standalone": "Train separately, save and reuse across multiple models or tasks"
+        "Learn it jointly": "Learn as part of one large task-specific model, good for a single task"
+        "Reuse it static": "Keep a pre-trained embedding fixed, good if it already fits the problem well"
+        "Reuse it updated": "Seed with a pre-trained embedding then update it during training, for maximum task-specific performance"
+    explanation: >
+      These four options trade off reusability against task-specific performance. Fine-tuning a
+      pretrained model (Topic 3, BERT) is essentially the 'reuse it updated' pattern applied to a
+      whole model rather than just an embedding layer.
+
+  - topic: "Transformer architecture in depth"
+    subtopic: "Query, key, value and scaled dot-product attention"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In plain terms, what does the attention mechanism compute for each word in a sentence?"
+    payload:
+      options:
+        - "How that word relates to every other word in the sequence, including itself, via similarity between word vectors"
+        - "The word's position in the alphabet"
+        - "How many times the word appears in the training corpus"
+        - "A random score used only for regularisation"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's example sentence is 'The cat sat on the mat': attention finds the strongest
+      token-to-token relationships. This is the innovation credited with driving transformers'
+      NLP performance.
+
+  - topic: "Transformer architecture in depth"
+    subtopic: "Multi-head attention dimensions (d_model, d_k)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why does the original transformer run 8 attention mechanisms in parallel per sublayer rather than just one?"
+    payload:
+      options:
+        - "To save computation"
+        - "So each head can learn a different perspective on the same input, giving more in-depth sequence analysis alongside parallelism"
+        - "Because 8 heads is a hardware requirement of all GPUs"
+        - "To allow 8 separate languages to be processed at once"
+    answer_key:
+      correct: 1
+    explanation: >
+      Multi-head attention lets different heads specialise in different kinds of relationship
+      (for example, syntax versus reference) within the same layer, rather than forcing one
+      attention pattern to capture everything.
+
+  - topic: "Transformer architecture in depth"
+    subtopic: "Positional encoding (sine/cosine)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is positional encoding added to a transformer's input embeddings at all?"
+    payload:
+      options:
+        - "Because raw word embeddings alone lose information about word order, and order affects meaning"
+        - "To make training faster"
+        - "To remove the need for tokenisation"
+        - "Because embeddings are otherwise too large to store"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course shows that adding positional information changes the similarity between
+      'black' and 'brown' from near-identical to noticeably lower, because position now
+      contributes to the combined representation alongside word meaning.
+
+  - topic: "Transformer architecture in depth"
+    subtopic: "Post-layer normalisation"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is the purpose of the 'add' step in post-layer normalisation (a residual connection)?"
+    payload:
+      options:
+        - "It combines a sublayer's output with its own input before normalising, which helps preserve information as it flows through many stacked layers"
+        - "It doubles the size of every embedding"
+        - "It removes the need for an activation function"
+        - "It is only used in the decoder, never the encoder"
+    answer_key:
+      correct: 0
+    explanation: >
+      Residual connections plus normalisation are applied after every attention and feedforward
+      sublayer in both the encoder and decoder stacks, helping deep stacks of layers train
+      effectively.

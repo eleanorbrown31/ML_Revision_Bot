@@ -1,0 +1,291 @@
+area: "Supervised Learning"
+questions:
+  - topic: "Linear Regression"
+    subtopic: "OLS"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does Ordinary Least Squares (OLS) minimise when fitting a linear regression line?"
+    payload:
+      options:
+        - "The number of misclassified points"
+        - "The sum of absolute residuals"
+        - "The sum of squared residuals between predicted and actual values"
+        - "The correlation between features"
+    answer_key:
+      correct: 2
+    explanation: >
+      OLS finds the line that minimises the sum of squared differences between the predicted
+      and actual y-values. Squaring penalises large errors more heavily and keeps the objective
+      differentiable, which is what makes the normal equation and gradient descent solutions work.
+    distractor_notes:
+      "The sum of absolute residuals": "That's the loss minimised by least absolute deviations (L1) regression, not OLS."
+      "The number of misclassified points": "That's a classification metric; OLS is used for continuous regression targets."
+      "The correlation between features": "Correlation is a diagnostic for multicollinearity, not something OLS optimises."
+
+  - topic: "Linear Regression"
+    subtopic: "cost function (MSE)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the Mean Squared Error (MSE) loss function square the errors instead of just averaging the raw differences?"
+    payload:
+      options:
+        - "Squaring removes the need for a learning rate during training"
+        - "Squaring makes larger errors contribute disproportionately more to the loss, and keeps the function smooth and differentiable everywhere"
+        - "Squaring converts the regression problem into a classification problem"
+        - "Squaring guarantees the model will never overfit"
+    answer_key:
+      correct: 1
+    explanation: >
+      Squaring does two things at once: it penalises large errors much more heavily than small
+      ones (an error of 10 contributes 100, not 10), pushing the model to avoid big mistakes; and
+      it keeps the loss smooth and differentiable everywhere -- unlike, say, absolute error, which
+      has a sharp corner at zero -- which is what makes gradient-based optimisation work cleanly.
+      This also means MSE is sensitive to outliers, since one large miss dominates the sum.
+
+  - topic: "Logistic Regression"
+    subtopic: "Sigmoid function"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What range of values does the sigmoid function output?"
+    payload:
+      options:
+        - "Between 0 and 1"
+        - "Any real number"
+        - "Between -1 and 1"
+        - "Between 0 and infinity"
+    answer_key:
+      correct: 0
+    explanation: >
+      The sigmoid function squashes any real-valued input into the open interval (0, 1),
+      which is exactly what lets its output be interpreted as a probability in logistic regression.
+    distractor_notes:
+      "Between -1 and 1": "That's the range of tanh, not sigmoid."
+      "Any real number": "That describes the raw linear input (the logit) before sigmoid is applied."
+      "Between 0 and infinity": "That's closer to the range of an exponential or ReLU, not sigmoid."
+
+  - topic: "Logistic Regression"
+    subtopic: "cross-entropy loss"
+    difficulty: "F2"
+    format: "fill"
+    stem: "Complete the sentence about how logistic regression models are trained."
+    payload:
+      template: "Logistic regression is typically trained by minimising the ___ loss, which penalises confident wrong predictions far more heavily than a squared-error loss would."
+    answer_key:
+      blanks:
+        - ["cross-entropy", "cross entropy", "log loss", "logistic loss"]
+    explanation: >
+      Cross-entropy (log) loss grows sharply as a confident prediction turns out wrong -- e.g.
+      predicting 0.99 for the wrong class costs far more than MSE would -- giving a stronger
+      gradient signal for a probability output.
+
+  - topic: "Decision Trees"
+    subtopic: "Gini impurity"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does a Gini impurity of 0 for a node mean?"
+    payload:
+      options:
+        - "The node has the maximum possible impurity"
+        - "The node has no samples"
+        - "The node is exactly 50/50 split between two classes"
+        - "All samples in the node belong to a single class"
+    answer_key:
+      correct: 3
+    explanation: >
+      Gini impurity measures how mixed the classes are in a node. It is 0 only when every sample
+      belongs to the same class (perfectly pure), and CART uses it to choose the split that most
+      reduces impurity.
+    distractor_notes:
+      "The node is exactly 50/50 split between two classes": "That's close to the maximum impurity for a binary split (Gini = 0.5), the opposite of 0."
+      "The node has the maximum possible impurity": "Maximum impurity is a high Gini value, not 0."
+      "The node has no samples": "Gini impurity is about class mix, not sample count."
+
+  - topic: "Decision Trees"
+    subtopic: "information gain / entropy"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What does 'information gain' measure when a decision tree considers a candidate split?"
+    payload:
+      options:
+        - "How much the split increases the depth of the tree"
+        - "How many samples end up in each child node"
+        - "How much a split reduces entropy (uncertainty about the class) compared to the parent node"
+        - "How long the split takes to compute"
+    answer_key:
+      correct: 2
+    explanation: >
+      Information gain is the reduction in entropy achieved by a split: the parent node's entropy
+      minus the weighted average entropy of the resulting child nodes. Trees that use entropy
+      explicitly (ID3, C4.5) pick the split that maximises this gain at each step, greedily
+      reducing class uncertainty as fast as possible -- the same role Gini impurity plays in CART.
+
+  - topic: "Random Forests"
+    subtopic: "Bagging"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is 'bagging' short for, and what does it do?"
+    payload:
+      options:
+        - "Binary aggregating -- combining only binary classifiers"
+        - "Boosting and gradient aggregating -- sequentially reweighting misclassified samples"
+        - "Batch gradient aggregating -- summing gradients across mini-batches"
+        - "Bootstrap aggregating -- training many models on bootstrap-resampled subsets of the data and averaging their predictions"
+    answer_key:
+      correct: 3
+    explanation: >
+      Bagging (bootstrap aggregating) trains many models independently on bootstrap-resampled
+      subsets of the training data, then averages (regression) or votes (classification) their
+      predictions to reduce variance.
+    distractor_notes:
+      "Boosting and gradient aggregating -- sequentially reweighting misclassified samples": "That describes boosting, which is sequential rather than independent, and the opposite ensemble philosophy to bagging."
+      "Batch gradient aggregating -- summing gradients across mini-batches": "That's a training-loop concept unrelated to ensembling."
+      "Binary aggregating -- combining only binary classifiers": "Bagging works for any base learner, not just binary classifiers."
+
+  - topic: "Random Forests"
+    subtopic: "out-of-bag error"
+    difficulty: "F2"
+    format: "fill"
+    stem: "Complete the sentence about validating a random forest without a separate holdout set."
+    payload:
+      template: "In a random forest, the ___ error is estimated using the roughly one-third of samples left out of each tree's bootstrap sample, giving a built-in validation estimate without a separate holdout set."
+    answer_key:
+      blanks:
+        - ["out-of-bag", "oob", "out of bag"]
+    explanation: >
+      Each bootstrap sample includes only about 63% of the training data (sampling with
+      replacement), so the remaining ~37% -- the "out-of-bag" samples -- can test each tree,
+      giving a free estimate of generalisation error.
+
+  - topic: "Support Vector Machines"
+    subtopic: "support vectors"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What are 'support vectors' in an SVM?"
+    payload:
+      options:
+        - "The misclassified points only"
+        - "The training points closest to the decision boundary that define the margin"
+        - "The weight vector of the trained model"
+        - "Every training point in the dataset"
+    answer_key:
+      correct: 1
+    explanation: >
+      Support vectors are the data points that lie closest to (or on) the margin. They alone
+      determine the position of the decision boundary -- removing any other point wouldn't
+      change the fitted SVM.
+    distractor_notes:
+      "Every training point in the dataset": "Only the points nearest the margin matter; most training points could be removed without changing the boundary."
+      "The weight vector of the trained model": "The weight vector defines the boundary's orientation, but 'support vectors' refers to specific data points."
+      "The misclassified points only": "Support vectors can include correctly classified points on the margin, not just misclassified ones."
+
+  - topic: "Support Vector Machines"
+    subtopic: "kernel trick"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What problem does the 'kernel trick' solve in SVMs?"
+    payload:
+      options:
+        - "It converts a regression problem into a classification problem"
+        - "It speeds up gradient descent by using momentum"
+        - "It prevents overfitting by shrinking the weights"
+        - "It lets the SVM find a linear separator in a higher-dimensional space without explicitly computing the transformed coordinates"
+    answer_key:
+      correct: 3
+    explanation: >
+      The kernel trick computes the dot product between points as if they had been mapped into
+      a higher-dimensional space (via a kernel like RBF or polynomial), without ever materialising
+      that mapping -- making non-linear decision boundaries computationally tractable.
+
+  - topic: "K-Nearest Neighbours"
+    subtopic: "choosing K"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the main risk of choosing a very small value of K (e.g. K=1) in KNN?"
+    payload:
+      options:
+        - "The model can no longer handle continuous features"
+        - "The model becomes too slow to train"
+        - "The model ignores the nearest neighbours entirely"
+        - "The model becomes highly sensitive to noise and prone to overfitting"
+    answer_key:
+      correct: 3
+    explanation: >
+      With K=1, a prediction depends entirely on a single nearest neighbour, so noisy or
+      mislabelled points can flip predictions -- a classic high-variance, overfitting setup.
+      Larger K smooths the decision boundary at the cost of more bias.
+
+  - topic: "K-Nearest Neighbours"
+    subtopic: "Distance metrics (Euclidean, Manhattan, Minkowski)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the practical difference between using Euclidean distance and Manhattan distance in KNN?"
+    payload:
+      options:
+        - "Euclidean distance measures straight-line ('as the crow flies') distance; Manhattan distance sums absolute differences along each axis, which can behave better in high-dimensional spaces"
+        - "Manhattan distance can only be used for text data"
+        - "Euclidean distance ignores the scale of the features entirely"
+        - "Manhattan distance always produces a larger value than Euclidean distance, so it's never used in practice"
+    answer_key:
+      correct: 0
+    explanation: >
+      Euclidean distance is the straight-line distance between two points (the square root of the
+      sum of squared differences). Manhattan distance instead sums the absolute differences along
+      each dimension -- like navigating a city grid instead of flying directly. Manhattan distance
+      tends to be less dominated by any single large-difference dimension, and is often preferred
+      in high-dimensional spaces, where the "curse of dimensionality" can make Euclidean distances
+      less discriminating between points.
+
+  - topic: "K-Nearest Neighbours"
+    subtopic: "curse of dimensionality"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "KNN is often called a 'non-parametric' method, in contrast to logistic regression. What does that distinction actually mean in practice?"
+    payload:
+      options:
+        - "Logistic regression cannot be used for classification, only regression"
+        - "Non-parametric means the model can only be used on non-numeric data"
+        - "KNN has literally zero parameters of any kind, including K itself"
+        - "KNN doesn't learn a fixed set of parameters during training -- it keeps the training data itself and does its 'learning' at prediction time, whereas logistic regression learns a fixed number of weights up front"
+    answer_key:
+      correct: 3
+    explanation: >
+      "Non-parametric" doesn't mean "no parameters" -- it means the model doesn't commit to a
+      fixed-size set of parameters learned once during training. KNN effectively keeps the whole
+      training set around and does its real work at prediction time (finding neighbours), so its
+      effective complexity can grow with the data. Logistic regression, by contrast, learns a
+      fixed number of weights (one per feature plus a bias) regardless of how much training data
+      you feed it -- once trained, the training data itself can be discarded.
+
+  - topic: "Naïve Bayes"
+    subtopic: "conditional independence assumption"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does Naïve Bayes 'naively' assume?"
+    payload:
+      options:
+        - "That the classes are equally likely a priori"
+        - "That all features are conditionally independent of each other given the class"
+        - "That there is no noise in the training data"
+        - "That the data is linearly separable"
+    answer_key:
+      correct: 1
+    explanation: >
+      Naïve Bayes assumes every feature contributes independently to the class probability given
+      the class label -- an assumption that's rarely exactly true, but the classifier often still
+      performs well in practice, especially for text classification.
+
+  - topic: "Naïve Bayes"
+    subtopic: "Laplace smoothing"
+    difficulty: "F2"
+    format: "fill"
+    stem: "Complete the sentence about handling unseen feature values in Naïve Bayes."
+    payload:
+      template: "___ smoothing adds a small constant to every feature-class count so that a feature value never seen with a given class during training does not force the posterior probability all the way to zero."
+    answer_key:
+      blanks:
+        - ["laplace", "additive", "laplace smoothing"]
+    explanation: >
+      Without smoothing, a feature value that never appeared with a class in training would get
+      an estimated probability of exactly zero, and multiplying by zero would wipe out the whole
+      posterior regardless of other evidence. Laplace (additive) smoothing avoids this by adding
+      a small pseudo-count to every combination.

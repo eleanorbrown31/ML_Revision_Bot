@@ -1,0 +1,217 @@
+area: "Time Series"
+questions:
+  - topic: "Time Series Methods"
+    subtopic: "Stationarity"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does it mean for a time series to be 'stationary'?"
+    payload:
+      options:
+        - "It contains no missing values"
+        - "It was collected at regular time intervals"
+        - "It has no seasonal pattern"
+        - "Its statistical properties, such as mean and variance, do not change over time"
+    answer_key:
+      correct: 3
+    explanation: >
+      A stationary series has a constant mean, variance, and autocorrelation structure over time
+      -- no trend or changing spread. Many classical time series models (like ARIMA) assume or
+      require stationarity, which is why differencing is often applied first to remove trends.
+
+  - topic: "Time Series Methods"
+    subtopic: "ARIMA components (AR, I, MA)"
+    difficulty: "F3"
+    format: "order"
+    stem: "Put the steps of fitting an ARIMA model in the correct order."
+    payload:
+      items:
+        - "Check stationarity and difference the series if needed (the 'I' component)"
+        - "Examine ACF/PACF plots to choose AR and MA orders"
+        - "Fit the ARIMA model with the chosen (p, d, q) parameters"
+        - "Validate residuals are roughly white noise (no remaining autocorrelation)"
+    answer_key:
+      sequence: [0, 1, 2, 3]
+    explanation: >
+      A typical ARIMA workflow: make the series stationary through differencing (determining d),
+      use ACF/PACF plots to pick reasonable AR (p) and MA (q) orders, fit the model, then check
+      the residuals look like white noise -- if they still show structure, the orders need
+      revisiting.
+
+  - topic: "Time Series Methods"
+    subtopic: "autocorrelation / partial autocorrelation"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What do autocorrelation (ACF) and partial autocorrelation (PACF) plots show about a time series?"
+    payload:
+      options:
+        - "How much the series has grown or declined in absolute terms"
+        - "Whether the series contains missing values"
+        - "How correlated the series is with its own past values at different lags"
+        - "The exact number of seasonal cycles in the data"
+    answer_key:
+      correct: 2
+    explanation: >
+      Both plots measure self-correlation at different lags (1 step back, 2 steps back, etc.) --
+      essentially "does knowing the value a few steps ago help predict the value now?" They're
+      the standard diagnostic tools for spotting autocorrelation structure and seasonality before
+      fitting a model.
+
+  - topic: "Time Series Methods"
+    subtopic: "autocorrelation / partial autocorrelation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In choosing ARIMA orders from ACF/PACF plots, what's the key difference between the two?"
+    payload:
+      options:
+        - "ACF only applies to stationary series, PACF only to non-stationary ones"
+        - "ACF is used for classification tasks, PACF for regression tasks"
+        - "They are two names for exactly the same calculation"
+        - "PACF measures the correlation at a lag after removing the effects of the shorter lags in between, while ACF includes those indirect effects too"
+    answer_key:
+      correct: 3
+    explanation: >
+      ACF at lag 3 includes the indirect correlation passed through lags 1 and 2. PACF strips
+      that out, showing only the direct relationship at lag 3. That distinction is exactly why
+      they're used together: PACF cutoff helps choose the AR order (p), ACF cutoff helps choose
+      the MA order (q).
+
+  - topic: "Time Series Methods"
+    subtopic: "seasonal decomposition"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Classical time series decomposition typically splits a series into which three components?"
+    payload:
+      options:
+        - "Mean, variance, and standard deviation"
+        - "Training, validation, and test"
+        - "AR, I, and MA"
+        - "Trend, seasonality, and residual (noise)"
+    answer_key:
+      correct: 3
+    explanation: >
+      Trend captures the long-run direction, seasonality captures a repeating pattern at a fixed
+      period (e.g. weekly or yearly), and the residual is whatever's left over once both are
+      removed -- ideally close to white noise if the decomposition has captured the real
+      structure.
+
+  - topic: "Time Series Methods"
+    subtopic: "seasonal decomposition"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "When should a multiplicative decomposition be used instead of an additive one for a seasonal series?"
+    payload:
+      options:
+        - "When the seasonal fluctuations grow or shrink in proportion to the level of the series (e.g. bigger swings when the series is higher)"
+        - "When the series has no trend at all"
+        - "Whenever the data is measured monthly rather than daily"
+        - "When there are missing values in the series"
+    answer_key:
+      correct: 0
+    explanation: >
+      Additive decomposition assumes the seasonal swing has constant absolute size regardless of
+      the series' level. Multiplicative decomposition assumes it scales with the level instead --
+      e.g. retail sales where December's seasonal bump is a percentage of sales, so it's bigger in
+      absolute terms in a year with higher overall sales.
+
+  - topic: "Time Series Methods"
+    subtopic: "exponential smoothing"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What's the core idea behind exponential smoothing methods for forecasting?"
+    payload:
+      options:
+        - "They fit a single straight line through all historical data, weighted equally"
+        - "They require the series to already be stationary before use"
+        - "They only work when a strong seasonal pattern is present"
+        - "They give exponentially decreasing weight to older observations, so recent data influences the forecast more than distant history"
+    answer_key:
+      correct: 3
+    explanation: >
+      Each new forecast is a weighted average of the latest observation and the previous
+      forecast, with the weight (the smoothing parameter, alpha) controlling how much recent data
+      dominates. Unrolled over time, this gives exponentially decaying weight to older points --
+      simple, cheap, and often a strong baseline.
+
+  - topic: "Time Series Methods"
+    subtopic: "exponential smoothing"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the Holt-Winters (triple exponential smoothing) method add on top of simple exponential smoothing?"
+    payload:
+      options:
+        - "It removes the need for any smoothing parameters"
+        - "It converts the forecasting problem into a classification task"
+        - "It adds separate components to capture trend and seasonality, not just the current level"
+        - "It only works for series with no noise at all"
+    answer_key:
+      correct: 2
+    explanation: >
+      Simple exponential smoothing only tracks a smoothed level, so it forecasts flat and misses
+      any trend or seasonal pattern. Holt's method adds a trend component; Holt-Winters adds a
+      third, seasonal component on top of that -- hence "triple" -- letting it forecast series
+      that both trend and repeat seasonally.
+
+  - topic: "Time Series Methods"
+    subtopic: "walk-forward validation"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Why can't you use standard k-fold cross-validation, with random shuffling, to evaluate a time series forecasting model?"
+    payload:
+      options:
+        - "k-fold CV can only be used with classification problems"
+        - "It would let the model train on future data to predict the past, leaking information a real forecast would never have"
+        - "Time series data never has enough rows for cross-validation"
+        - "Time series models can only be evaluated using accuracy, not RMSE"
+    answer_key:
+      correct: 1
+    explanation: >
+      Random shuffling ignores the time ordering, so a fold could easily train on data from next
+      month to predict this month -- information a real deployed forecaster would never have at
+      prediction time. Evaluation needs to respect the arrow of time.
+
+  - topic: "Time Series Methods"
+    subtopic: "walk-forward validation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does walk-forward (rolling-origin) validation evaluate a time series model?"
+    payload:
+      options:
+        - "It shuffles all timestamps randomly before splitting into folds"
+        - "It trains once on the full dataset and tests on a single held-out final year"
+        - "It removes all seasonality from the series before evaluating"
+        - "It repeatedly trains on data up to a point in time, tests on the next chunk, then moves the cutoff forward and repeats"
+    answer_key:
+      correct: 3
+    explanation: >
+      Each "fold" only ever trains on the past relative to its test window, then the cutoff slides
+      forward and the process repeats -- mimicking how the model would actually be retrained and
+      used in production over time, and giving multiple honest out-of-sample estimates instead of
+      just one.
+
+  - topic: "Time Series Methods"
+    subtopic: "autocorrelation / partial autocorrelation"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each time series concept to its definition."
+    payload:
+      left:
+        - "Stationarity"
+        - "ACF / PACF"
+        - "Seasonal decomposition"
+        - "Walk-forward validation"
+      right:
+        - "Evaluates a forecasting model by repeatedly training on the past and testing on the next chunk forward in time"
+        - "A property where a series' statistical properties, like mean and variance, don't change over time"
+        - "Splits a series into trend, seasonal, and residual components"
+        - "Plots showing how correlated a series is with its own past values at different lags"
+    answer_key:
+      pairs:
+        "Stationarity": "A property where a series' statistical properties, like mean and variance, don't change over time"
+        "ACF / PACF": "Plots showing how correlated a series is with its own past values at different lags"
+        "Seasonal decomposition": "Splits a series into trend, seasonal, and residual components"
+        "Walk-forward validation": "Evaluates a forecasting model by repeatedly training on the past and testing on the next chunk forward in time"
+    explanation: >
+      These four ideas cover the core time series workflow: check stationarity, use ACF/PACF to
+      understand the autocorrelation structure and pick model orders, decompose to understand
+      trend/seasonality, and use walk-forward validation to get an honest estimate of forecast
+      accuracy.

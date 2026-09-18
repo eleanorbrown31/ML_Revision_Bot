@@ -1,0 +1,307 @@
+area: "Data-Driven Transformation & Leadership"
+source: "Second Brain/apprenticeship/term-5/Topic 8 - Error, Bias, and Uncertainty.md"
+questions:
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Data error vs model error"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the distinction the course draws between data error and model error?"
+    payload:
+      options:
+        - "Data error is error in the output of data collection; model error is error in the output of data analysis, the difference between predicted and actual value"
+        - "Data error is always larger than model error"
+        - "Model error only occurs in deep learning"
+        - "They are the same thing measured at different times"
+    answer_key:
+      correct: 0
+    explanation: >
+      Data error shows up as incorrect values, missing values, duplication and inconsistent
+      representations. Model error is caused by data error feeding through, insufficient data, a
+      poor feature set, or a sub-optimal model that is overfitted, underfitted or the wrong
+      algorithm.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Data error vs model error"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why does the course say a model with zero error is a warning sign rather than a success?"
+    payload:
+      options:
+        - "Because zero error is impossible to compute"
+        - "Because it is likely either very simple or overfitted, so it will not generalise"
+        - "Because regulators reject perfect models"
+        - "Because the loss function must always be positive by law"
+    answer_key:
+      correct: 1
+    explanation: >
+      Training minimises error or loss using metrics such as MAE, MSE and RMSE, and the model is
+      then tested on unseen data. Error cannot be eliminated because data errors, insufficient
+      data and imperfect models always leave some uncertainty.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Random vs systematic error"
+    difficulty: "F2"
+    format: "match"
+    stem: "Classify each example as random error or systematic error."
+    payload:
+      left:
+        - "A miscalibrated scale that always reads high"
+        - "Misreading a scale once"
+        - "Unconscious bias consistently rating one group lower"
+        - "Natural temperature fluctuations affecting a sensitive instrument"
+      right:
+        - "Random error"
+        - "Systematic error"
+    answer_key:
+      pairs:
+        "A miscalibrated scale that always reads high": "Systematic error"
+        "Misreading a scale once": "Random error"
+        "Unconscious bias consistently rating one group lower": "Systematic error"
+        "Natural temperature fluctuations affecting a sensitive instrument": "Random error"
+    explanation: >
+      Random error is a chance difference between observed and true value, reduced by repeated
+      measurement, large samples and controlling extraneous variables. Systematic error is a
+      consistent or proportional difference, reduced by awareness, good design, checking and
+      calibration.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Data bias vs model bias"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What single idea does the course say all the named 'types' of bias boil down to?"
+    payload:
+      options:
+        - "Malicious intent by the data collector"
+        - "Data that is not genuinely representative of the population being modelled"
+        - "Using too few features"
+        - "Using a neural network instead of regression"
+    answer_key:
+      correct: 1
+    explanation: >
+      Type names are not used consistently in the literature. A representative sample is
+      sometimes unachievable or unverifiable, and even a random sample can turn out biased by
+      chance, which is why results must be checked for bias and monitored in operation.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Stratified sampling"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does stratified random sampling improve representativeness?"
+    payload:
+      options:
+        - "By sampling only the largest group"
+        - "By dividing the population into subgroups sharing attributes such as age or income before sampling, so each subgroup is represented"
+        - "By doubling the sample size"
+        - "By removing outliers before sampling"
+    answer_key:
+      correct: 1
+    explanation: >
+      Strata are defined on shared attributes. Sampling within each stratum prevents a
+      subgroup being missed by chance, which a simple random sample cannot guarantee.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Data bias vs model bias"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A model performs well on training data but noticeably worse on test data. What does the course say this pattern typically indicates?"
+    payload:
+      options:
+        - "The test data is wrong"
+        - "The model has captured bias from training data selection, feature choice or the algorithm, producing consistently incorrect predictions on new data"
+        - "The model needs a larger learning rate"
+        - "Nothing; this is normal for all models"
+    answer_key:
+      correct: 1
+    explanation: >
+      Model bias means systematic errors causing consistently incorrect predictions. The
+      training-good, test-worse pattern is the signature. Mitigation is representative training
+      data, checking results, fairness tests and continued monitoring in operation.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Aleatoric vs epistemic uncertainty"
+    difficulty: "F2"
+    format: "match"
+    stem: "Classify each source of uncertainty as aleatoric or epistemic."
+    payload:
+      left:
+        - "The result of a coin flip"
+        - "Whether the model has been trained on all relevant cases"
+        - "Fluctuations in a measuring device"
+        - "Incomplete coverage of the domain by the training sample"
+      right:
+        - "Aleatoric"
+        - "Epistemic"
+    answer_key:
+      pairs:
+        "The result of a coin flip": "Aleatoric"
+        "Whether the model has been trained on all relevant cases": "Epistemic"
+        "Fluctuations in a measuring device": "Aleatoric"
+        "Incomplete coverage of the domain by the training sample": "Epistemic"
+    explanation: >
+      Aleatoric uncertainty is inherent randomness and cannot be reduced; it persists after data
+      quality checks. Epistemic uncertainty is lack of knowledge about the system and can be
+      reduced by adding training data.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Aleatoric vs epistemic uncertainty"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why can epistemic uncertainty be reduced but aleatoric uncertainty cannot?"
+    payload:
+      options:
+        - "Because epistemic comes from missing knowledge that more data can supply, whereas aleatoric comes from genuine randomness in the process being measured"
+        - "Because aleatoric uncertainty is always larger"
+        - "Because epistemic uncertainty only exists in regression models"
+        - "Because aleatoric uncertainty is a software bug"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course also names ontological, structural and deep uncertainty, but aleatoric and
+      epistemic receive most attention from data scientists. An imperfect model can contribute
+      both kinds.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Sources of uncertainty"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What point is the course making with George Box's remark that all models are wrong but some are useful?"
+    payload:
+      options:
+        - "That modelling is a waste of time"
+        - "That models are approximations built by induction from available data, so the data scientist must understand and communicate their fallibility so they are used appropriately"
+        - "That only statistical models are wrong"
+        - "That models should never be deployed"
+    answer_key:
+      correct: 1
+    explanation: >
+      Imperfections propagate through the whole pipeline: recording, sampling, preparation,
+      feature selection, algorithm choice and tuning. A model at 90 percent accuracy may be very
+      useful; one at 50 percent probably is not. Production models need continual review.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Standard error and confidence intervals"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "The course suggests running a model on ten different samples and reporting accuracy as mean plus or minus two standard deviations. What does that interval express?"
+    payload:
+      options:
+        - "The exact accuracy on any future sample"
+        - "A roughly 95 percent confidence range for the average accuracy across samples, based on the empirical rule for a normal distribution"
+        - "The accuracy on the training set"
+        - "The maximum possible accuracy"
+    answer_key:
+      correct: 1
+    explanation: >
+      About 95 percent of a normal distribution lies within two standard deviations of the mean.
+      Varying the sample data, the model configuration or the model itself builds a
+      distribution of results; the interval quantifies uncertainty of the average, not of
+      individual predictions.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Standard error and confidence intervals"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Which statement communicates a model result to stakeholders in the way the course recommends?"
+    payload:
+      options:
+        - "The model is 89 percent accurate"
+        - "Statistical analysis shows accuracy at 95 percent confidence to be 89 percent plus or minus 5 percent, so in 95 percent of cases accuracy will be between 84 and 94 percent"
+        - "The model is correct"
+        - "The model has no bias"
+    answer_key:
+      correct: 1
+    explanation: >
+      Combining a metric with a confidence level lets domain experts judge how to use the
+      model. A bare accuracy figure hides the uncertainty around the figure itself, which the
+      course stresses you must also ask about.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Monte Carlo dropout and ensembles"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does Monte Carlo dropout differ from ordinary dropout?"
+    payload:
+      options:
+        - "It uses dropout at training time only, with a higher rate"
+        - "It applies dropout at test time, sampling many slightly different networks to produce a predictive distribution per case, from which confidence can be estimated"
+        - "It removes dropout entirely"
+        - "It only works for regression"
+    answer_key:
+      correct: 1
+    explanation: >
+      Ordinary dropout is a training-time regulariser. Monte Carlo dropout (Gal and Ghahramani,
+      2016) reuses the mechanism at inference to approximate Bayesian inference: the spread of
+      outputs across samples indicates uncertainty for that individual case.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Monte Carlo dropout and ensembles"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does the course recommend outputting an individual confidence rating alongside each prediction, rather than relying on the test-set average?"
+    payload:
+      options:
+        - "Because averages are always wrong"
+        - "Because a model may perform differently on individual cases or subgroups, so per-case confidence lets high-certainty results be accepted automatically and low-certainty ones flagged for human intervention"
+        - "Because it reduces training time"
+        - "Because regulators require a number per row"
+    answer_key:
+      correct: 1
+    explanation: >
+      Per-case uncertainty comes from running multiple slightly altered models on the same
+      sample; high variance means low confidence. This underpins both Monte Carlo dropout and
+      ensemble methods.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Confidence and calibration"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the course mean by miscalibration in a neural network?"
+    payload:
+      options:
+        - "The learning rate is set incorrectly"
+        - "A mismatch between the confidence rating a model outputs and how often its predictions are actually correct, such as high confidence on a wrong or borderline prediction"
+        - "The input data has the wrong units"
+        - "The GPU clock is wrong"
+    answer_key:
+      correct: 1
+    explanation: >
+      Research shows deep learning tends to be over-confident, sometimes even with Monte Carlo
+      dropout applied. Calibration research aims to make confidence ratings reflect actual
+      correctness, which matters for safety-critical or high-stakes use.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Sources of uncertainty"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which actions does the course list for mitigating uncertainty? Select all that apply."
+    payload:
+      options:
+        - "Prepare data to remove as much potential error as possible"
+        - "Use a sample representative of the whole population"
+        - "Experiment with a variety of algorithms"
+        - "Employ hyperparameter tuning or cross-validation"
+        - "Report only the best result you observed"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      Reporting only the best result hides the distribution of outcomes that the course wants
+      you to quantify and communicate. The four listed actions address noisy data, incomplete
+      coverage and imperfect models respectively.
+
+  - topic: "Error, bias and uncertainty"
+    subtopic: "Sources of uncertainty"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say quantifying uncertainty is a particular problem in deep learning?"
+    payload:
+      options:
+        - "Because deep networks never make errors"
+        - "Because with many hidden layers, understanding how the model reached a prediction is practically impossible, so the path to a prediction cannot be traced"
+        - "Because deep learning uses no training data"
+        - "Because uncertainty only exists in linear models"
+    answer_key:
+      correct: 1
+    explanation: >
+      Deep learning uses networks with more than one hidden layer, and each extra layer adds
+      complexity and reduces traceability. This drives the research interest in confidence
+      ratings, calibration and tools such as TensorFlow Probability.

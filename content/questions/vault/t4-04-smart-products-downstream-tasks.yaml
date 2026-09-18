@@ -1,0 +1,171 @@
+area: "AI Innovation & NLP Applications"
+source: "Second Brain/apprenticeship/term-4/Topic 4 - Smart Products and Downstream Tasks.md"
+questions:
+  - topic: "Digital business models"
+    subtopic: "Smart products and personalisation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a 'micro-moment' in the course's framing of the speed of now?"
+    payload:
+      options:
+        - "A one-second television advert"
+        - "An intent-rich moment where a customer wants to buy, go, do or find out something and turns to a device or app immediately, demanding real-time delivery"
+        - "A short internal team meeting"
+        - "A unit of processor time"
+    answer_key:
+      correct: 1
+    explanation: >
+      Businesses need to be there, be useful and be accountable in these moments. Combined with
+      personalisation, this helps customers feel unique, though achieving personalisation at
+      scale needs different strategies than mass distribution.
+
+  - topic: "Digital business models"
+    subtopic: "As-a-service models"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What example does the course give of AI-as-a-service, and what does it illustrate about products versus services?"
+    payload:
+      options:
+        - "Netflix recommendations, illustrating pure entertainment value"
+        - "Oracle's Autonomous Database automating security, backups and routine tasks, illustrating that the crossover between products and services reduces the distinction between them"
+        - "A car, illustrating that hardware cannot be a service"
+        - "A newspaper subscription, illustrating traditional media only"
+    answer_key:
+      correct: 1
+    explanation: >
+      Otter, generating meeting notes automatically, is a second example. Vitality's health-linked
+      insurance premiums show a service rewarding behaviour, reinforcing that the value-add line
+      between product and service is increasingly blurred.
+
+  - topic: "BERT, RoBERTa and fine-tuning"
+    subtopic: "Pretrain then fine-tune"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course draws a rough analogy between human learning and pretraining/fine-tuning. What is that analogy?"
+    payload:
+      options:
+        - "Pretraining is like an adult reading a manual; fine-tuning is like forgetting it"
+        - "Pretraining is like infants acquiring language; fine-tuning is like humans later learning to use language for specific tasks"
+        - "Pretraining is like sleeping; fine-tuning is like exercising"
+        - "There is no analogy given"
+    answer_key:
+      correct: 1
+    explanation: >
+      Pretraining happens 'upstream' and builds general language understanding as learned
+      parameters. Fine-tuning is a 'downstream' task that can differ substantially from the
+      pretraining task, sometimes not needed at all if the pretrained model is used off-the-shelf.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "Accuracy, F1 and MCC"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say F1-score is more flexible than plain accuracy for comparing NLP models?"
+    payload:
+      options:
+        - "F1-score is always a higher number than accuracy"
+        - "F1-score combines precision and recall, which helps with uneven class distributions where accuracy alone can be misleading"
+        - "F1-score does not require true positives or negatives"
+        - "F1-score can only be used for image tasks"
+    answer_key:
+      correct: 1
+    explanation: >
+      Accuracy measures the proportion of correct predictions across all classes. When classes
+      are imbalanced, a model can score high accuracy while performing badly on the minority
+      class, which F1 is better placed to reveal.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "Accuracy, F1 and MCC"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why is the Matthews Correlation Coefficient (MCC) specifically recommended for binary classification with unequal class sizes?"
+    payload:
+      options:
+        - "It uses all four confusion-matrix quantities (true/false positives and negatives) together, giving a balanced measure even when one class is much rarer than the other"
+        - "It ignores false negatives entirely"
+        - "It only works when classes are perfectly balanced"
+        - "It is identical to accuracy in all cases"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course names MCC alongside accuracy and F1-score as the three metrics used to compare
+      NLP models, and flags MCC as particularly suited to imbalanced binary classification.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "GLUE and CoLA"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the GLUE benchmark test, and what is CoLA an example of within it?"
+    payload:
+      options:
+        - "GLUE tests hardware speed; CoLA measures GPU temperature"
+        - "GLUE is a set of relatively small datasets testing natural language understanding models across tasks; CoLA is one such task, judging whether English sentences are grammatically acceptable"
+        - "GLUE only tests translation quality"
+        - "GLUE and CoLA are unrelated benchmarks"
+    answer_key:
+      correct: 1
+    explanation: >
+      CoLA labels sentences grammatical (1) or ungrammatical (0), for example marking 'we yelled
+      ourselves hoarse' grammatical and 'we yelled ourselves' not. The course notes CoLA was used
+      in a later workshop to fine-tune BERT.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "SuperGLUE tasks"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each SuperGLUE task to what it tests."
+    payload:
+      left:
+        - "CoPA"
+        - "BoolQ"
+        - "WiC"
+        - "WSC"
+      right:
+        - "Choosing the most plausible answer to a question from alternatives"
+        - "Answering a naturally occurring yes/no question from a passage"
+        - "Deciding if a target word carries the same meaning in two different sentences"
+        - "Coreference resolution: working out which noun a pronoun refers to"
+    answer_key:
+      pairs:
+        "CoPA": "Choosing the most plausible answer to a question from alternatives"
+        "BoolQ": "Answering a naturally occurring yes/no question from a passage"
+        "WiC": "Deciding if a target word carries the same meaning in two different sentences"
+        "WSC": "Coreference resolution: working out which noun a pronoun refers to"
+    explanation: >
+      SuperGLUE also includes the Commitment Bank (entailment/neutral/contradiction) and MultiRC
+      (multi-sentence reading comprehension). It was designed with stricter tasks after models
+      began to beat human baselines on GLUE.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "SuperGLUE tasks"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course gives an RTE example where a hypothesis seems to entail its premise, but the dataset labels it 'not_entailment'. What point does this illustrate?"
+    payload:
+      options:
+        - "The dataset contains an error that should be ignored"
+        - "Entailment judgement is genuinely difficult, even for humans, which is part of why these benchmark tasks are demanding for models too"
+        - "RTE only tests machine translation quality"
+        - "Models always get RTE examples correct"
+    answer_key:
+      correct: 1
+    explanation: >
+      This is offered as an example of task difficulty rather than a labelling mistake to fix.
+      It underlines why SuperGLUE re-established a human baseline that transformers then had to
+      work to surpass.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "Encoder-only vs decoder-only vs encoder-decoder"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a 'downstream task' as the course defines it?"
+    payload:
+      options:
+        - "Any task performed after lunch"
+        - "A fine-tuned task that inherits the model and parameters from a pretrained transformer, i.e. one not used to fully pretrain the model"
+        - "A task performed only on mobile devices"
+        - "A task that requires no neural network at all"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course lists SST-2 (sentiment analysis), MRPC (sentence equivalence) and a translated
+      Winograd Schema Challenge as further downstream tasks tried via the Hugging Face pipeline.

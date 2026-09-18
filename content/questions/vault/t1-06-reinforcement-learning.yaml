@@ -1,0 +1,223 @@
+area: "Neural Networks"
+source: "Second Brain/apprenticeship/term-1/Topic 6 - Reinforcement Learning.md"
+questions:
+  - topic: "Reinforcement learning"
+    subtopic: "Agent, environment, states, actions and rewards"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "How does reinforcement learning differ from supervised classification and unsupervised clustering, as the course frames it?"
+    payload:
+      options:
+        - "RL lets the agent monitor the responses from its own actions and cumulatively model the maximum possible reward over time, rather than learning from labelled outcomes or similarity-based partitioning"
+        - "RL requires no environment at all"
+        - "RL is identical to supervised classification with different terminology"
+        - "RL only works on image data"
+    answer_key:
+      correct: 0
+    explanation: >
+      Supervised classification labels all possible outcomes in advance; unsupervised clustering
+      partitions by distance measures. RL instead deals with goal-oriented algorithms learning to
+      achieve complex objectives over time steps.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Explore-exploit dilemma"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the explore-exploit dilemma in reinforcement learning?"
+    payload:
+      options:
+        - "Whether to always exploit a known strategy, or explore new actions that might find a much bigger reward later, which requires a notion of delayed gratification"
+        - "Whether to use supervised or unsupervised learning"
+        - "Whether to use a real or simulated environment"
+        - "Whether to use Python or another programming language"
+    answer_key:
+      correct: 0
+    explanation: >
+      This sits alongside the credit assignment problem (which action led to a reward) as one of
+      the trial-and-error complications the course names for RL.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Discount factor"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the discount factor gamma control when calculating total reward over an episode?"
+    payload:
+      options:
+        - "It amplifies current rewards over future ones, compensating for the fact that performing the same action does not guarantee the same reward far into a stochastic future"
+        - "It sets the number of episodes to run"
+        - "It determines the size of the Q-table"
+        - "It has no practical effect on training"
+    answer_key:
+      correct: 0
+    explanation: >
+      A discount factor near 0 gives short-sighted strategies favouring immediate reward; one too
+      close to 1 defeats the purpose of discounting. The course suggests 0.75 to 0.9 as a typical
+      balance, with higher gamma for more deterministic environments.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Markov property and MDPs"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the Markov assumption that a Markov Decision Process relies on?"
+    payload:
+      options:
+        - "The probability of a future state depends only on the current state, not on the states or actions that preceded it"
+        - "All future states are completely unpredictable"
+        - "Every state must have exactly one possible action"
+        - "Rewards must always be positive"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is the Markov property in general, and it underlies almost every reinforcement
+      learning problem framed as an MDP: the present state carries all the information needed
+      to reason about the future.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Markov property and MDPs"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which five elements define a Markov Decision Process, using the course's own notation (S, A, R, P, gamma)? Select all that apply."
+    payload:
+      options:
+        - "S: the set of possible states"
+        - "A: the set of possible actions"
+        - "R: the distribution of reward given a state-action pair"
+        - "P: the transition probability to the next state given a state-action pair"
+        - "gamma: the discount factor"
+        - "L: the loss function used for supervised training"
+    answer_key:
+      correct: [0, 1, 2, 3, 4]
+    explanation: >
+      There is no loss function in the supervised-learning sense in a plain MDP; the agent
+      learns from rewards and transitions, not from labelled training examples.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Policy, value and Q-value functions"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each RL concept to its description."
+    payload:
+      left:
+        - "Policy (pi)"
+        - "Value function V(s)"
+        - "Q-value function Q(s,a)"
+      right:
+        - "The rule that determines which action the agent takes at each state"
+        - "The expected cumulative discounted reward from following a policy starting at state s"
+        - "The expected cumulative reward from taking action a in state s, then following a policy"
+    answer_key:
+      pairs:
+        "Policy (pi)": "The rule that determines which action the agent takes at each state"
+        "Value function V(s)": "The expected cumulative discounted reward from following a policy starting at state s"
+        "Q-value function Q(s,a)": "The expected cumulative reward from taking action a in state s, then following a policy"
+    explanation: >
+      The optimal policy maximises the expected sum of discounted rewards, and can be redefined
+      once you have the optimal Q-value function as simply choosing the action with the highest
+      Q-value at each state.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Bellman equation intuition"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "In plain terms, what does the Bellman equation say about the maximum future reward for an action taken at a given state?"
+    payload:
+      options:
+        - "It equals the immediate reward plus the maximum future reward achievable from the next state, recursively linking the value of one step to the value of the next"
+        - "It equals the immediate reward only, ignoring the future entirely"
+        - "It only applies to environments with a single state"
+        - "It replaces the need for a discount factor"
+    answer_key:
+      correct: 0
+    explanation: >
+      This recursive structure is what makes Q-learning able to build up long-horizon strategies
+      from local updates: each state-action pair's value depends on the best value reachable
+      from wherever it leads next.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Q-learning and Q-tables"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does a Q-table store, and what are its dimensions in the taxi-cab environment example?"
+    payload:
+      options:
+        - "The agent's memory of state-action pairs and their associated values, sized 500 by 6 in the taxi example (500 states by 6 possible actions)"
+        - "The raw pixel data of the environment"
+        - "A record of every random seed used during training"
+        - "The reward function's source code"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course reports that a purely random policy typically took 1,000 to 10,000 time steps
+      for one successful drop-off, whereas the Q-table approach reached roughly 15 to 20 steps by
+      episode 1000 as the table built up.
+
+  - topic: "Reinforcement learning"
+    subtopic: "SARSA vs Q-learning"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "How do SARSA and Q-learning differ, given that both are model-free algorithms with similar exploitation strategies?"
+    payload:
+      options:
+        - "SARSA sticks to its current policy when choosing actions (on-policy); Q-learning ventures off-policy to find the best strategy"
+        - "SARSA requires a fully known environment model; Q-learning does not"
+        - "Q-learning cannot use a discount factor"
+        - "SARSA only works with continuous action spaces"
+    answer_key:
+      correct: 0
+    explanation: >
+      Model-free methods like SARSA and Q-learning are used because real-world environments
+      often lack prior knowledge of their own dynamics, unlike a fully specified MDP.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Deep Q Networks"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What do Deep Q Networks (DQN) add to plain Q-learning, and what limitation do they have?"
+    payload:
+      options:
+        - "They use neural networks to estimate Q values, letting agents learn from raw inputs like screen pixels, but they can only handle discrete, low-dimensional action spaces"
+        - "They remove the need for any reward signal"
+        - "They only work with a Q-table, never a neural network"
+        - "They eliminate the explore-exploit dilemma entirely"
+    answer_key:
+      correct: 0
+    explanation: >
+      DeepMind's DQN work let artificial agents play different games purely from pixel
+      observations, giving rise to the broader field of deep reinforcement learning, with
+      applications from molecule generation to trading bots.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Episodic vs continuous tasks"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say continuous tasks (those with no terminal end state, like a virtual assistant) still need a discount factor?"
+    payload:
+      options:
+        - "To avoid an infinite total reward, since future rewards keep accumulating with no natural stopping point"
+        - "Continuous tasks never use a discount factor"
+        - "To make the task episodic instead"
+        - "To remove the need for a policy"
+    answer_key:
+      correct: 0
+    explanation: >
+      Episodic tasks have a terminal end state, such as the taxi environment's successful
+      drop-off; continuous tasks do not, so discounting both handles unpredictable future events
+      and keeps the total reward finite.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Agent, environment, states, actions and rewards"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "In the taxi-cab worked example, why is a simulated environment used rather than training the agent in a real taxi?"
+    payload:
+      options:
+        - "Training an agent in real time in a real environment is impractical, so a simulated environment such as OpenAI Gym provides the interaction space instead"
+        - "Real environments cannot have states or actions"
+        - "Simulated environments are required by the RL algorithm's mathematics"
+        - "Real taxis do not generate rewards"
+    answer_key:
+      correct: 0
+    explanation: >
+      The simulated environment is described as a stepping-stone into the design architecture of
+      RL systems generally, letting the agent be trained safely and quickly before any real-world
+      deployment is considered.

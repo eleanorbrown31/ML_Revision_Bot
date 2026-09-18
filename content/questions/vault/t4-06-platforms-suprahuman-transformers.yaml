@@ -1,0 +1,258 @@
+area: "AI Innovation & NLP Applications"
+source: "Second Brain/apprenticeship/term-4/Topic 6 - All Platforms and Suprahuman Transformers.md"
+questions:
+  - topic: "Digital business models"
+    subtopic: "Platform business model and sharing economy"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the course distinguish the sharing economy from the wider platform business model?"
+    payload:
+      options:
+        - "The sharing economy is a specific kind of platform facilitating exchanges like renting a product or service, such as JustPark or Zipcar; the platform model is the broader C2C strategy of building communities and markets for many kinds of transactions"
+        - "The sharing economy and platform model are unrelated"
+        - "The sharing economy only applies to housing"
+        - "Platforms never involve customer-to-customer transactions"
+    answer_key:
+      correct: 0
+    explanation: >
+      GitHub and Instacart are given as broader platform examples, likened to a shopping mall
+      offering varied services in one place.
+
+  - topic: "Digital business models"
+    subtopic: "Blockchain, Web3 and crowdsourcing"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the key distinction the course draws between a platform and blockchain?"
+    payload:
+      options:
+        - "Platforms are a business model; blockchain is a technology enabling secure peer-to-peer transactions without a central authority"
+        - "They are the same thing described differently"
+        - "Blockchain is a business model; platforms are a technology"
+        - "Platforms require blockchain by definition"
+    answer_key:
+      correct: 0
+    explanation: >
+      Platforms act as a centralising middleman using internet technology. Blockchain removes
+      the middleman, and some platforms incorporate it to shift trust from the platform owner to
+      the blockchain itself, via smart contracts and transparent transactions.
+
+  - topic: "Digital business models"
+    subtopic: "Blockchain, Web3 and crowdsourcing"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each platform type to its description."
+    payload:
+      left:
+        - "Traditional platform"
+        - "Blockchain platform"
+        - "Hybrid platform"
+      right:
+        - "Fully centralised"
+        - "Fully decentralised"
+        - "Bridges centralised Web2 systems and decentralised, transparent Web3 features"
+    answer_key:
+      pairs:
+        "Traditional platform": "Fully centralised"
+        "Blockchain platform": "Fully decentralised"
+        "Hybrid platform": "Bridges centralised Web2 systems and decentralised, transparent Web3 features"
+    explanation: >
+      Arcade City, Winding Tree and WAZ Marketplace are given as blockchain-based platform
+      examples. Web3 is defined as the decentralised next-generation internet giving users
+      ownership of data, digital assets and identity.
+
+  - topic: "Digital business models"
+    subtopic: "Blockchain, Web3 and crowdsourcing"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "99designs, uTest and Amazon Mechanical Turk are the course's examples of which kind of crowdsourcing, as distinct from crowdsourcing ideas?"
+    payload:
+      options:
+        - "Crowdsourcing skills and services"
+        - "Crowdsourcing funding"
+        - "Crowdsourcing hardware manufacturing"
+        - "Crowdsourcing regulatory approval"
+    answer_key:
+      correct: 0
+    explanation: >
+      Crowdsourcing underpins platform business models, with reduced staffing costs as a key
+      benefit for the organisations using it.
+
+  - topic: "Digital business models"
+    subtopic: "Experience economy"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the course say the 'experience economy' treats as being on par with value for money?"
+    payload:
+      options:
+        - "Speed of delivery"
+        - "Customer experience, using VR, XR and AR to turn customer journeys into thoughtful experiences"
+        - "Product price alone"
+        - "Number of features offered"
+    answer_key:
+      correct: 1
+    explanation: >
+      Farfetch and Browns' interactive retail, Formula E Ghost Racing, Disney's MagicBands and
+      Warby Parker's AR try-on tool are given as examples, alongside the emerging Chief
+      Experience Officer role.
+
+  - topic: "GPT models and LLM adaptation"
+    subtopic: "GPT model evolution"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put these GPT-family models in order of release."
+    payload:
+      items:
+        - "GPT-3"
+        - "GPT-4"
+        - "GPT-2"
+        - "GPT-3.5"
+        - "GPT"
+    answer_key:
+      sequence: [4, 2, 0, 3, 1]
+    explanation: >
+      GPT (2018), GPT-2 (2019), GPT-3 (2020, 175 billion parameters), GPT-3.5 (2022, powering
+      early ChatGPT), GPT-4 (March 2023, better reasoning and multimodal input). GPT-4o and GPT-5
+      followed later.
+
+  - topic: "GPT models and LLM adaptation"
+    subtopic: "Fine-tuning vs few-shot vs zero-shot"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put these phases towards zero-shot models in order, from most to least reliant on task-specific training."
+    payload:
+      items:
+        - "Zero-shot: no demonstration given at all"
+        - "Fine-tuning: model trained, then fine-tuned"
+        - "One-shot: only one demonstration given"
+        - "Few-shot: shown task demonstrations, replacing weight updates"
+    answer_key:
+      sequence: [1, 3, 2, 0]
+    explanation: >
+      This progression happened remarkably fast: transformer (2017), GPT (2018), fine-tuning
+      perfected with BERT (2019), zero-shot GPT-3 approach defined (2020). Parameters grew from
+      65 million to 175 billion over the same period.
+
+  - topic: "GPT models and LLM adaptation"
+    subtopic: "Fine-tuning vs few-shot vs zero-shot"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does the course connect the rapid rise in parameter count (65M to 175B between 2017 and 2020) to the shift from fine-tuning towards zero-shot use?"
+    payload:
+      options:
+        - "Larger parameter count and architecture growth are unrelated to zero-shot ability"
+        - "As parameters, layers, attention heads and context size all grew together, results improved enough that the need for task-specific fine-tuning fell, since the model could generalise from prompting alone"
+        - "Zero-shot only became possible once GPUs were invented"
+        - "Parameter count decreased as zero-shot ability increased"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course's architecture comparison shows layers going from 6 to 96 and attention heads
+      from 8 to 96 between the original transformer and GPT-3, alongside the parameter growth,
+      explaining why GPT-3 outperformed the much smaller GPT-2.
+
+  - topic: "GPT models and LLM adaptation"
+    subtopic: "Mixture of Experts"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "How does a Mixture of Experts (MoE) architecture keep a very large model computationally efficient?"
+    payload:
+      options:
+        - "It deletes unused parameters permanently after each training run"
+        - "It has multiple specialised sub-models, of which only a small subset is activated per input via a gating network, so total parameter count is high but only a fraction is used per prediction"
+        - "It reduces the model to a single small network"
+        - "It only runs on quantum hardware"
+    answer_key:
+      correct: 1
+    explanation: >
+      MoE lets experts specialise, for example in language, maths or code, improving scalability
+      without a proportional compute-cost increase. This is why total parameters no longer equal
+      parameters actually used per token in models like GPT-4 and GPT-5.
+
+  - topic: "GPT models and LLM adaptation"
+    subtopic: "Mixture of Experts"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why has OpenAI stopped disclosing exact parameter counts for recent GPT models?"
+    payload:
+      options:
+        - "Because parameter counts are now illegal to publish"
+        - "Partly for competition and safety reasons, and because architecture quality and training-data quality now matter as much as raw parameter size"
+        - "Because modern models have zero parameters"
+        - "Because parameter count has become easier to guess exactly"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course cites common estimates (GPT-4 over one trillion, GPT-5 roughly two to five
+      trillion) rather than official figures, reflecting the shift in emphasis the course
+      describes.
+
+  - topic: "GPT models and LLM adaptation"
+    subtopic: "RAG vs fine-tuning"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the core difference between Retrieval-Augmented Generation (RAG) and fine-tuning as ways to improve transformer performance?"
+    payload:
+      options:
+        - "RAG adds external knowledge at query time; fine-tuning updates the model's internal parameters during training"
+        - "RAG and fine-tuning are the same technique with different names"
+        - "RAG requires no external database"
+        - "Fine-tuning always requires more compute than RAG"
+    answer_key:
+      correct: 0
+    explanation: >
+      RAG retrieves relevant documents and injects them into the prompt, keeping information
+      current without retraining and reducing hallucination. Fine-tuning specialises behaviour
+      on a task or domain but needs labelled data and leaves knowledge static after training.
+
+  - topic: "GPT models and LLM adaptation"
+    subtopic: "RAG vs fine-tuning"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A team needs a chatbot to answer questions using next week's constantly updated policy documents, without frequent retraining. Which approach fits better, and why?"
+    payload:
+      options:
+        - "Fine-tuning, because it gives the best style control"
+        - "RAG, because it retrieves current documents at query time and does not require retraining as the underlying information changes"
+        - "Neither approach can handle changing information"
+        - "Increasing the model's parameter count alone"
+    answer_key:
+      correct: 1
+    explanation: >
+      Fine-tuning's knowledge becomes static after training and is harder to update frequently,
+      which makes it a poor fit for fast-changing source documents compared with RAG.
+
+  - topic: "GPT models and LLM adaptation"
+    subtopic: "LoRA"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What problem does LoRA (Low-Rank Adaptation) solve, and how?"
+    payload:
+      options:
+        - "It solves slow inference by removing attention entirely"
+        - "It makes full fine-tuning affordable by freezing the original model and training small, low-rank matrices in certain layers that approximate the needed weight updates, cutting memory and training cost"
+        - "It removes the need for a base model entirely"
+        - "It increases a model's context window"
+    answer_key:
+      correct: 1
+    explanation: >
+      Because most parameters stay unchanged, multiple LoRA adapters can be trained for
+      different tasks and swapped in and out of the same base model, reducing overfitting and
+      catastrophic forgetting risk while avoiding duplicating the full model.
+
+  - topic: "GPT models and LLM adaptation"
+    subtopic: "LoRA"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is LoRA particularly attractive for organisations customising models for domains like legal or medical support?"
+    payload:
+      options:
+        - "Because it lets them adapt a model to a specific domain without the cost of full fine-tuning, and swap adapters for different domains on the same base model"
+        - "Because it removes all licensing costs"
+        - "Because legal and medical texts require no domain adaptation"
+        - "Because it eliminates the need for a base model licence"
+    answer_key:
+      correct: 0
+    explanation: >
+      Widely used where organisations need domain customisation without duplicating a full model
+      per domain, LoRA reduces both memory usage and training cost compared with updating every
+      parameter.

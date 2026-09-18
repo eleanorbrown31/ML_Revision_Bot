@@ -1,0 +1,300 @@
+area: "Data-Driven Transformation & Leadership"
+source: "Second Brain/apprenticeship/term-5/Topic 7 - The Data Strategy.md"
+questions:
+  - topic: "Data strategy and governance policy"
+    subtopic: "Why a data strategy"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which reasons does the course give for why a data strategy matters? Select all that apply."
+    payload:
+      options:
+        - "Communication: the basis for convincing stakeholders of the transformation's value"
+        - "Vision alignment: everyone works to the same vision"
+        - "Guidance: staff can make lower-level decisions and plans aligned with it"
+        - "Progress checking: keeps units on track and gives feedback once the end state is reached"
+        - "Legal requirement: every UK organisation must file one"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      The strategy is a comprehensive long-term plan for how the organisation will collect,
+      manage, govern, use and derive value from data. It is written after the maturity
+      assessment and is a roadmap, not a statutory filing.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Sections of the data strategy"
+    difficulty: "F1"
+    format: "multi"
+    stem: "Which of these are key sections of the data strategy document as listed in the course? Select all that apply."
+    payload:
+      options:
+        - "Objectives"
+        - "Data maturity assessment summary"
+        - "Prioritised use cases"
+        - "Data strategy roadmap"
+        - "Detailed vendor contracts"
+        - "Data-driven culture"
+    answer_key:
+      correct: [0, 1, 2, 3, 5]
+    explanation: >
+      The eight sections are objectives, maturity assessment, architecture and technology,
+      analytics roles and organisation, governance, prioritised use cases, roadmap and culture.
+      Vendors are deliberately kept generic in the first version, so contracts do not belong.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Sections of the data strategy"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each of the Truly Intelligent Business objective aspects to its meaning."
+    payload:
+      left:
+        - "Compliance"
+        - "Governance"
+        - "Value"
+        - "Operations"
+      right:
+        - "Generate business benefits from data"
+        - "Manage data efficiently and cost-effectively"
+        - "Hold and use data safely"
+        - "Assure the quality and availability of data"
+    answer_key:
+      pairs:
+        "Compliance": "Hold and use data safely"
+        "Governance": "Assure the quality and availability of data"
+        "Value": "Generate business benefits from data"
+        "Operations": "Manage data efficiently and cost-effectively"
+    explanation: >
+      This is an alternative framing of objectives to the list of accuracy, accessibility,
+      decision-making, governance, culture, infrastructure and cost. Both framings cover safety,
+      quality, benefit and efficiency.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Data architecture choices (mesh, cloud, vendor-neutral)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course recommend writing 'cloud platform' rather than 'AWS' in the first version of the data strategy?"
+    payload:
+      options:
+        - "Because AWS is not allowed in the UK"
+        - "Because high-level decisions such as cloud versus on-premises should be made, but the specific vendor may not be decided yet and the strategy is reviewed annually"
+        - "Because vendors change their names frequently"
+        - "Because the strategy should never mention technology"
+    answer_key:
+      correct: 1
+    explanation: >
+      The same applies to 'AI tools' rather than SageMaker or Vertex, 'visualisation software'
+      rather than Tableau or Power BI, and 'columnar database' rather than BigQuery or
+      Cassandra. Decisions about cloud, hybrid, centralised or distributed should already be made.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Data architecture choices (mesh, cloud, vendor-neutral)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a data mesh architecture, and when does the course suggest it may suit?"
+    payload:
+      options:
+        - "A single central data lake; suits small organisations"
+        - "A distributed alternative where units keep data in separate stores with an over-layer cataloguing links to them; potentially less disruptive for large organisations"
+        - "A physical network topology for data centres"
+        - "A vendor product from Microsoft"
+    answer_key:
+      correct: 1
+    explanation: >
+      A mesh avoids forcing everything into one central store. It has a team implication too:
+      a decentralised mesh means distributing data expertise to business units, whereas a
+      centralised architecture implies a centralised data team.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Roles and the CDO"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The strategy's roles section must decide who holds ultimate responsibility for data. What options does the course present?"
+    payload:
+      options:
+        - "Only a Chief Data Officer is acceptable"
+        - "Appoint a Chief Data Officer or a Chief AI Officer, or assign ultimate responsibility to an existing executive role"
+        - "Responsibility should rotate monthly between departments"
+        - "Responsibility sits with the external vendor"
+    answer_key:
+      correct: 1
+    explanation: >
+      The section describes roles, duties, numbers at end state and the build-up path, plus team
+      structure. The course references a 2025 article asking whether it is the year of the Chief
+      AI Officer, so the choice is presented as open.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Roadmap and KPIs"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "When does the course suggest a timeline rather than a Gantt chart for the data strategy roadmap?"
+    payload:
+      options:
+        - "A timeline suits a high-level story; Gantt charts suit detailed plans, possibly one per use case"
+        - "Gantt charts are always better"
+        - "Timelines are only for marketing"
+        - "Neither should appear in a strategy"
+    answer_key:
+      correct: 0
+    explanation: >
+      The roadmap schedules the transformation's steps with KPIs, review points and methods.
+      Example stages run from evaluating the current ecosystem through creating the strategy,
+      data management, architecture, analytics, third-party integration and advanced
+      technologies.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Sections of the data strategy"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is the prioritised use cases section described as a living part of the strategy?"
+    payload:
+      options:
+        - "Because it is updated annually with new use cases and with results of earlier use cases measured against agreed metrics, and it sets out how new suggestions are submitted and evaluated"
+        - "Because use cases are never completed"
+        - "Because it is stored in a database rather than a document"
+        - "Because it is written by the vendor"
+    answer_key:
+      correct: 0
+    explanation: >
+      This connects back to Schmarzo's value engineering framework, whose decisions stage
+      assesses and prioritises use cases. The section lists the coming year's use cases with
+      timescales and success metrics.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Internal and external factors"
+    difficulty: "F2"
+    format: "match"
+    stem: "Classify each factor affecting strategy progress as internal or external."
+    payload:
+      left:
+        - "Corporate culture"
+        - "Trade policy"
+        - "Organisational structure"
+        - "Competition"
+      right:
+        - "Internal"
+        - "External"
+    answer_key:
+      pairs:
+        "Corporate culture": "Internal"
+        "Trade policy": "External"
+        "Organisational structure": "Internal"
+        "Competition": "External"
+    explanation: >
+      Internal factors are human resources, structure, technology and culture. External factors
+      are political, economic, social, technological, environmental and legal, plus competition
+      and global factors. External factors are outside control and must be treated as risks,
+      which is one reason for regular review.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Internal and external factors"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How often should the data strategy be reviewed, and how does that change over time?"
+    payload:
+      options:
+        - "Once, at the start"
+        - "At least annually, with reviews more frequent in early stages and less frequent once the dynamic end state is reached; outcomes communicated to staff"
+        - "Every week throughout"
+        - "Only when a regulator asks"
+    answer_key:
+      correct: 1
+    explanation: >
+      The strategy gives direction of travel but is not unchangeable. Regular review keeps it
+      current and lets resilience and countermeasures be designed against external risks.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Governance policy sections"
+    difficulty: "F1"
+    format: "multi"
+    stem: "Which sections does the course list for a data governance policy? Select all that apply."
+    payload:
+      options:
+        - "Purpose and scope"
+        - "Definitions"
+        - "Roles and responsibilities"
+        - "Data quality standards and data security protocols"
+        - "Exception handling"
+        - "Quarterly sales targets"
+    answer_key:
+      correct: [0, 1, 2, 3, 4]
+    explanation: >
+      The typical sections are purpose, scope, definitions, roles and responsibilities, data
+      quality standards, data security protocols, data organisation and exception handling. The
+      policy defines how data assets are managed for accuracy, consistency, security and
+      compliance.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Data steward, custodian and owner"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each governance role to its responsibility."
+    payload:
+      left:
+        - "Data steward"
+        - "Data custodian"
+        - "Data owner"
+      right:
+        - "Ensures quality, accuracy and integrity of data within a domain, defines and enforces policies, manages access"
+        - "Liaises between owners, custodians and the governance executive to define policies, arrange technical support and ensure the policy is followed"
+        - "Responsible for technical management and security of data, ensuring secure storage and access per predefined rules"
+    answer_key:
+      pairs:
+        "Data steward": "Liaises between owners, custodians and the governance executive to define policies, arrange technical support and ensure the policy is followed"
+        "Data custodian": "Responsible for technical management and security of data, ensuring secure storage and access per predefined rules"
+        "Data owner": "Ensures quality, accuracy and integrity of data within a domain, defines and enforces policies, manages access"
+    explanation: >
+      Operationally, each data asset is assigned an owner and each business unit a steward,
+      with named individuals where possible. The custodian is the technical role.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Governance policy sections"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What example does the course give of a security classification scheme in the governance policy?"
+    payload:
+      options:
+        - "Classifying assets as public, private or confidential, with access limited to what a role needs"
+        - "Classifying assets by file size"
+        - "Classifying assets by the department that created them"
+        - "Classifying assets by age"
+    answer_key:
+      correct: 0
+    explanation: >
+      Security protocols cover access controls, encryption, breach procedures, retention,
+      monitoring of access and awareness training. Access is defined at group or role level, and
+      ethics may warrant its own section.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Why a data strategy"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "You have limited time. Which document does the course say to produce first, and how?"
+    payload:
+      options:
+        - "The full governance policy, because compliance comes first"
+        - "A high-level data strategy produced quickly for communication, with detail added over time; the governance policy can follow at a slower pace provided basic governance such as GDPR compliance is already in place"
+        - "Both in full before any other work starts"
+        - "Neither until the transformation is complete"
+    answer_key:
+      correct: 1
+    explanation: >
+      Both documents need stakeholder input and several iterations. The strategy is needed
+      early for communication, so start high level. The policy is less time-critical if basic
+      governance already exists.
+
+  - topic: "Data strategy and governance policy"
+    subtopic: "Sections of the data strategy"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the 'data-driven culture' section of the strategy set out?"
+    payload:
+      options:
+        - "The IT helpdesk rota"
+        - "The planned culture: data at the core of decision-making with a mindset shift from intuition to analysis, plus retraining plans for organisation-wide data literacy and specialist upskilling"
+        - "A list of approved software"
+        - "The legal department's sign-off"
+    answer_key:
+      correct: 1
+    explanation: >
+      Characteristics include customer focus, collaboration, continuous improvement, agility,
+      silo-busting and constant questioning. Training covers both general literacy and moving
+      existing analysts and engineers towards data science and ML engineering.

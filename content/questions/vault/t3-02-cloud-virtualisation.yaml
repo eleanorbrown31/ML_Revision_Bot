@@ -1,0 +1,188 @@
+area: "Computing Architecture & HPC"
+source: "Second Brain/apprenticeship/term-3/Topic 2 - Cloud Virtualisation and Service Provisioning.md"
+questions:
+  - topic: "Cloud service models"
+    subtopic: "shared responsibility model"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What role does a Cloud broker play between consumers and providers?"
+    payload:
+      options:
+        - "A third-party intermediary that negotiates and integrates Cloud services, helps move applications between vendors, reduces dependency on a single provider, and can leverage volume discounts"
+        - "A broker is another name for a Cloud provider's own sales team"
+        - "A broker replaces the need for a Service Level Agreement"
+        - "Brokers only exist for on-premises private clouds"
+    answer_key:
+      correct: 0
+    explanation: >
+      Brokers exist because integrating Cloud services across providers can be too complex for
+      consumers to manage themselves, especially when trying to avoid vendor lock-in.
+
+  - topic: "Cloud service models"
+    subtopic: "shared responsibility model"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a Service Level Agreement (SLA), and what negotiated element does it typically formalise?"
+    payload:
+      options:
+        - "An agreement between provider and consumer that formalises the negotiated Quality of Service (QoS), such as availability, response time and other performance commitments"
+        - "A one-time payment that removes any future obligation from the provider"
+        - "A technical specification for how a database is indexed"
+        - "A document only relevant to on-premises private clouds"
+    answer_key:
+      correct: 0
+    explanation: >
+      QoS is negotiated and offered as part of the SLA, and the SLA resource allocator acts as
+      the interface between user requests and provider resource management in the Cloud market
+      model.
+
+  - topic: "Processor architectures for ML"
+    subtopic: "memory hierarchy and cache"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is virtualisation, using virtual memory as the course's own example?"
+    payload:
+      options:
+        - "A technique to abstract machine resources logically at different architectural levels; virtual memory, for example, expands physical memory beyond its physical capacity by allowing page swapping between disk and virtual address space"
+        - "A technique that only applies to network hardware"
+        - "A synonym for cloud storage specifically"
+        - "A method for permanently deleting unused files"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course traces virtualisation back to the 1960s, well before Cloud computing existed,
+      showing it as a foundational technique that Cloud computing later built heavily upon.
+
+  - topic: "Processor architectures for ML"
+    subtopic: "memory hierarchy and cache"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is the key architectural difference between a type 1 (bare metal) hypervisor and a type 2 (hosted) hypervisor?"
+    payload:
+      options:
+        - "A type 1 hypervisor sits directly on top of machine hardware, giving full virtualisation; a type 2 hypervisor sits on top of a host operating system, producing hosted VMs or para-virtualisation instead"
+        - "Type 1 and type 2 hypervisors are functionally identical"
+        - "Type 2 hypervisors always outperform type 1 hypervisors"
+        - "Only type 2 hypervisors can run more than one VM"
+    answer_key:
+      correct: 0
+    explanation: >
+      A third level, virtualisation with the operating system via OS extensions, produces
+      containers rather than full VMs, giving a lighter-weight option again.
+
+  - topic: "Processor architectures for ML"
+    subtopic: "memory hierarchy and cache"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "What is 'binary translation' in full virtualisation, and why does the course say it can hurt performance?"
+    payload:
+      options:
+        - "Critical instructions that cannot run directly on the hardware are trapped and emulated by the virtualisation software; this translation process is time-consuming and particularly challenging for I/O-intensive applications"
+        - "Binary translation converts source code from one programming language to another"
+        - "Binary translation is only relevant to network virtualisation"
+        - "Binary translation eliminates any performance overhead from virtualisation"
+    answer_key:
+      correct: 0
+    explanation: >
+      Para-virtualisation offers an alternative: the guest OS kernel is modified to make
+      hyper-calls directly to the hypervisor, which is often preferable for I/O-intensive
+      workloads even though the performance advantage varies with the actual workload.
+
+  - topic: "Cloud service models"
+    subtopic: "shared responsibility model"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How do containers differ fundamentally from traditional virtual machines?"
+    payload:
+      options:
+        - "Containers share the host operating system's kernel and run isolated user spaces, each with its own filesystem, libraries and dependencies; traditional VMs each encapsulate an entire separate operating system"
+        - "Containers and VMs are exactly the same technology under different names"
+        - "Containers always require more resources to start than a full VM"
+        - "A single container-based host can run VMs with different kernels simultaneously"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is why containers, also called virtual execution environments, offer minimal startup
+      and shutdown costs and high scalability, at the cost of every container on that host
+      needing to share the same underlying OS.
+
+  - topic: "Cloud compute & cost"
+    subtopic: "autoscaling"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each resource provisioning method to how it decides when to scale."
+    payload:
+      left:
+        - "Demand-driven provisioning"
+        - "Event-driven provisioning"
+        - "Popularity-driven provisioning"
+      right:
+        - "Adds or removes instances based on current utilisation thresholds, such as Amazon EC2 autoscaling"
+        - "Adds or removes machines based on a specific predicted time event"
+        - "Monitors application popularity and anticipates traffic increases before they happen"
+    answer_key:
+      pairs:
+        "Demand-driven provisioning": "Adds or removes instances based on current utilisation thresholds, such as Amazon EC2 autoscaling"
+        "Event-driven provisioning": "Adds or removes machines based on a specific predicted time event"
+        "Popularity-driven provisioning": "Monitors application popularity and anticipates traffic increases before they happen"
+    explanation: >
+      In both event-driven and popularity-driven provisioning, the course notes that minimal QoS
+      loss occurs only if the prediction turns out to be correct, so forecasting accuracy matters
+      for both methods.
+
+  - topic: "Cloud service models"
+    subtopic: "managed ML platforms (SageMaker, Vertex, Azure ML)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each major Cloud provider to one of its named machine learning offerings."
+    payload:
+      left:
+        - "AWS"
+        - "Google Cloud Platform"
+        - "Microsoft Azure"
+      right:
+        - "SageMaker, for creating, training and deploying ML models"
+        - "Cloud Vision API, Cloud Speech API and other pre-trained ML APIs"
+        - "Azure ML Studio, with AutoML trying different algorithms and parameters automatically"
+    answer_key:
+      pairs:
+        "AWS": "SageMaker, for creating, training and deploying ML models"
+        "Google Cloud Platform": "Cloud Vision API, Cloud Speech API and other pre-trained ML APIs"
+        "Microsoft Azure": "Azure ML Studio, with AutoML trying different algorithms and parameters automatically"
+    explanation: >
+      AWS's SageMaker also supports deployment to embedded and edge devices, extending beyond
+      pure Cloud-hosted inference.
+
+  - topic: "Cloud service models"
+    subtopic: "managed ML platforms (SageMaker, Vertex, Azure ML)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What does Azure's AutoML feature do, and what general machine learning workflow problem does it address?"
+    payload:
+      options:
+        - "It creates several pipelines in parallel, automatically trying different algorithms and parameters, addressing the time-consuming process of manually testing many model and hyperparameter combinations"
+        - "AutoML only works with a single fixed algorithm and no hyperparameter variation"
+        - "AutoML removes the need for any training data"
+        - "AutoML is a data storage service, not a modelling tool"
+    answer_key:
+      correct: 0
+    explanation: >
+      This automation mirrors the grid-search and auto-ARIMA style automation seen elsewhere in
+      the course: trying many candidate configurations systematically rather than by hand.
+
+  - topic: "Processor architectures for ML"
+    subtopic: "CPU vs GPU vs TPU"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course single out Google's TPUs as being used in TensorFlow specifically, rather than describing them as general-purpose accelerators?"
+    payload:
+      options:
+        - "TPUs are designed specifically for tensor calculations, the branch of matrix calculus underlying TensorFlow, giving up to a 10x efficiency gain over general-purpose hardware for that kind of workload"
+        - "TPUs can only run TensorFlow code and nothing else in any circumstance"
+        - "TPUs were designed for web hosting, not machine learning"
+        - "TPUs and GPUs are identical in architecture and purpose"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is a case where hardware was purpose-built around a specific mathematical operation,
+      tensor calculus, rather than being a general-purpose chip repurposed for ML workloads.

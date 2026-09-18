@@ -1,0 +1,317 @@
+area: "Applied Practice & Business Context"
+source: "Second Brain/apprenticeship/term-1/Topic 1 - Data Science Principles.md"
+questions:
+  - topic: "Data science foundations"
+    subtopic: "Data science hierarchy of needs"
+    difficulty: "F1"
+    format: "order"
+    stem: "Put the six layers of the data science hierarchy of needs in order, bottom to top."
+    payload:
+      items:
+        - "Learn/optimise"
+        - "Collect"
+        - "AI, deep learning"
+        - "Explore/transform"
+        - "Move/store"
+        - "Aggregate/label"
+    answer_key:
+      sequence: [1, 4, 3, 5, 0, 2]
+    explanation: >
+      Modelled on Maslow's hierarchy, foundational needs must be met before more sophisticated
+      work makes sense: collect and store the data, explore it, aggregate and label it, then
+      build and finally refine models. Skipping ahead to deep learning without clean, collected
+      data is the classic mistake this hierarchy warns against.
+
+  - topic: "Data science foundations"
+    subtopic: "Data roles (scientist, analyst, engineer)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each data role to the question the course says it primarily answers."
+    payload:
+      left:
+        - "Data scientist"
+        - "Data analyst"
+        - "Data engineer"
+      right:
+        - "The 'how' and 'where' of data storage and flow"
+        - "The 'what' and 'why', through predictive modelling and machine learning"
+        - "The 'how', through insights from visualised data"
+    answer_key:
+      pairs:
+        "Data scientist": "The 'what' and 'why', through predictive modelling and machine learning"
+        "Data analyst": "The 'how', through insights from visualised data"
+        "Data engineer": "The 'how' and 'where' of data storage and flow"
+    explanation: >
+      Scientists build predictive models and test hypotheses; analysts produce reports and
+      dashboards from simpler statistical and visualisation tools; engineers design and maintain
+      the architectures the other two roles depend on.
+
+  - topic: "Data science foundations"
+    subtopic: "Data science myths"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say 'more data means better insights' is a myth?"
+    payload:
+      options:
+        - "More data always slows down analysis"
+        - "Data quality matters more than data volume; poor-quality data gives inaccurate models regardless of quantity, so having the right data matters more than having more data"
+        - "More data is illegal under GDPR"
+        - "Only small datasets can be analysed with statistics"
+    answer_key:
+      correct: 1
+    explanation: >
+      This pairs with another myth the course names: that data science is only for companies
+      with big data, when cloud computing and SaaS have made sophisticated analysis available to
+      smaller organisations too.
+
+  - topic: "Data science foundations"
+    subtopic: "Data science myths"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "The course quotes Linoff and Berry: 'Data mining lets computers do what they do best... which lets people do what people do best'. What is that division of labour?"
+    payload:
+      options:
+        - "Computers dig through lots of data; people set up the problem and understand the results"
+        - "Computers set up the problem; people dig through the data"
+        - "Computers replace people entirely"
+        - "People only check computers for errors"
+    answer_key:
+      correct: 0
+    explanation: >
+      This directly counters the myth that data science will replace human decision-making: the
+      quote frames data science as augmenting human judgement, not substituting for it.
+
+  - topic: "Data science foundations"
+    subtopic: "DIKW pyramid"
+    difficulty: "F1"
+    format: "order"
+    stem: "Put the DIKW pyramid levels in order, from raw to most refined."
+    payload:
+      items:
+        - "Wisdom"
+        - "Data"
+        - "Knowledge"
+        - "Information"
+    answer_key:
+      sequence: [1, 3, 2, 0]
+    explanation: >
+      Data is raw and unorganised; information is data processed and put in context, answering
+      who/what/where/when; knowledge answers how, through insight and expertise; wisdom applies
+      knowledge to make practical, ethical decisions with long-term consequences in mind.
+
+  - topic: "Data science foundations"
+    subtopic: "DIKW pyramid"
+    difficulty: "F2"
+    format: "match"
+    stem: "For a streaming service's viewing data, match each DIKW level to its example."
+    payload:
+      left:
+        - "Data"
+        - "Information"
+        - "Knowledge"
+        - "Wisdom"
+      right:
+        - "A recommendation to release new content just before weekends"
+        - "Raw daily viewing-hours figures collected over a month"
+        - "Insight that viewing is higher at weekends or after a new release"
+        - "A monthly report of total and average viewing hours and peak days"
+    answer_key:
+      pairs:
+        "Data": "Raw daily viewing-hours figures collected over a month"
+        "Information": "A monthly report of total and average viewing hours and peak days"
+        "Knowledge": "Insight that viewing is higher at weekends or after a new release"
+        "Wisdom": "A recommendation to release new content just before weekends"
+    explanation: >
+      This worked example moves from raw numbers to a summarised report, to an explanation of
+      the pattern, to an actionable strategic decision, tracing each pyramid level concretely.
+
+  - topic: "Data science foundations"
+    subtopic: "Entities, attributes and relationships"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In 'A passenger buys a ticket to travel on an aircraft which flies from one airport to another', how do you identify entities versus relationships?"
+    payload:
+      options:
+        - "Adjectives are entities; adverbs are relationships"
+        - "Nouns are entities (passenger, ticket, aircraft, airport); verbs are relationships (travel, fly)"
+        - "Every word is an entity"
+        - "There is no reliable way to identify them from a sentence"
+    answer_key:
+      correct: 1
+    explanation: >
+      This grammatical heuristic is the course's practical starting point for turning a plain
+      business requirement into a conceptual data model.
+
+  - topic: "Data science foundations"
+    subtopic: "Entities, attributes and relationships"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "When should a relationship between two entities instead be modelled as its own entity?"
+    payload:
+      options:
+        - "Whenever more than two entities are involved, or when the relationship needs its own attributes stored or can recur multiple times and each occurrence must be tracked separately"
+        - "Never; relationships are always modelled as relationships"
+        - "Only when the relationship is self-referential"
+        - "Only for numerical attributes"
+    answer_key:
+      correct: 0
+    explanation: >
+      A relationship must involve exactly two entities. If data needs to be stored about the
+      relationship itself, or if the same relationship recurs and each occurrence matters, it
+      should become its own entity instead.
+
+  - topic: "Data science foundations"
+    subtopic: "Data modelling (conceptual, logical, physical)"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put the three stages of top-down data modelling in order of increasing detail."
+    payload:
+      items:
+        - "Physical data model"
+        - "Conceptual model"
+        - "Logical data model"
+    answer_key:
+      sequence: [1, 2, 0]
+    explanation: >
+      The conceptual model identifies entities and relationships; the logical model adds
+      attributes and unique identifiers; the physical model specifies exact storage, data types
+      and keys, and is the only stage that requires selecting a specific database.
+
+  - topic: "Data science foundations"
+    subtopic: "Data modelling (conceptual, logical, physical)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is the difference between the top-down and bottom-up approaches to building a data model?"
+    payload:
+      options:
+        - "Top-down starts from business data requirements and works through conceptual, logical and physical models; bottom-up starts from example data and works through normalisation to a physical model. Both end at the same physical model"
+        - "Top-down is faster in every case"
+        - "Bottom-up never produces a physical model"
+        - "They are the same process with different names"
+    answer_key:
+      correct: 0
+    explanation: >
+      Both approaches converge on the same end result, a physical data model, but start from
+      different starting points: business requirements versus existing data examples.
+
+  - topic: "Data science foundations"
+    subtopic: "Structured, semi-structured and unstructured data"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each data category to its main advantage."
+    payload:
+      left:
+        - "Structured data"
+        - "Semi-structured data"
+        - "Unstructured data"
+      right:
+        - "Richer, more varied inputs, naturally accumulated from many sources"
+        - "Easy to manage and query with standard SQL tools due to a fixed schema"
+        - "Flexible to add, remove or modify without reorganising schemas, and easier to analyse than unstructured data because it is self-describing"
+    answer_key:
+      pairs:
+        "Structured data": "Easy to manage and query with standard SQL tools due to a fixed schema"
+        "Semi-structured data": "Flexible to add, remove or modify without reorganising schemas, and easier to analyse than unstructured data because it is self-describing"
+        "Unstructured data": "Richer, more varied inputs, naturally accumulated from many sources"
+    explanation: >
+      Quasi-structured data (log files, emails, metadata) sits between semi-structured and
+      unstructured, retaining some tags or markers but not fitting neatly into relational
+      databases.
+
+  - topic: "Data science foundations"
+    subtopic: "Raw, derived, captured and exhaust data"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "On social media, what does the course call the metadata about who posted, when and from what device, as distinct from the content itself?"
+    payload:
+      options:
+        - "Raw data"
+        - "Derived data"
+        - "Exhaust data"
+        - "Captured data"
+    answer_key:
+      correct: 2
+    explanation: >
+      Captured data is collected via direct measurement or observation, such as the content a
+      user creates. Exhaust data is a by-product of a process whose primary purpose is something
+      else, such as the metadata a platform logs alongside that content.
+
+  - topic: "Data science foundations"
+    subtopic: "Abstraction and bias in data"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each bias source to its description."
+    payload:
+      left:
+        - "Sampling bias"
+        - "Measurement bias"
+        - "Confirmation bias"
+      right:
+        - "Errors introduced by the data collection process itself, such as faulty equipment"
+        - "A sample that is not representative of the population, such as an online-only survey"
+        - "Favouring information that confirms pre-existing hunches or hypotheses"
+    answer_key:
+      pairs:
+        "Sampling bias": "A sample that is not representative of the population, such as an online-only survey"
+        "Measurement bias": "Errors introduced by the data collection process itself, such as faulty equipment"
+        "Confirmation bias": "Favouring information that confirms pre-existing hunches or hypotheses"
+    explanation: >
+      Mitigations include awareness and training, diverse data sources, robust random and
+      representative sampling, rigorous cleaning, and blind analysis where analysts do not know
+      the expected outcome.
+
+  - topic: "Data science foundations"
+    subtopic: "Abstraction and bias in data"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What does the course mean by data being an 'abstraction' of reality, through selectivity and simplification?"
+    payload:
+      options:
+        - "Data always contains fabricated values"
+        - "Data can never perfectly represent the world: selectivity means not every aspect of a phenomenon is captured, and simplification reduces complex reality to a manageable form, which can strip out context"
+        - "Abstraction means removing all numbers from a dataset"
+        - "Only unstructured data is abstract"
+    answer_key:
+      correct: 1
+    explanation: >
+      This is a conceptual point that underpins why bias and interpretation matter: what is
+      included or excluded when collecting data always shapes what conclusions can later be
+      drawn from it.
+
+  - topic: "Data science foundations"
+    subtopic: "Data governance, architecture and trust"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the course describe the relationship between data governance, data architecture and data analysis in building trust?"
+    payload:
+      options:
+        - "They are unrelated and can be developed independently"
+        - "Governance provides the policy framework that guides architecture and ensures quality and security from the start; architecture enables efficient analysis by supplying well-organised data; rigorous analysis then confirms trustworthiness and validates governance and architecture"
+        - "Only analysis matters; governance and architecture are optional extras"
+        - "Architecture always comes before governance is defined"
+    answer_key:
+      correct: 1
+    explanation: >
+      This three-way interplay is the course's model for how organisations build trust in their
+      data-driven decisions, and it connects directly to the data governance area assessed in
+      Term 5's data maturity assessment.
+
+  - topic: "Data science foundations"
+    subtopic: "CRISP-DM phases"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put the six phases of CRISP-DM in order."
+    payload:
+      items:
+        - "Modelling"
+        - "Data understanding"
+        - "Deployment"
+        - "Business understanding"
+        - "Evaluation"
+        - "Data preparation"
+    answer_key:
+      sequence: [3, 1, 5, 0, 4, 2]
+    explanation: >
+      CRISP-DM's phases are iterative and flexible rather than strictly linear; tasks within
+      data preparation, for instance, are often repeated out of a fixed order. Evaluation checks
+      the model against the original business objectives before deployment.

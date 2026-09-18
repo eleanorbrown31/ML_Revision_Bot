@@ -1,0 +1,176 @@
+area: "Ensemble Methods"
+questions:
+  - topic: "Bagging"
+    subtopic: "Bootstrap sampling"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is 'bootstrap sampling'?"
+    payload:
+      options:
+        - "Selecting only the most informative features"
+        - "Sampling with replacement from the training set to create a new dataset of the same size"
+        - "Randomly initialising model weights"
+        - "Sampling without replacement to create a smaller validation set"
+    answer_key:
+      correct: 1
+    explanation: >
+      Bootstrap sampling draws a new dataset the same size as the original by sampling with
+      replacement, so some original points appear multiple times and others (about 37%) don't
+      appear at all -- this is what gives each bagged model a slightly different training set.
+
+  - topic: "Bagging"
+    subtopic: "variance reduction"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does averaging predictions from many bagged models reduce variance?"
+    payload:
+      options:
+        - "Averaging always removes bias entirely"
+        - "It increases the effective size of the training set"
+        - "Each individual model becomes less overfit on its own"
+        - "Errors from individually overfit models tend to be uncorrelated, so they partially cancel out when averaged"
+    answer_key:
+      correct: 3
+    explanation: >
+      Each bagged model overfits its own bootstrap sample somewhat differently, so their
+      individual errors are relatively uncorrelated. Averaging (or voting) across many such
+      models cancels out much of that noise, reducing overall variance without changing each
+      model's own bias.
+
+  - topic: "Bagging"
+    subtopic: "relationship to random forests"
+    difficulty: "INT"
+    format: "multi"
+    stem: "Which of the following statements about bagging and boosting are true? Select all that apply."
+    payload:
+      options:
+        - "Both techniques require the base learner to be a neural network"
+        - "Bagging trains its base models independently, while boosting trains them sequentially"
+        - "Boosting cannot overfit, no matter how many rounds you train for"
+        - "Random forests are an example of a bagging-based ensemble"
+        - "Bagging primarily reduces variance, while boosting primarily reduces bias"
+    answer_key:
+      correct: [1, 3, 4]
+    explanation: >
+      Bagging and boosting differ in how they train (parallel/independent vs sequential/dependent)
+      and in what error component they primarily target (variance vs bias). Random forests are
+      indeed bagging-based (bagged trees plus feature randomness). Neither technique is tied to
+      any particular base learner -- decision trees are the most common choice for both, but
+      neither requires a neural network. And boosting absolutely can overfit if you run too many
+      rounds without regularisation (learning rate, early stopping, tree depth limits) -- more
+      rounds just keep chasing the training residuals ever more closely.
+
+  - topic: "Boosting (AdaBoost, Gradient Boosting, XGBoost)"
+    subtopic: "Sequential learning"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "How does boosting differ fundamentally from bagging?"
+    payload:
+      options:
+        - "Boosting only works with decision trees"
+        - "Boosting trains all models in parallel on random subsets"
+        - "Boosting trains models sequentially, each one focusing on correcting the errors of the previous ones"
+        - "Boosting never uses weighted samples"
+    answer_key:
+      correct: 2
+    explanation: >
+      Bagging trains independent models in parallel and averages them; boosting trains models
+      sequentially, where each new model pays more attention to the examples the previous models
+      got wrong -- reducing bias, not just variance.
+
+  - topic: "Boosting (AdaBoost, Gradient Boosting, XGBoost)"
+    subtopic: "learning rate in boosting"
+    difficulty: "F2"
+    format: "fill"
+    stem: "Complete the sentence about controlling each tree's contribution in gradient boosting."
+    payload:
+      template: "In gradient boosting, the ___ scales down each new tree's contribution to the ensemble, trading more training rounds for better generalisation and reduced overfitting."
+    answer_key:
+      blanks:
+        - ["learning rate", "shrinkage"]
+    explanation: >
+      A smaller learning rate means each added tree corrects only a small fraction of the
+      remaining error, requiring more trees but typically generalising better than taking large,
+      aggressive steps.
+
+  - topic: "Boosting (AdaBoost, Gradient Boosting, XGBoost)"
+    subtopic: "XGBoost vs LightGBM tradeoffs"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the main structural difference between LightGBM's leaf-wise tree growth and XGBoost's (default) level-wise growth?"
+    payload:
+      options:
+        - "LightGBM only supports regression, never classification"
+        - "LightGBM does not use gradient boosting at all"
+        - "LightGBM grows the single leaf that reduces loss the most next, which is often faster and more accurate but more prone to overfitting on small data"
+        - "LightGBM builds trees in parallel across GPUs while XGBoost cannot use a GPU at all"
+    answer_key:
+      correct: 2
+    explanation: >
+      Level-wise growth expands every leaf at the current depth before going deeper, which is
+      more conservative. Leaf-wise growth (LightGBM's default) always splits whichever leaf gives
+      the largest loss reduction, which tends to reach lower loss faster on large datasets but can
+      overfit small ones without careful depth/leaf-count limits.
+
+  - topic: "Stacking"
+    subtopic: "Meta-learner concept"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "In stacking, what does the 'meta-learner' do?"
+    payload:
+      options:
+        - "Selects which features to use"
+        - "Replaces the need for any base learners"
+        - "Learns how to best combine the predictions of the base learners into a final prediction"
+        - "Always averages the base learners' predictions equally"
+    answer_key:
+      correct: 2
+    explanation: >
+      The meta-learner is trained on the predictions produced by the base learners (rather than
+      the raw features), learning how to weigh and combine them into a final, hopefully better,
+      prediction than any single base learner could produce alone.
+
+  - topic: "Stacking"
+    subtopic: "cross-validated stacking"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why is cross-validation typically used when generating the base learners' predictions for the meta-learner's training data?"
+    payload:
+      options:
+        - "To speed up training"
+        - "To avoid the meta-learner training on predictions the base learners made on data they were themselves trained on, which would be overly optimistic"
+        - "Because stacking cannot work without cross-validation at all"
+        - "To automatically select the best base learner"
+    answer_key:
+      correct: 1
+    explanation: >
+      If a base learner predicted on the same data it was trained on, its predictions would be
+      unrealistically accurate (and the meta-learner would learn to over-trust it). Using
+      out-of-fold predictions from cross-validation gives the meta-learner a more honest picture
+      of each base learner's real generalisation performance.
+
+  - topic: "Stacking"
+    subtopic: "base learners vs meta-learner"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each ensemble technique to how it combines models."
+    payload:
+      left:
+        - "Bagging"
+        - "Boosting"
+        - "Stacking"
+      right:
+        - "Trains a meta-learner on top of several base learners' predictions to combine them"
+        - "Trains many models in parallel on bootstrap samples and averages their predictions"
+        - "Trains models sequentially, each one correcting the errors of the previous ones"
+    answer_key:
+      pairs:
+        "Bagging": "Trains many models in parallel on bootstrap samples and averages their predictions"
+        "Boosting": "Trains models sequentially, each one correcting the errors of the previous ones"
+        "Stacking": "Trains a meta-learner on top of several base learners' predictions to combine them"
+    explanation: >
+      All three are ways of combining multiple models, but they combine them differently: bagging
+      trains independent models in parallel and averages them (reducing variance); boosting
+      trains models one after another, each focused on the previous ones' mistakes (reducing
+      bias); stacking trains a separate model whose job is just to learn how to best combine the
+      other models' outputs.

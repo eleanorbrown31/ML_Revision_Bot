@@ -1,0 +1,63 @@
+Fairness in Algorithmic Decision-Making — Revision Notes
+ 
+The Core Problem
+Two landmark papers — Kleinberg, Mullainathan & Raghavan (2016) and Chouldechova (2017) — make the same uncomfortable point from closely related angles: you cannot define algorithmic fairness as "satisfy every sensible fairness metric at once", because some fairness metrics are mathematically incompatible in ordinary, imperfect prediction settings.
+ 
+Key Definitions of Fairness
+Definition 1 — Equal Opportunity
+ 
+A binary predictor Ŷ satisfies equal opportunity with respect to a protected attribute A and outcome Y if:
+ 
+P(Ŷ = 1 | A = 0, Y = 1) = P(Ŷ = 1 | A = 1, Y = 1)
+ 
+In plain terms: the probability of being assigned a positive outcome should be equal for protected and unprotected group members who truly belong to the positive class. Both groups should have equal true positive rates. In a recruitment context: genuinely qualified candidates from different groups should be shortlisted at similar rates.
+Definition 2 — Demographic Parity (also called Statistical Parity)
+ 
+A predictor Ŷ satisfies demographic parity if:
+ 
+P(Ŷ = 1 | A = 0) = P(Ŷ = 1 | A = 1)
+ 
+The likelihood of a positive outcome should be the same regardless of group membership. Note the crucial difference from equal opportunity: this looks at all members of a group, not just those who genuinely merit a positive outcome. Meeting this criterion does not guarantee the model is recognising truly qualified individuals fairly — it only guarantees equal output rates.
+Definition 3 — Fairness Through Awareness
+ 
+An algorithm is fair if it gives similar predictions to similar individuals, where similarity is defined by an inverse distance metric specific to the task. Any two individuals who are similar under that metric should receive similar outcomes. The limitation: this definition is only as strong as the similarity measure you choose, which is itself a values-laden design decision.
+Definition 4 — Fairness Through Unawareness
+ 
+An algorithm is fair as long as protected attributes A are not explicitly used in the decision-making process. Intuitively appealing, but widely considered insufficient: models can still discriminate through proxy variables that correlate with protected attributes (e.g. postcode as a proxy for ethnicity).
+Definition 5 — Treatment Equality
+ 
+Treatment equality is achieved when the ratio of false negatives to false positives is the same for both protected group categories. Note this is about the ratio of error types, not the rates themselves — a subtly different constraint from error rate balance.
+ 
+Kleinberg et al. (2016) — The Three Conditions for Risk Scores
+Kleinberg et al. focus specifically on risk scores (systems that assign probability estimates rather than binary decisions), across domains including criminal justice, hiring, lending, medical testing and advertising. They define three fairness conditions:
+ConditionMeaningCalibration within groupsIf a group receives a score of z, approximately a z fraction of that group should truly be positive instances — and this should hold separately for each group. The score should mean the same thing across groups.Balance for the positive classPeople who are truly positive instances should receive the same average score across groups. Truly qualified or high-risk individuals should not be scored lower in one group than another.Balance for the negative classPeople who are truly negative instances should receive the same average score across groups. People who do not have the relevant property should not be scored higher in one group than another.
+All three sound entirely reasonable. The main result is that they are generally incompatible. The only two cases where all three can be simultaneously satisfied are:
+ 
+Perfect prediction — where each feature vector maps to a probability of exactly 0 or 1 (never true in practice)
+Equal base rates — where both groups have the same proportion of truly positive instances (often not true in practice)
+ 
+ 
+Chouldechova (2017) — The COMPAS Case
+Chouldechova grounds the same problem in recidivism prediction, focusing on the COMPAS controversy. ProPublica's analysis argued COMPAS was biased against Black defendants: non-recidivating Black defendants were more likely than white defendants to be flagged as high risk (higher false positive rate), while recidivating Black defendants were less likely to be flagged as low risk (lower false negative rate).
+Critics of ProPublica's analysis responded that COMPAS satisfied calibration and predictive parity — which it arguably did. Chouldechova's key contribution is showing why both claims can be simultaneously true, and why that is not a contradiction but a consequence of differing base rates.
+Her four criteria map neatly onto those above:
+CriterionMeaningCalibrationA score reflects the same likelihood of recidivism regardless of group membershipPredictive parityAmong people classified as high risk, the likelihood of recidivism is the same regardless of group — i.e. equal positive predictive valueError rate balanceFalse positive and false negative rates are equal across groupsStatistical parityThe proportion classified as high risk is the same for each group
+The headline finding: when prevalence (base rate — the proportion of individuals who actually recidivate) differs across groups, any instrument satisfying predictive parity at a given threshold must have imbalanced false positive or false negative rates at that threshold. A model can look fair under one metric and unfair under another — not because of a flaw in the model, but because of a mathematical inevitability given unequal base rates.
+ 
+How the Two Papers Relate
+Kleinberg et al.ChouldechovaSettingGeneral risk scores across criminal justice, hiring, lending, advertising, medical testingRecidivism prediction instruments, especially COMPASCentral tensionCalibration, balance for positive class, and balance for negative class cannot generally all be satisfied togetherPredictive parity and error rate balance cannot both hold when prevalence differs across groupsTakeawayFairness involves trade-offs between mathematically different goalsA model can appear fair under one metric and unfair under another
+Chouldechova explicitly cites Kleinberg et al. as concurrent work reaching the same conclusion from a different angle.
+ 
+Why This Matters for Your EPA
+The relevance is not domain-specific. Kleinberg et al. explicitly list hiring as one of the domains where these tensions arise. In a recruitment context the conflict might look like:
+ 
+Calibration-style goal: a score of 80 should predict the same likelihood of success for candidates from any group
+Equal opportunity goal: genuinely qualified candidates from different groups should be shortlisted at similar rates
+Error-balance goal: the system should not wrongly reject qualified candidates from one group more often than another
+ 
+These cannot all be maximised simultaneously when base rates of qualification differ across groups — which they frequently do, for structural and historical reasons that have nothing to do with the model itself.
+ 
+The Governance Conclusion
+Choosing a fairness metric is not a purely technical decision — it is a governance and values decision. Organisations must make explicit, documented choices about which fairness goals matter most for a given use case and why. Presenting fairness as though there is one universal technical fix is not just oversimplified — it is mathematically wrong.
+ 
+EPA framing: If a scenario involves a prediction system, a strong answer will name the relevant fairness criterion, acknowledge that other criteria exist and may conflict, and argue for a governed decision-making process to resolve the trade-off — rather than treating any single metric as sufficient.

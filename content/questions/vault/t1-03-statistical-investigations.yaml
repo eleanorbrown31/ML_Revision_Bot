@@ -1,0 +1,476 @@
+area: "Maths Foundations"
+source: "Second Brain/apprenticeship/term-1/Topic 3 - Statistical Investigations.md"
+questions:
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Descriptive vs inferential statistics"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the essential difference between descriptive and inferential statistics?"
+    payload:
+      options:
+        - "Descriptive statistics summarises the sample actually measured, with no uncertainty; inferential statistics draws conclusions about a wider population from that sample, so it does involve uncertainty"
+        - "Descriptive statistics uses probability; inferential statistics never does"
+        - "Descriptive statistics only applies to categorical data"
+        - "They are two names for the same thing"
+    answer_key:
+      correct: 0
+    explanation: >
+      A pharmaceutical company using inferential statistics to generalise a drug's observed
+      effect in a sample to the whole population is the course's example of why confidence in
+      the sample's representativeness matters so much for inference.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Choosing mean, median or mode"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "A dataset of house prices has a few very expensive outliers pulling the average up. Which central tendency measure should you lead with, and why?"
+    payload:
+      options:
+        - "The mean, because it uses every data point"
+        - "The median, because it is not affected by outliers or skewed distributions, unlike the mean"
+        - "The mode, because it is always most informative for numeric data"
+        - "None of them are useful once outliers are present"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course's own worked example is house prices with a median of $450,000 and a mean of
+      $540,000 pulled upward by a few pricier houses, illustrating exactly this situation.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Dispersion and Bessel's correction"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why does sample variance divide by (n - 1) rather than n?"
+    payload:
+      options:
+        - "It is an arbitrary convention with no statistical reason"
+        - "Bessel's correction accounts for the one degree of freedom lost when the mean is itself estimated from the sample, giving a less biased estimate of the true population variance"
+        - "Dividing by n always overestimates variance"
+        - "It only matters for very large samples"
+    answer_key:
+      correct: 1
+    explanation: >
+      Without this correction, sample variance would systematically underestimate the true
+      population variance, because the sample mean used in the calculation is itself only an
+      estimate.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Dispersion and Bessel's correction"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does a low standard deviation tell you about a dataset, compared with a high one?"
+    payload:
+      options:
+        - "Low standard deviation means points cluster near the mean (low variability); high standard deviation means points spread widely (high variability)"
+        - "Low standard deviation always means the data is categorical"
+        - "Standard deviation says nothing about spread"
+        - "High standard deviation always means the data contains errors"
+    answer_key:
+      correct: 0
+    explanation: >
+      Standard deviation is expressed in the same units as the original data, which makes it
+      easier to interpret than variance and is why it is widely used to identify outliers and
+      quantify risk.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Empirical rule"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Under the empirical (68-95-99.7) rule for a normal distribution, roughly what percentage of data falls within two standard deviations of the mean?"
+    payload:
+      options:
+        - "About 68 percent"
+        - "About 95 percent"
+        - "About 99.7 percent"
+        - "About 50 percent"
+    answer_key:
+      correct: 1
+    explanation: >
+      About 68 percent falls within one standard deviation, 95 percent within two, and 99.7
+      percent within three. This rule underpins how the standard normal distribution is used in
+      hypothesis testing.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Frequency distribution shapes"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What does a bell-shaped frequency distribution look like, and what other shape does the course describe as symmetrical but different?"
+    payload:
+      options:
+        - "Bell-shaped: low, peaking in the middle, then low again. U-shaped is also symmetrical, but falls then rises rather than rising then falling"
+        - "Bell-shaped and U-shaped are the same thing"
+        - "Bell-shaped means constantly increasing"
+        - "There is no such thing as a symmetrical distribution shape besides bell-shaped"
+    answer_key:
+      correct: 0
+    explanation: >
+      The other shapes the course names are constant (no obvious pattern), constantly
+      increasing, constantly decreasing, and exponentially increasing (where the rate of
+      increase itself accelerates).
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Skewness"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In a positively skewed distribution, how do the mean, median and mode typically order from lowest to highest?"
+    payload:
+      options:
+        - "Mode, then median, then mean"
+        - "Mean, then median, then mode"
+        - "Median, then mode, then mean"
+        - "They are always equal regardless of skew"
+    answer_key:
+      correct: 0
+    explanation: >
+      A right tail pulls the mean up more than the median, and the mode stays at the most
+      common, typically lower value. Negative skew reverses this ordering: mean lowest, then
+      median, then mode.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Kurtosis"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each kurtosis type to its description."
+    payload:
+      left:
+        - "Mesokurtic"
+        - "Leptokurtic"
+        - "Platykurtic"
+      right:
+        - "Shape similar to normal, moderate tails and peak"
+        - "Heavy tails and a sharp peak, data clusters more around the mean and the extremes"
+        - "Light tails and a flatter peak, a more uniform spread"
+    answer_key:
+      pairs:
+        "Mesokurtic": "Shape similar to normal, moderate tails and peak"
+        "Leptokurtic": "Heavy tails and a sharp peak, data clusters more around the mean and the extremes"
+        "Platykurtic": "Light tails and a flatter peak, a more uniform spread"
+    explanation: >
+      Excess kurtosis (kurtosis minus 3) is often reported instead, where 0 indicates a normal
+      distribution, since a normal distribution's raw kurtosis is 3.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Central limit theorem in practice"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why is the Central Limit Theorem useful even when the underlying population's own distribution is not normal?"
+    payload:
+      options:
+        - "It states that a sufficiently large random sample's sample mean will be approximately normally distributed regardless of the shape of the underlying population, letting normal-distribution methods be applied more broadly"
+        - "It proves every population is secretly normally distributed"
+        - "It only applies to populations that are already normal"
+        - "It eliminates the need for sampling entirely"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's example is estimating average student height from an unknown or non-normal
+      population: taking multiple samples and looking at the distribution of their means lets
+      you treat that distribution as approximately normal, enabling hypothesis testing.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Central limit theorem in practice"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "According to the Central Limit Theorem, what happens to the standard deviation of the sampling distribution of the mean as sample size n increases?"
+    payload:
+      options:
+        - "It stays constant regardless of n"
+        - "It shrinks, so sample means cluster more tightly around the population mean as n grows"
+        - "It grows larger as n grows"
+        - "It becomes undefined for large n"
+    answer_key:
+      correct: 1
+    explanation: >
+      The sampling distribution's own standard deviation is the population standard deviation
+      divided by the square root of n, which is why larger samples give more precise estimates
+      of the population mean.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Correlation vs causation"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the difference between positive correlation and negative correlation?"
+    payload:
+      options:
+        - "Positive correlation means an increase on one axis is generally accompanied by an increase on the other; negative correlation means an increase on one is accompanied by a decrease on the other"
+        - "Positive correlation always implies causation; negative correlation never does"
+        - "Positive correlation only applies to categorical variables"
+        - "There is no difference in practice"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course explicitly warns not to confuse correlation with causation, even though
+      correlation can be tested between continuous, categorical, binary or ordinal variables.
+
+  - topic: "Descriptive statistics and distributions"
+    subtopic: "Dependent and independent variables"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "In regression analysis, what is the difference between the dependent and independent variables?"
+    payload:
+      options:
+        - "The dependent variable is what you are trying to understand or predict; independent variables are the items that might affect it"
+        - "The independent variable is always time"
+        - "There is no meaningful distinction between the two"
+        - "The dependent variable must always be categorical"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's petrol-costs example uses distance travelled as the independent variable and
+      trip cost as the dependent variable, with past trips plotted to predict a new journey's
+      cost.
+
+  - topic: "Statistical testing"
+    subtopic: "Formulating H0 and H1"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What must always be true of the null hypothesis (H0), regardless of what is being tested?"
+    payload:
+      options:
+        - "H0 always includes a form of equality, representing the status quo that is assumed unless there is enough evidence to reject it"
+        - "H0 must always predict a specific positive effect"
+        - "H0 and H1 can both be true simultaneously"
+        - "H0 is always the researcher's own hunch"
+    answer_key:
+      correct: 0
+    explanation: >
+      H0 and H1 cannot both be correct. The alternative hypothesis (H1) asserts the positive
+      presence of a pattern, trend or evidence, which the researcher is usually trying to
+      support.
+
+  - topic: "Statistical testing"
+    subtopic: "One-tailed vs two-tailed"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "When would you use a one-tailed test instead of a two-tailed test?"
+    payload:
+      options:
+        - "When H1 targets an effect in a specific direction, examining only one end of the distribution"
+        - "Whenever the sample size is large"
+        - "One-tailed and two-tailed tests are interchangeable in every case"
+        - "Only when testing categorical data"
+    answer_key:
+      correct: 0
+    explanation: >
+      A two-tailed test is more conservative because it splits the significance level across
+      both tails, used when H1 should detect an effect in either direction without specifying
+      which.
+
+  - topic: "Statistical testing"
+    subtopic: "Test statistic, p-value and alpha"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What decision rule links the p-value to the significance level alpha?"
+    payload:
+      options:
+        - "If the p-value is low (below alpha, commonly 0.05), reject H0 in favour of H1; otherwise, you do not have enough evidence to reject H0"
+        - "Always reject H0 if the p-value is above 0.5"
+        - "The p-value has no relationship to alpha"
+        - "A high p-value always proves H0 is true"
+    answer_key:
+      correct: 0
+    explanation: >
+      Failing to reject H0 never proves H0 is true. A statistical test cannot eliminate
+      uncertainty; it can only say whether the observed data gives enough evidence against the
+      null hypothesis.
+
+  - topic: "Statistical testing"
+    subtopic: "Test statistic, p-value and alpha"
+    difficulty: "INT"
+    format: "order"
+    stem: "Put the steps of the correlation-and-hypothesis worked example in order."
+    payload:
+      items:
+        - "Test the hypotheses: choose a significance level, compute the t-statistic and degrees of freedom, compare to the critical value"
+        - "Define the research question"
+        - "Formulate H0 (no correlation) and H1 (a significant correlation exists)"
+        - "Collect data from the sample"
+        - "Calculate the correlation coefficient (Pearson's r)"
+        - "Interpret the results and decide whether to reject H0"
+    answer_key:
+      sequence: [1, 3, 4, 2, 0, 5]
+    explanation: >
+      In the course's worked example (hours studied versus exam scores, n=30), r = 0.75 gave a
+      t-statistic exceeding the critical value at alpha = 0.05, so H0 was rejected in favour of a
+      significant correlation.
+
+  - topic: "Statistical testing"
+    subtopic: "Test statistic, p-value and alpha"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each common statistical notation symbol to its meaning."
+    payload:
+      left:
+        - "mu"
+        - "sigma"
+        - "x-bar"
+        - "n"
+      right:
+        - "Population mean"
+        - "Population standard deviation"
+        - "Sample mean"
+        - "Sample size"
+    answer_key:
+      pairs:
+        "mu": "Population mean"
+        "sigma": "Population standard deviation"
+        "x-bar": "Sample mean"
+        "n": "Sample size"
+    explanation: >
+      The course also introduces s for sample standard deviation and z for a z-score, expressing
+      how many standard deviations a point sits from the mean.
+
+  - topic: "Statistical testing"
+    subtopic: "Formulating H0 and H1"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A statistical investigation into UK regional attainment differences frames H0 as 'no difference between regions' and H1 as 'a difference exists', without specifying direction. What kind of test is this?"
+    payload:
+      options:
+        - "A one-tailed, left-tailed test"
+        - "A two-tailed test, since H1 does not specify which direction the difference runs"
+        - "Not a valid hypothesis test"
+        - "A one-tailed, right-tailed test"
+    answer_key:
+      correct: 1
+    explanation: >
+      A directional version would instead claim, for instance, that northern regions score
+      higher than others specifically, which would make it a one-tailed, right-tailed test
+      instead.
+
+  - topic: "Power BI and DAX"
+    area: "Programming & Libraries"
+    subtopic: "Measures vs calculated columns"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course recommend replacing numeric columns with measures where possible in Power BI?"
+    payload:
+      options:
+        - "Measures are calculated on the fly within a filter context; calculating is usually faster than pulling stored rows from memory, especially with large datasets"
+        - "Measures always look identical to columns to the end user, so it makes no difference"
+        - "Columns cannot be filtered in Power BI"
+        - "Measures are required by Microsoft licensing rules"
+    answer_key:
+      correct: 0
+    explanation: >
+      If a calculation is very processor-intensive, a pre-calculated column can still be the
+      better trade-off, so this is a general preference rather than an absolute rule.
+
+  - topic: "Power BI and DAX"
+    area: "Programming & Libraries"
+    subtopic: "CALCULATE and filter context"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the DAX function CALCULATE do?"
+    payload:
+      options:
+        - "It evaluates an expression within a modified filter context, applying extra filters outside the current context"
+        - "It only works on text columns"
+        - "It permanently deletes rows that do not match a filter"
+        - "It replaces the need for any other DAX function"
+    answer_key:
+      correct: 0
+    explanation: >
+      CALCULATE takes an expression and at least one filter, which can be Boolean or a table
+      expression, and is described as one of the most useful and adaptable DAX functions.
+
+  - topic: "Power BI and DAX"
+    area: "Programming & Libraries"
+    subtopic: "SUM vs SUMX"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "When does the difference between SUM and SUMX actually matter?"
+    payload:
+      options:
+        - "Never; they are always interchangeable"
+        - "SUMX is iterative, looping through each row in context and allowing extra per-row logic such as conditionals, so it matters whenever you need row-by-row processing beyond a simple total"
+        - "SUM only works with the CALCULATE function"
+        - "SUMX cannot be used inside a measure"
+    answer_key:
+      correct: 1
+    explanation: >
+      In a simple sum, SUM and SUMX give the same result. The course's worked example uses SUMX
+      to apply a different tax multiplier before and after a rate change, which a plain SUM
+      cannot do.
+
+  - topic: "Power BI and DAX"
+    area: "Programming & Libraries"
+    subtopic: "Time intelligence functions"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each Power BI time intelligence function to what it does."
+    payload:
+      left:
+        - "TotalYTD"
+        - "SamePeriodLastYear"
+        - "ParallelPeriod"
+      right:
+        - "Cumulatively sums the current period up to the end of the calendar or fiscal year"
+        - "Builds a year-on-year comparison by returning the equivalent period from a year ago"
+        - "Looks back or forward a given number of periods, using a date series, offset and interval type"
+    answer_key:
+      pairs:
+        "TotalYTD": "Cumulatively sums the current period up to the end of the calendar or fiscal year"
+        "SamePeriodLastYear": "Builds a year-on-year comparison by returning the equivalent period from a year ago"
+        "ParallelPeriod": "Looks back or forward a given number of periods, using a date series, offset and interval type"
+    explanation: >
+      TotalYTD accepts an optional year-end date so fiscal-year-to-date measures can reset on a
+      date other than 1 January. ParallelPeriod with a month offset of -1 builds a
+      month-on-month comparison.
+
+  - topic: "Power BI and DAX"
+    area: "Programming & Libraries"
+    subtopic: "Semi-additive measures"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why does a naive 'closing balance' measure break when a report is drilled down from month level to daily level?"
+    payload:
+      options:
+        - "Because it re-evaluates per day instead of holding the month's value, which is fixed by using ParallelPeriod with an interval of Month and an offset of 0 so LastNonBlank evaluates across the whole month"
+        - "Because Power BI cannot display daily data at all"
+        - "Because closing balances only exist at the yearly level"
+        - "Because DAX cannot reference dates"
+    answer_key:
+      correct: 0
+    explanation: >
+      A semi-additive measure like closing balance accumulates over some dimensions but not
+      typically over time, which is why standard SUM-style aggregation does not behave correctly
+      for it without extra handling.
+
+  - topic: "Power BI and DAX"
+    area: "Programming & Libraries"
+    subtopic: "Data profiling and cardinality"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does high cardinality in a Power Query column mean, and why does it matter?"
+    payload:
+      options:
+        - "Many distinct and unique items in that column, which hurts performance and file size compared with low-cardinality columns"
+        - "The column contains only numbers"
+        - "The column has no missing values"
+        - "The column is the primary key and should always be removed"
+    answer_key:
+      correct: 0
+    explanation: >
+      A unique identifier column, where distinct equals unique equals row count, is usually
+      still required despite its high cardinality, whereas a column with only one distinct value
+      across the whole table adds little analytical value.
+
+  - topic: "Power BI and DAX"
+    area: "Programming & Libraries"
+    subtopic: "Resolving load errors"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In Power Query, what is the practical difference between 'Replace Errors' and finding the root cause of an error?"
+    payload:
+      options:
+        - "Replace Errors substitutes a chosen value for error cells without fixing why they occurred; finding the root cause (for example, changing a column's data type) addresses the underlying problem"
+        - "They are the same operation with two names"
+        - "Replace Errors deletes the whole table"
+        - "Root cause analysis is not possible in Power Query"
+    answer_key:
+      correct: 0
+    explanation: >
+      Error values load as blanks rather than blocking the query, so keeping an error is an
+      option if you decide it does not need fixing, though reviewing the cause first is
+      recommended.

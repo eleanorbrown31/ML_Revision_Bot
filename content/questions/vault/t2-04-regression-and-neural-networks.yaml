@@ -1,0 +1,299 @@
+area: "Supervised Learning"
+source: "Second Brain/apprenticeship/term-2/Topic 4 - Supervised Learning - Regression and Neural Networks.md"
+questions:
+  - topic: "Linear Regression"
+    subtopic: "assumptions (linearity, homoscedasticity, independence)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "For multiple regression, what are ordinary least squares (OLS) and maximum likelihood estimation (MLE), and how do they relate to each other?"
+    payload:
+      options:
+        - "OLS minimises the squared distance between observations and the fitted line; MLE instead finds the parameters most likely to have generated the observed data under an assumed probability distribution. Under a normal-error assumption, both approaches arrive at the same solution"
+        - "OLS and MLE always give completely different, unrelated results"
+        - "MLE can only be used for classification, never regression"
+        - "OLS requires no assumptions about the data at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      MLE's probabilistic framing means it generalises more readily to other models, such as
+      logistic regression, where a simple closed-form least-squares solution does not exist.
+
+  - topic: "Linear Regression"
+    subtopic: "OLS"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course square the distances between observations and the fitted line, rather than just summing the raw distances?"
+    payload:
+      options:
+        - "Squaring removes the effect of negative distances, where an observation lies below the hypothesised line, so they cannot cancel out positive distances"
+        - "Squaring makes the calculation slower on purpose"
+        - "Squaring only matters for classification problems"
+        - "Raw distances are always already positive, so squaring changes nothing"
+    answer_key:
+      correct: 0
+    explanation: >
+      Without squaring, an observation far above the line could cancel out one far below it in
+      the sum, wrongly suggesting a good fit when the model is actually far from most points.
+
+  - topic: "Optimisation & Gradient Descent"
+    area: "Regularisation & Optimisation"
+    subtopic: "convexity and local minima"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What are the two general ways of finding the weights that minimise the regression error function, and what is the key risk of one of them?"
+    payload:
+      options:
+        - "A closed-form approach using linear algebra and matrix mathematics, or gradient descent, a trial-and-error approach that adjusts weights gradually; gradient descent risks finding a local minimum rather than the global minimum, more likely at a high learning rate"
+        - "Only gradient descent can ever be used for linear regression"
+        - "The closed-form approach always requires more computation than gradient descent, in every case"
+        - "Neither approach can reach a correct solution for linear regression"
+    answer_key:
+      correct: 0
+    explanation: >
+      For simple linear regression a closed-form solution is straightforward; as the number of
+      parameters grows, the trade-offs between the two approaches become more significant.
+
+  - topic: "Regularisation (L1, L2, Dropout)"
+    area: "Regularisation & Optimisation"
+    subtopic: "L2 (Ridge) weight decay"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What problem does ridge (L2) regularisation particularly target, and what happens to coefficients as its penalty strength increases?"
+    payload:
+      options:
+        - "It targets multicollinearity, high correlation between independent variables that can cause inappropriately high coefficient estimates; as the penalty increases, coefficients shrink towards zero but never reach exactly zero"
+        - "It targets missing data, replacing missing values automatically"
+        - "It always increases every coefficient's magnitude"
+        - "It removes the need for any training data"
+    answer_key:
+      correct: 0
+    explanation: >
+      Shrinking coefficients toward zero lowers the model's variance, which is the general
+      regularisation strategy: trade a small amount of bias for a meaningful reduction in
+      variance and overfitting risk.
+
+  - topic: "Regularisation (L1, L2, Dropout)"
+    area: "Regularisation & Optimisation"
+    subtopic: "L1 (Lasso) sparsity"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is LASSO's key practical advantage over ridge regression?"
+    payload:
+      options:
+        - "LASSO can shrink some coefficients all the way to zero, effectively removing those variables from the model and acting as a form of feature selection, producing a less complex, more explainable model"
+        - "LASSO always achieves lower training error than ridge in every case"
+        - "LASSO requires no tuning parameter at all"
+        - "LASSO can only be used with decision trees"
+    answer_key:
+      correct: 0
+    explanation: >
+      Ridge shrinks coefficients smoothly toward zero without eliminating any; LASSO's ability
+      to zero out coefficients entirely is what gives it a built-in feature-selection effect.
+
+  - topic: "Regularisation (L1, L2, Dropout)"
+    area: "Regularisation & Optimisation"
+    subtopic: "lambda / alpha tuning"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What role does the tuning parameter lambda play in both ridge and LASSO regularisation?"
+    payload:
+      options:
+        - "It scales the size of the penalty term added to the loss function; a larger lambda increases the penalty and shrinks coefficients more aggressively, while a lambda of zero reduces to ordinary least squares with no regularisation"
+        - "Lambda only controls how many training epochs are run"
+        - "Lambda has no effect on the fitted coefficients"
+        - "Lambda must always be set to exactly 1"
+    answer_key:
+      correct: 0
+    explanation: >
+      Choosing lambda is itself a bias-variance trade-off: too small and overfitting is barely
+      addressed, too large and the model becomes too simple (high bias, underfitting).
+
+  - topic: "Bias-Variance Tradeoff"
+    area: "Model Evaluation"
+    subtopic: "decomposition of error"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Using the course's target-diagram framing, which combination of bias and variance describes predictions that are tightly clustered together but consistently off the true target?"
+    payload:
+      options:
+        - "High bias, low variance"
+        - "Low bias, high variance"
+        - "Low bias, low variance"
+        - "High bias, high variance"
+    answer_key:
+      correct: 0
+    explanation: >
+      Low bias, high variance describes predictions spread widely but centred around the
+      target; high bias, high variance describes predictions both widely spread and off target;
+      low bias, low variance is the ideal case, clustered around the target.
+
+  - topic: "Bias-Variance Tradeoff"
+    area: "Model Evaluation"
+    subtopic: "model complexity curve"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which techniques does the course list for handling overfitting? Select all that apply."
+    payload:
+      options:
+        - "Regularisation"
+        - "Ensemble techniques, combining results from multiple models"
+        - "Dimensionality reduction, simplifying the data"
+        - "Early stopping, limiting the number of learning iterations"
+        - "Always increasing model complexity further"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      Increasing complexity further would make overfitting worse, not better. Underfitting, by
+      contrast, is combated by finding a more suitable model, more data, further experimentation
+      or hyperparameter tuning.
+
+  - topic: "Logistic Regression"
+    subtopic: "Sigmoid function"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the sigmoid function do in logistic regression, and how is the resulting value turned into a classification?"
+    payload:
+      options:
+        - "It maps the combination of input features to a probability between 0 and 1; a threshold, commonly 0.5, is then applied to decide the positive or negative class"
+        - "It maps inputs to a value between negative infinity and positive infinity"
+        - "It removes the need for any threshold in classification"
+        - "It only works for regression problems, never classification"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is why logistic regression, despite its name, is a classification method: the linear
+      combination of features is passed through the sigmoid before a threshold decision is made.
+
+  - topic: "Logistic Regression"
+    subtopic: "log-likelihood"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "How are logistic regression's coefficients estimated, and what general estimation method does this reuse from earlier in the course?"
+    payload:
+      options:
+        - "Maximum likelihood estimation, using the log-likelihood function, the same general approach used to justify ordinary least squares for linear regression under a normality assumption"
+        - "Logistic regression coefficients cannot be estimated mathematically"
+        - "A completely different method unrelated to anything used for linear regression"
+        - "By counting the number of positive cases only"
+    answer_key:
+      correct: 0
+    explanation: >
+      MLE's generality is exactly why it extends naturally from linear regression (where OLS and
+      MLE coincide under normal errors) to logistic regression (where no simple least-squares
+      equivalent exists).
+
+  - topic: "Perceptrons & Activation Functions"
+    area: "Neural Networks"
+    subtopic: "sigmoid / tanh / ReLU / Leaky ReLU"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each activation function to its output range, as given in the course."
+    payload:
+      left:
+        - "Sigmoid"
+        - "Tanh"
+        - "ReLU"
+      right:
+        - "Between 0 and 1"
+        - "Between -1 and 1"
+        - "Between 0 and infinity"
+    answer_key:
+      pairs:
+        "Sigmoid": "Between 0 and 1"
+        "Tanh": "Between -1 and 1"
+        "ReLU": "Between 0 and infinity"
+    explanation: >
+      The activation function is applied after a neuron sums its weighted inputs plus a bias
+      term; the choice of activation function shapes what kinds of patterns the network can
+      learn.
+
+  - topic: "Deep Neural Networks"
+    area: "Neural Networks"
+    subtopic: "hidden layers"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What distinguishes a 'deep' neural network from a plain neural network, as the course defines it?"
+    payload:
+      options:
+        - "A deep neural network has more than one hidden layer; the learning it does is called deep learning"
+        - "A deep network has no output layer"
+        - "Depth refers only to how long training takes, not the network's structure"
+        - "Any network with an input and output layer is automatically deep"
+    answer_key:
+      correct: 0
+    explanation: >
+      Sklearn's MLP implementation offers only a single hidden layer, which is why the course
+      notes a dedicated library such as TensorFlow is needed for genuinely deep networks.
+
+  - topic: "Perceptrons & Activation Functions"
+    area: "Neural Networks"
+    subtopic: "Single perceptron model"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say bias terms at each neuron matter, alongside the weighted inputs?"
+    payload:
+      options:
+        - "Bias values help the network learn patterns even when input is zero, since they are added to the weighted sum before the activation function is applied"
+        - "Bias terms are optional and never affect training"
+        - "Bias terms replace the need for an activation function"
+        - "Bias only applies to the output layer, never hidden layers"
+    answer_key:
+      correct: 0
+    explanation: >
+      Without a bias term, a neuron's output would always be forced to zero whenever all its
+      inputs are zero, regardless of what the network has learned, which the bias term corrects.
+
+  - topic: "Backpropagation"
+    area: "Neural Networks"
+    subtopic: "weight updates"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does a neural network decide which direction to adjust its weights after comparing a prediction to the expected output?"
+    payload:
+      options:
+        - "If the predicted value is higher than expected, weights are adjusted downward; if lower, adjusted upward; the size of these adjustments is controlled by the learning rate hyperparameter, and the adjustment is backpropagated through the network"
+        - "Weights are adjusted randomly regardless of the prediction error"
+        - "Only the output layer's weights are ever adjusted"
+        - "The direction of adjustment is fixed in advance and never depends on the error"
+    answer_key:
+      correct: 0
+    explanation: >
+      This process repeats over many iterations until the loss stops decreasing, which is
+      gradient descent applied specifically within the context of a neural network's layered
+      structure.
+
+  - topic: "Optimisation & Gradient Descent"
+    area: "Regularisation & Optimisation"
+    subtopic: "momentum"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What problem does the momentum hyperparameter in gradient descent help address?"
+    payload:
+      options:
+        - "Getting stuck in a local minimum, by adding a fraction of the previous gradient to the current one, helping the optimisation keep moving past a shallow dip that is not the true global minimum"
+        - "Momentum controls how many layers the network has"
+        - "Momentum removes the need for a loss function"
+        - "Momentum only applies to decision trees, not neural networks"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course illustrates that the error level at a local minimum can be much higher than at
+      the global minimum, which is why avoiding premature convergence matters for model quality.
+
+  - topic: "Optimisation & Gradient Descent"
+    area: "Regularisation & Optimisation"
+    subtopic: "loss functions (MSE, cross-entropy, hinge)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is an 'epoch' in the context of gradient descent, and why does loss get measured after a batch of records or an epoch rather than after every single record?"
+    payload:
+      options:
+        - "An epoch is one full training cycle through all the training data; measuring loss after a batch or epoch, rather than every single record, gives a more stable signal of how the model is improving overall"
+        - "An epoch is a synonym for a single weight update"
+        - "An epoch only applies to unsupervised learning"
+        - "Loss can only ever be measured once, at the very end of training"
+    answer_key:
+      correct: 0
+    explanation: >
+      Gradient descent's overall aim is to minimise this measured loss across training, gradually
+      lowering the gradient toward zero as the model approaches a minimum.

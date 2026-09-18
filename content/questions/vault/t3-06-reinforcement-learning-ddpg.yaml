@@ -1,0 +1,74 @@
+area: "Neural Networks"
+source: "Second Brain/apprenticeship/term-3/Topic 6 - Reinforcement Learning.md (content shared with Term 1 Topic 6 is not repeated here; this file covers only the material Term 3 adds, primarily DDPG)"
+questions:
+  - topic: "Reinforcement learning"
+    subtopic: "Policy, value and Q-value functions"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is the difference between the state-value function V(s) and the state-action value function Q(s,a)?"
+    payload:
+      options:
+        - "V(s) specifies how good it is to be in a given state under a policy; Q(s,a) specifies how good it is to take a particular action in that state under a policy, so Q evaluates a state-action pair rather than the state alone"
+        - "V(s) and Q(s,a) are two names for exactly the same quantity"
+        - "V(s) only applies to continuous action spaces, and Q(s,a) only to discrete ones"
+        - "Q(s,a) ignores the policy entirely, while V(s) depends on it"
+    answer_key:
+      correct: 0
+    explanation: >
+      Both are defined relative to a policy, so both change if the policy changes. Q(s,a) gives
+      the extra information needed to compare different actions from the same state, which V(s)
+      alone cannot do.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Q-learning and Q-tables"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does Deep Deterministic Policy Gradient (DDPG) exist as a separate method from plain Q-learning, given that both rely on the Bellman equation?"
+    payload:
+      options:
+        - "DDPG is adapted for environments with continuous action spaces, where the action space cannot be exhaustively evaluated as it can for the small discrete action sets plain Q-learning and Q-tables handle"
+        - "DDPG is only used when the action space has exactly two possible actions"
+        - "DDPG removes the need for a Q-function entirely"
+        - "DDPG and Q-learning are identical algorithms with different names"
+    answer_key:
+      correct: 0
+    explanation: >
+      Because the action space is continuous, DDPG assumes the optimal Q-function is
+      differentiable with respect to the action, using a gradient-based learning rule for a
+      policy to approximate the best action rather than searching every possible discrete action.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Q-learning and Q-tables"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "DDPG concurrently learns both a Q-function and a policy. In broad terms, what does each part do?"
+    payload:
+      options:
+        - "It learns the Q-function from off-policy data using the Bellman equation, as in Q-learning, and then uses that learned Q-function to learn the policy that selects good actions in continuous spaces"
+        - "It learns two entirely unrelated Q-functions with no shared purpose"
+        - "It learns a policy first and never uses a Q-function at all"
+        - "It requires a fully discrete, enumerable action space to function"
+    answer_key:
+      correct: 0
+    explanation: >
+      This two-part structure, learning to evaluate actions and learning to select them, is what
+      lets DDPG handle tasks like continuous robotic control, where actions cannot simply be
+      listed and compared one by one as in a Q-table.
+
+  - topic: "Reinforcement learning"
+    subtopic: "Discount factor"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "The course's robot-car example has states cool, warm and overheated, with actions slow and fast, where going faster earns double the reward. What does this illustrate about designing a reward structure?"
+    payload:
+      options:
+        - "Reward design can create trade-offs between short-term gain (faster reward now) and long-term risk (overheating later), which is exactly the kind of trade-off the discount factor and policy learning are meant to navigate"
+        - "Rewards must always be identical regardless of the action taken"
+        - "The Markov property does not apply to this kind of example"
+        - "Reward structures cannot express any kind of risk or trade-off"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is a simple, concrete illustration of the explore-exploit and immediate-versus-future
+      reward tension that runs through the whole topic, from the discount factor to DDPG's
+      handling of continuous control problems.

@@ -1,0 +1,248 @@
+area: "Computing Architecture & HPC"
+source: "Second Brain/apprenticeship/term-3/Topic 1 - Cloud Computing Fundamentals.md"
+questions:
+  - topic: "Cloud service models"
+    subtopic: "IaaS / PaaS / SaaS"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each Cloud service model to its example."
+    payload:
+      left:
+        - "Infrastructure as a Service (IaaS)"
+        - "Platform as a Service (PaaS)"
+        - "Software as a Service (SaaS)"
+      right:
+        - "Amazon Web Services, Microsoft Azure, Google Compute Engine"
+        - "AWS Lambda, Google App Engine"
+        - "Google Workspace, Microsoft 365, Slack"
+    answer_key:
+      pairs:
+        "Infrastructure as a Service (IaaS)": "Amazon Web Services, Microsoft Azure, Google Compute Engine"
+        "Platform as a Service (PaaS)": "AWS Lambda, Google App Engine"
+        "Software as a Service (SaaS)": "Google Workspace, Microsoft 365, Slack"
+    explanation: >
+      IaaS provides virtualised infrastructure the user manages, PaaS provides a development and
+      deployment toolkit without infrastructure worries, and SaaS delivers a finished
+      application over the internet with no local install.
+
+  - topic: "Cloud service models"
+    subtopic: "IaaS / PaaS / SaaS"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the difference between single tenancy and multi-tenancy in Cloud provisioning?"
+    payload:
+      options:
+        - "Single tenancy gives a customer their own dedicated instance of software and infrastructure with no sharing; multi-tenancy shares resources between clients, with system software managing privacy and isolation"
+        - "Single tenancy is always cheaper than multi-tenancy"
+        - "Multi-tenancy means no security isolation exists between customers"
+        - "The two terms describe the same arrangement"
+    answer_key:
+      correct: 0
+    explanation: >
+      Single tenancy gives exclusive use down to the physical server but costs more;
+      multi-tenancy shares physical resources, with mechanisms like tenant IDs managing
+      isolation in SaaS storage.
+
+  - topic: "Cloud service models"
+    subtopic: "public, private, hybrid, multi-cloud"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each Cloud deployment type to its description."
+    payload:
+      left:
+        - "Public cloud"
+        - "Community cloud"
+        - "Private cloud"
+        - "Hybrid cloud"
+      right:
+        - "Built over the internet, accessible to anyone who pays"
+        - "A collaborative infrastructure shared by organisations with a common interest"
+        - "Dedicated to one organisation, on-premises or via a single-tenancy third party"
+        - "A private cloud that also draws on external public cloud capacity"
+    answer_key:
+      pairs:
+        "Public cloud": "Built over the internet, accessible to anyone who pays"
+        "Community cloud": "A collaborative infrastructure shared by organisations with a common interest"
+        "Private cloud": "Dedicated to one organisation, on-premises or via a single-tenancy third party"
+        "Hybrid cloud": "A private cloud that also draws on external public cloud capacity"
+    explanation: >
+      A third-party private cloud gives single tenancy with a provider, but the course notes
+      this is arguably not fully private since the underlying hardware remains the provider's
+      responsibility.
+
+  - topic: "Cloud service models"
+    subtopic: "public, private, hybrid, multi-cloud"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why might an organisation deliberately use several different Cloud providers or models together, in what the course calls a 'mash up' of Cloud services?"
+    payload:
+      options:
+        - "To reduce dependency on a single provider, use the model best suited to each function, and let different providers or Clouds complete different parts of a business transaction"
+        - "Because using more than one Cloud provider is required by law"
+        - "Because a single provider can never offer both IaaS and SaaS"
+        - "Because mashing up Clouds always reduces cost with no other benefit"
+    answer_key:
+      correct: 0
+    explanation: >
+      Business users tend to be served by PaaS and IaaS, while individual users tend to be
+      served by SaaS, which is one reason a single organisation may end up using several
+      service models at once.
+
+  - topic: "Parallel & distributed computing"
+    subtopic: "Amdahl's law"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What does Amdahl's Law say about the maximum possible speedup from parallelising part of a program, without using the exact formula?"
+    payload:
+      options:
+        - "The achievable speedup is fundamentally limited by whatever fraction of the program must remain sequential; adding more processors only speeds up the parallel portion, so there is a hard ceiling on total speedup no matter how many processors are added"
+        - "Speedup increases without limit as more processors are added, regardless of how much of the program is sequential"
+        - "Amdahl's Law only applies to single-processor systems"
+        - "The sequential fraction of a program can always be reduced to zero with enough engineering effort"
+    answer_key:
+      correct: 0
+    explanation: >
+      Reading data, setting up calculations, control logic and storing results are given as
+      examples of inherently sequential work that cannot be parallelised away, which is what
+      caps the maximum speedup.
+
+  - topic: "Parallel & distributed computing"
+    subtopic: "Amdahl's law"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "How does Gustafson's Law reframe the parallelisation question compared with Amdahl's Law, and when is Gustafson's perspective more useful?"
+    payload:
+      options:
+        - "Instead of fixing problem size and asking how much a fixed program can speed up, Gustafson starts from a large problem already running on many processors and asks how long it would have taken on one processor; this suits high-performance computing and large-scale problems where problem size can grow with available parallel resources"
+        - "Gustafson's Law proves Amdahl's Law is wrong"
+        - "Gustafson's Law only applies to single-threaded programs"
+        - "The two laws always predict identical speedup values"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course is explicit that both laws are correct: they are different ways of looking at
+      the same situation, one for a fixed-size problem and one for a problem that scales with
+      available compute.
+
+  - topic: "Parallel & distributed computing"
+    subtopic: "communication overhead"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What distinguishes parallel computing from distributed computing, as the course defines them?"
+    payload:
+      options:
+        - "Parallel computing breaks one larger problem into smaller parts executed simultaneously by processors that combine results as part of one overall algorithm; distributed computing has multiple autonomous systems collaborating on a task, each with its own processing and possibly its own data"
+        - "Parallel and distributed computing are exactly the same thing"
+        - "Distributed computing requires all machines to share memory directly"
+        - "Parallel computing can only ever use a single processor"
+    answer_key:
+      correct: 0
+    explanation: >
+      Centralised computing, by contrast, keeps all resources fully shared and tightly coupled
+      under one operating system on one physical system, though it may still use parallelism or
+      distribution internally.
+
+  - topic: "Parallel & distributed computing"
+    subtopic: "Data vs model vs pipeline parallelism"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How do High-Throughput Computing (HTC) and High-Performance Computing (HPC) differ in what they optimise for?"
+    payload:
+      options:
+        - "HTC prioritises the number of tasks completed per unit time, such as everyday web transactions; HPC prioritises the speed of individual, complex computations, such as scientific simulations, using highly parallelised algorithms"
+        - "HTC and HPC are two names for the same paradigm"
+        - "HTC only runs on a single machine, never a cluster"
+        - "HPC focuses on throughput while HTC focuses on raw speed"
+    answer_key:
+      correct: 0
+    explanation: >
+      Both paradigms rely on multi-core processors and parallelism, but the metric they are
+      trying to maximise, throughput versus per-task speed, differs.
+
+  - topic: "Cloud compute & cost"
+    subtopic: "when cloud is the wrong answer"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the difference between a Cloud system's scalability and its elasticity?"
+    payload:
+      options:
+        - "Scalability is the ability to meet increasing demand, typically by spinning up more VMs; elasticity is the ability of the system to shrink or grow dynamically, so consumers pay only for what they use and providers do not hold unused resources"
+        - "Scalability and elasticity mean exactly the same thing"
+        - "Elasticity only applies to on-premises systems"
+        - "Scalability only matters for providers, never for consumers"
+    answer_key:
+      correct: 0
+    explanation: >
+      A Cloud service can offer both properties together: scaling to meet growing demand while
+      also shrinking back down when demand falls, benefiting both the consumer's cost and the
+      provider's efficiency.
+
+  - topic: "Cloud compute & cost"
+    subtopic: "cost per training run"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "The course lists cost, time and energy usage as ways to measure Cloud efficiency. Why might energy usage be broken down by task or customer specifically, rather than measured only in aggregate?"
+    payload:
+      options:
+        - "A per-task or per-customer breakdown lets an organisation identify which workloads are most energy-intensive and target those for optimisation, rather than only seeing one undifferentiated total figure"
+        - "Aggregate energy usage is always more useful than any breakdown"
+        - "Energy usage cannot be measured at all in Cloud environments"
+        - "Breaking down energy usage is only relevant to on-premises data centres"
+    answer_key:
+      correct: 0
+    explanation: >
+      This connects to Ahmad and Andras's finding that efficiency increased when autoscaling was
+      used, since matching supply to actual demand reduces wasted energy alongside wasted cost.
+
+  - topic: "Processor architectures for ML"
+    subtopic: "CPU vs GPU vs TPU"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the course distinguish CPUs from GPUs for general-purpose and machine learning computing?"
+    payload:
+      options:
+        - "CPUs are usually multicore and suit general-purpose computing; GPUs are many-core and often give notable speed and efficiency gains for complex, parallelisable problems such as machine learning"
+        - "CPUs and GPUs are functionally identical for every workload"
+        - "GPUs cannot run any machine learning algorithm"
+        - "CPUs always outperform GPUs for machine learning workloads"
+    answer_key:
+      correct: 0
+    explanation: >
+      Machine learning algorithms can run on both, but the many-core structure of GPUs is what
+      typically gives the efficiency advantage for the kind of heavily parallel matrix operations
+      ML relies on.
+
+  - topic: "Cloud service models"
+    subtopic: "managed ML platforms (SageMaker, Vertex, Azure ML)"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is a Tensor Processing Unit (TPU), and what was it specifically designed to accelerate?"
+    payload:
+      options:
+        - "A chip designed specifically for tensor calculations, said to achieve up to 10x efficiency gains over general-purpose hardware for the matrix operations underlying frameworks like TensorFlow"
+        - "A chip designed exclusively for video rendering"
+        - "A type of CPU used only for web hosting"
+        - "A storage device for Cloud backups"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course cites AlphaGo's use of TPUs to think faster and look further ahead in its
+      matches against Lee Sedol as a concrete example of the performance TPUs can enable.
+
+  - topic: "Processor architectures for ML"
+    subtopic: "why matrix operations suit GPUs"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course lists availability and reliability as related Cloud metrics, calculated from MTBF (Mean Time Between Failure) and MTTR (Mean Time to Repair). What does a 'single point of failure' mean, and why does the course say clusters should avoid one?"
+    payload:
+      options:
+        - "A single point of failure is any component whose failure halts the entire system; clusters should be designed without one so that failure of one part does not bring down the whole service, supporting fault tolerance through redundancy"
+        - "A single point of failure only matters for private clouds, never public ones"
+        - "Single points of failure improve reliability by simplifying the system"
+        - "MTBF and MTTR have no relationship to fault tolerance"
+    answer_key:
+      correct: 0
+    explanation: >
+      Redundant servers that can be hot-switched to replace a failing one are given as a
+      practical way to achieve fault tolerance, with VM-to-VM replacement being faster than
+      standing up a replacement physical machine.

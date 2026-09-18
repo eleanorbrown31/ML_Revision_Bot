@@ -1,0 +1,182 @@
+area: "Time Series"
+source: "Second Brain/apprenticeship/term-2/Topic 7 - Time Series Analysis - Machine Learning Approach.md"
+questions:
+  - topic: "Time Series Methods"
+    subtopic: "walk-forward validation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What must happen to a time series before it can be used as input to a standard supervised machine learning algorithm?"
+    payload:
+      options:
+        - "It must be reframed as a supervised learning problem: reorganised into input (X) and target (y) columns, typically using a lag or window of past values to predict the next value"
+        - "It can be fed directly into any ML algorithm with no reorganisation"
+        - "It must first be converted into image data"
+        - "All time information must be discarded before training"
+    answer_key:
+      correct: 0
+    explanation: >
+      This reframing is the key conceptual step distinguishing the machine learning approach
+      from the statistical approach, which works directly on the raw sequence.
+
+  - topic: "Time Series Methods"
+    subtopic: "walk-forward validation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the course's worked example of reframing a series with lag 1, why must the first row (with a missing X value) be dropped before training?"
+    payload:
+      options:
+        - "Shifting the series to create the X/y pairing leaves the very first row without a preceding value to serve as X, so that row cannot be used as a valid training example"
+        - "The first row is always the least accurate data point"
+        - "Dropping the first row is only needed for classification problems"
+        - "The first row must be dropped to satisfy stationarity"
+    answer_key:
+      correct: 0
+    explanation: >
+      Whatever lag size is chosen, the same number of leading rows must be dropped, since they
+      lack the full history needed to build their input features.
+
+  - topic: "Time Series Methods"
+    subtopic: "seasonal decomposition"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does the course recommend setting the lag equal to the length of a season when trying to capture seasonality, rather than always using a small lag like 1?"
+    payload:
+      options:
+        - "A lag of 1 only lets the model see the immediately preceding value, which is fine if the data is stationary but unlikely to succeed if there is a repeating seasonal pattern that a short lag cannot capture"
+        - "Seasonality has no relationship to lag size"
+        - "A larger lag always makes training faster"
+        - "Lag size only matters for classification, not regression"
+    answer_key:
+      correct: 0
+    explanation: >
+      Estimating the season length first, by exploring and visualising the series, is the
+      recommended step before deciding how far back the lag or window should reach.
+
+  - topic: "Time Series Methods"
+    subtopic: "walk-forward validation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the sliding window approach to framing time series data, what do 'window size' and 'stride' each control?"
+    payload:
+      options:
+        - "Window size is how many past values form the input features for one prediction, usually matching the lag or seasonality; stride is how far the window moves forward after each prediction"
+        - "Window size and stride are two names for the same setting"
+        - "Stride controls how many features are dropped from the dataset"
+        - "Window size only applies to classification problems"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's example uses a window of 3 and a stride of 1, meaning each row uses the
+      previous three values to predict the next, then the window shifts forward by one time
+      unit for the next row.
+
+  - topic: "Time Series Methods"
+    subtopic: "seasonal decomposition"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is an exogenous variable in time series forecasting, and what data preparation step does the course flag when adding one?"
+    payload:
+      options:
+        - "An additional independent variable from outside the series itself, added to make the problem multivariate; because it may have a very different numeric range to the main series, normalisation is recommended"
+        - "A variable that can only ever take the value zero"
+        - "A synonym for the target variable y"
+        - "A variable that removes the need for a lag or window"
+    answer_key:
+      correct: 0
+    explanation: >
+      Mismatched scales between the exogenous variable and the main series could otherwise let
+      one dominate a distance- or gradient-based model purely because of its numeric range.
+
+  - topic: "Boosting (AdaBoost, Gradient Boosting, XGBoost)"
+    area: "Ensemble Methods"
+    subtopic: "gradient boosting intuition"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course reports that in the 2018 M4 competition, the first six best-performing forecasting models out of 18 tested were statistical, not machine learning. What general lesson does the course draw from this?"
+    payload:
+      options:
+        - "Statistical models are generally better for transparency and efficiency, and simpler methods can outperform more complex ML methods on many forecasting tasks, so model complexity should not be assumed to guarantee better results"
+        - "Machine learning models always outperform statistical models on time series"
+        - "Statistical models cannot be used for time series at all"
+        - "The competition proves ARIMA is the only model worth using"
+    answer_key:
+      correct: 0
+    explanation: >
+      A follow-up study found deep-learning ensembles could eventually edge out statistical
+      ensembles, but only at vastly higher computational cost, which is the course's real
+      takeaway: accuracy gains must be weighed against cost and complexity.
+
+  - topic: "Boosting (AdaBoost, Gradient Boosting, XGBoost)"
+    area: "Ensemble Methods"
+    subtopic: "gradient boosting intuition"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The Statsforecast follow-up study found its statistical ensemble scored only slightly worse (sMAPE 12.63 vs 12.27) than the deep-learning ensemble, but with vastly different cost. What was that cost difference?"
+    payload:
+      options:
+        - "The statistical ensemble ran in about 6 minutes for roughly $0.44, versus over 14 days and around $11,000 for the deep-learning ensemble"
+        - "Both approaches cost roughly the same amount to run"
+        - "The deep-learning ensemble was cheaper and faster in every respect"
+        - "Cost was not measured in either study"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is a concrete illustration of a recurring theme across the course: a small accuracy
+      gain from a far more complex or expensive model is not automatically worth choosing,
+      especially when a much cheaper method gets close.
+
+  - topic: "Time Series Methods"
+    subtopic: "seasonal decomposition"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why are RNN and LSTM described as popular choices for time series on large datasets, in contrast to Support Vector Regression?"
+    payload:
+      options:
+        - "RNN and LSTM have architectural features for handling sequences directly, which suits large time series data; SVR tends to work well for smaller datasets instead"
+        - "RNN and LSTM cannot process numeric data of any kind"
+        - "SVR is always more accurate than RNN and LSTM regardless of dataset size"
+        - "RNN, LSTM and SVR are functionally identical for time series"
+    answer_key:
+      correct: 0
+    explanation: >
+      Choosing between these options, like most model-selection decisions, depends on dataset
+      size and the resources available for training, not on picking the theoretically most
+      powerful architecture regardless of context.
+
+  - topic: "Support Vector Machines"
+    area: "Supervised Learning"
+    subtopic: "soft margin (C)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "How does Support Vector Regression (SVR) adapt the SVM idea of a margin for a continuous-valued regression target rather than a classification boundary?"
+    payload:
+      options:
+        - "SVR finds a function it can approximate within a tolerance, conceptually a 'tube' around the fitted function; points outside that tolerance introduce slack variables that are minimised, similar to how a soft-margin SVM tolerates some misclassification"
+        - "SVR has no relationship to SVM at all"
+        - "SVR can only be used for classification, not regression, despite the name"
+        - "SVR removes the concept of a margin entirely"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is why SVR is presented as 'an extension of SVM' in the course: the same underlying
+      geometric idea of a margin, or tube, is repurposed for predicting a continuous value
+      instead of separating discrete classes.
+
+  - topic: "Technique selection"
+    area: "Applied Practice & Business Context"
+    subtopic: "asymmetric cost of errors"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course notes that ML methods are more resource-hungry and expensive than statistical methods because of their iterative trial-and-error training approach. Given the M4 competition findings, what practical decision rule does this suggest for choosing a time series method?"
+    payload:
+      options:
+        - "Try a well-understood statistical method first, since it is often more transparent, efficient and competitive; reach for a more expensive ML or ensemble approach only when the accuracy gain over the statistical baseline is clearly worth the added cost and complexity"
+        - "Always use the most complex available model, since more complexity always means better accuracy"
+        - "Never use machine learning for time series under any circumstances"
+        - "Cost and complexity should never factor into model choice, only theoretical accuracy"
+    answer_key:
+      correct: 0
+    explanation: >
+      This mirrors the course's own conclusion from comparing the Statsforecast and Ensemble-DL
+      results: a marginal accuracy improvement bought at fourteen days and $11,000 is a very
+      different proposition from the same improvement at six minutes and half a cent.

@@ -1,0 +1,237 @@
+area: "AI Innovation & NLP Applications"
+source: "Second Brain/apprenticeship/term-4/Topic 7 - Enabling Technologies and Transformer Expansion.md"
+questions:
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "AI stack and AI as a service"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What trade-off does the course describe for adopting AI as a Service?"
+    payload:
+      options:
+        - "No trade-off; it is always strictly better than building in-house"
+        - "Cost, flexibility and scalability benefits, against data security, ongoing costs, the black-box problem and dependency on a third party"
+        - "It only offers cost benefits, with no other consideration"
+        - "It removes all need for staff training"
+    answer_key:
+      correct: 1
+    explanation: >
+      Providers include AWS, Google Cloud, IBM Watson Developer Cloud and Azure. The
+      recommended adoption approach is to teach teams first, start small, and measure results.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "APIs in Industry 4.0"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course describe APIs as central to Industry 4.0?"
+    payload:
+      options:
+        - "They act as digital connectors letting systems, machines and software communicate, enabling IoT integration, automation, data sharing and AI/analytics integration"
+        - "They replace the need for any data storage"
+        - "APIs are only relevant to mobile apps"
+        - "APIs eliminate the need for cloud computing"
+    answer_key:
+      correct: 0
+    explanation: >
+      The named relevant apprenticeship skill is S20: designing efficient algorithms for
+      accessing and analysing large amounts of data, including APIs to different databases and
+      datasets.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "LLM hosting options"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each LLM hosting option to its main trade-off."
+    payload:
+      left:
+        - "API-based (fully managed)"
+        - "Cloud self-hosting"
+        - "On-premise hosting"
+        - "Edge or local deployment"
+      right:
+        - "Easiest and fastest to deploy, but less control and data leaves your system"
+        - "More control and customisable, but requires DevOps effort and can be expensive"
+        - "Privacy and compliance, but high upfront cost and maintenance"
+        - "Low latency and offline use, but limited model size and capability"
+    answer_key:
+      pairs:
+        "API-based (fully managed)": "Easiest and fastest to deploy, but less control and data leaves your system"
+        "Cloud self-hosting": "More control and customisable, but requires DevOps effort and can be expensive"
+        "On-premise hosting": "Privacy and compliance, but high upfront cost and maintenance"
+        "Edge or local deployment": "Low latency and offline use, but limited model size and capability"
+    explanation: >
+      Managed model platforms such as Hugging Face and Replicate sit between fully managed APIs
+      and full self-hosting, offering easier deployment than DIY with some cost and dependency
+      remaining.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "LLM hosting options"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A regulated healthcare provider needs full data control and compliance, and can accept high upfront cost. Which hosting option fits best?"
+    payload:
+      options:
+        - "API-based fully managed hosting"
+        - "On-premise hosting, for privacy and compliance despite the maintenance and scaling burden"
+        - "Edge deployment on mobile devices"
+        - "Any option performs equally well here"
+    answer_key:
+      correct: 1
+    explanation: >
+      On-premise hosting is the option the course specifically names as used in regulated
+      industries, trading ease and cost for control over data location.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "AI agents and agentic AI"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put these stages in the course's description of transformer capability evolving towards agents."
+    payload:
+      items:
+        - "Autonomous agents: planners and decision-makers breaking goals into sub-tasks and using tools iteratively"
+        - "Early transformers: translation and summarisation, mapping inputs to outputs via attention"
+        - "Interactive, tool-augmented systems: dialogue, reasoning and task completion using prompting, fine-tuning and RAG"
+        - "LLMs: handling varied tasks through prompting alone, with strong generalisation and few-shot learning"
+    answer_key:
+      sequence: [1, 3, 2, 0]
+    explanation: >
+      This is framed as a shift from sequence modelling to goal-directed systems. Current
+      production agents mostly follow linked tasks within well-bounded workflows rather than
+      being fully autonomous.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "AI agents and agentic AI"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the course define 'agentic AI'?"
+    payload:
+      options:
+        - "Any chatbot that answers questions"
+        - "Autonomous systems acting on behalf of users to achieve specific goals, reasoning, planning multi-step workflows, using external tools and learning from outcomes with minimal human supervision"
+        - "A model that can only summarise text"
+        - "A rule-based expert system with no learning"
+    answer_key:
+      correct: 1
+    explanation: >
+      This moves beyond passive text generation to active, goal-oriented doing, which the course
+      distinguishes from real-world robotics: agents use general-purpose reasoning and tool
+      access, whereas robotics relies on deterministic control and engineered safety.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "AI agents and agentic AI"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course discusses OpenClaw as a security case study. What risk does it illustrate about autonomous agent marketplaces?"
+    payload:
+      options:
+        - "Autonomous agents with access to local files, APIs and system-level commands can be exposed to malicious third-party skills, insecure defaults and indirect prompt injection, risking data theft"
+        - "Autonomous agents are always safe because they run locally"
+        - "The risk only applies to cloud-hosted agents, never local ones"
+        - "OpenClaw has no known security issues"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course notes hundreds of malicious skills identified on ClawHub designed to steal
+      credentials or cryptocurrencies, or open remote shells for attacker control, illustrating
+      that local execution does not remove risk when third-party plugins are involved.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "ViT, CLIP and DALL-E"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put the three steps of the Vision Transformer (ViT) pipeline in order."
+    payload:
+      items:
+        - "Hybrid embedding: feed into a BERT-like encoder that assigns the class"
+        - "Splitting the image into fixed-size patches"
+        - "Linear projection of the flattened patches"
+    answer_key:
+      sequence: [1, 2, 0]
+    explanation: >
+      The example given splits an image of cats into 9 patches. Treating an image as a sequence
+      of patches is what lets a transformer, originally designed for text, be applied to vision.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "ViT, CLIP and DALL-E"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does CLIP jointly train, and on what kind of data?"
+    payload:
+      options:
+        - "A text encoder and an image encoder, trained on image-caption pairs"
+        - "Two identical image encoders on the same images"
+        - "A single encoder trained only on captions with no images"
+        - "A decoder-only model trained on code"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's example jointly trains an image of cats with the caption 'These two cats are
+      so cute.' Once trained, CLIP is usable for various downstream tasks.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "Diffusion and latent diffusion"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put the three stages of how a diffusion model generates an image in order."
+    payload:
+      items:
+        - "Generation: starting from random noise, learned denoising steps are applied repeatedly until a realistic image emerges"
+        - "Forward process: small amounts of random noise are added to real data over many training steps until it becomes pure noise"
+        - "Learning to reverse: the model learns to predict and undo the added noise step by step"
+    answer_key:
+      sequence: [1, 2, 0]
+    explanation: >
+      This progression, formalised for machine learning in 2015 and popularised practically by
+      Ho et al. in 2020, underlies Stable Diffusion and later versions of DALL-E.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "Diffusion and latent diffusion"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why does latent diffusion run faster and more efficiently than diffusion directly on pixels?"
+    payload:
+      options:
+        - "Because it skips the decoder step entirely"
+        - "Because an encoder first maps the image to a smaller, compressed latent representation, and noise is added and removed in that low-dimensional space before a decoder converts it back to full resolution"
+        - "Because it uses no neural network at all"
+        - "Because it only works on black-and-white images"
+    answer_key:
+      correct: 1
+    explanation: >
+      This is the technique used in Stable Diffusion, letting the process run on consumer GPUs
+      while maintaining high image quality, compared with diffusing directly on high-resolution
+      pixels.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "Cross-attention and DiT"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "How does cross-attention differ from self-attention, and where does the course say it is used in Stable Diffusion?"
+    payload:
+      options:
+        - "Self-attention finds relationships within one entity (such as words within a sentence); cross-attention finds relationships between two entities (text prompt and image), used by the U-Net to inject text embeddings into image generation"
+        - "Cross-attention and self-attention are the same mechanism"
+        - "Cross-attention only applies to text, never to images"
+        - "Self-attention is only used in diffusion models, never in transformers"
+    answer_key:
+      correct: 0
+    explanation: >
+      In Stable Diffusion, the query comes from one sequence and the key/value from another,
+      letting the CLIP text encoder's embeddings condition the U-Net's denoising process.
+
+  - topic: "Image transformers, agents and enabling technology"
+    subtopic: "Cross-attention and DiT"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "What does DiT (Diffusion Transformer) change compared with the original U-Net-based Stable Diffusion, and what does it NOT change?"
+    payload:
+      options:
+        - "It replaces the U-Net with a transformer for the denoising step, while diffusion remains the underlying generation method; it does not bring back autoregressive, token-by-token image generation"
+        - "It removes diffusion entirely and generates images token by token like the original DALL-E"
+        - "It removes the text encoder entirely"
+        - "It only works with black-and-white images"
+    answer_key:
+      correct: 0
+    explanation: >
+      DiT brings the transformer back as the mechanism performing diffusion, predicting noise
+      via self-attention over the whole image at each timestep, not as a replacement for
+      diffusion itself.

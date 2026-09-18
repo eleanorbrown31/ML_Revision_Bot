@@ -1,0 +1,143 @@
+area: "Model Evaluation"
+questions:
+  - topic: "Bias-Variance Tradeoff"
+    subtopic: "underfitting vs overfitting"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "A model that performs poorly on both the training set and the test set is most likely..."
+    payload:
+      options:
+        - "Perfectly fitted"
+        - "Underfitting (high bias)"
+        - "Suffering from data leakage"
+        - "Overfitting (high variance)"
+    answer_key:
+      correct: 1
+    explanation: >
+      Poor performance on the training data itself is the signature of high bias / underfitting
+      -- the model is too simple to capture the underlying pattern, so it does poorly everywhere,
+      not just on unseen data.
+    distractor_notes:
+      "Overfitting (high variance)": "Overfitting shows up as good training performance but poor test performance, not poor performance everywhere."
+      "Suffering from data leakage": "Data leakage typically makes test performance suspiciously good, not poor."
+
+  - topic: "Bias-Variance Tradeoff"
+    subtopic: "decomposition of error"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the bias-variance decomposition, what does 'variance' measure?"
+    payload:
+      options:
+        - "The amount of noise inherent in the data itself"
+        - "The total number of parameters in the model"
+        - "How far the average prediction is from the true value"
+        - "How much the model's predictions would change if trained on a different training set"
+    answer_key:
+      correct: 3
+    explanation: >
+      Variance measures the model's sensitivity to the particular training set it happened to
+      see -- a high-variance model (like a very deep, unpruned decision tree) would produce quite
+      different predictions if retrained on a different sample from the same population.
+
+  - topic: "Cross-Validation"
+    subtopic: "K-fold CV"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "In 5-fold cross-validation, how many times is a model trained, and on roughly what fraction of the data each time?"
+    payload:
+      options:
+        - "1 time, on 100% of the data"
+        - "5 times, each on about 20% of the data"
+        - "10 times, each on about 50% of the data"
+        - "5 times, each on about 80% of the data"
+    answer_key:
+      correct: 3
+    explanation: >
+      In K-fold CV the data is split into K equal folds; the model is trained K times, each time
+      on K-1 folds (80% of the data for K=5) and validated on the remaining fold, so every point
+      is used for validation exactly once.
+
+  - topic: "Cross-Validation"
+    subtopic: "stratified CV"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why would you use stratified K-fold CV instead of plain K-fold for a classification problem with imbalanced classes?"
+    payload:
+      options:
+        - "It always uses fewer folds than plain K-fold"
+        - "It automatically balances the classes by oversampling"
+        - "It ensures each fold has roughly the same class proportions as the full dataset, avoiding folds that are missing or under-representing the minority class"
+        - "It removes the need for a test set entirely"
+    answer_key:
+      correct: 2
+    explanation: >
+      Plain random folds can, by chance, leave a fold with very few or zero examples of a rare
+      class, making that fold's validation score unreliable. Stratified K-fold preserves the
+      overall class proportions within every fold.
+
+  - topic: "Classification & Regression Metrics"
+    subtopic: "precision, recall, F1"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "A spam filter has high precision but low recall. What does that mean in practice?"
+    payload:
+      options:
+        - "It has a low overall accuracy"
+        - "When it flags an email as spam it's usually right, but it misses a lot of actual spam"
+        - "It correctly flags almost all spam, but also wrongly flags a lot of legitimate email"
+        - "It performs equally well on both spam and non-spam"
+    answer_key:
+      correct: 1
+    explanation: >
+      Precision = (true positives) / (predicted positives) -- high precision means few false
+      alarms. Recall = (true positives) / (actual positives) -- low recall means it's missing a
+      lot of the real spam. High precision + low recall = confident but overly cautious.
+
+  - topic: "Classification & Regression Metrics"
+    subtopic: "MSE, RMSE, MAE, MAPE"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why might you report RMSE instead of MSE when communicating a regression model's error to a non-technical audience?"
+    payload:
+      options:
+        - "RMSE is always a smaller number than MSE, so it looks more impressive"
+        - "RMSE cannot be affected by outliers, unlike MSE"
+        - "RMSE is in the same units as the original target variable, making it more directly interpretable, whereas MSE is in squared units"
+        - "RMSE and MSE always give identical values for any dataset"
+    answer_key:
+      correct: 2
+    explanation: >
+      MSE is expressed in squared units of the target (e.g. squared pounds, squared days), which
+      is awkward to reason about intuitively. Taking the square root (RMSE) brings the error back
+      into the original units, so "the model is off by about £4,200 on average" is far easier to
+      communicate than a number in squared pounds. RMSE still shares MSE's sensitivity to large
+      outliers, since both are built from squared errors underneath.
+
+  - topic: "Classification & Regression Metrics"
+    subtopic: "precision, recall, F1"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each metric to its definition."
+    payload:
+      left:
+        - "Precision"
+        - "Recall"
+        - "Accuracy"
+        - "F1 score"
+      right:
+        - "The harmonic mean of precision and recall, useful when you need a single balanced score"
+        - "Of all instances predicted positive, the fraction that were actually positive"
+        - "Of all instances that were actually positive, the fraction the model correctly identified"
+        - "The fraction of all predictions (positive and negative) that were correct"
+    answer_key:
+      pairs:
+        "Precision": "Of all instances predicted positive, the fraction that were actually positive"
+        "Recall": "Of all instances that were actually positive, the fraction the model correctly identified"
+        "Accuracy": "The fraction of all predictions (positive and negative) that were correct"
+        "F1 score": "The harmonic mean of precision and recall, useful when you need a single balanced score"
+    explanation: >
+      These four metrics answer different questions: precision asks "when the model says
+      positive, how often is it right?"; recall asks "of all the real positives, how many did it
+      catch?"; accuracy is the simple overall correctness rate (misleading under class imbalance);
+      F1 balances precision and recall into one number when you need a single metric rather than
+      juggling two.

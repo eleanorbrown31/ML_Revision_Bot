@@ -1,0 +1,178 @@
+area: "Supervised Learning"
+source: "Second Brain/apprenticeship/term-2/Topic 2 - Sklearn Introduction and Support Vector Machines.md"
+questions:
+  - topic: "Support Vector Machines"
+    subtopic: "Maximum margin classifier"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is an SVM trying to find when it looks for the best hyperplane to separate two classes?"
+    payload:
+      options:
+        - "The hyperplane that maximises the distance (the margin) between itself and the nearest data points on either side"
+        - "The hyperplane that passes through the most data points"
+        - "The hyperplane closest to the origin"
+        - "The hyperplane with the smallest possible margin"
+    answer_key:
+      correct: 0
+    explanation: >
+      A larger margin generally means a more confident, more generalisable separation between
+      classes, which is why maximising it is the objective rather than merely finding any
+      separating line.
+
+  - topic: "Support Vector Machines"
+    subtopic: "support vectors"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Because only the support vectors determine an SVM's decision boundary, what does this imply about removing other, non-support-vector training points after the model is trained?"
+    payload:
+      options:
+        - "Removing them and retraining would produce the same boundary, since they played no role in determining it"
+        - "Removing any training point always changes the boundary"
+        - "The model would fail to load if any point were removed"
+        - "Support vectors change every time the model makes a new prediction"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is why a trained SVM can be memory-efficient at prediction time even with a large
+      original training set: only the boundary-defining points actually mattered.
+
+  - topic: "Support Vector Machines"
+    subtopic: "soft margin (C)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the difference between a hard margin and a soft margin, and what hyperparameter controls this trade-off?"
+    payload:
+      options:
+        - "A hard margin requires points to be perfectly separated with no misclassification; a soft margin allows some misclassification. The hyperparameter C controls this: a larger C narrows the margin and allows less misclassification, a smaller C widens it and allows more"
+        - "A hard margin is only used for regression, never classification"
+        - "Soft margins are never used in practice"
+        - "C only affects the choice of kernel, not the margin"
+    answer_key:
+      correct: 0
+    explanation: >
+      Real-world data is rarely perfectly separable, so a soft margin trades a small amount of
+      training error for a more robust, generalisable boundary.
+
+  - topic: "Support Vector Machines"
+    subtopic: "kernel trick"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does an SVM need a non-linear kernel when data cannot be separated by a straight line, and what does the kernel actually do conceptually?"
+    payload:
+      options:
+        - "The kernel transforms the data into a higher dimension where it becomes linearly separable, without the SVM needing to compute that transformation explicitly point by point"
+        - "The kernel deletes the non-separable points from the dataset"
+        - "The kernel always converts the problem into a regression problem"
+        - "The kernel only works when the dataset has fewer than 10 rows"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's worked example squares a 1D feature so that two originally interleaved
+      classes become cleanly separable, illustrating the general idea behind polynomial and RBF
+      kernels.
+
+  - topic: "Support Vector Machines"
+    subtopic: "RBF / polynomial kernels"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "For the RBF kernel's gamma hyperparameter, what is the practical effect of a high value versus a low value?"
+    payload:
+      options:
+        - "A high gamma restricts each training example's influence to a small nearby region, which can lead to overfitting; a low gamma lets influence reach further, which can lead to underfitting"
+        - "Gamma only controls training speed, not model behaviour"
+        - "A high gamma always improves accuracy on unseen data"
+        - "Gamma has no relationship to overfitting or underfitting"
+    answer_key:
+      correct: 0
+    explanation: >
+      This mirrors the general bias-variance trade-off: a tightly localised decision boundary
+      fits training data closely (high variance) while a smoother one generalises more broadly
+      (higher bias).
+
+  - topic: "Support Vector Machines"
+    subtopic: "Maximum margin classifier"
+    difficulty: "INT"
+    format: "multi"
+    stem: "Which of these are listed as advantages of SVM? Select all that apply."
+    payload:
+      options:
+        - "Effective for handling high-dimensional data"
+        - "Takes up very little memory once trained"
+        - "Scales well to very large datasets with millions of rows"
+        - "Versatile, since the choice of kernel adapts it to different data patterns"
+        - "Provides a natural probabilistic output"
+    answer_key:
+      correct: [0, 1, 3]
+    explanation: >
+      The course lists poor scalability to very large datasets and the lack of a probabilistic
+      output as disadvantages, not advantages, alongside sensitivity to the choice of C and
+      reduced effectiveness on noisy, overlapping data.
+
+  - topic: "Support Vector Machines"
+    subtopic: "Maximum margin classifier"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A dataset has more features than training samples, and you need probability estimates alongside each prediction. Why might a plain SVM be a poor fit here, based on the course's listed disadvantages?"
+    payload:
+      options:
+        - "SVM underperforms when features outnumber samples, and does not naturally provide a probabilistic output, so both stated requirements work against it"
+        - "SVM has no disadvantages in any scenario"
+        - "SVM cannot run at all if there are more features than samples"
+        - "SVM only works with exactly two features"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is a case where the algorithm's documented weaknesses point directly against its use,
+      even though SVM is otherwise a strong general-purpose classifier.
+
+  - topic: "Support Vector Machines"
+    subtopic: "Maximum margin classifier"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the practical difference between sklearn's SVC/NuSVC and LinearSVC implementations?"
+    payload:
+      options:
+        - "SVC and NuSVC support multiple kernels (linear, rbf, poly, sigmoid) via libsvm; LinearSVC is a faster implementation using liblinear, but requires the data to already be linearly separable and only offers the linear kernel"
+        - "LinearSVC is slower than SVC in every case"
+        - "SVC cannot use a linear kernel at all"
+        - "NuSVC and LinearSVC are the exact same algorithm"
+    answer_key:
+      correct: 0
+    explanation: >
+      Choosing between them is a speed-versus-flexibility decision: LinearSVC trades kernel
+      flexibility for speed when you already know a linear boundary will work.
+
+  - topic: "Support Vector Machines"
+    subtopic: "kernel trick"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "SVC uses hyperparameter C while NuSVC uses hyperparameter Nu. What does Nu control that C does not?"
+    payload:
+      options:
+        - "Nu sets an upper bound on the fraction of margin errors and a lower bound on the fraction of support vectors, giving direct control over the trade-off between margin size and classification error in different terms than C"
+        - "Nu controls the number of features used"
+        - "Nu and C are exactly interchangeable with no conceptual difference"
+        - "Nu only applies when using a polynomial kernel"
+    answer_key:
+      correct: 0
+    explanation: >
+      Both address the same underlying trade-off (margin width versus misclassification
+      tolerance), just parameterised differently, which is why NuSVC is often described as
+      giving more direct, interpretable control over that balance.
+
+  - topic: "Support Vector Machines"
+    subtopic: "support vectors"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does an SVM handle a classification problem with more than two classes, given that its core mathematics defines a single separating hyperplane?"
+    payload:
+      options:
+        - "It breaks the multiclass problem into a number of binary problems and combines the results, which most ML software handles internally without the programmer organising it"
+        - "SVMs cannot be used for more than two classes under any circumstances"
+        - "Every class beyond the second is simply ignored"
+        - "Multiclass SVM requires a completely different, unrelated algorithm"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is analogous to how logistic regression generalises to softmax for multiclass
+      problems: a fundamentally binary mechanism is composed to handle more categories.

@@ -1,0 +1,9 @@
+-- Bootstrap: extensions and migration tracking.
+-- Idempotent: safe to re-run.
+
+create extension if not exists pgcrypto;
+
+create table if not exists schema_migrations (
+  filename text primary key,
+  applied_at timestamptz not null default now()
+);

@@ -1,0 +1,371 @@
+area: "EPA & Project Management"
+source: "Second Brain/apprenticeship/term-4/Workshop 4 - Project Management and EPA Assessment.md"
+questions:
+  - topic: "EPA assessment plan"
+    subtopic: "Gateway requirements"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What condition must be satisfied before the EPA period can start, according to the course?"
+    payload:
+      options:
+        - "The training provider must sign off readiness"
+        - "The employer, not the training provider, must be satisfied the apprentice is consistently working at or above the occupational standard level"
+        - "The apprentice must self-certify readiness"
+        - "The EPAO decides readiness without employer input"
+    answer_key:
+      correct: 1
+    explanation: >
+      The training provider supports development and may advise on readiness if asked, but
+      plays no part in the EPA itself. Judging readiness is explicitly an employer
+      responsibility.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Gateway requirements"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the minimum English and maths level apprentices must hold before starting EPA?"
+    payload:
+      options:
+        - "Level 1, or Entry Level 3 for those with legacy support needs"
+        - "Level 2, with Entry Level 3 as the minimum for those with an education, health and care plan or legacy statement"
+        - "Level 3 for both subjects"
+        - "No minimum level is required"
+    answer_key:
+      correct: 1
+    explanation: >
+      British Sign Language is an accepted alternative to English where it is the apprentice's
+      primary language.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Project report format"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the word count for the Project Report, and what is excluded from it?"
+    payload:
+      options:
+        - "5,000 words, plus or minus 10 percent, excluding appendices, references, diagrams and tables"
+        - "2,000 words with no tolerance, including everything"
+        - "10,000 words, excluding the introduction"
+        - "There is no fixed word count"
+    answer_key:
+      correct: 0
+    explanation: >
+      The apprentice has 6 weeks to write and submit the report after the EPAO confirms the
+      title, submitting at least 1 week before the presentation, with the employer allowing 2
+      days per week to work on it.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Presentation and questioning"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How long is the presentation with supplementary questioning, and how is that time typically split?"
+    payload:
+      options:
+        - "30 minutes total, all questioning"
+        - "75 minutes total, typically about 30 minutes presentation plus 45 minutes questioning"
+        - "120 minutes total, all presentation"
+        - "45 minutes total, split evenly"
+    answer_key:
+      correct: 1
+    explanation: >
+      The assessor may extend by up to 10 percent to let the apprentice finish an answer. A
+      minimum of 10 questions is asked at the end, not counting follow-ups.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Professional discussion"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "How long is the Professional Discussion, and how much notice does the EPAO give?"
+    payload:
+      options:
+        - "60 minutes, with 2 weeks' notice"
+        - "30 minutes, with no notice"
+        - "90 minutes, with 1 month's notice"
+        - "60 minutes, with 1 week's notice"
+    answer_key:
+      correct: 0
+    explanation: >
+      At least 10 open questions are asked, combining the EPAO question bank and
+      assessor-generated questions, with follow-ups allowed. A different question set is used
+      for any re-sit or re-take.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Technical test"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the format and maximum duration of the Technical Test?"
+    payload:
+      options:
+        - "4 long-response, scenario-based questions, maximum 100 minutes, closed-book"
+        - "50 multiple-choice questions, 30 minutes, open-book"
+        - "A single essay, no time limit"
+        - "An oral exam only"
+    answer_key:
+      correct: 0
+    explanation: >
+      Permitted equipment is limited to a calculator, pen and notepaper, taken in a controlled,
+      quiet environment with an invigilator.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Grading and weighting"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How are the three EPA assessment methods weighted against each other?"
+    payload:
+      options:
+        - "Equally weighted"
+        - "Project Report counts for 50 percent"
+        - "Technical Test counts for 60 percent"
+        - "Weighting is decided per apprentice"
+    answer_key:
+      correct: 0
+    explanation: >
+      Each method is graded Fail, Pass or Distinction individually, then combined into an
+      overall Fail, Pass, Merit or Distinction grade.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Grading and weighting"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "An apprentice gets Distinction on the Project Report, Pass on the Professional Discussion, and Distinction on the Technical Test. What is the overall grade?"
+    payload:
+      options:
+        - "Fail, because not all three are Distinction"
+        - "Merit, since at least a pass in one method plus a distinction in two qualifies for Merit"
+        - "Pass, because two distinctions are ignored"
+        - "Distinction, because two out of three are Distinction"
+    answer_key:
+      correct: 1
+    explanation: >
+      Merit requires at least a pass in one method plus a distinction in two. Overall Distinction
+      requires distinction in all three methods, and any single Fail makes the whole EPA a Fail
+      regardless of the other two grades.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Re-sits and re-takes"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the difference between a re-sit and a re-take, and what caps the overall grade?"
+    payload:
+      options:
+        - "A re-sit needs no further learning, a re-take does; both need employer agreement, and a re-sat or re-taken method caps the overall EPA grade at Pass unless exceptional circumstances apply"
+        - "A re-sit and a re-take are identical"
+        - "Only a re-take is allowed under the standard"
+        - "Re-sits and re-takes always allow a Distinction"
+    answer_key:
+      correct: 0
+    explanation: >
+      Only the failed method needs to be re-sat or re-taken, not the whole EPA, and it must
+      happen within the maximum EPA period or the whole EPA must be retaken.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Re-sits and re-takes"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Can an apprentice re-sit a method purely to move from Pass to Merit or Distinction?"
+    payload:
+      options:
+        - "Yes, at any time"
+        - "No, re-sits and re-takes are not available purely to improve a passing grade"
+        - "Yes, but only within the first month"
+        - "Only with a written request to the EPAO"
+    answer_key:
+      correct: 1
+    explanation: >
+      Re-sits and re-takes exist to fix a failed method, not to upgrade a method that already
+      passed.
+
+  - topic: "EPA assessment plan"
+    subtopic: "Roles and responsibilities"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each role to its EPA responsibility."
+    payload:
+      left:
+        - "Employer"
+        - "EPAO"
+        - "Training provider"
+        - "Independent assessor"
+      right:
+        - "Judges EPA readiness, selects the EPAO, must not be involved in EPA delivery"
+        - "Appoints and trains assessors, delivers the EPA per the plan, runs IQA and standardisation"
+        - "Supports on-programme KSB development, plays no part in the EPA itself"
+        - "Independent of the apprentice, employer and provider, holds or works towards an assessor qualification"
+    answer_key:
+      pairs:
+        "Employer": "Judges EPA readiness, selects the EPAO, must not be involved in EPA delivery"
+        "EPAO": "Appoints and trains assessors, delivers the EPA per the plan, runs IQA and standardisation"
+        "Training provider": "Supports on-programme KSB development, plays no part in the EPA itself"
+        "Independent assessor": "Independent of the apprentice, employer and provider, holds or works towards an assessor qualification"
+    explanation: >
+      The apprentice's own role is to develop KSBs, meet gateway requirements and understand and
+      undertake the EPA. Separation of roles is designed to keep the assessment independent.
+
+  - topic: "Project brief and pass criteria"
+    subtopic: "Project brief requirements"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In what tense must the final project brief be written when submitted to the EPAO at gateway, and why?"
+    payload:
+      options:
+        - "Future tense, because the project has not started yet"
+        - "Past tense, because it describes a project already completed"
+        - "Present tense, to show ongoing work"
+        - "Tense does not matter"
+    answer_key:
+      correct: 1
+    explanation: >
+      The project itself is carried out in Term 5 if not already completed, with Term 4 used for
+      planning. The EPAO responds within 2 weeks, and no proposals have been rejected outright
+      so far, though amendments are sometimes requested.
+
+  - topic: "Project brief and pass criteria"
+    subtopic: "Pass criteria themes"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each pass-criteria theme from the Activity 1 breakout to its KSB codes."
+    payload:
+      left:
+        - "Awareness of opportunities of AI and data science for business value"
+        - "Critically evaluate effectiveness and performance of AI solutions"
+        - "AI Project and Development Management"
+        - "Application of Technical Knowledge"
+      right:
+        - "K13, K14"
+        - "K23, S3, S17"
+        - "K6, S24"
+        - "K1, K3, K5, K26, S11, S15, S18"
+    answer_key:
+      pairs:
+        "Awareness of opportunities of AI and data science for business value": "K13, K14"
+        "Critically evaluate effectiveness and performance of AI solutions": "K23, S3, S17"
+        "AI Project and Development Management": "K6, S24"
+        "Application of Technical Knowledge": "K1, K3, K5, K26, S11, S15, S18"
+    explanation: >
+      Six themed groups worked through the Project Checklist Table in the Work-Based Project
+      Sign-Off document, each addressing a different cluster of pass and distinction criteria.
+
+  - topic: "Project brief and pass criteria"
+    subtopic: "Distinction criteria"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "For the 'Awareness of opportunities' theme, what raises a pass-level answer to distinction level?"
+    payload:
+      options:
+        - "Simply repeating the pass-level evidence in more words"
+        - "Articulating commercial awareness of organisational priorities and explaining how practical trade-offs shaped the solution to optimise business outcomes, with evidence of improved customer experience, reduced costs or increased market share"
+        - "Submitting the report one week early"
+        - "Including more diagrams"
+    answer_key:
+      correct: 1
+    explanation: >
+      Across every theme, distinction criteria generally ask for evaluation, adaptation and
+      explicit reasoning about trade-offs and impact, not just description of what was done.
+
+  - topic: "Project brief and pass criteria"
+    subtopic: "KSB mapping by assessment method"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Which KSBs does the Technical Test specifically draw on, according to the course's summary?"
+    payload:
+      options:
+        - "Knowledge of data storage, processing and ML methods, systems integration, legal and ethical frameworks, engineering principles, and sources of error and bias; skills in identifying resources and quantifying uncertainty"
+        - "Only behaviours related to teamwork"
+        - "Only skills in stakeholder communication"
+        - "The full set of all KSBs in the standard"
+    answer_key:
+      correct: 0
+    explanation: >
+      The Project Report draws on a different cluster (business value, statistical methods,
+      communication) and the Professional Discussion on another (problem-solving, strategic fit,
+      industry trends, ethics and governance), matching the three EPA methods to different parts
+      of the standard.
+
+  - topic: "Project management methodologies"
+    subtopic: "CRISP-DM"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the full name of CRISP-DM, and why does the course suggest using it as the overarching framework for an AI project?"
+    payload:
+      options:
+        - "Cross-Industry Standard Process for Data Mining; it is cyclical, running from business and data understanding through preparation, modelling and evaluation to deployment, then looping back"
+        - "Continuous Rapid Iterative Software Process for Data Mining; it is linear with no feedback loop"
+        - "Critical Results in Statistical Process Data Management"
+        - "It has no defined meaning in the course"
+    answer_key:
+      correct: 0
+    explanation: >
+      Other methods or tools can be applied at each CRISP-DM stage as appropriate, or CRISP-DM
+      can be nested inside SDLC when the AI component sits within a larger system.
+
+  - topic: "Project management methodologies"
+    subtopic: "TDSP"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is TDSP, and who developed it?"
+    payload:
+      options:
+        - "The Team Data Science Process, developed by Microsoft, moving from business problem through data acquisition and understanding, modelling, and deployment and presentation to stakeholder acceptance"
+        - "A SAS product for sampling and modelling only"
+        - "A UK government framework for public-sector data"
+        - "An open-source alternative to CRISP-DM with no stages"
+    answer_key:
+      correct: 0
+    explanation: >
+      TDSP explicitly includes model deployment and presentation with performance monitoring and
+      dashboards, and ends with a stakeholder or customer acceptance step before completion.
+
+  - topic: "Project management methodologies"
+    subtopic: "KDD"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put these KDD stages in order."
+    payload:
+      items:
+        - "Pattern"
+        - "Selection"
+        - "Preprocessing"
+        - "Data Warehouse"
+        - "Data Mining"
+        - "Transformation"
+        - "Evaluation"
+    answer_key:
+      sequence: [3, 1, 2, 5, 4, 0, 6]
+    explanation: >
+      Knowledge Discovery in Datasets runs from a data warehouse through selection,
+      preprocessing and transformation to data mining, producing patterns that are then
+      evaluated to produce knowledge.
+
+  - topic: "Project management methodologies"
+    subtopic: "SEMMA"
+    difficulty: "F1"
+    format: "fill"
+    stem: "Complete the SEMMA acronym."
+    payload:
+      template: "SEMMA stands for Sample, Explore, ___, Model and ___."
+    answer_key:
+      blanks:
+        - ["modify"]
+        - ["assess"]
+    explanation: >
+      SEMMA was developed by SAS and is covered in depth in Term 1's Statistical Investigations
+      topic, where it is applied step by step to a data mining example.
+
+  - topic: "Project management methodologies"
+    subtopic: "Combining methodologies"
+    difficulty: "INT"
+    format: "multi"
+    stem: "Which approaches does the course suggest for combining methodologies on an AI or data science project? Select all that apply."
+    payload:
+      options:
+        - "Use CRISP-DM as the overarching framework, applying other methods at each stage"
+        - "Use SDLC as the overarching framework for a larger system, with CRISP-DM nested inside for the AI-specific part"
+        - "Use Agile as the main framework, with AI work carried out as one or more sprints"
+        - "Treat the scientific method as a technique within a stage rather than an overarching framework"
+        - "Pick exactly one methodology and never combine it with anything else"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      The course explicitly advises thinking through each project stage and identifying which
+      methods or tools apply, rather than forcing a single rigid methodology across the whole
+      project.

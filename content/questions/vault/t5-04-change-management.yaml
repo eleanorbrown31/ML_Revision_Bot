@@ -1,0 +1,354 @@
+area: "Data-Driven Transformation & Leadership"
+source: "Second Brain/apprenticeship/term-5/Topic 4 - Change Management.md"
+questions:
+  - topic: "Change management"
+    subtopic: "Purpose, people, method, tools grouping"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each group to the three data maturity areas it contains."
+    payload:
+      left:
+        - "Purpose"
+        - "People"
+        - "Method"
+        - "Tools"
+      right:
+        - "Policies, Framework and Organisation"
+        - "Architecture, Metrics and Technology"
+        - "Risk, Governance and Strategy"
+        - "Skills, Behaviour and Leadership"
+    answer_key:
+      pairs:
+        "Purpose": "Risk, Governance and Strategy"
+        "People": "Skills, Behaviour and Leadership"
+        "Method": "Policies, Framework and Organisation"
+        "Tools": "Architecture, Metrics and Technology"
+    explanation: >
+      Grouping the 12 areas into four lets you plan a critical path: some elements must be
+      tackled before others, and each group can become a stream of work packages with milestones.
+
+  - topic: "Change management"
+    subtopic: "Agile and Kanban for transformation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say an Agile approach suits transformation projects?"
+    payload:
+      options:
+        - "Because it guarantees completion on a fixed date"
+        - "Because its flexibility, iteration and incremental delivery match a transformation that is continual and gradual, where perfection would take too long"
+        - "Because it removes the need for a project plan"
+        - "Because it avoids involving business stakeholders"
+    answer_key:
+      correct: 1
+    explanation: >
+      Some tasks run in parallel and others sit on the critical path, so parts are implemented
+      and released as you go. Kanban complements this by visualising progress on a board open to
+      the whole team.
+
+  - topic: "Change management"
+    subtopic: "IDS, TDS and UDS"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each data strategy track to its timescale and purpose."
+    payload:
+      left:
+        - "Urgent Data Strategy (UDS)"
+        - "Immediate Data Strategy (IDS)"
+        - "Target Data Strategy (TDS)"
+      right:
+        - "Quick wins helping several areas over about six months"
+        - "A demonstrable win within about a month, to win people over early"
+        - "Aims for the end state and may take a few years"
+    answer_key:
+      pairs:
+        "Urgent Data Strategy (UDS)": "A demonstrable win within about a month, to win people over early"
+        "Immediate Data Strategy (IDS)": "Quick wins helping several areas over about six months"
+        "Target Data Strategy (TDS)": "Aims for the end state and may take a few years"
+    explanation: >
+      The three tracks run concurrently. Their influence curves differ: UDS peaks early and
+      fades fast, IDS peaks later and fades, and TDS takes longest to become influential but then
+      sustains its influence.
+
+  - topic: "Change management"
+    subtopic: "IDS, TDS and UDS"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why run an Urgent Data Strategy alongside the long-term Target Data Strategy rather than just the TDS?"
+    payload:
+      options:
+        - "Because the TDS takes years to show influence, and an early demonstrable win convinces colleagues of the transformation's benefits while momentum is fragile"
+        - "Because the TDS is optional"
+        - "Because urgent work is always more valuable"
+        - "Because regulators require quick wins"
+    answer_key:
+      correct: 0
+    explanation: >
+      The influence-over-time diagram shows the TDS starting low. Without the UDS and IDS the
+      organisation would see nothing for a long period, which feeds the doubt and cynicism that
+      Topic 6 lists as human barriers.
+
+  - topic: "Change management"
+    subtopic: "Why change is difficult"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "According to the course, why do staff who agree the organisation should transform still resist change?"
+    payload:
+      options:
+        - "Because they secretly disagree with the strategy"
+        - "Because agreement in principle does not remove fear about their own roles: the unknown, new hierarchies, extra duties, loss of position or down-skilling, plus investment in current methods"
+        - "Because transformation is always badly communicated"
+        - "Because they are not paid enough"
+    answer_key:
+      correct: 1
+    explanation: >
+      Resistance appears when change reaches individual or group work patterns. There may also
+      be genuine concern about whether the new method has been thought through, which is why
+      involving representatives in design and answering concerns are recommended counters.
+
+  - topic: "Change management"
+    subtopic: "Why change is difficult"
+    difficulty: "INT"
+    format: "multi"
+    stem: "Which approaches does the course recommend to counter resistance to change? Select all that apply."
+    payload:
+      options:
+        - "Use champions and advocates who can explain the benefits"
+        - "Involve representatives from across the organisation in design and planning"
+        - "Combine a risk-based approach (identify threats) with a value-based approach (demonstrate value)"
+        - "Keep the plan confidential until it is finished, to avoid worrying people"
+        - "Communicate a clear vision, create urgency, and aim for early demonstrable wins"
+    answer_key:
+      correct: [0, 1, 2, 4]
+    explanation: >
+      A communications plan that keeps the organisation regularly informed is recommended.
+      Withholding the plan increases fear of the unknown, which is one of the main sources of
+      resistance the course identifies.
+
+  - topic: "Change management"
+    subtopic: "Process-focused models (Lewin, Kotter, PDCA, 7S)"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each change model to the category the course places it in."
+    payload:
+      left:
+        - "Kotter's eight-step model"
+        - "ADKAR"
+        - "PDCA (Deming) cycle"
+        - "Kubler-Ross change curve"
+      right:
+        - "Process-focused"
+        - "People-focused"
+    answer_key:
+      pairs:
+        "Kotter's eight-step model": "Process-focused"
+        "ADKAR": "People-focused"
+        "PDCA (Deming) cycle": "Process-focused"
+        "Kubler-Ross change curve": "People-focused"
+    explanation: >
+      Process-focused models are Lewin, Kotter, PDCA and McKinsey 7S. People-focused models are
+      ADKAR, nudge theory, Satir, Bridges, Kubler-Ross and Maurer. In practice they can be mixed
+      and matched.
+
+  - topic: "Change management"
+    subtopic: "Process-focused models (Lewin, Kotter, PDCA, 7S)"
+    difficulty: "F1"
+    format: "order"
+    stem: "Put Lewin's three stages of change in order."
+    payload:
+      items:
+        - "Refreeze: embed the new way of working"
+        - "Unfreeze: examine the current state and prepare for change"
+        - "Change: trial methods and implement the best"
+    answer_key:
+      sequence: [1, 2, 0]
+    explanation: >
+      Lewin is considered the founding pioneer of change management. The model is simple but
+      helps with communication, planning and timelines by naming the preparation and embedding
+      phases that surround the change itself.
+
+  - topic: "Change management"
+    subtopic: "Process-focused models (Lewin, Kotter, PDCA, 7S)"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put Kotter's three phases in order."
+    payload:
+      items:
+        - "Engage and enable the organisation: communicate the vision, empower change, create quick wins"
+        - "Implement and sustain: build on the change and embed it"
+        - "Create a climate for change: urgency, coalition, vision"
+    answer_key:
+      sequence: [2, 0, 1]
+    explanation: >
+      Kotter's eight steps group into these three phases. It is one of the most popular change
+      models, and its emphasis on urgency, quick wins and embedding echoes the UDS/IDS/TDS
+      structure and the barriers listed in Topic 1.
+
+  - topic: "Change management"
+    subtopic: "Process-focused models (Lewin, Kotter, PDCA, 7S)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In the PDCA cycle, what happens in the 'Do' step?"
+    payload:
+      options:
+        - "Roll the solution out across the whole organisation"
+        - "Implement the chosen solution on a small scale, in controlled circumstances"
+        - "Identify and analyse the issue"
+        - "Review the results"
+    answer_key:
+      correct: 1
+    explanation: >
+      Plan identifies the issue and picks a solution, Do trials it small, Check reviews the
+      results, and Act standardises or improves before the cycle repeats. Small-scale trial
+      before full rollout is what makes PDCA a continuous-improvement tool.
+
+  - topic: "Change management"
+    subtopic: "Process-focused models (Lewin, Kotter, PDCA, 7S)"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which are the 'hard' elements of the McKinsey 7S framework? Select all that apply."
+    payload:
+      options:
+        - "Strategy"
+        - "Skills"
+        - "Structure"
+        - "Staff"
+        - "Systems"
+        - "Style"
+    answer_key:
+      correct: [0, 2, 4]
+    explanation: >
+      Hard elements are Strategy, Structure and Systems. Soft elements are Skills, Staff and
+      Style. Shared values sit at the centre and are partly hard (published values) and partly
+      soft (members' internal values). All seven are drawn equal and interconnected, so none
+      should be considered in isolation.
+
+  - topic: "Change management"
+    subtopic: "People-focused models (ADKAR, nudge, Satir, Bridges, Kubler-Ross, Maurer)"
+    difficulty: "F1"
+    format: "fill"
+    stem: "Complete the ADKAR acronym."
+    payload:
+      template: "ADKAR stands for Awareness, ___, Knowledge, ___ and Reinforcement."
+    answer_key:
+      blanks:
+        - ["desire"]
+        - ["ability"]
+    explanation: >
+      ADKAR is unusual in focusing on the individual: individuals must change before the
+      organisation can. Awareness of the need, desire to change, knowledge of how, ability to
+      implement, and reinforcement to sustain it.
+
+  - topic: "Change management"
+    subtopic: "People-focused models (ADKAR, nudge, Satir, Bridges, Kubler-Ross, Maurer)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is distinctive about where ADKAR focuses compared with most change models?"
+    payload:
+      options:
+        - "It focuses on the individual level rather than the organisational level"
+        - "It focuses on technology rather than people"
+        - "It focuses on regulators"
+        - "It only applies to software projects"
+    answer_key:
+      correct: 0
+    explanation: >
+      Putting the focus on employees limits resistance and speeds implementation, on the
+      reasoning that an organisation only changes when its individuals do.
+
+  - topic: "Change management"
+    subtopic: "People-focused models (ADKAR, nudge, Satir, Bridges, Kubler-Ross, Maurer)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "In the Satir change model, what does the width of the curve at the Chaos stage represent, and what ends it?"
+    payload:
+      options:
+        - "Performance level; it ends when budget is approved"
+        - "Mental bandwidth required; it narrows after a Transforming Idea triggers integration"
+        - "Number of staff affected; it ends when staff leave"
+        - "Time elapsed; it ends automatically after a fixed period"
+    answer_key:
+      correct: 1
+    explanation: >
+      Satir plots performance against time through late status quo, resistance, chaos,
+      integration and new status quo. Chaos is the widest point because it demands the most
+      mental bandwidth. The Transforming Idea at the end of chaos is what lets integration
+      proceed at normal width.
+
+  - topic: "Change management"
+    subtopic: "People-focused models (ADKAR, nudge, Satir, Bridges, Kubler-Ross, Maurer)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each level of Maurer's resistance to the way the course says to counter it."
+    payload:
+      left:
+        - "Level 1: I don't get it"
+        - "Level 2: I don't like it"
+        - "Level 3: I don't like you"
+      right:
+        - "Address the genuine issues raised, or clearly demonstrate overriding benefits"
+        - "Convincing explanation of implementation, and ultimately successful delivery"
+        - "High-quality communication of the facts and figures"
+    answer_key:
+      pairs:
+        "Level 1: I don't get it": "High-quality communication of the facts and figures"
+        "Level 2: I don't like it": "Address the genuine issues raised, or clearly demonstrate overriding benefits"
+        "Level 3: I don't like you": "Convincing explanation of implementation, and ultimately successful delivery"
+    explanation: >
+      Level 1 is informational, level 2 emotional, and level 3 a trust problem with those
+      delivering the change. Diagnosing which level you face tells you whether more facts, more
+      empathy or more credibility is needed.
+
+  - topic: "Change management"
+    subtopic: "People-focused models (ADKAR, nudge, Satir, Bridges, Kubler-Ross, Maurer)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the core idea of nudge theory as applied to business change?"
+    payload:
+      options:
+        - "Force compliance through policy"
+        - "Small, strategically designed interventions steer people towards the desired choice without coercion or restricting freedom of choice"
+        - "Pay bonuses for early adoption"
+        - "Remove all choice so change is inevitable"
+    answer_key:
+      correct: 1
+    explanation: >
+      Nudges reframe information, alter how choices are presented or give personalised feedback.
+      The course observes that the seven business steps closely resemble established change
+      practice, so nudge theory may be a different framing of good practice rather than a new
+      method.
+
+  - topic: "Change management"
+    subtopic: "People-focused models (ADKAR, nudge, Satir, Bridges, Kubler-Ross, Maurer)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In Bridges' transition model, what characterises the neutral zone?"
+    payload:
+      options:
+        - "Performance is at its highest as people experiment"
+        - "Performance is low; it is the bridge between letting go of the old and the new beginning"
+        - "Nothing happens until leadership decides"
+        - "It is the stage where the old way is celebrated"
+    answer_key:
+      correct: 1
+    explanation: >
+      Performance starts high, dips rapidly through ending and letting go, stays low in the
+      neutral zone, then rises rapidly in the new beginning. Anticipating denial, anger and
+      frustration helps leaders guide people through the low point.
+
+  - topic: "Change management"
+    subtopic: "People-focused models (ADKAR, nudge, Satir, Bridges, Kubler-Ross, Maurer)"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A manager tells you the analytics team accepts the new platform but does not trust the vendor to deliver it properly. Which model diagnoses this most directly, and what does it suggest?"
+    payload:
+      options:
+        - "ADKAR: they lack awareness, so run a briefing"
+        - "Maurer level 3: a trust problem, so give convincing explanations of implementation and prove it by delivering"
+        - "PDCA: run a pilot on the vendor"
+        - "McKinsey 7S: change the organisational structure"
+    answer_key:
+      correct: 1
+    explanation: >
+      The change itself is accepted, which rules out levels 1 and 2. Level 3 resistance is
+      about those delivering the change, and the counter is credibility through explanation and
+      successful delivery rather than more facts about the benefits.

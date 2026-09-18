@@ -1,0 +1,254 @@
+area: "Data-Driven Transformation & Leadership"
+source: "Second Brain/apprenticeship/term-5/Topic 3 - Data Value.md"
+questions:
+  - topic: "Data value"
+    subtopic: "Data-driven vs value-driven"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is Schmarzo's central criticism of a purely data-driven mindset?"
+    payload:
+      options:
+        - "It collects too little data"
+        - "It focuses on amassing data rather than on exploiting data to create explicit customer, product and operational value"
+        - "It ignores technology"
+        - "It relies too much on external consultants"
+    answer_key:
+      correct: 1
+    explanation: >
+      Schmarzo argues executives must move from a data-driven to a value-driven mindset. Value is
+      implicit in most data-driven approaches; making it explicit means it is sought and found
+      more rigorously.
+
+  - topic: "Data value"
+    subtopic: "Big data business model maturity index"
+    difficulty: "F1"
+    format: "order"
+    stem: "Put the five stages of Schmarzo's big data business model maturity index in order."
+    payload:
+      items:
+        - "Insights Monetisation"
+        - "Business Monitoring"
+        - "Digital Transformation"
+        - "Business Optimisation"
+        - "Business Insights"
+    answer_key:
+      sequence: [1, 4, 3, 0, 2]
+    explanation: >
+      Business Monitoring, Business Insights, Business Optimisation, Insights Monetisation,
+      Digital Transformation. Many organisations remain at Monitoring; the index is a benchmark
+      and roadmap for progressing towards the end state.
+
+  - topic: "Data value"
+    subtopic: "Big data business model maturity index"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each transition in the maturity index to its defining activity."
+    payload:
+      left:
+        - "Monitoring to Insights"
+        - "Insights to Optimisation"
+        - "Optimisation to Monetisation"
+        - "Monetisation to Digital Transformation"
+      right:
+        - "Prescriptive analytics embedded in standard operations, with a pipeline feeding analytics engines"
+        - "A culture of continuous exploration, sharing and reuse of digital and human assets"
+        - "Predictive analytics on granular entities, with business stakeholders learning to think like data scientists"
+        - "Investigating insights to find new products, services, channels and markets, with a business plan for monetisation"
+    answer_key:
+      pairs:
+        "Monitoring to Insights": "Predictive analytics on granular entities, with business stakeholders learning to think like data scientists"
+        "Insights to Optimisation": "Prescriptive analytics embedded in standard operations, with a pipeline feeding analytics engines"
+        "Optimisation to Monetisation": "Investigating insights to find new products, services, channels and markets, with a business plan for monetisation"
+        "Monetisation to Digital Transformation": "A culture of continuous exploration, sharing and reuse of digital and human assets"
+    explanation: >
+      The analytics move from predictive to prescriptive, then insights are mined for new
+      revenue, and the final stage is more about culture than analytics. Schmarzo's emphasis on
+      explicit value runs through every transition.
+
+  - topic: "Data value"
+    subtopic: "Big data business model maturity index"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does the course describe the final stage, digital transformation, as being more about culture than about data and analytics?"
+    payload:
+      options:
+        - "Because by that stage all analytics problems have been solved"
+        - "Because sustaining continuous exploration, creation, sharing and refinement of assets depends on KPIs and behaviours that reward exploratory, value-driven work"
+        - "Because data is no longer collected in the final stage"
+        - "Because culture is cheaper than technology"
+    answer_key:
+      correct: 1
+    explanation: >
+      The operational environment should keep seeking new customer, product and operational
+      data, with metrics that encourage exploration. That is a behavioural and cultural
+      condition, which is why it aligns with Carruthers and Jackson's dynamic, never-finished
+      transformation.
+
+  - topic: "Data value"
+    subtopic: "Design thinking"
+    difficulty: "F1"
+    format: "order"
+    stem: "Put the phases of the design-thinking cycle in the order given in the course."
+    payload:
+      items:
+        - "Prototype"
+        - "Empathise"
+        - "Test"
+        - "Define"
+        - "Implement"
+        - "Ideate"
+    answer_key:
+      sequence: [1, 3, 5, 0, 2, 4]
+    explanation: >
+      Empathise, define, ideate, prototype, test, implement, drawn as an infinity loop because
+      it iterates. Design thinking is human-centred and puts the customer at the centre, using
+      tools such as journey maps, mock-ups, prototypes and storyboards.
+
+  - topic: "Data value"
+    subtopic: "Data science value engineering framework"
+    difficulty: "F1"
+    format: "order"
+    stem: "Put the six steps of Schmarzo's data science value engineering framework in order."
+    payload:
+      items:
+        - "Analytic assets"
+        - "Business initiative"
+        - "Architecture and technology"
+        - "Stakeholders"
+        - "Data and instrumentation"
+        - "Decisions (use cases)"
+    answer_key:
+      sequence: [1, 3, 5, 0, 4, 2]
+    explanation: >
+      Business initiative, stakeholders, decisions, analytic assets, data and instrumentation,
+      architecture and technology. The order is deliberate: the business need comes first and
+      technology choices come last, once it is clear what analytics and data are required.
+
+  - topic: "Data value"
+    subtopic: "Data science value engineering framework"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which characteristics should a strategic business initiative have to be chosen in step 1 of the value engineering framework? Select all that apply."
+    payload:
+      options:
+        - "Critical to immediate-term business success"
+        - "Documented and cross-functional"
+        - "Owned or championed by a senior business executive"
+        - "Has an actionable and measurable financial goal"
+        - "A delivery framework of five to ten years"
+        - "A delivery framework of 12 to 18 months"
+    answer_key:
+      correct: [0, 1, 2, 3, 5]
+    explanation: >
+      The initiative must be near-term, documented, cross-functional, executive-owned,
+      financially measurable and deliverable in 12 to 18 months. A multi-year horizon would
+      undermine the point of picking something that can demonstrate value quickly.
+
+  - topic: "Data value"
+    subtopic: "Data science value engineering framework"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In step 4 of the framework, why does Schmarzo ask stakeholders what they would do given various possible answers to a predictive question?"
+    payload:
+      options:
+        - "To test whether stakeholders understand statistics"
+        - "To move the analytics from predictive to prescriptive and help stakeholders think like data scientists"
+        - "To decide which stakeholders to remove from the project"
+        - "To estimate the cost of the data warehouse"
+    answer_key:
+      correct: 1
+    explanation: >
+      A prediction only creates value if someone acts on it. Asking 'what would you do if the
+      answer were X' converts a prediction into a decision, which is the prescriptive step, and
+      trains stakeholders to reason in terms of analytics.
+
+  - topic: "Data value"
+    subtopic: "Prioritisation matrix"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "On the use-case prioritisation matrix, which quadrant does the course say is lower priority despite being easy to deliver?"
+    payload:
+      options:
+        - "High value, high feasibility"
+        - "High value, low feasibility"
+        - "Low value, high feasibility"
+        - "Low value, low feasibility"
+    answer_key:
+      correct: 2
+    explanation: >
+      Business value is on the vertical axis and implementation feasibility on the horizontal.
+      The interesting candidates are the two high-value quadrants. Easy but low-value work is
+      tempting but does not move the business initiative forward.
+
+  - topic: "Data value"
+    subtopic: "Prioritisation matrix"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "A use case scores high on value but low on feasibility. What does the course imply you should do?"
+    payload:
+      options:
+        - "Discard it immediately"
+        - "Keep it as a candidate, because high-value cases are the interesting ones, and complete a value calculation and cost estimate to inform the decision"
+        - "Deliver it first because it is the hardest"
+        - "Reduce its scope until it is low value"
+    answer_key:
+      correct: 1
+    explanation: >
+      Step 3 asks for a value calculation and an estimated implementation cost for each use case.
+      High-value, low-feasibility cases may justify investment to raise feasibility, or may be
+      sequenced after quicker wins. They are not dismissed just because they are hard.
+
+  - topic: "Data value"
+    subtopic: "Data science value engineering framework"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does Schmarzo recommend as the architecture for initial experimentation in step 6?"
+    payload:
+      options:
+        - "The production data warehouse"
+        - "A sandbox: data held securely off-production in an open architecture"
+        - "A vendor-locked data fabric"
+        - "Spreadsheets on analysts' laptops"
+    answer_key:
+      correct: 1
+    explanation: >
+      Experimentation happens in a sandbox. For deployed solutions, data architects design an
+      optimal solution, and a data lake fed from many sources and holding unstructured data is
+      a popular choice. Organisations new to data science may need new architecture rather than
+      reusing an existing one.
+
+  - topic: "Data value"
+    subtopic: "Data science value engineering framework"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What design-thinking tool does step 2 of the framework use to understand each stakeholder?"
+    payload:
+      options:
+        - "A RACI chart"
+        - "A persona, built through detailed discussion of their experience and challenges"
+        - "A Gantt chart"
+        - "A spider web diagram"
+    answer_key:
+      correct: 1
+    explanation: >
+      Stakeholders represent the business units that affect or are affected by the initiative.
+      A persona for each captures their goals and pain points, which then feed the use-case
+      brainstorm in step 3.
+
+  - topic: "Data value"
+    subtopic: "Data-driven vs value-driven"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "How does the course compare Schmarzo's approach with Carruthers and Jackson's?"
+    payload:
+      options:
+        - "They contradict each other on whether transformation should be business-led"
+        - "The ideas are similar, but Schmarzo makes value explicit and central throughout, whereas value is implicit in Carruthers and Jackson"
+        - "Schmarzo rejects data governance"
+        - "Carruthers and Jackson focus only on technology"
+    answer_key:
+      correct: 1
+    explanation: >
+      Both are business-led, collaborative and continuous. The difference is emphasis: Schmarzo
+      brings value to the top of the discussion and gives methods for articulating it, which the
+      course argues makes value more likely to be rigorously pursued.

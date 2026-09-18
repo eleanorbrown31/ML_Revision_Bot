@@ -1,0 +1,187 @@
+area: "AI Innovation & NLP Applications"
+source: "Second Brain/apprenticeship/term-4/Topic 5 - Service Trends and Transformer Tasks.md"
+questions:
+  - topic: "Digital business models"
+    subtopic: "As-a-service models"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What customer benefit does the course say explains why subscription billing (the 'as a service' model) has become the dominant model for software and computing providers?"
+    payload:
+      options:
+        - "It is always the cheapest option"
+        - "It offers convenience through auto-renewal and builds brand loyalty, with easy access, scalability, reduced upfront costs and increased security"
+        - "It removes the need for any customer support"
+        - "It only works for entertainment products"
+    answer_key:
+      correct: 1
+    explanation: >
+      Netflix, Apple One and Amazon Prime are given as examples. The course notes Apple's
+      subscription services generate more revenue than iPad sales, showing how significant this
+      shift has become.
+
+  - topic: "Digital business models"
+    subtopic: "Intermediation and disintermediation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is 'disintermediation' in a supply chain, and what example does the course give?"
+    payload:
+      options:
+        - "Adding more middlemen to a supply chain"
+        - "Being bypassed within a supply chain, as with direct-to-consumer sales such as Tesla selling cars online"
+        - "A type of transformer architecture"
+        - "A government regulation on retail pricing"
+    answer_key:
+      correct: 1
+    explanation: >
+      Warby Parker's AR try-on and Disney+'s own distribution platform are further examples.
+      Intermediation is the opposite: an organisation within the chain that is not the primary
+      producer.
+
+  - topic: "Digital business models"
+    subtopic: "Intermediation and disintermediation"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "How does the course connect blockchain to intermediation?"
+    payload:
+      options:
+        - "Blockchain has no relevance to supply chains"
+        - "Blockchain threatens traditional intermediary services such as banks, lawyers and insurance brokers by enabling peer-to-peer transactions, also affecting platform businesses like Uber and Airbnb"
+        - "Blockchain always increases the number of intermediaries"
+        - "Blockchain is only used for cryptocurrency trading"
+    answer_key:
+      correct: 1
+    explanation: >
+      Some organisations, such as Western Union and Santander, use blockchain to improve their
+      own services rather than being displaced by it, showing the threat can also be adopted as a
+      tool.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "Transduction vs induction"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does the course describe transduction, the machine translation approach, compared with induction and deduction?"
+    payload:
+      options:
+        - "Transduction learns directly from examples with no approximating function connecting examples to values, unlike induction and deduction which pass examples through such a function"
+        - "Transduction is identical to induction"
+        - "Transduction only works for images"
+        - "Transduction requires no training data at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      A transducer directly converts input from one form to another, a concept also used in
+      electronics such as a microphone converting speech to an electronic signal. Machine
+      translation uses transduction rather than fitting an approximating function.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "Transduction vs induction"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say human translators work sentence by sentence rather than word by word?"
+    payload:
+      options:
+        - "Because word-by-word translation is faster"
+        - "Because context matters: a translator reads a full sentence, extracts its meaning, then produces the equivalent sentence, and multiple valid reference translations can exist for one source"
+        - "Because sentences never contain ambiguous words"
+        - "Because word-by-word translation is required by law"
+    answer_key:
+      correct: 1
+    explanation: >
+      The original transformer's process uses the full encoder and decoder stacks to represent a
+      reference sequence; the output is called the 'reference', reflecting that there can be more
+      than one acceptable translation of the same source sentence.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "WMT 2014 and BLEU"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the BLEU metric compare, and what does the course's worked example (R: 'The cat was sleeping', C: 'The dog was snoring') illustrate about it?"
+    payload:
+      options:
+        - "BLEU compares machine-generated text against human reference translations using n-gram precision; the worked example gives a 1-gram precision of 2/4 but 0 for every longer n-gram, showing BLEU can be harsh even when a translation is broadly reasonable"
+        - "BLEU measures translation speed in words per second"
+        - "BLEU only evaluates grammar, never meaning"
+        - "BLEU always gives a perfect score for synonymous sentences"
+    answer_key:
+      correct: 0
+    explanation: >
+      p1 through p4 use 1-gram to 4-gram overlap between candidate and reference. Because 'dog'
+      and 'snoring' differ from 'cat' and 'sleeping', every n-gram above unigram scores zero,
+      illustrating BLEU's rigidity.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "BLEU smoothing"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why did Chen and Cherry introduce a smoothing technique for BLEU?"
+    payload:
+      options:
+        - "To make BLEU run faster on large datasets"
+        - "Because raw BLEU's rigid geometric evaluation can be harshly zero for reasonable translations, so smoothing gives a more 'open-minded' evaluation, similar in spirit to label smoothing"
+        - "To remove the need for a reference translation entirely"
+        - "Because BLEU cannot be computed for English"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course's label-smoothing example shows a one-hot prediction [1,0,0,0] softened by
+      epsilon to something like [0.75, 0.083, 0.083, 0.083], illustrating the same
+      less-all-or-nothing principle applied to evaluation.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "WMT 2014 and BLEU"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What has Google's translation architecture moved from and to since around 2020?"
+    payload:
+      options:
+        - "From rule-based systems to statistical systems"
+        - "From RNN-based GNMT to transformer-based architectures"
+        - "From transformers back to RNNs for speed"
+        - "From cloud-based to fully offline translation"
+    answer_key:
+      correct: 1
+    explanation: >
+      Google's translation products now include a Translation API for developers, a Media
+      Translation API for streaming content, and AutoML Translation for training a custom
+      domain-specific model.
+
+  - topic: "NLU evaluation and machine translation"
+    subtopic: "Encoder-only vs decoder-only vs encoder-decoder"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each transformer architecture family to its example and strength."
+    payload:
+      left:
+        - "Encoder-only (e.g. BERT)"
+        - "Decoder-only (e.g. GPT)"
+        - "Encoder-decoder (e.g. T5)"
+      right:
+        - "Deep contextual understanding, strong at classification and question answering, processes input bidirectionally"
+        - "Sequence-to-sequence tasks such as translation and summarisation, typically more computationally expensive"
+        - "Text generation, coding and dialogue, generates autoregressively one token at a time"
+    answer_key:
+      pairs:
+        "Encoder-only (e.g. BERT)": "Deep contextual understanding, strong at classification and question answering, processes input bidirectionally"
+        "Decoder-only (e.g. GPT)": "Text generation, coding and dialogue, generates autoregressively one token at a time"
+        "Encoder-decoder (e.g. T5)": "Sequence-to-sequence tasks such as translation and summarisation, typically more computationally expensive"
+    explanation: >
+      Later research found transformers work well with only an encoder or only a decoder, not
+      just the original full encoder-decoder design. Choosing which family to use depends on the
+      task's shape.
+
+  - topic: "Digital business models"
+    subtopic: "As-a-service models"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "What distinguishes 'subscription-enhanced products' like Peloton from a plain subscription box service?"
+    payload:
+      options:
+        - "They combine hardware with an ongoing subscription (for example Peloton's cycle plus virtual workout access, or Amazon Ring's camera plus video storage), rather than delivering a recurring physical product alone"
+        - "They only exist in the fitness industry"
+        - "They never involve hardware"
+        - "They are identical to intermediation"
+    answer_key:
+      correct: 0
+    explanation: >
+      This sits alongside robotics as a service and AI as a service as further variants of the
+      broader 'as a service' shift the course covers.

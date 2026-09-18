@@ -1,0 +1,251 @@
+area: "Neural Networks"
+source: "Second Brain/apprenticeship/term-1/Topic 5 - Advanced Neural Network Models - CNNs, RNNs, and LSTMs.md"
+questions:
+  - topic: "Convolutional Neural Networks"
+    subtopic: "Biological roots (receptive field, spatial invariance)"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which properties, discovered by Hubel and Wiesel in the mammal visual cortex, does the course say a CNN design should include? Select all that apply."
+    payload:
+      options:
+        - "Spatial invariance: the same neurons fire for a pattern regardless of its exact location"
+        - "Receptive field: a neuron responds only to a specific region of the input"
+        - "A hierarchy of neurons, where simple patterns feed into detectors of more complex patterns"
+        - "Every neuron must see the entire image at once"
+    answer_key:
+      correct: [0, 1, 2]
+    explanation: >
+      Modern neuroscience confirms this hierarchical structure. These three properties are why a
+      CNN adds convolutional preprocessing layers rather than feeding a flattened image straight
+      into an ordinary artificial neural network.
+
+  - topic: "Convolutional Neural Networks"
+    subtopic: "Convolution operation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say flattening a 28x28 image into a vector of 784 pixels loses information that matters for complex vision tasks?"
+    payload:
+      options:
+        - "It loses spatial information about how pixels relate to their neighbours, which is acceptable for simple digit recognition but not for more complex tasks"
+        - "Flattening always corrupts pixel values"
+        - "Flattening only works for colour images"
+        - "Vectors cannot be processed by any neural network"
+    answer_key:
+      correct: 0
+    explanation: >
+      Feeding the image in as an n-rank tensor instead preserves each pixel's original matrix
+      position, which is what lets a filter detect local spatial patterns like edges and curves.
+
+  - topic: "Convolutional Neural Networks"
+    subtopic: "filters/kernels"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does each filter in a convolutional layer produce as it slides across an image?"
+    payload:
+      options:
+        - "A single fixed number for the whole image"
+        - "An activation map (feature map), smaller than the image, representing where that filter's pattern was detected"
+        - "A completely new image with no relation to the input"
+        - "A list of all pixel values, unchanged"
+    answer_key:
+      correct: 1
+    explanation: >
+      Each filter position produces a scalar value from a dot product; the collection of these
+      values across the image forms that filter's own activation map. Multiple filters run in
+      parallel to detect different patterns.
+
+  - topic: "Convolutional Neural Networks"
+    subtopic: "stride and padding"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the trade-off between a longer stride and a shorter stride when a filter moves across an image?"
+    payload:
+      options:
+        - "A longer stride gives less detailed sampling; a shorter stride samples more often, giving a higher-definition activation map at greater computational cost"
+        - "Stride length has no effect on the output"
+        - "A longer stride always improves accuracy"
+        - "Stride only applies to pooling layers, never to convolution"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's example uses a 4x4 filter with 16 weights shifting by 2 pixels between
+      patches, illustrating how stride controls how densely the filter samples the image.
+
+  - topic: "Convolutional Neural Networks"
+    subtopic: "pooling (max, average)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the purpose of a pooling layer, and what is the most common pooling method?"
+    payload:
+      options:
+        - "To spatially down-sample the outputs of a convolutional layer into a more manageable representation; max pooling, which preserves the pixel with the highest value, is most common"
+        - "To increase the resolution of the activation map"
+        - "To replace the convolution operation entirely"
+        - "To convert the image back into its original colour space"
+    answer_key:
+      correct: 0
+    explanation: >
+      Average pooling, which uses the mean value of a region instead, is the other named method.
+      A common pooling configuration is a 2x2 filter with a stride of 2.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "Sequential data"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What limitation of ordinary feedforward networks does an RNN address for sequential data like speech or text?"
+    payload:
+      options:
+        - "Feedforward networks process each input independently without knowledge of previous inputs, so RNNs share weights across the sequence and maintain state between predictions"
+        - "Feedforward networks cannot process numbers at all"
+        - "RNNs remove the need for any training data"
+        - "Feedforward networks are always faster than RNNs on sequential tasks"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's speech-recognition example shows each time step's prediction depending on
+      both the new input and the activation values carried forward from previous time steps.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "hidden state"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each RNN use case pattern to its example."
+    payload:
+      left:
+        - "Many-to-many"
+        - "Many-to-one"
+        - "One-to-many"
+      right:
+        - "Translation, where a sequence of words maps to another sequence of words"
+        - "Sentiment analysis, where a sequence of words produces a single output value"
+        - "Music generation, where one input note leads to a sequence of predicted notes"
+    answer_key:
+      pairs:
+        "Many-to-many": "Translation, where a sequence of words maps to another sequence of words"
+        "Many-to-one": "Sentiment analysis, where a sequence of words produces a single output value"
+        "One-to-many": "Music generation, where one input note leads to a sequence of predicted notes"
+    explanation: >
+      For music generation, the RNN feeds its own prediction back in as the next input, showing
+      how a sequence can be generated from a single starting point.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "vanishing gradients in RNNs"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "In the 'monkey/monkeys ... was/were' example, why does a plain RNN struggle to predict the correct verb form correctly across a long sentence?"
+    payload:
+      options:
+        - "It must remember whether the subject was singular or plural many time steps earlier, but with backpropagation, time steps further back are less affected by weight changes: the vanishing gradient problem"
+        - "RNNs cannot process plural nouns at all"
+        - "The problem is unrelated to gradient behaviour"
+        - "RNNs only fail on questions about animals"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is why more sophisticated architectures such as GRUs and LSTMs were developed, adding
+      memory mechanisms specifically to preserve long-term information across many time steps.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "GRU simplification"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does a GRU's memory cell help with the monkey/monkeys long-term dependency problem?"
+    payload:
+      options:
+        - "It stores relevant information (such as whether the subject was singular or plural) at a given timestep, updating only when the network deems it appropriate, via a gate mechanism"
+        - "It deletes the input sequence after each word"
+        - "It removes the need for backpropagation entirely"
+        - "It only works on numeric time series, not language"
+    answer_key:
+      correct: 0
+    explanation: >
+      Introduced by Cho in 2014, a GRU can retain the activation from an early word (such as
+      'monkey' or 'monkeys') until it is needed much later in the sentence, addressing the
+      vanishing gradient problem more directly than a plain RNN.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "bidirectional RNNs"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why might learning from future time steps, not just past ones, help a Named Entity Recognition task, and what architecture provides this?"
+    payload:
+      options:
+        - "A plain RNN can only use past context, but recognising that a named entity is often followed by a verb rather than a noun requires looking ahead too; a bidirectional RNN allows this"
+        - "Future time steps are never useful in NLP"
+        - "This requires switching to a CNN"
+        - "GRUs cannot see any context at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's example contrasts 'The Spartan marched forward...' with 'The Spartan
+      lifestyle that these people face...', where distinguishing the named entity's role benefits
+      from information later in the sentence.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "LSTM gates (forget, input, output)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What does the LSTM's forget gate control?"
+    payload:
+      options:
+        - "Whether to forget the value stored at the previous timestep, controlling how much of the previous cell state influences the current cell state"
+        - "Whether the network trains at all"
+        - "The learning rate for the whole network"
+        - "The number of layers in the network"
+    answer_key:
+      correct: 0
+    explanation: >
+      The current cell state combines a forget-gate term (retaining part of the previous state)
+      and an update-gate term (integrating the current input), summed to produce the new memory
+      value.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "LSTM gates (forget, input, output)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What mechanism does the LSTM use to mitigate the vanishing gradient problem that plain RNNs suffer from?"
+    payload:
+      options:
+        - "The Constant Error Carousel (CEC), which enforces a constant flow of error during backpropagation, alongside long-term memory that can be updated at each timestep"
+        - "Removing backpropagation entirely"
+        - "Training on shorter sentences only"
+        - "Using only the forget gate and no other gates"
+    answer_key:
+      correct: 0
+    explanation: >
+      LSTMs use long-term memory alongside short-term memory (the activation), giving them more
+      representational power for long-term dependency than GRUs, at greater computational cost.
+
+  - topic: "RNNs & LSTMs"
+    subtopic: "LSTM gates (forget, input, output)"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What do peephole connections add to a standard LSTM?"
+    payload:
+      options:
+        - "They let the LSTM's gates 'peek' at memory values from previous timesteps while computing the current gate values, with forget, update and output gates each depending on the previous cell state as well as the previous hidden state and current input"
+        - "They remove the need for any gates"
+        - "They convert the LSTM into a CNN"
+        - "They only apply to bidirectional networks"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is a variant architecture rather than the base LSTM design, giving each gate direct
+      visibility into the memory state it is helping to control.
+
+  - topic: "Convolutional Neural Networks"
+    subtopic: "feature maps"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does a CNN typically use many filters in a single convolutional layer rather than just one?"
+    payload:
+      options:
+        - "Each filter is set up to detect a particular pattern, so multiple filters running in parallel let the network recognise many different shapes and features at various positions"
+        - "Multiple filters are only needed for colour images"
+        - "More filters always mean a smaller network"
+        - "A single filter is illegal under the CNN architecture specification"
+    answer_key:
+      correct: 0
+    explanation: >
+      Each filter produces its own activation map; the set of activation maps from all filters
+      in a layer is what feeds forward into the next stage of the network.

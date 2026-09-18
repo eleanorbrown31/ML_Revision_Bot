@@ -1,0 +1,133 @@
+three families of bias evaluation for GenAI / language models:
+ 
+Text completion methods: test what a model predicts in a controlled sentence.
+Text generation methods: test what a model writes when prompts differ only by a social-group reference.
+Benchmark datasets: use structured datasets such as BBQ to test bias more systematically.
+ 
+Your internal imv_fairness_assessment_framework also frames GenAI bias evaluation as part of model evaluation, including bias evaluation methods and fairness testing across groups, with attention to sensitive attributes and disaggregated analysis. [imv_fairne..._framework | PDF]
+1. Text completion methods
+These methods look at what the model is likely to fill in when part of a sentence is missing. They are useful when you want to test the model’s associations, rather than asking the model to write a full answer.
+A. Masked token method
+This is closest to the example you showed earlier with:
+ 
+The nurse’s work was truly invaluable. <BLANK> stated that…
+ 
+For a masked language model such as BERT or RoBERTa, a token is hidden using a special mask token, and the model predicts the missing word using the surrounding context. Masked Language Model Scoring explains that masked language models predict a masked token using the rest of the sentence as context. [arxiv.org], [aclanthology.org]
+In bias evaluation, you create controlled prompts such as:
+Plain TextThe nurse said that [MASK] would check the patient.The engineer said that [MASK] would check the system.Show more lines
+Then you compare the model’s probabilities for different completions, such as:
+Plain TextheshetheyShow more lines
+If the model strongly prefers one gendered pronoun for “nurse” and another for “engineer”, that may indicate a learned occupational stereotype. This is not because the model has “beliefs”; it is because the model has learned statistical patterns from training data.
+What it measures well
+ 
+Word-level associations.
+Stereotyped links between roles, groups, traits or behaviours.
+Whether the model’s next-token or fill-in-the-blank predictions reflect biased patterns.
+ 
+Limitations
+ 
+It works best for models that support masked-token prediction.
+It tests a narrow sentence pattern, not necessarily how the model behaves in a real application.
+Results can be sensitive to the exact wording of the prompt.
+ 
+For your learning content, I’d explain it as:
+ 
+The masked token method tests which word the model thinks is most likely to fill a blank. If the blank is a pronoun, job title or descriptor, the model’s preferred completion can reveal stereotyped associations in its training data.
+ 
+ 
+B. Pseudo-log-likelihood, or PLL
+PLL is a way of scoring whole sentences with a masked language model. Instead of masking just one obvious word, the method masks tokens one by one, checks how likely the model thinks each original token is, and combines those scores into an overall sentence score. Masked Language Model Scoring states that pseudo-log-likelihood scores are computed by masking tokens one by one, and the paper describes summing the conditional log probabilities of each sentence token. [arxiv.org], [arxiv.org]
+In bias evaluation, you might compare two near-identical sentences:
+Plain TextThe woman is a brilliant engineer.The man is a brilliant engineer.Show more lines
+A PLL-style method can ask: which version does the model find more “natural” or likely?
+If a model consistently gives higher likelihood to stereotypical pairings than counter-stereotypical pairings, that can be evidence of biased associations.
+How it differs from the masked token method
+ 
+ 
+MethodMain ideaExample question
+ 
+Masked token methodHide one token and see what the model predicts.“Does the model fill the blank with ‘he’ or ‘she’?”PLL methodScore a whole sentence by masking tokens one at a time.“Does the model find this stereotypical sentence more likely than the counter-stereotypical version?”
+What it measures well
+ 
+Relative likelihood of sentence variants.
+Whether stereotypical sentences are treated as more natural.
+Bias in sentence-level language modelling.
+ 
+Limitations
+ 
+PLL is a proxy score, not a direct moral judgement.
+A higher likelihood does not automatically mean the model would generate that sentence in a real user interaction.
+Later work notes that the choice of PLL scoring method can affect evaluation results, including on controlled benchmarks. A Better Way to Do Masked Language Model Scoring says the choice of metric affects even tightly controlled minimal-pair evaluation benchmarks. [aclanthology.org]
+ 
+A learner-friendly version:
+ 
+PLL asks: “How likely does the model think this sentence is?” By comparing matched sentences that differ only in a social-group term, evaluators can see whether stereotypical versions are scored as more likely than non-stereotypical versions.
+ 
+ 
+2. Text generation methods: counterfactual prompts
+Text generation methods test what the model actually writes, rather than only what word or sentence it scores as likely.
+The idea of counterfactual prompts is to create pairs of prompts that are identical except for one social-group reference. SCOPE: A Dataset of Stereotyped Prompts for Counterfactual Fairness Assessment of LLMs describes counterfactual prompt pairs as prompts used to compare LLM outputs under minimal demographic changes while maintaining meaning and intent. [arxiv.org], [arxiv.org]
+For example:
+Plain TextWrite feedback for a candidate called Alex who has five years’ experience in software engineering.Write feedback for a candidate called Aisha who has five years’ experience in software engineering.Show more lines
+Or more explicitly:
+Plain TextAssess this candidate profile. The candidate is from Group A.Assess this candidate profile. The candidate is from Group B.Show more lines
+The evaluator then compares the outputs:
+ 
+Is one candidate described as more competent?
+Is one response more cautious, negative or risk-focused?
+Does the model recommend different next steps?
+Does the model use different tone or assumptions?
+ 
+What it measures well
+ 
+Bias in generated language.
+Differences in tone, length, confidence or recommendation.
+Whether the model changes its advice when only the social-group reference changes.
+ 
+Why this matters for recruitment
+In an AI recruitment use case, this method could test whether identical CV summaries produce different levels of enthusiasm or concern when names, pronouns or group references are changed. It can also test whether the model introduces assumptions that were not in the evidence.
+Limitations
+ 
+Generated outputs can vary from run to run.
+You need enough prompt pairs to see patterns, not just one-off examples.
+Human review is often needed because bias may appear subtly in wording, framing or assumptions.
+ 
+A learner-friendly version:
+ 
+Counterfactual prompting is like an A/B test for bias. You keep the task the same but change one social-group reference. If the model’s output changes in a meaningful way, that may indicate the model is sensitive to group identity rather than only to the relevant facts.
+ 
+ 
+3. Bias benchmark datasets: BBQ
+Benchmark datasets give evaluators a structured way to test models across many examples. The one in your list is BBQ, which stands for Bias Benchmark for Question Answering.
+BBQ: A Hand-Built Bias Benchmark for Question Answering introduces BBQ as a dataset of question sets designed to highlight attested social biases against people belonging to protected classes across nine social dimensions relevant to U.S. English-speaking contexts. [arxiv.org], [aclanthology.org]
+BBQ tests model responses in two main conditions:
+ 
+ 
+ 
+BBQ conditionWhat it testsUnder-informative contextThe context does not give enough information, so the model should avoid making a stereotyped assumption. BBQ uses this to test how strongly responses reflect social biases when the answer is ambiguous. [arxiv.org], [aclanthology.org]Adequately informative contextThe context provides enough information for the correct answer, and the test checks whether bias still affects the model’s answer choice. [arxiv.org], [aclanthology.org]
+The BBQ paper reports that models often rely on stereotypes when context is under-informative, and that models can still show bias even when the context provides an informative answer. [arxiv.org], [aclanthology.org]
+A simplified example structure would be:
+Plain TextContext: Person A and Person B were in the room. One person made a mistake.Question: Who made the mistake?Options:A. Person AB. Person BC. Cannot be determinedShow more lines
+If there is not enough information, the model should choose “Cannot be determined”. If the model chooses the person associated with a stereotype, that may indicate bias.
+What BBQ is good for
+ 
+Testing bias in question answering.
+Measuring whether a model defaults to stereotypes when evidence is missing.
+Comparing models using a consistent benchmark.
+ 
+Limitations
+ 
+BBQ is framed around particular social dimensions and U.S. English-speaking contexts, according to the paper. [arxiv.org], [aclanthology.org]
+It is a benchmark, not a full assurance process.
+Strong benchmark performance does not prove a model is safe or fair in every real deployment.
+ 
+A learner-friendly version:
+ 
+BBQ tests whether a model answers fairly when it does not have enough evidence. A fairer response is often to say that the answer cannot be determined, rather than relying on a social stereotype to fill the gap.
+ 
+ 
+How I’d explain the whole list in one paragraph
+ 
+Bias evaluation for language models can be done in several ways. Text completion methods test what the model is likely to fill into a sentence, which can reveal learned associations such as linking certain jobs with certain pronouns. Pseudo-log-likelihood methods go a step further by comparing how likely the model finds whole sentence variants. Text generation methods use counterfactual prompts: identical prompts where only the social-group reference changes, so evaluators can check whether the model’s tone, assumptions or recommendations change. Benchmark datasets such as BBQ provide structured question-answering tests that check whether models rely on stereotypes when the context is ambiguous or when bias conflicts with the correct answer.
+ 
+Quick “which method should I use?” guide

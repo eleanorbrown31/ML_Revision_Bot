@@ -1,0 +1,225 @@
+area: "Time Series"
+source: "Second Brain/apprenticeship/term-2/Topic 6 - Time Series Analysis - Statistical Approach.md"
+questions:
+  - topic: "Time Series Methods"
+    subtopic: "seasonal decomposition"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each time series component to its description."
+    payload:
+      left:
+        - "Trend"
+        - "Seasonality"
+        - "Noise (residuals)"
+      right:
+        - "The overall long-term direction of the series"
+        - "A repeating pattern over a fixed period"
+        - "Random differences left over after trend and seasonality are accounted for"
+    answer_key:
+      pairs:
+        "Trend": "The overall long-term direction of the series"
+        "Seasonality": "A repeating pattern over a fixed period"
+        "Noise (residuals)": "Random differences left over after trend and seasonality are accounted for"
+    explanation: >
+      Techniques from simple moving averages up to ARIMA all exist to separate these components
+      so that trend and seasonality can be forecast forward, while noise is treated as
+      irreducible.
+
+  - topic: "Time Series Methods"
+    subtopic: "exponential smoothing"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "How does exponential smoothing differ from a simple moving average in how it treats past observations?"
+    payload:
+      options:
+        - "Exponential smoothing gives more weight to recent observations, with weight decreasing exponentially further back, so the trend line reacts faster to recent changes; a simple moving average weights every point in the window equally"
+        - "Exponential smoothing ignores recent data entirely"
+        - "A simple moving average always reacts faster to recent changes than exponential smoothing"
+        - "The two techniques are mathematically identical"
+    answer_key:
+      correct: 0
+    explanation: >
+      This makes exponential smoothing well suited to short-term forecasts where recent changes
+      matter more than the full historical average.
+
+  - topic: "Time Series Methods"
+    subtopic: "exponential smoothing"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In Holt-Winters exponential smoothing, when should you choose an additive model over a multiplicative model?"
+    payload:
+      options:
+        - "Additive when seasonal variation is roughly constant over time (such as a fixed increase every December); multiplicative when seasonal variation scales proportionally with the level of the series (such as a percentage increase every December)"
+        - "Additive and multiplicative models always give identical forecasts"
+        - "Multiplicative is always the better choice regardless of the data"
+        - "Additive is only valid for datasets with no trend at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's Air Passengers activity found the seasonal swings growing larger over time,
+      which is the signature of multiplicative rather than additive seasonality.
+
+  - topic: "Time Series Methods"
+    subtopic: "Stationarity"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does it mean for a time series to be 'stationary', and why does ARIMA care about this?"
+    payload:
+      options:
+        - "A stationary series has constant mean, variance and covariance that do not depend on when it is observed, showing no trend or seasonality; ARIMA assumes stationarity, so non-stationary data must be differenced first"
+        - "A stationary series is one that never changes value at all"
+        - "Stationarity only matters for classification problems, not time series"
+        - "ARIMA cannot be used on any real-world data because nothing is ever stationary"
+    answer_key:
+      correct: 0
+    explanation: >
+      ARIMA's 'Integrated' component handles this directly by differencing non-stationary data
+      until it becomes stationary, before the autoregressive and moving average mechanisms are
+      applied.
+
+  - topic: "Time Series Methods"
+    subtopic: "Stationarity"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is the practical difference between the Augmented Dickey-Fuller (ADF) test and the KPSS test for stationarity?"
+    payload:
+      options:
+        - "ADF's null hypothesis is that the series has a unit root (is not stationary); KPSS's null hypothesis is the opposite, that the series is trend-stationary. Using both together gives a more complete picture than either alone"
+        - "The two tests always give identical conclusions"
+        - "ADF only works on seasonal data, KPSS only on non-seasonal data"
+        - "KPSS is a visual method, not a statistical test"
+    answer_key:
+      correct: 0
+    explanation: >
+      Plotting the series and its autocorrelation function gives a visual, exploratory check,
+      but the course is clear that a formal statistical test should be used to be certain about
+      stationarity, not just visual inspection.
+
+  - topic: "Time Series Methods"
+    subtopic: "ARIMA components (AR, I, MA)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each ARIMA component to what it does."
+    payload:
+      left:
+        - "Autoregressive (AR)"
+        - "Integrated (I)"
+        - "Moving average (MA)"
+      right:
+        - "Uses previous observations to predict the next value, based on autocorrelation"
+        - "Differences the data to make it stationary, removing trend"
+        - "Uses past forecast errors to improve future predictions"
+    answer_key:
+      pairs:
+        "Autoregressive (AR)": "Uses previous observations to predict the next value, based on autocorrelation"
+        "Integrated (I)": "Differences the data to make it stationary, removing trend"
+        "Moving average (MA)": "Uses past forecast errors to improve future predictions"
+    explanation: >
+      ARIMA combines all three mechanisms to model and forecast a series using its own past
+      behaviour and past forecasting mistakes, rather than external predictor variables.
+
+  - topic: "Time Series Methods"
+    subtopic: "autocorrelation / partial autocorrelation"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "Why is PACF, rather than plain ACF, used to help choose the AR order p, given the example of yesterday's temperature strongly influencing today's?"
+    payload:
+      options:
+        - "ACF at lag 2, 3, 4 stays high partly due to propagation through lag 1, not direct influence; PACF strips out that propagated correlation, so a drop-off in PACF at higher lags more accurately reveals the direct AR relationships"
+        - "ACF and PACF always give identical results for every dataset"
+        - "PACF can only be calculated for stationary series, unlike ACF"
+        - "ACF is used to choose the MA order, and PACF has no role in ARIMA at all"
+    answer_key:
+      correct: 0
+    explanation: >
+      In the temperature example, ACF stays high across several lags because yesterday's
+      influence chains through to the day before, whereas PACF correctly isolates that only lag
+      1 has a genuinely direct effect.
+
+  - topic: "Time Series Methods"
+    subtopic: "ARIMA components (AR, I, MA)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What do the seasonal parameters P, D, Q and s add to a SARIMA model compared with plain ARIMA's p, d, q?"
+    payload:
+      options:
+        - "SARIMA adds seasonal autoregressive, differencing and moving average components (P, D, Q) plus the seasonal period s, letting the model capture repeating seasonal patterns as well as the non-seasonal behaviour that plain ARIMA already handles"
+        - "SARIMA removes the need for any differencing"
+        - "P, D, Q and s only apply when the data has no trend at all"
+        - "SARIMA is a completely unrelated model to ARIMA"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's Air Passengers activity fits a model written as ARIMA(2,1,2)(1,1,1,12), where
+      the final 12 is the seasonal period for monthly data with an annual cycle.
+
+  - topic: "Time Series Methods"
+    subtopic: "walk-forward validation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course hold out the last 48 months of the Air Passengers dataset as a test set, rather than randomly splitting rows into train and test?"
+    payload:
+      options:
+        - "Time series data has a natural order, and a forecasting model must be evaluated on its ability to predict genuinely future, unseen periods, so the test set should be the most recent chunk of the series"
+        - "A random split would always give a better estimate of forecast accuracy"
+        - "The last 48 months are simply discarded and never used at all"
+        - "Time series models cannot be evaluated with a train/test split of any kind"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is the time series equivalent of the general train/test principle: the model must
+      never have seen the data it is being judged against, and for a forecasting problem that
+      means holding out the most recent period specifically.
+
+  - topic: "Time Series Methods"
+    subtopic: "seasonal decomposition"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does STL (Seasonal-Trend decomposition using Loess) do, and what is its main advantage over simpler decomposition methods?"
+    payload:
+      options:
+        - "It decomposes a series into trend, seasonal and residual components, and unlike traditional decomposition it lets the seasonal component change over time, suiting series with evolving seasonal patterns"
+        - "STL can only be used on data with no seasonality at all"
+        - "STL removes the need for any further modelling once applied"
+        - "STL is identical to a simple moving average"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's recommended workflow is to start with differencing to remove trend, use
+      exponential smoothing to capture seasonality and trend together, then use STL for a
+      detailed breakdown of individual components.
+
+  - topic: "Time Series Methods"
+    subtopic: "exponential smoothing"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course's exponential smoothing activity fits a first model with both `trend` and `seasonal` set to none, on data that clearly has both a trend and seasonality. What problem does this cause?"
+    payload:
+      options:
+        - "The model cannot capture either the upward trend or the repeating seasonal pattern, so its forecast will systematically miss both, likely underestimating future values and flattening out seasonal peaks and troughs"
+        - "There is no problem; trend and seasonality are irrelevant to exponential smoothing"
+        - "The model will crash and produce no forecast at all"
+        - "Setting both to none always produces a perfect forecast for any dataset"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is why the follow-up activity asks the reader to predict the effect of switching
+      `trend` and `seasonal` to 'add' or 'mul' before running the code, connecting the choice
+      directly to the shape of the underlying data.
+
+  - topic: "Time Series Methods"
+    subtopic: "ARIMA components (AR, I, MA)"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does 'auto ARIMA' do, and what criterion does it typically use to pick the best model among many parameter combinations?"
+    payload:
+      options:
+        - "It cycles through many combinations of ARIMA and seasonal parameters automatically, typically minimising a measure of model error such as AIC (Akaike Information Criterion) to select the best-fitting model"
+        - "It always selects the model with the highest possible p, d and q values"
+        - "It requires the analyst to manually test every combination one at a time with no automation"
+        - "It only works on non-seasonal data"
+    answer_key:
+      correct: 0
+    explanation: >
+      This automates the step-by-step process of checking stationarity and reading ACF/PACF
+      plots, giving a faster first draft that can still be refined manually afterward.

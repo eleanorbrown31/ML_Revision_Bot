@@ -1,0 +1,184 @@
+area: "MLOps & Deployment"
+questions:
+  - topic: "Model serving"
+    subtopic: "Batch vs real-time vs streaming inference"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is 'batch inference'?"
+    payload:
+      options:
+        - "Making one prediction per millisecond continuously"
+        - "Only usable for training, never for prediction"
+        - "A synonym for real-time inference"
+        - "Running predictions on a large set of stored inputs all at once, typically on a schedule, rather than responding to individual requests instantly"
+    answer_key:
+      correct: 3
+    explanation: >
+      Batch inference processes a large collection of inputs together, often on a schedule (e.g.
+      nightly), and is appropriate when predictions don't need to be instantaneous -- as opposed
+      to real-time inference, which responds to individual requests with low latency, or
+      streaming inference, which processes a continuous flow of events as they arrive.
+
+  - topic: "Model serving"
+    subtopic: "containerisation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What problem does containerising a model-serving application (e.g. with Docker) primarily solve?"
+    payload:
+      options:
+        - "It eliminates the need for a REST API"
+        - "It automatically improves model accuracy"
+        - "It packages the application with all its dependencies so it runs consistently across different environments"
+        - "It guarantees zero latency"
+    answer_key:
+      correct: 2
+    explanation: >
+      A container bundles the application code together with its exact runtime, libraries, and
+      dependencies, so it behaves the same way on a developer's laptop, in CI, and in production
+      -- avoiding the classic "it works on my machine" problem when moving a model into deployment.
+
+  - topic: "Reproducibility & versioning"
+    subtopic: "experiment tracking"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the main purpose of an experiment tracking tool (e.g. MLflow, Weights & Biases)?"
+    payload:
+      options:
+        - "To replace the need for version control on code"
+        - "To log hyperparameters, metrics, and artifacts for each training run so results can be compared and reproduced later"
+        - "To generate synthetic training data"
+        - "To automatically deploy every trained model to production"
+    answer_key:
+      correct: 1
+    explanation: >
+      Experiment tracking tools record what was run -- hyperparameters, code version, dataset
+      version, resulting metrics, and saved artifacts -- for every training run, so you can
+      compare experiments systematically and reproduce (or explain) a specific result later,
+      rather than relying on memory or scattered notebooks.
+
+  - topic: "Reproducibility & versioning"
+    subtopic: "why reproducibility fails in practice"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Besides not fixing a random seed, what is a common reason ML experiments fail to be reproducible?"
+    payload:
+      options:
+        - "Choosing too small a learning rate"
+        - "Untracked changes in the data, code, or library versions used between runs"
+        - "Using too much compute"
+        - "Training for too few epochs"
+    answer_key:
+      correct: 1
+    explanation: >
+      Even with a fixed random seed, results can silently drift if the underlying data changes (a
+      source table gets updated), the code changes without being logged, or library versions
+      differ (e.g. a numerical library update changes floating-point behaviour slightly) --
+      which is why version-pinning environments and data, not just seeds, matters for true
+      reproducibility.
+
+  - topic: "Monitoring & drift"
+    subtopic: "Data drift vs concept drift"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What is the difference between data drift and concept drift?"
+    payload:
+      options:
+        - "Concept drift can only happen during training, never in production"
+        - "Data drift is a change in the distribution of the input features; concept drift is a change in the relationship between inputs and the target"
+        - "They are two names for the same phenomenon"
+        - "Data drift only affects images; concept drift only affects text"
+    answer_key:
+      correct: 1
+    explanation: >
+      Data drift means the input feature distribution has shifted (e.g. customers are now younger
+      on average) even if the underlying relationship to the target hasn't changed. Concept drift
+      means the relationship itself has changed (e.g. what used to predict churn no longer does)
+      -- a more fundamental problem that retraining on new data alone may not fully fix if it
+      happens gradually.
+
+  - topic: "Monitoring & drift"
+    subtopic: "Data drift vs concept drift"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each monitoring/deployment term to its definition."
+    payload:
+      left:
+        - "Data drift"
+        - "Concept drift"
+        - "Canary rollout"
+        - "Shadow deployment"
+      right:
+        - "Running a new model on live traffic without acting on its predictions, purely to observe its behaviour"
+        - "The relationship between inputs and the target has changed, not just the inputs themselves"
+        - "Sending a small percentage of live traffic to a new model version before rolling it out further"
+        - "The distribution of input features has shifted from what the model was trained on"
+    answer_key:
+      pairs:
+        "Data drift": "The distribution of input features has shifted from what the model was trained on"
+        "Concept drift": "The relationship between inputs and the target has changed, not just the inputs themselves"
+        "Canary rollout": "Sending a small percentage of live traffic to a new model version before rolling it out further"
+        "Shadow deployment": "Running a new model on live traffic without acting on its predictions, purely to observe its behaviour"
+    explanation: >
+      Data drift and concept drift are both about a deployed model becoming stale, but for
+      different reasons: data drift means the inputs look different now, concept drift means the
+      underlying relationship itself changed. Canary and shadow deployments are both safe ways to
+      test a new model version in production, but canary actually serves real predictions to a
+      slice of users, while shadow deployment never acts on its predictions at all -- it just
+      logs them for comparison.
+
+  - topic: "Monitoring & drift"
+    subtopic: "shadow deployment"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a 'shadow deployment' used for when rolling out a new model?"
+    payload:
+      options:
+        - "Deploying a model secretly without any monitoring at all"
+        - "Running the new model alongside the current production model on live traffic, without its predictions actually being used, to compare behaviour safely"
+        - "Training a backup copy of the model in case the first one is deleted"
+        - "Running the model only at night to save cost"
+    answer_key:
+      correct: 1
+    explanation: >
+      In a shadow deployment, the new model receives the same live traffic as the production
+      model and its predictions are logged for comparison, but they are never actually shown to
+      users or acted on. This lets you validate the new model's real-world behaviour and catch
+      problems before it's ever exposed to genuine traffic.
+
+  - topic: "CI/CD for ML"
+    subtopic: "Testing data as well as code"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Why does CI/CD for ML typically need to test the data as well as the code?"
+    payload:
+      options:
+        - "A pipeline can be fully correct in its code yet produce a broken model if the input data silently changes shape, distribution, or quality"
+        - "Data never changes once a pipeline is deployed"
+        - "Code tests alone are always sufficient for ML systems"
+        - "Testing data is required by law in every jurisdiction"
+    answer_key:
+      correct: 0
+    explanation: >
+      Traditional software mostly breaks when code changes. ML systems can also break when the
+      data changes -- a schema change, a new category appearing, a units mismatch -- even with
+      the code completely unchanged. So ML CI/CD adds data validation checks (schema checks,
+      distribution checks) alongside the usual code tests.
+
+  - topic: "CI/CD for ML"
+    subtopic: "canary and A/B rollout"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a 'canary' rollout when deploying a new model version?"
+    payload:
+      options:
+        - "Testing the model only in a completely offline environment"
+        - "Deploying the new version to 100% of traffic immediately"
+        - "Gradually routing a small percentage of live traffic to the new version first, expanding only if it performs well"
+        - "Rolling back to the previous version automatically every night"
+    answer_key:
+      correct: 2
+    explanation: >
+      A canary rollout sends a small slice of real traffic (e.g. 5%) to the new model version
+      while most traffic still goes to the stable version, monitoring closely for problems. If
+      the canary performs well, traffic is gradually increased; if not, it's easy to pull back
+      having only affected a small fraction of users.

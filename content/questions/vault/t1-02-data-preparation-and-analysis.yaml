@@ -1,0 +1,395 @@
+area: "Feature Engineering"
+source: "Second Brain/apprenticeship/term-1/Topic 2 - Data Preparation and Analysis.md"
+questions:
+  - topic: "Data preparation and cleaning"
+    subtopic: "ETL stages"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each ETL stage to what it does."
+    payload:
+      left:
+        - "Extraction"
+        - "Transformation"
+        - "Loading"
+      right:
+        - "Retrieving data from sources such as databases, APIs and flat files into a consistent format, preserving integrity and minimising impact on source systems"
+        - "Cleaning and preparing data for quality and usefulness, including normalisation, discretisation and feature engineering"
+        - "Putting transformed data into a target database, deciding indexing, partitioning and schema, as a batch or a stream"
+    answer_key:
+      pairs:
+        "Extraction": "Retrieving data from sources such as databases, APIs and flat files into a consistent format, preserving integrity and minimising impact on source systems"
+        "Transformation": "Cleaning and preparing data for quality and usefulness, including normalisation, discretisation and feature engineering"
+        "Loading": "Putting transformed data into a target database, deciding indexing, partitioning and schema, as a batch or a stream"
+    explanation: >
+      Incremental extraction only pulls changes since the last run, reducing load on source
+      systems that are often still operational. ETL begins conceptually in CRISP-DM's data
+      understanding phase but sits mainly in data preparation.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Discretisation and binning"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does discretisation do, and what side benefit does the course note for outliers?"
+    payload:
+      options:
+        - "It converts continuous data into discrete intervals (bins), which also absorbs outliers into wider intervals and reduces sensitivity to slight variations"
+        - "It converts categorical data into continuous data"
+        - "It removes all outliers permanently before binning"
+        - "It only applies to text data"
+    answer_key:
+      correct: 0
+    explanation: >
+      The course's example bins ages 4, 15, 37 and 78 into Child, Teen, Adult and Senior for
+      demographic studies. Algorithms that handle categorical data well, such as decision trees,
+      can perform better on the discretised version.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Discretisation and binning"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each binning method to its trade-off."
+    payload:
+      left:
+        - "Equal-width binning"
+        - "Equal-frequency binning"
+        - "Custom binning"
+      right:
+        - "Simple, but can lead to uneven distribution of data points across bins"
+        - "Handles skewed data better by giving each bin roughly the same number of points"
+        - "Requires more domain insight but can be very effective"
+    answer_key:
+      pairs:
+        "Equal-width binning": "Simple, but can lead to uneven distribution of data points across bins"
+        "Equal-frequency binning": "Handles skewed data better by giving each bin roughly the same number of points"
+        "Custom binning": "Requires more domain insight but can be very effective"
+    explanation: >
+      Choosing between these depends on the shape of the underlying distribution and how much
+      domain knowledge is available to define meaningful boundaries.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Types of missing data (MCAR, MAR, MNAR)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each type of missingness to its example."
+    payload:
+      left:
+        - "Missing completely at random (MCAR)"
+        - "Missing at random (MAR)"
+        - "Missing not at random (MNAR)"
+      right:
+        - "A data entry error unrelated to any variable"
+        - "Late-night platform users are less likely to complete a survey because they are tired, not because of their satisfaction level"
+        - "High spenders avoid answering a spending question because it feels too personal"
+    answer_key:
+      pairs:
+        "Missing completely at random (MCAR)": "A data entry error unrelated to any variable"
+        "Missing at random (MAR)": "Late-night platform users are less likely to complete a survey because they are tired, not because of their satisfaction level"
+        "Missing not at random (MNAR)": "High spenders avoid answering a spending question because it feels too personal"
+    explanation: >
+      MCAR missingness is independent of all data. MAR relates to an observed variable (time of
+      use) rather than the unobserved value itself. MNAR is the hardest case: the missingness is
+      tied directly to the value that is missing.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Deletion vs imputation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course say imputation is generally preferred over listwise deletion?"
+    payload:
+      options:
+        - "Imputation retains all cases, preserving sample size and reducing bias, whereas listwise deletion removes a whole case for one missing value and can significantly shrink the sample"
+        - "Imputation is always faster to compute"
+        - "Listwise deletion is illegal under GDPR"
+        - "Imputation never introduces any bias"
+    answer_key:
+      correct: 0
+    explanation: >
+      Listwise deletion is appropriate mainly when data is MCAR. Pairwise deletion is a middle
+      ground, useful in correlation analyses but risky if data is not MCAR.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Imputation methods"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each imputation method to when it suits best."
+    payload:
+      left:
+        - "Mean/median/mode imputation"
+        - "K-nearest neighbours imputation"
+        - "Regression imputation"
+        - "Multiple imputation"
+      right:
+        - "Straightforward and effective when data is MCAR"
+        - "Useful when data points show similar patterns to their neighbours"
+        - "Effective but assumes a linear relationship, which can introduce bias if untrue"
+        - "Reflects uncertainty by creating several datasets and combining results, useful for large datasets with significant missing data"
+    answer_key:
+      pairs:
+        "Mean/median/mode imputation": "Straightforward and effective when data is MCAR"
+        "K-nearest neighbours imputation": "Useful when data points show similar patterns to their neighbours"
+        "Regression imputation": "Effective but assumes a linear relationship, which can introduce bias if untrue"
+        "Multiple imputation": "Reflects uncertainty by creating several datasets and combining results, useful for large datasets with significant missing data"
+    explanation: >
+      MICE (Multivariate Imputation by Chained Equations) is named as a technique useful when
+      data is not MCAR, iterating regression estimates for each missing entry as more data
+      becomes available.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Outliers and their detection"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What distinguishes a univariate outlier from a multivariate outlier?"
+    payload:
+      options:
+        - "A univariate outlier is unusual in a single variable (such as an age of 150); a multivariate outlier can be typical in each individual variable but anomalous in combination with others"
+        - "Univariate outliers only occur in categorical data"
+        - "Multivariate outliers cannot be detected with scatter plots"
+        - "There is no meaningful distinction"
+    answer_key:
+      correct: 0
+    explanation: >
+      Box plots, scatter plots, histograms and z-score plots are the visual identification
+      methods the course lists, with standard deviation and IQR methods as the statistical
+      counterparts.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Outliers and their detection"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Using the interquartile range (IQR) method, how is a point identified as an outlier?"
+    payload:
+      options:
+        - "Any point more than three standard deviations from the mean"
+        - "A point below Q1 minus 1.5 times the IQR or above Q3 plus 1.5 times the IQR"
+        - "Any point outside the minimum and maximum of the dataset"
+        - "A point with a z-score of exactly zero"
+    answer_key:
+      correct: 1
+    explanation: >
+      Box plots visualise this directly: outliers appear as points outside the whiskers, which
+      extend 1.5 times the IQR beyond the first and third quartiles.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Handling outliers"
+    difficulty: "INT"
+    format: "multi"
+    stem: "Which approaches does the course list for handling outliers? Select all that apply."
+    payload:
+      options:
+        - "Remove them if they are errors or irrelevant"
+        - "Apply transformations such as logarithmic or square root to reduce their impact"
+        - "Winsorise, setting a threshold to limit the effect of extreme values"
+        - "Use robust statistical methods or algorithms less sensitive to outliers"
+        - "Always delete the entire dataset and start again"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      The course also notes that outliers sometimes represent significant discoveries rather
+      than errors, so the distribution of the data should be considered, such as analysing high
+      spenders separately in retail rather than automatically discarding them.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Aggregation"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is the main risk the course flags with aggregation, alongside its benefits of reduced complexity and computational efficiency?"
+    payload:
+      options:
+        - "Aggregation always corrupts the underlying data"
+        - "Balancing detail and aggregation is needed to avoid oversimplification while still keeping insights actionable"
+        - "Aggregation cannot be done in SQL"
+        - "Aggregation removes the need for any further analysis"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course gives SQL GROUP BY and pandas groupby examples for producing aggregates such as
+      order count and total spend per customer, alongside the reminder to check accuracy and
+      consistency regularly.
+
+  - topic: "Data preparation and cleaning"
+    subtopic: "Domain-knowledge cleaning"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "What is 'contextual validation' as a domain-knowledge cleaning technique?"
+    payload:
+      options:
+        - "Validating data entries against expected ranges or logical conditions using domain expertise, such as checking patient ages fall within a realistic range in a healthcare dataset"
+        - "Validating a dataset by checking its file size"
+        - "Removing all context from the data before analysis"
+        - "A synonym for listwise deletion"
+    answer_key:
+      correct: 0
+    explanation: >
+      Other domain-knowledge techniques the course lists are derived indicators (such as a
+      'High Risk' flag for late-paying customers), segmentation and classification, and anomaly
+      detection using domain-specific thresholds.
+
+  - topic: "Data visualisation and dashboards"
+    area: "Applied Practice & Business Context"
+    subtopic: "Four types of data question"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each type of data question to what it explains."
+    payload:
+      left:
+        - "Descriptive"
+        - "Diagnostic"
+        - "Predictive"
+        - "Prescriptive"
+      right:
+        - "What happened"
+        - "Why it happened"
+        - "What might happen"
+        - "What action to take, based on a forecast"
+    answer_key:
+      pairs:
+        "Descriptive": "What happened"
+        "Diagnostic": "Why it happened"
+        "Predictive": "What might happen"
+        "Prescriptive": "What action to take, based on a forecast"
+    explanation: >
+      The course orders these from lowest to highest risk if wrong: prescriptive analytics
+      carries the highest risk, since acting on a wrong recommendation, from a model error or a
+      statistical misunderstanding, can be costly.
+
+  - topic: "Data visualisation and dashboards"
+    area: "Applied Practice & Business Context"
+    subtopic: "Matching question words to charts"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "A report question begins with 'Where'. What kind of visualisation does the course suggest, and why?"
+    payload:
+      options:
+        - "A pie chart, because 'where' implies proportions"
+        - "A geographical or heat map, because it is effective for spatial data and geographic patterns"
+        - "A Gantt chart, because 'where' implies a timeline"
+        - "A scatter plot, because 'where' implies correlation"
+    answer_key:
+      correct: 1
+    explanation: >
+      The course gives a colour-coded map of London boroughs as the example. 'When' questions
+      suggest a time series chart, and 'who' questions suit doughnut or scatter charts depending
+      on whether proportions or individual points matter more.
+
+  - topic: "Data visualisation and dashboards"
+    area: "Applied Practice & Business Context"
+    subtopic: "Comparison, relationship, distribution, composition"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Before choosing a chart type, what four broad categories does the course say to consider first?"
+    payload:
+      options:
+        - "Colour, font, size, and layout"
+        - "Comparison, relationship, distribution and composition"
+        - "Speed, cost, accuracy and precision"
+        - "Rows, columns, cells and formulas"
+    answer_key:
+      correct: 1
+    explanation: >
+      Deciding what you want to show, one of these four categories, comes before picking a
+      specific chart type such as a bar chart or scatter plot.
+
+  - topic: "Data visualisation and dashboards"
+    area: "Applied Practice & Business Context"
+    subtopic: "Kirk's principles (trustworthy, accessible, elegant)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each of Kirk's three principles for good data visualisation to its meaning."
+    payload:
+      left:
+        - "Trustworthy"
+        - "Accessible"
+        - "Elegant"
+      right:
+        - "True and correct, with design choices that illuminate rather than obscure or conceal"
+        - "Understandable by the intended audience"
+        - "Appealing and enjoyable to consume"
+    answer_key:
+      pairs:
+        "Trustworthy": "True and correct, with design choices that illuminate rather than obscure or conceal"
+        "Accessible": "Understandable by the intended audience"
+        "Elegant": "Appealing and enjoyable to consume"
+    explanation: >
+      Different emphases and interpretations of the same true data are possible, so
+      trustworthiness is about not obscuring or concealing, not about there being only one valid
+      way to present a fact.
+
+  - topic: "Data visualisation and dashboards"
+    area: "Applied Practice & Business Context"
+    subtopic: "Project vision and intention"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "The course contrasts three ways of framing the same fact about inflation: a factual heading, an emotional negative framing, and an emotional positive framing. What determines which is appropriate?"
+    payload:
+      options:
+        - "Whichever framing uses the most colour"
+        - "The visualisation's intention, whether it is meant to inform (calling for a more formal tone) or to effect change (which may call for a more dramatic tone)"
+        - "The framing should always be neutral regardless of purpose"
+        - "The choice is arbitrary and has no effect on the audience"
+    answer_key:
+      correct: 1
+    explanation: >
+      This links back to trustworthiness: design choices should illuminate, not manipulate, even
+      when the intention is to persuade rather than purely to inform.
+
+  - topic: "Data visualisation and dashboards"
+    area: "Applied Practice & Business Context"
+    subtopic: "Explanatory, exhibitory and exploratory"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each visualisation type to its description."
+    payload:
+      left:
+        - "Explanatory"
+        - "Exhibitory"
+        - "Exploratory"
+      right:
+        - "Informs via additional annotations explaining the graphic"
+        - "No explanatory annotations, leaving the consumer to work out insights"
+        - "No explanatory annotation, but built with interactive controls so the consumer can explore"
+    answer_key:
+      pairs:
+        "Explanatory": "Informs via additional annotations explaining the graphic"
+        "Exhibitory": "No explanatory annotations, leaving the consumer to work out insights"
+        "Exploratory": "No explanatory annotation, but built with interactive controls so the consumer can explore"
+    explanation: >
+      All three are only effective for audiences with the foundational knowledge to read the
+      underlying chart type in the first place.
+
+  - topic: "Data visualisation and dashboards"
+    area: "Applied Practice & Business Context"
+    subtopic: "Dashboard design and interactivity"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which techniques does the course list for combining visuals interactively in a dashboard? Select all that apply."
+    payload:
+      options:
+        - "Filtering: letting users specify what data to include or exclude"
+        - "Highlighting: applying visual emphasis to items of interest"
+        - "Annotating: offering more detail via text, legends and footnotes"
+        - "Navigating: enabling access to multiple views or greater detail"
+        - "Randomising: shuffling the data order on every load"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      A fifth technique, participating, invites users to contribute data or change values to see
+      different results. Animating adds a temporal dimension where historic data allows it.
+
+  - topic: "Data visualisation and dashboards"
+    area: "Applied Practice & Business Context"
+    subtopic: "Dashboard challenges"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What is 'perceived contiguity' as a dashboard design pitfall?"
+    payload:
+      options:
+        - "Using a line chart for discrete, unrelated categories (like separate product names), wrongly suggesting the categories are linked the way dates are linked on a timeline"
+        - "Making a dashboard too colourful"
+        - "Having too few tiles on a dashboard"
+        - "Using the same font throughout a report"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is one of several challenges alongside cognitive overload (too much crammed in),
+      inadvertent suggestion of connectivity (careless repeated colour use), and unclear
+      interactivity (no cues for how to interact with a visual).

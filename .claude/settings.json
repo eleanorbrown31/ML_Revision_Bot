@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(python -m pip install --quiet --disable-pip-version-check ruamel.yaml)",
+      "Bash(mkdir -p /tmp/shuffle_test)",
+      "Bash(cp content/questions/01_supervised_learning.yaml /tmp/shuffle_test/test.yaml)",
+      "Read(//tmp/shuffle_test/**)",
+      "Bash(mkdir -p __TRACKED_VAR__/shuffle_test)",
+      "Bash(cp content/questions/01_supervised_learning.yaml __TRACKED_VAR__/shuffle_test/test.yaml)"
+    ]
+  }
+}

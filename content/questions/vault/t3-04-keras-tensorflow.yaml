@@ -1,0 +1,166 @@
+area: "Programming & Libraries"
+source: "Second Brain/apprenticeship/term-3/Topic 4 - Deep Learning Frameworks Keras and TensorFlow.md"
+questions:
+  - topic: "ML libraries"
+    subtopic: "PyTorch vs TensorFlow"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is Keras's relationship to TensorFlow, and what problem was it introduced to solve?"
+    payload:
+      options:
+        - "Keras is a user-friendly API built on top of TensorFlow, designed to reduce cognitive load with consistent, simple APIs and minimal code for common use cases; TensorFlow 2 was developed to provide Keras as a front-end, reducing the lower-level friction of TensorFlow 1"
+        - "Keras is a completely separate framework with no relationship to TensorFlow"
+        - "TensorFlow is built on top of Keras, not the other way around"
+        - "Keras only works with PyTorch, never with TensorFlow"
+    answer_key:
+      correct: 0
+    explanation: >
+      TensorFlow 1, released in 2015, required more low-level programming than many developers
+      preferred; TensorFlow 2, released in 2019, addressed that friction directly through Keras.
+
+  - topic: "ML libraries"
+    subtopic: "choosing between them"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the course say TensorFlow provides as its underlying data representation, and what hardware can it run on?"
+    payload:
+      options:
+        - "Tensors, multi-dimensional arrays, as the underlying data representation; it runs across GPUs, CPUs and TPUs, on desktops, server clusters, mobile and edge devices"
+        - "TensorFlow only works with plain Python lists, never arrays"
+        - "TensorFlow can only run on a single CPU"
+        - "TensorFlow requires a dedicated TPU and cannot run on CPUs or GPUs"
+    answer_key:
+      correct: 0
+    explanation: >
+      This hardware flexibility is a big part of why TensorFlow scales from experimentation on a
+      laptop up to large production deployments, without a rewrite.
+
+  - topic: "ML libraries"
+    subtopic: "choosing between them"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "In TensorFlow's data-flow graph model, what do neurons and connections (edges) represent?"
+    payload:
+      options:
+        - "Every neuron represents a mathematical operation, and every connection between neurons is a tensor flowing through the network"
+        - "Neurons represent database tables and edges represent SQL joins"
+        - "Neurons and edges are purely visual decoration with no computational meaning"
+        - "Edges represent neurons, and neurons represent the connections between them"
+    answer_key:
+      correct: 0
+    explanation: >
+      This graph-based way of representing computation is what gives the framework its name:
+      data, as tensors, flows through the graph during both training and inference.
+
+  - topic: "Python for data science"
+    subtopic: "why Python loops are slow"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "The course lists several deep learning frameworks beyond TensorFlow and Keras, including PyTorch, CNTK, Caffe2, MXNet, Gluon and Chainer. What general point does listing so many frameworks make about the deep learning tooling landscape?"
+    payload:
+      options:
+        - "There is no single dominant tool; a data scientist needs to be aware of the broader landscape and choose a framework fit for the task and environment, rather than assuming only one option exists"
+        - "All of these frameworks are functionally identical with no meaningful differences"
+        - "Only TensorFlow is actually used in practice, and the rest are purely historical"
+        - "Every project must use every framework listed"
+    answer_key:
+      correct: 0
+    explanation: >
+      This is consistent with the course's broader theme of matching a tool to the job and the
+      environment, rather than treating any one library as a universal default.
+
+  - topic: "Model serving"
+    area: "MLOps & Deployment"
+    subtopic: "Batch vs real-time vs streaming inference"
+    difficulty: "F2"
+    format: "order"
+    stem: "Put the seven stages of the machine learning pipeline the course describes in order."
+    payload:
+      items:
+        - "Testing"
+        - "Data sourcing"
+        - "Deployment"
+        - "Validation/optimisation"
+        - "Review"
+        - "Data preparation"
+        - "Training"
+    answer_key:
+      sequence: [1, 5, 6, 3, 0, 2, 4]
+    explanation: >
+      The pipeline is described as cyclical: review can trigger the whole process to repeat,
+      since the world changes and a model that once worked may become unsuitable over time.
+
+  - topic: "Model serving"
+    area: "MLOps & Deployment"
+    subtopic: "Batch vs real-time vs streaming inference"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why does the course recommend holding back a final test set before entering the main training/validation loop, given that many Python data-splitting functions assume only a one-way split?"
+    payload:
+      options:
+        - "Because the three-way split (training, validation, test) needs the final test set kept completely separate from the hyperparameter-tuning process; if it were mixed into that loop, the final evaluation would no longer be an unbiased measure of generalisation"
+        - "Because Python cannot perform more than one split on the same dataset at all"
+        - "Because the validation set and test set are the same thing and this step is unnecessary"
+        - "Because training always requires exactly three datasets of equal size"
+    answer_key:
+      correct: 0
+    explanation: >
+      The training set trains the model, the validation set tunes hyperparameters and informs
+      model selection, and only the untouched test set gives a genuinely unbiased final
+      evaluation.
+
+  - topic: "Data preparation and cleaning"
+    area: "Feature Engineering"
+    subtopic: "Handling outliers"
+    difficulty: "F1"
+    format: "multi"
+    stem: "Which tasks does the course list as typical data preparation steps before training a deep learning model? Select all that apply."
+    payload:
+      options:
+        - "Removing outliers"
+        - "Handling missing values"
+        - "Scaling"
+        - "One-hot encoding"
+        - "Deleting the model's output layer"
+    answer_key:
+      correct: [0, 1, 2, 3]
+    explanation: >
+      Data preparation is described as usually the longest stage of the pipeline, which is
+      consistent with the commonly cited estimate elsewhere in the course that data preparation
+      takes up the majority of a data science project's time.
+
+  - topic: "Model serving"
+    area: "MLOps & Deployment"
+    subtopic: "Batch vs real-time vs streaming inference"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "Why does the course say the review stage of the ML pipeline is necessary even after a successful deployment, rather than treating deployment as the final step?"
+    payload:
+      options:
+        - "The world changes over time, so a deployed model may become unsuitable and need periodic review, potentially triggering the whole pipeline to repeat with updated data or requirements"
+        - "Review is optional and only needed if the model performs poorly on day one"
+        - "Once deployed, a model's performance is guaranteed to stay constant forever"
+        - "Review only applies to statistical models, never to neural networks"
+    answer_key:
+      correct: 0
+    explanation: >
+      This matches the same principle raised in the visualisation and deployment topic: a model
+      that worked when deployed can degrade as the underlying data patterns shift, so ongoing
+      monitoring and retraining are part of the job, not an afterthought.
+
+  - topic: "ML libraries"
+    subtopic: "PyTorch vs TensorFlow"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does the course list as Keras's main functional strengths, beyond simply being easy to use?"
+    payload:
+      options:
+        - "Easy and fast prototyping, support for implementing many recent neural network architectures plus pretrained models and exercise datasets, and the ability to run well on both CPUs and GPUs"
+        - "Keras can only be used for image classification tasks"
+        - "Keras requires a completely separate codebase from TensorFlow to run"
+        - "Keras cannot use any pretrained models"
+    answer_key:
+      correct: 0
+    explanation: >
+      Built on TensorFlow 2, Keras also scales to large GPU and TPU pod clusters, so the same
+      easy-prototyping interface carries through to larger-scale training as needs grow.

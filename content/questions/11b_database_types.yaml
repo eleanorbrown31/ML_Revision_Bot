@@ -1,0 +1,300 @@
+area: "Data Engineering"
+questions:
+  - topic: "Database types"
+    subtopic: "Relational databases and ACID"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "What do the ACID properties guarantee for a transaction in a relational database?"
+    payload:
+      options:
+        - "Every query returns in constant time, however large the table"
+        - "The data is automatically copied across many servers"
+        - "The schema can change freely with every insert"
+        - "The transaction is atomic, consistent, isolated and durable, so a committed change is never half-applied or lost"
+    answer_key:
+      correct: 3
+    explanation: >
+      ACID stands for Atomicity (all steps of a transaction happen or none do), Consistency
+      (the data always satisfies the database's rules), Isolation (concurrent transactions do
+      not see each other's half-finished work) and Durability (once committed, a change survives
+      a crash). These guarantees are the main reason relational databases are used for
+      financial and order data.
+
+  - topic: "Database types"
+    subtopic: "Relational databases and ACID"
+    difficulty: "F2"
+    format: "multi"
+    stem: "Which of the following are typical features of a relational (SQL) database? Select all that apply."
+    payload:
+      options:
+        - "A schema of tables and column types is defined before data is written"
+        - "Related tables can be combined at query time with joins"
+        - "Each record can have a completely different set of fields"
+        - "Transactions follow ACID rules"
+        - "Adding more servers to spread the data is trivial and automatic"
+    answer_key:
+      correct: [0, 1, 3]
+    explanation: >
+      Relational databases enforce a fixed schema, link tables through keys and joins, and give
+      ACID transactions. Records with different fields are typical of document stores. Scaling a
+      relational database across many servers is possible but harder than for most NoSQL
+      systems, because joins and transactions across machines are costly.
+
+  - topic: "Database types"
+    subtopic: "Document stores"
+    difficulty: "F1"
+    format: "mcq"
+    stem: "Why is a document store such as MongoDB a good fit for records where each item can have a different set of fields?"
+    payload:
+      options:
+        - "It stores each record as a self-contained document (for example JSON), and documents in one collection do not have to share the same fields"
+        - "It forces every record into the same fixed table layout"
+        - "It cannot store nested data"
+        - "It stores only numbers"
+    answer_key:
+      correct: 0
+    explanation: >
+      A document store keeps each record as one document, usually JSON-like, which can hold
+      nested objects and lists. Different documents in the same collection can have different
+      fields. This suits product catalogues, user profiles and content where the shape of the
+      data varies or changes often.
+
+  - topic: "Database types"
+    subtopic: "Key-value stores"
+    difficulty: "F2"
+    format: "fill"
+    stem: "Complete the sentence about key-value stores."
+    payload:
+      template: "A key-value store such as Redis is often kept in memory and used as a ___ so that frequently requested data can be returned very quickly."
+    answer_key:
+      blanks:
+        - ["cache", "caching layer", "cache layer"]
+    explanation: >
+      A key-value store maps a key to a value and supports very fast lookups by key. It does not
+      support rich queries over the values. Its typical uses are caching, session storage and
+      serving the latest feature values for an ML model in real time.
+
+  - topic: "Database types"
+    subtopic: "Wide-column stores"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What is a wide-column store such as Cassandra mainly designed for?"
+    payload:
+      options:
+        - "Complex multi-table joins with strict transactions"
+        - "Very high write throughput on huge datasets spread over many servers, with queries planned around known access patterns"
+        - "Storing and searching embeddings by similarity"
+        - "Following relationships between people several steps deep"
+    answer_key:
+      correct: 1
+    explanation: >
+      Wide-column stores partition data across many nodes and are built for heavy writes and
+      predictable queries, such as logging events or storing sensor readings. You design the
+      tables around the queries you will run. They are weak at ad hoc queries and joins.
+
+  - topic: "Database types"
+    subtopic: "Graph databases"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "Why can a graph database answer a 'friends of friends of friends' query faster than a relational database?"
+    payload:
+      options:
+        - "It compresses the data more than a relational database does"
+        - "It stores relationships as direct links between nodes, so it follows connections without repeated joins"
+        - "It keeps all data in a single table"
+        - "It ignores the relationships and scans every record"
+    answer_key:
+      correct: 1
+    explanation: >
+      In a graph database the relationships (edges) are stored as first-class data. Following a
+      chain of connections means following links from node to node. In a relational database
+      each extra step needs another join, and the cost grows quickly with depth. Graph databases
+      suit social networks, fraud rings, recommendations and knowledge graphs.
+
+  - topic: "Database types"
+    subtopic: "Time series databases"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What makes a time series database (for example InfluxDB or TimescaleDB) suited to sensor and monitoring data?"
+    payload:
+      options:
+        - "It cannot store timestamps"
+        - "It supports only one reading per sensor"
+        - "It is tuned for fast appends of timestamped data, time-range queries, downsampling and automatic expiry of old data"
+        - "It requires every reading to be updated after it is written"
+    answer_key:
+      correct: 2
+    explanation: >
+      Sensor and metrics data arrives constantly, is written once and is mostly queried by time
+      range ("the last hour", "per day for the last year"). Time series databases are optimised
+      for that pattern. They also offer downsampling (keeping averages of old data) and
+      retention rules that delete data after a set time.
+
+  - topic: "Database types"
+    subtopic: "Vector databases"
+    difficulty: "F2"
+    format: "mcq"
+    stem: "What does a vector database do, and why is it used in retrieval-augmented generation (RAG)?"
+    payload:
+      options:
+        - "It stores embeddings and finds the ones most similar to a query embedding, which lets a RAG system retrieve relevant text to give to a language model"
+        - "It stores only images and cannot store text"
+        - "It replaces the language model by generating answers itself"
+        - "It guarantees exact matches on keywords only"
+    answer_key:
+      correct: 0
+    explanation: >
+      A vector database stores high-dimensional embeddings and supports similarity search, using
+      measures such as cosine similarity. To keep search fast at scale it usually uses
+      approximate nearest neighbour indexes, which trade a little accuracy for speed. In RAG,
+      the question is embedded, the closest document chunks are retrieved, and they are added
+      to the prompt.
+
+  - topic: "Database types"
+    subtopic: "CAP theorem and BASE"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "According to the CAP theorem, what must a distributed database give up when a network partition happens?"
+    payload:
+      options:
+        - "Partition tolerance, so it must stop when the network splits"
+        - "It must choose between consistency and availability"
+        - "Durability, so committed data may be lost"
+        - "Nothing, because a good design can keep all three"
+    answer_key:
+      correct: 1
+    explanation: >
+      CAP says that a distributed system cannot guarantee Consistency, Availability and
+      Partition tolerance all at once. Partitions cannot be ruled out in a real network, so the
+      real choice is what to do during one. A CP system refuses some requests to keep the data
+      consistent. An AP system keeps answering but may return stale data.
+
+  - topic: "Database types"
+    subtopic: "CAP theorem and BASE"
+    difficulty: "F3"
+    format: "mcq"
+    stem: "What does 'eventual consistency' mean in a BASE-style NoSQL database?"
+    payload:
+      options:
+        - "Data is never consistent"
+        - "Every read always returns the latest write, on every server, immediately"
+        - "Replicas may briefly return different values after a write, but they converge to the same value if no new writes arrive"
+        - "Writes are queued and may be dropped"
+    answer_key:
+      correct: 2
+    explanation: >
+      With eventual consistency, a write is accepted by one replica and copied to the others
+      afterwards. For a short time a read from another replica may return an older value. If no
+      further writes happen, all replicas end up identical. It trades strict consistency for
+      availability and speed, which is acceptable for things like view counts and not for
+      account balances.
+
+  - topic: "Database types"
+    subtopic: "Scaling (replication, sharding)"
+    difficulty: "F2"
+    format: "match"
+    stem: "Match each scaling term to its meaning."
+    payload:
+      left:
+        - "Replication"
+        - "Sharding"
+        - "Vertical scaling"
+        - "Horizontal scaling"
+      right:
+        - "Splitting the data into parts, each stored on a different server"
+        - "Keeping copies of the same data on several servers, for availability and read capacity"
+        - "Giving one server more CPU, memory or disk"
+        - "Adding more servers to share the load"
+    answer_key:
+      pairs:
+        "Replication": "Keeping copies of the same data on several servers, for availability and read capacity"
+        "Sharding": "Splitting the data into parts, each stored on a different server"
+        "Vertical scaling": "Giving one server more CPU, memory or disk"
+        "Horizontal scaling": "Adding more servers to share the load"
+    explanation: >
+      Replication copies the same data to several nodes, which helps with failure and read load.
+      Sharding divides the data so each node holds only part of it, which helps with write load
+      and total size. Vertical scaling makes one machine bigger. Horizontal scaling adds
+      machines, and needs replication or sharding to be useful for a database.
+
+  - topic: "Database types"
+    subtopic: "Choosing a database for an ML workload"
+    difficulty: "F1"
+    format: "match"
+    stem: "Match each database type to the workload it suits best."
+    payload:
+      left:
+        - "Relational (PostgreSQL)"
+        - "Document store (MongoDB)"
+        - "Key-value store (Redis)"
+        - "Graph database (Neo4j)"
+      right:
+        - "Payments and orders that need ACID transactions"
+        - "Product catalogue where items have different attributes"
+        - "Session data and a cache with lookups by key"
+        - "Fraud rings and social connections"
+    answer_key:
+      pairs:
+        "Relational (PostgreSQL)": "Payments and orders that need ACID transactions"
+        "Document store (MongoDB)": "Product catalogue where items have different attributes"
+        "Key-value store (Redis)": "Session data and a cache with lookups by key"
+        "Graph database (Neo4j)": "Fraud rings and social connections"
+    explanation: >
+      Each type is built around a data shape and an access pattern. Choose by what the workload
+      needs: transactions, flexible records, fast lookups by key, or traversal of relationships.
+
+  - topic: "Database types"
+    subtopic: "Choosing a database for an ML workload"
+    difficulty: "INT"
+    format: "mcq"
+    stem: "An ML service must look up the latest features for a customer by customer id in under a few milliseconds for every prediction request. Which store fits best?"
+    payload:
+      options:
+        - "A data warehouse queried with SQL at prediction time"
+        - "A graph database"
+        - "A key-value store, holding the precomputed features under each customer id"
+        - "A data lake of raw files"
+    answer_key:
+      correct: 2
+    explanation: >
+      This is the online serving part of a feature store. The access pattern is a single lookup
+      by key with very low latency, which is what a key-value store does best. A warehouse or
+      data lake is built for large analytical scans and is too slow per request.
+
+  - topic: "Database types"
+    subtopic: "Choosing a database for an ML workload"
+    difficulty: "INT"
+    format: "multi"
+    stem: "Which of the following are good reasons to choose a relational database over a NoSQL store? Select all that apply."
+    payload:
+      options:
+        - "The data is well structured and the schema is stable"
+        - "You need ACID transactions across several tables"
+        - "You need to run ad hoc queries that join many tables"
+        - "You expect the schema to change with every record"
+        - "You need to spread very high write volume over hundreds of servers with no joins"
+    answer_key:
+      correct: [0, 1, 2]
+    explanation: >
+      Relational databases are strongest with structured data, transactions and flexible joins.
+      Variable schemas and massive horizontal write scaling are where document and wide-column
+      stores usually do better.
+
+  - topic: "Database types"
+    subtopic: "Choosing a database for an ML workload"
+    difficulty: "ADV"
+    format: "mcq"
+    stem: "A bank transfers money between two accounts. Why is a relational database with ACID transactions usually chosen over an eventually consistent store for this?"
+    payload:
+      options:
+        - "Eventually consistent stores cannot store numbers"
+        - "Relational databases are always faster than NoSQL stores"
+        - "The debit and credit must succeed or fail together, and both must be seen correctly by other transactions, which atomicity and isolation provide"
+        - "NoSQL stores do not keep data on disk"
+    answer_key:
+      correct: 2
+    explanation: >
+      If the debit succeeds and the credit fails, money disappears. With eventual consistency, a
+      second transaction could read a stale balance and overspend. Atomicity makes the two steps
+      one unit, and isolation stops concurrent transactions seeing half-finished work.
+      Correctness matters more than availability or raw speed here.

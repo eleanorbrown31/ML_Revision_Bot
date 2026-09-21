@@ -32,7 +32,9 @@ def _render_start_screen() -> None:
         return
 
     st.subheader("Choose your revision mode")
-    learn_tab, review_tab, epa_tab = st.tabs(["Learn a topic", "Due review", "EPA practice"])
+    learn_tab, review_tab, test_tab, epa_tab = st.tabs(
+        ["Learn a topic", "Due review", "Test your progress", "EPA practice"]
+    )
 
     with learn_tab:
         _render_learn_mode()
@@ -40,6 +42,14 @@ def _render_start_screen() -> None:
         st.write("A mixed, scheduled session that brings back overdue, weak and less-covered topics.")
         if st.button("Start due review", type="primary", use_container_width=True):
             _start_session(mode="due_review")
+    with test_tab:
+        st.write(
+            "One question from each of many topics, spread across every area. No hints. "
+            "You get a score breakdown by area at the end. Use it to find your weak areas."
+        )
+        length = st.selectbox("Number of questions", [10, 20, 30, 40], index=1, key="progress_test_length")
+        if st.button("Start progress test", type="primary", width="stretch"):
+            _start_session(mode="progress_test", session_length=length)
     with epa_tab:
         st.write(
             "A mixed session followed by a short teach-back reflection. Use this to practise "
@@ -129,7 +139,8 @@ def _render_question() -> None:
     response = render_answerable(question)
 
     hint_key = f"hint_shown_{question['id']}"
-    if question.get("distractor_notes"):
+    hints_allowed = quiz_service.active_session_details()["mode"] != "progress_test"
+    if hints_allowed and question.get("distractor_notes"):
         if st.session_state.get(hint_key):
             st.info(_format_hint(question["distractor_notes"]))
         elif st.button("Show hint (halves this question's score)", key=f"hint_btn_{question['id']}"):
@@ -164,9 +175,42 @@ def _render_feedback(result: dict) -> None:
         st.rerun()
 
 
+def _render_progress_test_results(results: list[dict]) -> None:
+    if not results:
+        return
+    overall = sum(r["score"] for r in results) / len(results)
+    st.metric("Overall score", f"{overall:.0%}", help=f"{len(results)} questions")
+
+    by_area: dict[str, list[float]] = {}
+    for r in results:
+        by_area.setdefault(r["area_name"], []).append(r["score"])
+    rows = sorted(
+        (
+            {"Area": area, "Questions": len(scores), "Score": sum(scores) / len(scores)}
+            for area, scores in by_area.items()
+        ),
+        key=lambda row: row["Score"],
+    )
+    st.subheader("By area (weakest first)")
+    st.dataframe(
+        rows,
+        hide_index=True,
+        width="stretch",
+        column_config={"Score": st.column_config.ProgressColumn("Score", min_value=0, max_value=1, format="percent")},
+    )
+
+    missed = [r for r in results if r["score"] < 0.5]
+    if missed:
+        st.subheader("Topics to revisit")
+        for r in missed:
+            st.write(f"- {r['topic_name']} ({r['area_name']})")
+
+
 def _render_session_complete() -> None:
     st.success("Session complete.")
     details = quiz_service.active_session_details()
+    if details["mode"] == "progress_test":
+        _render_progress_test_results(quiz_service.session_results())
     is_teach_back = details["mode"] == "epa_practice"
     st.subheader("Teach-back" if is_teach_back else "Capture a learning note")
     st.caption(

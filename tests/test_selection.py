@@ -159,3 +159,24 @@ def test_pick_subtopic_for_topic_picks_least_attempted():
         {"id": "s3", "attempts_count": 1},
     ]
     assert selection.pick_subtopic_for_topic(subtopics)["id"] == "s2"
+
+
+# --- select_progress_test_topics ---------------------------------------------
+
+def _topics(counts: dict) -> list[dict]:
+    return [{"id": f"{area}{i}", "area_id": area} for area, n in counts.items() for i in range(n)]
+
+
+def test_progress_test_covers_every_area_before_repeating():
+    import random
+
+    picked = selection.select_progress_test_topics(_topics({"a": 5, "b": 5, "c": 5}), 3, random.Random(1))
+    assert {t["area_id"] for t in picked} == {"a", "b", "c"}
+
+
+def test_progress_test_uses_each_topic_once():
+    import random
+
+    picked = selection.select_progress_test_topics(_topics({"a": 3, "b": 1}), 10, random.Random(1))
+    assert len(picked) == 4
+    assert len({t["id"] for t in picked}) == 4

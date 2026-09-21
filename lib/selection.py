@@ -158,3 +158,26 @@ def pick_subtopic_for_topic(subtopics: list[dict]) -> dict:
     covered before any repeats -- fulfils the spec's stated rationale for
     subtopic being a coverage tag rather than its own mastery unit."""
     return min(subtopics, key=lambda s: s.get("attempts_count", 0))
+
+
+def select_progress_test_topics(topics: list[dict], session_length: int, rng) -> list[dict]:
+    """Broad, unweighted coverage for a "test your progress" quiz. Ignores
+    priority and due dates: deals topics out round-robin across areas (random
+    order of areas, random topic within each), so every area appears before
+    any area repeats. Each topic is used at most once. Each topic dict needs:
+    id, area_id."""
+    by_area: dict = {}
+    for t in topics:
+        by_area.setdefault(t["area_id"], []).append(t)
+    for area_topics in by_area.values():
+        rng.shuffle(area_topics)
+
+    area_order = list(by_area)
+    rng.shuffle(area_order)
+
+    selected: list[dict] = []
+    while len(selected) < session_length and any(by_area.values()):
+        for area_id in area_order:
+            if by_area[area_id] and len(selected) < session_length:
+                selected.append(by_area[area_id].pop())
+    return selected

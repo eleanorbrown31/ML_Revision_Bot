@@ -296,6 +296,18 @@ CURRICULUM = [
             "indexing (B-tree, hash)", "reading a query plan",
             "predicate pushdown", "cardinality and selectivity",
         ]),
+        ("Database types", [
+            "Relational databases and ACID",
+            "Document stores",
+            "Key-value stores",
+            "Wide-column stores",
+            "Graph databases",
+            "Time series databases",
+            "Vector databases",
+            "CAP theorem and BASE",
+            "Scaling (replication, sharding)",
+            "Choosing a database for an ML workload",
+        ]),
         ("Pipelines & orchestration", [
             "ETL vs ELT", "batch vs streaming", "idempotency",
             "DAGs and scheduling", "Airflow/Dagster concepts", "backfills",

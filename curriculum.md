@@ -115,6 +115,7 @@ Five areas, 23 topics. This is the material the original curriculum missed entir
 |---|---|
 | Storage architectures | OLTP vs OLAP · warehouse vs lake vs lakehouse · star and snowflake schemas · normalisation vs denormalisation · partitioning and bucketing · row vs columnar storage · file formats (Parquet, Avro, ORC) |
 | SQL & query performance | Joins and join strategies · window functions · CTEs · indexing (B-tree, hash) · reading a query plan · predicate pushdown · cardinality and selectivity |
+| Database types | Relational databases and ACID · Document stores · Key-value stores · Wide-column stores · Graph databases · Time series databases · Vector databases · CAP theorem and BASE · Scaling (replication, sharding) · Choosing a database for an ML workload |
 | Pipelines & orchestration | ETL vs ELT · batch vs streaming · idempotency · DAGs and scheduling · Airflow/Dagster concepts · backfills · change data capture |
 | APIs & data access | REST vs GraphQL · pagination · rate limiting · authentication (API keys, OAuth) · webhooks · retries and exponential backoff · SDKs vs raw HTTP |
 | Algorithmic efficiency at scale | Big-O in time and space · hashing · sampling strategies · approximate algorithms (Bloom filters, HyperLogLog) · chunking and out-of-core processing · streaming aggregations |

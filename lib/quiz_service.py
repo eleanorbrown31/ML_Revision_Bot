@@ -228,7 +228,13 @@ def start_session(
     """Builds and stores the session queue. Returns False if no active
     question exists anywhere in the bank yet (or for the given topic/area,
     if scoped)."""
-    if topic_id is not None:
+    if mode == "progress_test":
+        candidates = _build_topic_candidates()
+        if not candidates:
+            return False
+        selected_topics = selection.select_progress_test_topics(candidates, session_length, random)
+        queue = _build_multi_topic_queue(selected_topics)
+    elif topic_id is not None:
         queue = _build_single_topic_queue(topic_id, session_length)
     elif area_id is not None:
         queue = _build_area_queue(area_id, session_length)
@@ -244,7 +250,11 @@ def start_session(
 
     session_id = session_repo.start_session(
         mode=mode,
-        config={"session_length": session_length, "topic_id": topic_id, "area_id": area_id},
+        config={
+            "session_length": session_length,
+            "topic_id": str(topic_id) if topic_id else None,
+            "area_id": str(area_id) if area_id else None,
+        },
     )
     st.session_state[_STATE_KEY] = {
         "session_id": session_id,
@@ -254,6 +264,7 @@ def start_session(
         "pointer": 0,
         "question_started_at": _now().isoformat(),
         "last_result": None,
+        "results": [],
     }
     return True
 
@@ -286,6 +297,12 @@ def active_session_details() -> dict:
     """Small, UI-safe summary used by the completion reflection."""
     state = _state() or {}
     return {"mode": state.get("mode"), "topic_id": state.get("topic_id")}
+
+
+def session_results() -> list[dict]:
+    """Per-question {area_name, topic_name, score} for the active session."""
+    state = _state()
+    return list(state.get("results", [])) if state else []
 
 
 def save_learning_note(
@@ -341,6 +358,13 @@ def submit_answer(response, confidence: int | None, hint_used: bool) -> dict:
 
     result = {"score": score, "explanation": question["explanation"]}
     state["last_result"] = result
+    state["results"].append(
+        {
+            "area_name": item["topic"]["area_name"],
+            "topic_name": item["topic"]["topic_name"],
+            "score": score,
+        }
+    )
     return result
 
 
